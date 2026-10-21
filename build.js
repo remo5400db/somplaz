@@ -210,11 +210,20 @@ ${t.aptPhotos.map((p) => `<figure style="margin:0"><img class="img" src="/${img(
 <div class="eyebrow">${esc(t.navLoc)}</div>
 <h2 class="h2">${esc(t.locTitle)}</h2>
 <p class="lead" style="margin:0">${esc(t.locLead)}</p>
+<div class="grid2" style="align-items:stretch">
+<div class="card" style="display:flex;flex-direction:column;justify-content:center;gap:10px">
+<div class="eyebrow" style="margin:0">${esc(t.addrH)}</div>
+<div style="font-size:22px;font-weight:700">Chesa Somplaz<br>Via Somplaz 10<br>7500 St. Moritz Dorf, ${esc(t.locNote)}</div>
+<p style="margin:6px 0 0;font-size:15px;color:#5a6361">${esc(t.addrP)}</p>
+<a class="link" href="https://www.google.com/maps/search/?api=1&amp;query=Via+Somplaz+10%2C+7500+St.+Moritz" target="_blank" rel="noopener" style="align-self:flex-start">${esc(t.addrMap)}</a>
+</div>
+<iframe title="Google Maps – Via Somplaz 10, St. Moritz" src="https://www.google.com/maps?q=Via+Somplaz+10,+7500+St.+Moritz&amp;z=16&amp;output=embed" width="600" height="300" style="width:100%;height:100%;min-height:300px;border:0;border-radius:12px" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+</div>
 <img class="img" src="/img/st-moritz-dorf.jpg" alt="${esc(t.altDorf)}" width="2400" height="1600" loading="lazy" style="height:520px;margin-top:40px;object-position:center 80%">
 <div class="grid2">
 <div class="card"><h3>${esc(t.locWalkH)}</h3><ul>${liKV(t.locWalk)}</ul></div>
 <div class="card"><h3>${esc(t.locDriveH)}</h3><ul>${liKV(t.locDrive)}</ul>
-<p style="margin:20px 0 0;font-size:15px;color:#5a6361">Via Somplaz 10 · 7500 St. Moritz Dorf · ${esc(t.locNote)} · <a href="https://www.google.com/maps/search/?api=1&query=Via+Somplaz+10%2C+7500+St.+Moritz" target="_blank" rel="noopener">Google Maps</a></p></div>
+</div>
 </div>
 </div>
 </section>
