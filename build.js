@@ -98,7 +98,7 @@ function jsonLd(lang, t) {
         occupancy: { '@type': 'QuantitativeValue', maxValue: 6 },
         checkinTime: '16:00', checkoutTime: '10:00', petsAllowed: true,
         amenityFeature: t.aptEquip.map((n) => ({ '@type': 'LocationFeatureSpecification', name: n, value: true })),
-        image: [DOMAIN + '/img/abendstimmung.jpg', DOMAIN + '/img/st-moritz-dorf.jpg'],
+        image: [DOMAIN + '/img/st-moritz-dorf.jpg', DOMAIN + '/img/abendstimmung.jpg'],
         offers: { '@type': 'Offer', price: '18000', priceCurrency: 'CHF', validFrom: '2026-12-19', validThrough: '2027-04-06', description: t.priceLead, availability: 'https://schema.org/InStock', url: url + '#preise' },
       },
       { '@type': 'FAQPage', mainEntity: t.faqs.map((q) => ({ '@type': 'Question', name: q.q, acceptedAnswer: { '@type': 'Answer', text: q.a } })) },
@@ -130,13 +130,13 @@ ${alternates}
 <meta property="og:type" content="website">
 <meta property="og:title" content="${esc(meta.title)}">
 <meta property="og:description" content="${esc(meta.desc)}">
-<meta property="og:image" content="${DOMAIN}/img/abendstimmung.jpg">
+<meta property="og:image" content="${DOMAIN}/img/st-moritz-dorf.jpg">
 <meta property="og:url" content="${url}">
 <meta property="og:locale" content="${L.ogLocale}">
 ${Object.values(LANGS).filter((v) => v.ogLocale !== L.ogLocale).map((v) => `<meta property="og:locale:alternate" content="${v.ogLocale}">`).join('\n')}
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="preload" as="image" href="/img/abendstimmung.jpg" fetchpriority="high">
+<link rel="preload" as="image" href="/img/st-moritz-dorf.jpg" fetchpriority="high">
 <script type="application/ld+json">${jsonLd(lang, t)}</script>
 <style>${css}</style>
 </head>
@@ -176,7 +176,7 @@ ${t.facts.map((f) => `<li style="background:#f3f5f3;border-radius:999px;padding:
 <a class="link hero-sec" href="#preise">${esc(t.heroSecondary)}</a>
 </div>
 </div>
-<img class="img hero-img" src="/img/abendstimmung.jpg" alt="${esc(t.altHero)}" width="1800" height="1013" fetchpriority="high">
+<img class="img hero-img" src="/img/st-moritz-dorf.jpg" alt="${esc(t.altHero)}" width="2400" height="1600" fetchpriority="high" style="object-position:center 70%">
 </div>
 </div>
 </section>
@@ -219,7 +219,6 @@ ${t.aptPhotos.map((p) => `<figure style="margin:0"><img class="img" src="/${img(
 </div>
 <iframe title="Google Maps – Via Somplaz 10, St. Moritz" src="https://www.google.com/maps?q=Via+Somplaz+10,+7500+St.+Moritz&amp;z=16&amp;output=embed" width="600" height="300" style="width:100%;height:100%;min-height:300px;border:0;border-radius:12px" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
 </div>
-<img class="img" src="/img/st-moritz-dorf.jpg" alt="${esc(t.altDorf)}" width="2400" height="1600" loading="lazy" style="height:520px;margin-top:40px;object-position:center 80%">
 <div class="grid2">
 <div class="card"><h3>${esc(t.locWalkH)}</h3><ul>${liKV(t.locWalk)}</ul></div>
 <div class="card"><h3>${esc(t.locDriveH)}</h3><ul>${liKV(t.locDrive)}</ul>
@@ -264,7 +263,7 @@ ${t.smTips.map((x) => `<div class="tip"><strong>${esc(x.n)}</strong> – ${esc(x
 </details>
 </div>
 </div>
-<img class="img" src="/img/hero-silsersee.jpg" alt="${esc(t.altAbend)}" width="1800" height="1013" loading="lazy" style="height:360px;margin-top:40px">
+<div class="grid2" style="gap:16px"><img class="img" src="/img/abendstimmung.jpg" alt="${esc(t.altAbend)}" width="1800" height="1013" loading="lazy" style="height:300px"><img class="img" src="/img/hero-silsersee.jpg" alt="${esc(t.altSils)}" width="1800" height="1013" loading="lazy" style="height:300px"></div>
 </div>
 </section>
 
