@@ -186,6 +186,7 @@ ${t.facts.map((f) => `<li style="background:#f3f5f3;border-radius:999px;padding:
 <div class="grid4" style="margin-top:16px;gap:16px">
 ${t.aptPhotos.map((p) => `<figure style="margin:0"><img class="img" src="/${img(p.src)}" alt="${esc(p.alt)}" width="788" height="1400" loading="lazy" style="height:260px"><figcaption style="font-size:14px;color:#5a6361;margin-top:8px">${esc(p.cap)}</figcaption></figure>`).join('\n')}
 </div>
+<p style="margin:16px 0 0;font-size:14px;color:#5a6361"><strong>${esc(t.photoNoteH)}</strong> ${esc(t.photoNote)}</p>
 <div class="grid2">
 <div class="card"><h3>${esc(t.aptSleepH)}</h3><ul>${li(t.aptSleep)}</ul></div>
 <div class="card"><h3>${esc(t.aptBathH)}</h3><ul>${li(t.aptBath)}</ul></div>
