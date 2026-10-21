@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://chesa-somplaz.ch/sitemap.xml
