@@ -56,7 +56,8 @@ css += `
 .mobnav a{display:block;padding:14px 24px;text-decoration:none;color:#1b1f1e;font-weight:600;border-top:1px solid #eef1ef}
 .mobnav.open{display:block}
 .langs a{text-decoration:none}
-.plan-wrap{position:relative;width:100%;overflow:hidden;border-radius:12px;border:1px solid #e3e7e4;background:#FBF9F4}
+picture{display:block;width:100%}
+.plan-wrap{position:relative;width:100%;overflow:hidden;border-radius:12px;border:1px solid #e3e7e4;background:#FBF9F4;-webkit-overflow-scrolling:touch}
 .plan-scale{transform-origin:top left;width:980px}
 .wa-float{position:fixed;right:20px;bottom:20px;z-index:20;width:56px;height:56px;border-radius:50%;background:#25D366;color:#0b2a16;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,0.2)}
 *{min-width:0}
@@ -75,11 +76,12 @@ const liKV = (arr) => arr.map((x) => `<li class="li"><span>${esc(x.n)}</span><sp
 const ext = (u, w) => (u ? ` · <a href="${esc(u)}" target="_blank" rel="noopener">${esc(w)}</a>` : '');
 const svgChat = (size) => `<svg aria-hidden="true" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8.5 8.5 0 0 1-12.4 7.6L4 21l1.4-4.6A8.5 8.5 0 1 1 21 12z"></path></svg>`;
 
-const LANGS = { de: { dir: '', hreflang: 'de-CH', ogLocale: 'de_CH' }, en: { dir: 'en/', hreflang: 'en', ogLocale: 'en_GB' }, it: { dir: 'it/', hreflang: 'it', ogLocale: 'it_IT' } };
+const LANGS = { de: { dir: '', hreflang: 'de', extra: ['de-CH', 'de-DE', 'de-AT'], ogLocale: 'de_CH' }, en: { dir: 'en/', hreflang: 'en', extra: ['en-GB'], ogLocale: 'en_GB' }, it: { dir: 'it/', hreflang: 'it', extra: ['it-IT', 'it-CH'], ogLocale: 'it_IT' } };
+const HREFLANGS = Object.values(LANGS).flatMap((v) => [v.hreflang, ...v.extra].map((h) => [h, v.dir]));
 const META = {
-  de: { title: 'Ferienwohnung St. Moritz Dorf – Saisonmiete Winter 2026/27', desc: "4.5-Zimmer-Ferienwohnung in St. Moritz Dorf, 113 m², bis 6 Personen, Tiefgarage, 1 Min. ins Zentrum. Saisonmiete 19.12.2026–6.4.2027 CHF 18'000 – jetzt anfragen." },
-  en: { title: 'Holiday apartment St. Moritz Dorf – seasonal let winter 2026/27', desc: '4.5-room holiday apartment in St. Moritz Dorf, 113 m², up to 6 guests, garage parking, 1 min to the centre. Seasonal let 19 Dec 2026 – 6 Apr 2027, CHF 18,000 – enquire now.' },
-  it: { title: 'Appartamento di vacanza St. Moritz Dorf – affitto stagionale inverno 2026/27', desc: "Appartamento di 4,5 locali a St. Moritz Dorf, 113 m², fino a 6 persone, garage, 1 min dal centro. Affitto stagionale 19.12.2026–6.4.2027 CHF 18'000 – richiedi ora." },
+  de: { title: 'Ferienwohnung St. Moritz Dorf – Saisonmiete Winter 2026/27', desc: "4.5-Zimmer-Ferienwohnung in St. Moritz Dorf, 113 m², bis 6 Personen, Tiefgarage, 1 Min. ins Zentrum. Saisonmiete Winter 2026/27 CHF 18'000." },
+  en: { title: 'Holiday apartment St. Moritz Dorf – seasonal let winter 2026/27', desc: '4.5-room holiday apartment in St. Moritz Dorf, 113 m², up to 6 guests, garage, 1 min to the centre. Seasonal let winter 2026/27, CHF 18,000.' },
+  it: { title: 'Appartamento di vacanza St. Moritz Dorf – affitto stagionale inverno 2026/27', desc: "Appartamento di 4,5 locali a St. Moritz Dorf, 113 m², fino a 6 persone, garage, 1 min dal centro. Affitto stagionale inverno 2026/27, CHF 18'000." },
 };
 const WA = '41794191462';
 
@@ -89,14 +91,15 @@ function jsonLd(lang, t) {
     '@context': 'https://schema.org',
     '@graph': [
       {
-        '@type': 'VacationRental', '@id': url + '#rental', name: 'Chesa Somplaz – ' + t.heroEyebrow, url,
+        '@type': 'VacationRental', '@id': url + '#rental', name: 'Chesa Somplaz – ' + t.navApt + ' St. Moritz Dorf', url, inLanguage: lang, telephone: '+41794191462', email: 'booking@chesa-somplaz.ch',
         description: t.aptLead,
         address: { '@type': 'PostalAddress', streetAddress: 'Via Somplaz 10', postalCode: '7500', addressLocality: 'St. Moritz', addressRegion: 'GR', addressCountry: 'CH' },
         geo: { '@type': 'GeoCoordinates', latitude: 46.4979, longitude: 9.8355 },
         numberOfRooms: 4.5, numberOfBedrooms: 3, numberOfBathroomsTotal: 2,
         floorSize: { '@type': 'QuantitativeValue', value: 113, unitCode: 'MTK' },
         occupancy: { '@type': 'QuantitativeValue', maxValue: 6 },
-        checkinTime: '16:00', checkoutTime: '10:00', petsAllowed: true,
+        checkinTime: '16:00', checkoutTime: '10:00', petsAllowed: 'on request',
+        containsPlace: [{ '@type': 'Accommodation', name: t.aptSleep[0], bed: { '@type': 'BedDetails', typeOfBed: 'double 180 cm', numberOfBeds: 1 } }, { '@type': 'Accommodation', name: t.aptSleep[1], bed: { '@type': 'BedDetails', typeOfBed: 'bunk bed 2 x 90 cm', numberOfBeds: 2 } }, { '@type': 'Accommodation', name: t.aptSleep[2], bed: { '@type': 'BedDetails', typeOfBed: 'double 180 cm', numberOfBeds: 1 } }],
         amenityFeature: t.aptEquip.map((n) => ({ '@type': 'LocationFeatureSpecification', name: n, value: true })),
         image: [DOMAIN + '/img/st-moritz-dorf.jpg', DOMAIN + '/img/abendstimmung.jpg'],
         offers: { '@type': 'Offer', price: '18000', priceCurrency: 'CHF', validFrom: '2026-12-19', validThrough: '2027-04-06', description: t.priceLead, availability: 'https://schema.org/InStock', url: url + '#preise' },
@@ -113,12 +116,12 @@ function page(lang) {
   const L = LANGS[lang];
   const meta = META[lang];
   const url = DOMAIN + '/' + L.dir;
-  const alternates = Object.entries(LANGS).map(([l, v]) => `<link rel="alternate" hreflang="${v.hreflang}" href="${DOMAIN}/${v.dir}">`).join('\n') + `\n<link rel="alternate" hreflang="x-default" href="${DOMAIN}/">`;
+  const alternates = HREFLANGS.map(([h, d]) => `<link rel="alternate" hreflang="${h}" href="${DOMAIN}/${d}">`).join('\n') + `\n<link rel="alternate" hreflang="x-default" href="${DOMAIN}/">`;
   const navLinks = [['#wohnung', t.navApt], ['#lage', t.navLoc], ['#stmoritz', t.navSm], ['#anreise', t.navArr], ['#preise', t.navPrice], ['#buchung', t.navBook]];
   const langLinks = Object.entries(LANGS).map(([l, v]) => `<a class="lang${l === lang ? ' lang-on' : ''}" href="/${v.dir}" lang="${l}" hreflang="${v.hreflang}" style="display:inline-flex;align-items:center;justify-content:center">${l.toUpperCase()}</a>`).join('');
   const waHref = `https://wa.me/${WA}?text=${encodeURIComponent(t.waText)}`;
 
-  return `<!doctype html>
+  const html = `<!doctype html>
 <html lang="${lang}">
 <head>
 <meta charset="utf-8">
@@ -135,6 +138,7 @@ ${alternates}
 <meta property="og:locale" content="${L.ogLocale}">
 ${Object.values(LANGS).filter((v) => v.ogLocale !== L.ogLocale).map((v) => `<meta property="og:locale:alternate" content="${v.ogLocale}">`).join('\n')}
 <meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preload" as="image" href="/img/st-moritz-dorf.jpg" fetchpriority="high">
 <script type="application/ld+json">${jsonLd(lang, t)}</script>
@@ -151,12 +155,12 @@ ${navLinks.slice(0, 5).map(([h, n]) => `<a href="${h}">${esc(n)}</a>`).join('\n'
 <div class="langs" style="display:flex;gap:6px;align-items:center;flex-wrap:nowrap">
 ${langLinks}
 <a class="btn btn-sm hdr-cta" href="#buchung" style="margin-left:6px;white-space:nowrap">${esc(t.navCta)}</a>
-<button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="mobnav"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1b1f1e" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>
+<button class="burger" id="burger" aria-label="${esc(t.navMenu)}" aria-expanded="false" aria-controls="mobnav"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1b1f1e" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>
 </div>
 </div>
 <nav class="mobnav" id="mobnav" aria-label="Navigation">
-${navLinks.map(([h, n]) => `<a href="${h}">${esc(n)}</a>`).join('\n')}
-<a href="#buchung" style="color:#1e4d3f;font-weight:800">${esc(t.navCta)} →</a>
+${navLinks.slice(0, 5).map(([h, n]) => `<a href="${h}">${esc(n)}</a>`).join('\n')}
+<a href="#buchung" style="color:#1e4d3f;font-weight:800">${esc(t.navBook)} / ${esc(t.navCta)} →</a>
 </nav>
 </header>
 
@@ -200,7 +204,7 @@ ${t.aptPhotos.map((p) => `<figure style="margin:0"><img class="img" src="/${img(
 <div style="margin-top:40px">
 <h3 style="font-size:22px;margin-bottom:10px">${esc(t.planH)}</h3>
 <p style="margin:0 0 20px;font-size:16px;color:#2f3634">${esc(t.planP)}</p>
-<div class="plan-wrap" data-plan><div class="plan-scale">${plan(lang)}</div></div>
+<div class="plan-wrap" data-plan role="img" aria-label="${esc(t.planAria)}"><div class="plan-scale">${plan(lang)}</div></div>
 </div>
 </div>
 </section>
@@ -304,7 +308,7 @@ ${t.priceRows.map((r) => `<tr><td>${esc(r.n)}</td><td>${esc(r.v)}</td></tr>`).jo
 <section class="sec" style="padding-bottom:0">
 <div class="wrap">
 <div class="card" style="display:flex;gap:24px;align-items:center;flex-wrap:wrap">
-<img src="/img/vanessa.jpg" alt="Vanessa Fasciati" width="400" height="400" loading="lazy" style="width:96px;height:96px;border-radius:50%;object-fit:cover;flex:0 0 96px">
+<img src="/img/vanessa.jpg" alt="${esc(t.hostsH)}" width="400" height="400" loading="lazy" style="width:96px;height:96px;border-radius:50%;object-fit:cover;flex:0 0 96px">
 <div style="flex:1 1 400px"><h3 style="font-size:20px;margin-bottom:6px">${esc(t.hostsH)}</h3><p style="margin:0;font-size:16px;color:#2f3634">${esc(t.hostsText)}</p></div>
 </div>
 </div>
@@ -346,7 +350,7 @@ ${t.bookSteps.map((s) => `<div class="step"><div class="num">${esc(s.n)}</div><d
 <div style="margin-top:48px">
 <h3 style="font-size:22px;margin-bottom:16px">${esc(t.faqH)}</h3>
 <div class="card" style="padding:8px 28px">
-${t.faqs.map((q) => `<div class="faq"><strong>${esc(q.q)}</strong>${esc(q.a)}</div>`).join('\n')}
+${t.faqs.map((q) => `<div class="faq"><h3 style="font-size:16px;margin:0 0 4px">${esc(q.q)}</h3>${esc(q.a)}</div>`).join('\n')}
 </div>
 </div>
 </div>
@@ -379,7 +383,10 @@ ${t.ds.map((x) => `<div class="faq"><strong>${esc(x.h)}</strong><span style="whi
   var b=document.getElementById('burger'),m=document.getElementById('mobnav');
   if(b&&m){b.addEventListener('click',function(){var o=m.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');});m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){m.classList.remove('open');b.setAttribute('aria-expanded','false');});});}
   ['#impressum','#datenschutz'].forEach(function(id){document.querySelectorAll('a[href="'+id+'"]').forEach(function(a){a.addEventListener('click',function(){var d=document.querySelector(id);if(d)d.open=true;});});});
-  function scalePlans(){document.querySelectorAll('[data-plan]').forEach(function(w){var s=w.querySelector('.plan-scale');var k=Math.min(1,w.clientWidth/980);s.style.transform='scale('+k+')';w.style.height=Math.round(900*k)+'px';});}
+  function scalePlans(){document.querySelectorAll('[data-plan]').forEach(function(w){var s=w.querySelector('.plan-scale');var k=Math.min(1,Math.max(0.72,w.clientWidth/980));s.style.transform='scale('+k+')';s.style.height='900px';w.style.height=Math.round(900*k)+'px';w.style.overflowX=(w.clientWidth/980<0.72)?'auto':'hidden';});}
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&m){m.classList.remove('open');b.setAttribute('aria-expanded','false');}});
+  document.addEventListener('click',function(e){if(m&&m.classList.contains('open')&&!m.contains(e.target)&&!b.contains(e.target)){m.classList.remove('open');b.setAttribute('aria-expanded','false');}});
+  var wa=document.querySelector('.wa-float'),bk=document.getElementById('buchung');if(wa&&bk&&'IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(x){wa.style.display=x.isIntersecting?'none':'flex';});},{threshold:0.05}).observe(bk);}
   scalePlans();window.addEventListener('resize',scalePlans);
   try{var sy=sessionStorage.getItem('cs-scroll');if(sy!==null){sessionStorage.removeItem('cs-scroll');window.scrollTo(0,parseInt(sy,10)||0);}}catch(e){}
   document.querySelectorAll('.langs a.lang').forEach(function(a){a.addEventListener('click',function(){try{sessionStorage.setItem('cs-scroll',String(window.scrollY));}catch(e){}});});
@@ -393,6 +400,10 @@ ${t.ds.map((x) => `<div class="faq"><strong>${esc(x.h)}</strong><span style="whi
 </body>
 </html>
 `;
+  return html.replace(/<img class="img([^"]*)" src="\/img\/([a-z0-9-]+)\.jpg"([^>]*)>/g, (m, cls, name, rest) => {
+    const sizes = cls.includes('hero-img') ? '(max-width:760px) 100vw, 560px' : /height:(200|220|260|300)px/.test(rest) ? '(max-width:760px) 100vw, 400px' : '(max-width:760px) 100vw, 1120px';
+    return `<picture><source type="image/webp" srcset="/img/${name}-800.webp 800w, /img/${name}-1600.webp 1600w" sizes="${sizes}">${m}</picture>`;
+  });
 }
 
 // ---------- 6. Write output ----------
@@ -403,7 +414,7 @@ for (const [lang, v] of Object.entries(LANGS)) {
 }
 fs.writeFileSync(path.join(OUT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-${Object.values(LANGS).map((v) => `<url><loc>${DOMAIN}/${v.dir}</loc>${Object.values(LANGS).map((w) => `<xhtml:link rel="alternate" hreflang="${w.hreflang}" href="${DOMAIN}/${w.dir}"/>`).join('')}<xhtml:link rel="alternate" hreflang="x-default" href="${DOMAIN}/"/></url>`).join('\n')}
+${Object.values(LANGS).map((v) => `<url><loc>${DOMAIN}/${v.dir}</loc><lastmod>${new Date().toISOString().slice(0, 10)}</lastmod>${HREFLANGS.map(([h, d]) => `<xhtml:link rel="alternate" hreflang="${h}" href="${DOMAIN}/${d}"/>`).join('')}<xhtml:link rel="alternate" hreflang="x-default" href="${DOMAIN}/"/></url>`).join('\n')}
 </urlset>
 `);
 fs.writeFileSync(path.join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${DOMAIN}/sitemap.xml\n`);
