@@ -87,7 +87,7 @@ details[open] summary::after{content:"–"}
 .faq strong{display:block;margin-bottom:4px}
 .hero-img{height:460px}
 .avatar{width:72px;height:72px;border-radius:50%;background:#dfe8ec;display:flex;align-items:center;justify-content:center;color:#3c5661;font-weight:700;font-size:12px;flex:0 0 72px}
-@media (max-width:760px){.img{height:auto !important;aspect-ratio:3/2}.grid4 .img{aspect-ratio:3/4}.grid4{grid-template-columns:repeat(2,minmax(0,1fr))}.btn-sm{display:none}.lang{min-width:34px;padding:6px 7px;font-size:12px;min-height:36px}.grid3,.grid2{grid-template-columns:repeat(1,minmax(0,1fr));gap:20px}.sec{padding:56px 0}.h2{font-size:28px}.hero-h{font-size:34px !important}.hero-grid{grid-template-columns:repeat(1,minmax(0,1fr)) !important;gap:28px !important}.navlinks{display:none !important}.hero-img{height:240px}#skischulen{grid-template-columns:repeat(1,minmax(0,1fr)) !important}.brand{font-size:17px !important}.cta-txt{display:none}.price{font-size:36px}}
+@media (max-width:760px){.hero-img{order:-1}.hero-sec{display:none}.img{height:auto !important;aspect-ratio:3/2}.grid4 .img{aspect-ratio:3/4}.grid4{grid-template-columns:repeat(2,minmax(0,1fr))}.btn-sm{display:none}.lang{min-width:34px;padding:6px 7px;font-size:12px;min-height:36px}.grid3,.grid2{grid-template-columns:repeat(1,minmax(0,1fr));gap:20px}.sec{padding:56px 0}.h2{font-size:28px}.hero-h{font-size:34px !important}.hero-grid{grid-template-columns:repeat(1,minmax(0,1fr)) !important;gap:28px !important}.navlinks{display:none !important}.hero-img{height:240px}#skischulen{grid-template-columns:repeat(1,minmax(0,1fr)) !important}.brand{font-size:17px !important}.cta-txt{display:none}.price{font-size:36px}}
 </style>
 </helmet>
 
@@ -128,7 +128,7 @@ details[open] summary::after{content:"–"}
 </ul>
 <div style="display:flex;gap:22px;align-items:center;flex-wrap:wrap">
 <a class="btn" href="#buchung">{{t.heroCta}}</a>
-<a class="link" href="#preise">{{t.heroSecondary}}</a>
+<a class="link hero-sec" href="#preise">{{t.heroSecondary}}</a>
 </div>
 </div>
 <img class="img hero-img" src="/_blob/49048cf31db27c4afcbf58036d6eabdf" alt="{{t.altHero}}" width="1800" height="1013" fetchpriority="high">

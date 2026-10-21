@@ -173,7 +173,7 @@ ${t.facts.map((f) => `<li style="background:#f3f5f3;border-radius:999px;padding:
 </ul>
 <div style="display:flex;gap:22px;align-items:center;flex-wrap:wrap">
 <a class="btn" href="#buchung">${esc(t.heroCta)}</a>
-<a class="link" href="#preise">${esc(t.heroSecondary)}</a>
+<a class="link hero-sec" href="#preise">${esc(t.heroSecondary)}</a>
 </div>
 </div>
 <img class="img hero-img" src="/img/hero-silsersee.jpg" alt="${esc(t.altHero)}" width="1800" height="1013" fetchpriority="high">
