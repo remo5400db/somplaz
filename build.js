@@ -194,7 +194,7 @@ ${t.aptPhotos.map((p) => `<figure style="margin:0"><img class="img" src="/${img(
 </div>
 <div style="margin-top:40px">
 <h3 style="font-size:22px;margin-bottom:10px">${esc(t.planH)}</h3>
-<p style="margin:0 0 20px;font-size:16px;color:#2f3634;max-width:880px">${esc(t.planP)}</p>
+<p style="margin:0 0 20px;font-size:16px;color:#2f3634">${esc(t.planP)}</p>
 <div class="plan-wrap" data-plan><div class="plan-scale">${plan(lang)}</div></div>
 </div>
 </div>
