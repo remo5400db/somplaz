@@ -92,7 +92,11 @@ details[open] summary::after{content:"–"}
 .plan-wrap{position:relative;width:100%;overflow:hidden;border-radius:12px;border:1px solid #e3e7e4;background:#FBF9F4}
 .plan-scale{transform-origin:top left;width:980px}
 .wa-float{position:fixed;right:20px;bottom:20px;z-index:20;width:56px;height:56px;border-radius:50%;background:#25D366;color:#0b2a16;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,0.2)}
-@media (max-width:760px){.burger{display:flex}}
+*{min-width:0}
+.card,.tip,.faq,.li,.lead,.step,.table td,details,summary,.mobnav a{overflow-wrap:anywhere;word-break:normal}
+.li{align-items:flex-start}
+.tip a,.faq a,.card a{overflow-wrap:anywhere}
+@media (max-width:760px){.burger{display:flex}.li{flex-wrap:wrap}.li span:last-child{white-space:normal;text-align:left}.table td:first-child{width:40%}.price{font-size:32px}}
 </style>
 </head>
 <body>
@@ -625,6 +629,8 @@ When you visit the website, the hosting provider automatically records technical
   ['#impressum','#datenschutz'].forEach(function(id){document.querySelectorAll('a[href="'+id+'"]').forEach(function(a){a.addEventListener('click',function(){var d=document.querySelector(id);if(d)d.open=true;});});});
   function scalePlans(){document.querySelectorAll('[data-plan]').forEach(function(w){var s=w.querySelector('.plan-scale');var k=Math.min(1,w.clientWidth/980);s.style.transform='scale('+k+')';w.style.height=Math.round(900*k)+'px';});}
   scalePlans();window.addEventListener('resize',scalePlans);
+  try{var sy=sessionStorage.getItem('cs-scroll');if(sy!==null){sessionStorage.removeItem('cs-scroll');window.scrollTo(0,parseInt(sy,10)||0);}}catch(e){}
+  document.querySelectorAll('.langs a.lang').forEach(function(a){a.addEventListener('click',function(){try{sessionStorage.setItem('cs-scroll',String(window.scrollY));}catch(e){}});});
   var f=document.getElementById('enquiry');
   if(f){f.addEventListener('submit',function(e){e.preventDefault();var g=function(n){return f.elements[n].value.trim();};var L={"name":"Name","mail":"E-mail","from":"Arrival","to":"Departure","pers":"Guests","pet":"Pet","msg":"Message","yes":"Yes","no":"No"};
     if(!g('name')||!/\S+@\S+\.\S+/.test(g('mail'))){document.getElementById('form-hint').textContent="Fill in name and e-mail – the button then becomes active.";f.elements[g('name')?'mail':'name'].focus();return;}
