@@ -63,7 +63,9 @@ css += `
 .card,.tip,.faq,.li,.lead,.step,.table td,details,summary,.mobnav a{overflow-wrap:anywhere;word-break:normal}
 .li{align-items:flex-start}
 .tip a,.faq a,.card a{overflow-wrap:anywhere}
-@media (max-width:760px){.burger{display:flex}.li{flex-wrap:wrap}.li span+span{white-space:normal;text-align:left}.table td:first-child{width:40%}.price{font-size:32px}}
+@media (max-width:760px){.burger{display:flex}.table td:first-child{width:40%}.price{font-size:32px}
+.hdr-cta{display:none !important}.langs{gap:4px}.lang{min-width:34px;padding:6px 7px;font-size:12px;min-height:36px}.brand{font-size:16px !important}
+.li span:first-child{flex:1 1 auto}.li span+span{text-align:right}}
 `;
 
 // ---------- 4. Helpers ----------
@@ -148,12 +150,13 @@ ${navLinks.slice(0, 5).map(([h, n]) => `<a href="${h}">${esc(n)}</a>`).join('\n'
 </nav>
 <div class="langs" style="display:flex;gap:6px;align-items:center;flex-wrap:nowrap">
 ${langLinks}
-<a class="btn btn-sm" href="#buchung" style="margin-left:6px;white-space:nowrap">${esc(t.navCta)}</a>
+<a class="btn btn-sm hdr-cta" href="#buchung" style="margin-left:6px;white-space:nowrap">${esc(t.navCta)}</a>
 <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="mobnav"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1b1f1e" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>
 </div>
 </div>
 <nav class="mobnav" id="mobnav" aria-label="Navigation">
 ${navLinks.map(([h, n]) => `<a href="${h}">${esc(n)}</a>`).join('\n')}
+<a href="#buchung" style="color:#1e4d3f;font-weight:800">${esc(t.navCta)} →</a>
 </nav>
 </header>
 
