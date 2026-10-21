@@ -58,7 +58,7 @@ css += `
 .card,.tip,.faq,.li,.lead,.step,.table td,details,summary,.mobnav a{overflow-wrap:anywhere;word-break:normal}
 .li{align-items:flex-start}
 .tip a,.faq a,.card a{overflow-wrap:anywhere}
-@media (max-width:760px){.burger{display:flex}.li{flex-wrap:wrap}.li span:last-child{white-space:normal;text-align:left}.table td:first-child{width:40%}.price{font-size:32px}}
+@media (max-width:760px){.burger{display:flex}.li{flex-wrap:wrap}.li span+span{white-space:normal;text-align:left}.table td:first-child{width:40%}.price{font-size:32px}}
 `;
 
 // ---------- 4. Helpers ----------

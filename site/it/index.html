@@ -43,7 +43,7 @@ a:focus-visible,button:focus-visible,.input:focus-visible{outline:3px solid #1e4
 .card h3{font-size:19px;margin-bottom:14px}
 .li{padding:9px 0;border-top:1px solid #e9ece9;display:flex;justify-content:space-between;gap:16px}
 .li:first-child{border-top:none}
-.li span:last-child{font-weight:600;white-space:nowrap}
+.li span+span{font-weight:600;white-space:nowrap;flex:0 0 auto}
 .ph{background:#dfe8ec;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#3c5661;font-weight:600;font-size:14px;letter-spacing:0.04em;text-transform:uppercase;text-align:center;padding:12px}
 .img{width:100%;object-fit:cover;border-radius:12px;display:block}
 .btn{display:inline-block;background:#1e4d3f;color:#ffffff;text-decoration:none;font-weight:700;padding:16px 28px;border-radius:999px;font-size:16px;min-height:44px;box-sizing:border-box;border:0;cursor:pointer;font-family:inherit}
@@ -96,7 +96,7 @@ details[open] summary::after{content:"–"}
 .card,.tip,.faq,.li,.lead,.step,.table td,details,summary,.mobnav a{overflow-wrap:anywhere;word-break:normal}
 .li{align-items:flex-start}
 .tip a,.faq a,.card a{overflow-wrap:anywhere}
-@media (max-width:760px){.burger{display:flex}.li{flex-wrap:wrap}.li span:last-child{white-space:normal;text-align:left}.table td:first-child{width:40%}.price{font-size:32px}}
+@media (max-width:760px){.burger{display:flex}.li{flex-wrap:wrap}.li span+span{white-space:normal;text-align:left}.table td:first-child{width:40%}.price{font-size:32px}}
 </style>
 </head>
 <body>
