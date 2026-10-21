@@ -29,6 +29,10 @@ const IMG = {
   '/_blob/c15d97683232ee879fb306c9dd11e2ea': 'img/winterwandern.jpg',
   '/_blob/4d6a196a9ae86d033418a413b3e25fb5': 'img/skischule.jpg',
   '/_blob/34f8c2af12141af14c5b8fad4b42c651': 'img/vanessa.jpg',
+  '/_blob/c8e82a6eaaa27a9109f5bcbf1314cec2': 'img/wohnung-kueche.jpg',
+  '/_blob/820de93755cca8b66f1b41ac91393657': 'img/wohnung-schlafzimmer3.jpg',
+  '/_blob/64e13dc22b33e73cca2749ff1e7787c5': 'img/wohnung-bad.jpg',
+  '/_blob/03ea634d2e8491620385622a4bfce219': 'img/wohnung-dusche.jpg',
 };
 const img = (blob) => IMG[blob] || blob;
 
@@ -179,10 +183,8 @@ ${t.facts.map((f) => `<li style="background:#f3f5f3;border-radius:999px;padding:
 <h2 class="h2">${esc(t.aptTitle)}</h2>
 <p class="lead" style="margin:0">${esc(t.aptLead)}</p>
 <div class="ph" style="height:420px;margin-top:40px">${esc(t.phApt0)}</div>
-<div class="grid3" style="margin-top:16px;gap:16px">
-<div class="ph" style="height:200px">${esc(t.phApt1)}</div>
-<div class="ph" style="height:200px">${esc(t.phApt2)}</div>
-<div class="ph" style="height:200px">${esc(t.phApt3)}</div>
+<div class="grid4" style="margin-top:16px;gap:16px">
+${t.aptPhotos.map((p) => `<figure style="margin:0"><img class="img" src="/${img(p.src)}" alt="${esc(p.alt)}" width="788" height="1400" loading="lazy" style="height:260px"><figcaption style="font-size:14px;color:#5a6361;margin-top:8px">${esc(p.cap)}</figcaption></figure>`).join('\n')}
 </div>
 <div class="grid2">
 <div class="card"><h3>${esc(t.aptSleepH)}</h3><ul>${li(t.aptSleep)}</ul></div>

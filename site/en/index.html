@@ -39,6 +39,7 @@ a:focus-visible,button:focus-visible,.input:focus-visible{outline:3px solid #1e4
 .lead{font-size:19px;max-width:760px;color:#2f3634}
 .grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;margin-top:40px}
 .grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px;margin-top:40px}
+.grid4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
 .card{background:#ffffff;border:1px solid #e3e7e4;border-radius:12px;padding:28px}
 .card h3{font-size:19px;margin-bottom:14px}
 .li{padding:9px 0;border-top:1px solid #e9ece9;display:flex;justify-content:space-between;gap:16px}
@@ -80,7 +81,7 @@ details[open] summary::after{content:"–"}
 .faq strong{display:block;margin-bottom:4px}
 .hero-img{height:460px}
 .avatar{width:72px;height:72px;border-radius:50%;background:#dfe8ec;display:flex;align-items:center;justify-content:center;color:#3c5661;font-weight:700;font-size:12px;flex:0 0 72px}
-@media (max-width:760px){.grid3,.grid2{grid-template-columns:repeat(1,minmax(0,1fr));gap:20px}.sec{padding:56px 0}.h2{font-size:28px}.hero-h{font-size:34px !important}.hero-grid{grid-template-columns:repeat(1,minmax(0,1fr)) !important;gap:28px !important}.navlinks{display:none !important}.hero-img{height:240px}#skischulen{grid-template-columns:repeat(1,minmax(0,1fr)) !important}.brand{font-size:17px !important}.cta-txt{display:none}.price{font-size:36px}}
+@media (max-width:760px){.grid4{grid-template-columns:repeat(2,minmax(0,1fr))}.grid3,.grid2{grid-template-columns:repeat(1,minmax(0,1fr));gap:20px}.sec{padding:56px 0}.h2{font-size:28px}.hero-h{font-size:34px !important}.hero-grid{grid-template-columns:repeat(1,minmax(0,1fr)) !important;gap:28px !important}.navlinks{display:none !important}.hero-img{height:240px}#skischulen{grid-template-columns:repeat(1,minmax(0,1fr)) !important}.brand{font-size:17px !important}.cta-txt{display:none}.price{font-size:36px}}
 
 @font-face{font-family:Manrope;font-style:normal;font-weight:400 800;font-display:swap;src:url(/fonts/manrope-latin-wght-normal.woff2) format("woff2-variations");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:Manrope;font-style:normal;font-weight:400 800;font-display:swap;src:url(/fonts/manrope-latin-ext-wght-normal.woff2) format("woff2-variations");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
@@ -154,13 +155,14 @@ details[open] summary::after{content:"–"}
 <h2 class="h2">The apartment: 4.5 rooms, 113 m², 3rd floor in St. Moritz Dorf</h2>
 <p class="lead" style="margin:0">The apartment on the 3rd floor (with lift) sleeps up to 6 – ideal for families or two couples. The bright living room with fireplace and balcony access (mountain side) is the heart of the apartment; the kitchen is fully equipped.</p>
 <div class="ph" style="height:420px;margin-top:40px">Photo living room with balcony (coming soon)</div>
-<div class="grid3" style="margin-top:16px;gap:16px">
-<div class="ph" style="height:200px">Photo kitchen</div>
-<div class="ph" style="height:200px">Photo bedroom</div>
-<div class="ph" style="height:200px">Photo bathroom</div>
+<div class="grid4" style="margin-top:16px;gap:16px">
+<figure style="margin:0"><img class="img" src="/img/wohnung-kueche.jpg" alt="Kitchen of the holiday apartment with oven and dishwasher" width="788" height="1400" loading="lazy" style="height:260px"><figcaption style="font-size:14px;color:#5a6361;margin-top:8px">Kitchen</figcaption></figure>
+<figure style="margin:0"><img class="img" src="/img/wohnung-schlafzimmer3.jpg" alt="Bedroom 2 with bunk bed" width="788" height="1400" loading="lazy" style="height:260px"><figcaption style="font-size:14px;color:#5a6361;margin-top:8px">Bedroom 2 – bunk bed</figcaption></figure>
+<figure style="margin:0"><img class="img" src="/img/wohnung-bad.jpg" alt="Bathroom with bathtub" width="788" height="1400" loading="lazy" style="height:260px"><figcaption style="font-size:14px;color:#5a6361;margin-top:8px">Bathroom with tub/WC</figcaption></figure>
+<figure style="margin:0"><img class="img" src="/img/wohnung-dusche.jpg" alt="Separate shower with WC" width="788" height="1400" loading="lazy" style="height:260px"><figcaption style="font-size:14px;color:#5a6361;margin-top:8px">Shower/WC</figcaption></figure>
 </div>
 <div class="grid2">
-<div class="card"><h3>Sleeping (6 beds)</h3><ul><li class="li"><span>Bedroom 1: double bed 180 cm</span></li><li class="li"><span>Bedroom 2: double bed 180 cm</span></li><li class="li"><span>Bedroom 3: bunk bed with two single beds 90 cm</span></li></ul></div>
+<div class="card"><h3>Sleeping (6 beds)</h3><ul><li class="li"><span>Bedroom 1: double bed 180 cm</span></li><li class="li"><span>Bedroom 2: bunk bed with two single beds 90 cm</span></li><li class="li"><span>Bedroom 3: double bed 180 cm</span></li></ul></div>
 <div class="card"><h3>Bathrooms and laundry</h3><ul><li class="li"><span>Bathroom with bathtub/WC</span></li><li class="li"><span>Separate shower/WC</span></li><li class="li"><span>Washing machine and dryer in a private laundry room next to the apartment</span></li></ul></div>
 <div class="card"><h3>Amenities</h3><ul><li class="li"><span>Free Wi-Fi</span></li><li class="li"><span>TV with apps (use your own streaming subscription)</span></li><li class="li"><span>Fireplace in the living room</span></li><li class="li"><span>Kitchen with oven, dishwasher and coffee machine</span></li><li class="li"><span>Balcony (11 m²), mountain side</span></li><li class="li"><span>Ski room and cellar</span></li><li class="li"><span>Private underground parking space in the building (suitable for SUVs)</span></li><li class="li"><span>Lift</span></li></ul></div>
 <div class="card"><h3>Good to know</h3><ul><li class="li"><span>Max. 6 guests</span></li><li class="li"><span>Cot on request</span></li><li class="li"><span>Pets welcome on request</span></li><li class="li"><span>Non-smoking apartment (smoking permitted on the balcony)</span></li><li class="li"><span>Check-in from 4 pm, check-out by 10 am</span></li></ul></div>
