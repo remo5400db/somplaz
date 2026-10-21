@@ -98,7 +98,7 @@ function jsonLd(lang, t) {
         occupancy: { '@type': 'QuantitativeValue', maxValue: 6 },
         checkinTime: '16:00', checkoutTime: '10:00', petsAllowed: true,
         amenityFeature: t.aptEquip.map((n) => ({ '@type': 'LocationFeatureSpecification', name: n, value: true })),
-        image: [DOMAIN + '/img/hero-silsersee.jpg', DOMAIN + '/img/st-moritz-dorf.jpg'],
+        image: [DOMAIN + '/img/abendstimmung.jpg', DOMAIN + '/img/st-moritz-dorf.jpg'],
         offers: { '@type': 'Offer', price: '18000', priceCurrency: 'CHF', validFrom: '2026-12-19', validThrough: '2027-04-06', description: t.priceLead, availability: 'https://schema.org/InStock', url: url + '#preise' },
       },
       { '@type': 'FAQPage', mainEntity: t.faqs.map((q) => ({ '@type': 'Question', name: q.q, acceptedAnswer: { '@type': 'Answer', text: q.a } })) },
@@ -130,13 +130,13 @@ ${alternates}
 <meta property="og:type" content="website">
 <meta property="og:title" content="${esc(meta.title)}">
 <meta property="og:description" content="${esc(meta.desc)}">
-<meta property="og:image" content="${DOMAIN}/img/hero-silsersee.jpg">
+<meta property="og:image" content="${DOMAIN}/img/abendstimmung.jpg">
 <meta property="og:url" content="${url}">
 <meta property="og:locale" content="${L.ogLocale}">
 ${Object.values(LANGS).filter((v) => v.ogLocale !== L.ogLocale).map((v) => `<meta property="og:locale:alternate" content="${v.ogLocale}">`).join('\n')}
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="preload" as="image" href="/img/hero-silsersee.jpg" fetchpriority="high">
+<link rel="preload" as="image" href="/img/abendstimmung.jpg" fetchpriority="high">
 <script type="application/ld+json">${jsonLd(lang, t)}</script>
 <style>${css}</style>
 </head>
@@ -176,7 +176,7 @@ ${t.facts.map((f) => `<li style="background:#f3f5f3;border-radius:999px;padding:
 <a class="link hero-sec" href="#preise">${esc(t.heroSecondary)}</a>
 </div>
 </div>
-<img class="img hero-img" src="/img/hero-silsersee.jpg" alt="${esc(t.altHero)}" width="1800" height="1013" fetchpriority="high">
+<img class="img hero-img" src="/img/abendstimmung.jpg" alt="${esc(t.altHero)}" width="1800" height="1013" fetchpriority="high">
 </div>
 </div>
 </section>
@@ -255,7 +255,7 @@ ${t.smTips.map((x) => `<div class="tip"><strong>${esc(x.n)}</strong> – ${esc(x
 </details>
 </div>
 </div>
-<img class="img" src="/img/abendstimmung.jpg" alt="${esc(t.altAbend)}" width="1800" height="1013" loading="lazy" style="height:360px;margin-top:40px">
+<img class="img" src="/img/hero-silsersee.jpg" alt="${esc(t.altAbend)}" width="1800" height="1013" loading="lazy" style="height:360px;margin-top:40px">
 </div>
 </section>
 
