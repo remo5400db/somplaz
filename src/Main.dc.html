@@ -142,7 +142,7 @@ details[open] summary::after{content:"–"}
 <div class="eyebrow">{{t.navApt}}</div>
 <h2 class="h2">{{t.aptTitle}}</h2>
 <p class="lead" style="margin:0">{{t.aptLead}}</p>
-<div class="ph" style="height:420px;margin-top:40px">{{t.phApt0}}</div>
+<img class="img" src="/_blob/5318799f00f3bbaf9f0d87a6b4d11ea9" alt="{{t.altLiving}}" width="1091" height="622" loading="lazy" style="height:520px;margin-top:40px">
 <div class="grid4" style="margin-top:16px;gap:16px">
 <sc-for list="{{t.aptPhotos}}" as="p" hint-placeholder-count="4">
 <figure style="margin:0"><img class="img" src="{{p.src}}" alt="{{p.alt}}" width="788" height="1400" loading="lazy" style="height:260px"><figcaption style="font-size:14px;color:#5a6361;margin-top:8px">{{p.cap}}</figcaption></figure>
@@ -201,7 +201,7 @@ details[open] summary::after{content:"–"}
 <div class="eyebrow">{{t.navLoc}}</div>
 <h2 class="h2">{{t.locTitle}}</h2>
 <p class="lead" style="margin:0">{{t.locLead}}</p>
-<img class="img" src="/_blob/536f17e277a8257cf305326e2fe7cb15" alt="{{t.altDorf}}" width="2400" height="1600" loading="lazy" style="height:480px;margin-top:40px">
+<img class="img" src="/_blob/536f17e277a8257cf305326e2fe7cb15" alt="{{t.altDorf}}" width="2400" height="1600" loading="lazy" style="height:520px;margin-top:40px;object-position:center 80%">
 <div class="grid2">
 <div class="card">
 <h3>{{t.locWalkH}}</h3>
@@ -261,22 +261,18 @@ details[open] summary::after{content:"–"}
 </sc-for>
 </ul>
 </div>
-<div>
-<details>
+<div class="card">
+<h3>{{t.smSecretH}}</h3>
+<sc-for list="{{t.smSecrets}}" as="x" hint-placeholder-count="2">
+<div class="tip"><strong>{{x.n}}</strong> – {{x.v}} · <a href="{{x.u}}" target="_blank" rel="noopener">{{x.w}}</a></div>
+</sc-for>
+<details style="margin-top:20px">
 <summary>{{t.smTipsH}}</summary>
 <div style="padding:0 0 20px">
 <sc-for list="{{t.smTips}}" as="x" hint-placeholder-count="7">
 <div class="tip"><strong>{{x.n}}</strong> – {{x.v}}<sc-if value="{{x.u}}" hint-placeholder-val="{{true}}"> · <a href="{{x.u}}" target="_blank" rel="noopener">{{x.w}}</a></sc-if></div>
 </sc-for>
 <p style="margin:14px 0 0;font-size:15px;color:#5a6361">{{t.smTipsNote}}</p>
-</div>
-</details>
-<details style="margin-top:16px">
-<summary>{{t.smSecretH}}</summary>
-<div style="padding:0 0 20px">
-<sc-for list="{{t.smSecrets}}" as="x" hint-placeholder-count="2">
-<div class="tip"><strong>{{x.n}}</strong> – {{x.v}} · <a href="{{x.u}}" target="_blank" rel="noopener">{{x.w}}</a></div>
-</sc-for>
 </div>
 </details>
 </div>
@@ -489,6 +485,7 @@ class Component extends DCLogic {
         heroTitle: 'Ferienwohnung in St. Moritz Dorf – Ihr Zuhause für den Winter',
         heroLead: 'Grosszügige 4.5-Zimmer-Wohnung für bis zu 6 Personen, mit Tiefgaragenplatz und Skiraum, eine Gehminute vom Zentrum. Saisonmiete 19. Dezember 2026 bis 6. April 2027, wochenweise auf Anfrage.',
         altHero: 'Winter im Engadin: Silsersee mit Spiegelung der verschneiten Berge – Ferienwohnung Chesa Somplaz, St. Moritz Dorf',
+        altLiving: 'Wohnbereich mit Sofa, Cheminée und Blick zum Balkon – Ferienwohnung Chesa Somplaz St. Moritz',
         altDorf: 'St. Moritz Dorf mit schiefem Turm, St. Moritzersee und verschneiten Bergen',
         altKid: 'Kind beim Skifahren in der Skischule St. Moritz',
         altTurf: 'White Turf St. Moritz: Pferderennen auf dem gefrorenen See',
@@ -496,14 +493,14 @@ class Component extends DCLogic {
         facts: ['4.5 Zimmer', '113 m²', 'bis 6 Personen', 'Neu möbliert ab Dezember 2026', '1 Min. ins Zentrum', '6 Min. zur Bergbahn', 'Tiefgarage'],
         heroCta: 'Anfrage senden', heroSecondary: 'Preise und Konditionen',
         phApt0: 'Foto Wohnraum mit Balkon (folgt)', phApt1: 'Foto Küche', phApt2: 'Foto Schlafzimmer', phApt3: 'Foto Bad', phPlan: 'Grundriss (folgt)',
-        aptPhotos: [{src:PH.k,alt:'Küche der Ferienwohnung mit Backofen und Geschirrspüler',cap:'Küche'},{src:PH.s3,alt:'Schlafzimmer 2 mit Kajütenbett',cap:'Schlafzimmer 2 – Kajütenbett'},{src:PH.b,alt:'Bad mit Badewanne',cap:'Bad mit Badewanne/WC'},{src:PH.d,alt:'Separate Dusche mit WC',cap:'Dusche/WC'}],
+        aptPhotos: [{src:PH.k,alt:'Küche der Ferienwohnung mit Backofen und Geschirrspüler',cap:'Küche'},{src:PH.s3,alt:'Schlafzimmer 2 mit Kajütenbett',cap:'Schlafzimmer 2 – Kajütenbett'},{src:PH.b,alt:'Bad mit Badewanne, Bidet und WC',cap:'Bad mit Badewanne, Bidet/WC'},{src:PH.d,alt:'Separate Dusche mit WC',cap:'Dusche/WC'}],
         photoNoteH: 'Hinweis zu den Fotos:', photoNote: 'Die Wohnung ist bis Dezember 2026 noch bewohnt und wird danach neu möbliert. Die Bilder von Wohnbereich und Schlafzimmer zeigen deshalb die baugleiche Wohnung im 5. Stock des Hauses; unsere Wohnung wird analog eingerichtet (Wohnbereich digital an die geplante Einrichtung angepasst). Küche und Bäder sind Aufnahmen der Wohnung selbst und bleiben vorerst so.',
         aptTitle: 'Die Wohnung: 4.5 Zimmer, 113 m², 3. Stock in St. Moritz Dorf',
         aptLead: 'Die Wohnung im 3. Stock (mit Lift) bietet Platz für bis zu 6 Personen – ideal für Familien oder zwei befreundete Paare. Der helle Wohnraum mit Cheminée und Zugang zum Balkon (Bergseite) ist der Mittelpunkt der Wohnung; die Küche ist vollständig ausgestattet. Auf die Wintersaison hin wird die Wohnung Mitte Dezember 2026 komplett neu möbliert – Sie sind die ersten Gäste in der neuen Einrichtung.',
         aptSleepH: 'Schlafen (6 Betten)',
         aptSleep: ['Schlafzimmer 1: Doppelbett 180 cm', 'Schlafzimmer 2: Kajütenbett mit zwei Einzelbetten 90 cm', 'Schlafzimmer 3: Doppelbett 180 cm'],
         aptBathH: 'Bad und Wäsche',
-        aptBath: ['Bad mit Badewanne/WC', 'Separate Dusche/WC', 'Waschmaschine und Tumbler im eigenen Waschraum neben der Wohnung'],
+        aptBath: ['Bad mit Badewanne, Bidet und WC', 'Separate Dusche/WC', 'Waschmaschine und Tumbler im eigenen Waschraum neben der Wohnung'],
         aptGoodH: 'Gut zu wissen',
         aptGood: ['Max. 6 Personen', 'Kinderbett auf Anfrage', 'Haustiere auf Anfrage willkommen', 'Nichtraucherwohnung (Rauchen auf dem Balkon erlaubt)', 'Check-in ab 16 Uhr, Check-out bis 10 Uhr'],
         aptEquipH: 'Ausstattung',
@@ -525,19 +522,16 @@ class Component extends DCLogic {
           {img:IMG_BANK, alt:'Winterwanderweg am Silvaplanersee mit Bank in der Sonne', h:'Winterwandern und Schlitteln', p:'Präparierte Winterwanderwege führen entlang der Seenlandschaft und durch den Stazerwald. Die Schlittelbahn Preda–Bergün und die Abfahrt vom Muottas Muragl gehören zu den längsten der Schweiz.'}
         ],
         schoolH: 'Skischulen, Bergführer und Heliskiing',
-        schoolP: 'Ob Kinder-Skikurs, Privatlehrer, Skitour mit Bergführer oder Heliski – in St. Moritz gibt es für jedes Niveau das passende Angebot. Die beiden grossen Skischulen haben eigene Kinderbereiche; die kleineren sind auf Privatunterricht spezialisiert. Reservieren Sie in der Hochsaison frühzeitig.',
+        schoolP: 'Ob Kinder-Skikurs, Privatlehrer, Skitour mit Bergführer oder Heliski – in St. Moritz gibt es für jedes Niveau das passende Angebot. Beide Skischulen haben eigene Kinderbereiche und bieten Privatunterricht an. Reservieren Sie in der Hochsaison frühzeitig.',
         schools: [
           {n:'Schweizer Skischule St. Moritz', d:'Die älteste und grösste Skischule der Schweiz (seit 1929): Gruppen- und Privatunterricht, Swiss Snow Kids Village, Langlauf, Snowboard. Via Stredas 14.', c:'+41 81 830 01 01', u:U.sss, w:U.sssW},
           {n:'Suvretta Snowsports School', d:'Seit 1925 am Suvretta-Hang: Privatunterricht, eigene Kinderskischule mit Übungsgelände, Freestyle Academy. Via Chasellas 1.', c:'+41 81 836 61 61 · info@suvretta-sports.ch', u:U.suvretta, w:U.suvrettaW},
-          {n:'PassionSki', d:'Privatunterricht für Erwachsene, Kinder und Jugendliche.', c:'+41 81 833 66 66', u:U.passion, w:U.passionW},
-          {n:'Ski Cool St. Moritz', d:'Privatunterricht Ski und Snowboard für Erwachsene und Kinder.', c:'+41 79 915 29 89 · info@skicool.ch', u:U.skicool, w:U.skicoolW},
-          {n:'GR Mountain St. Moritz / Silvaplana', d:'Gruppen- und Privatunterricht Ski und Snowboard, Kinderkurse mit Mittagsbetreuung.', c:'Kontakt über Website', u:U.grm, w:U.grmW},
           {n:'Bergsteigerschule Pontresina', d:'Bergführer für Skitouren, Freeride und Telemark – geführte Touren im Bernina-Gebiet. Via Maistra 163, Pontresina.', c:'+41 81 842 82 82 · info@bergsteiger-pontresina.ch', u:U.bergs, w:U.bergsW},
           {n:'Heli Bernina – Heliskiing', d:'Heliski ab Heliport St. Moritz Bad oder Samedan auf Piz Corvatsch, Fuorcla Grischa oder Fuorcla Chamuotsch (mit Bergführer); ab ca. CHF 160 pro Person.', c:'+41 81 851 18 18 · info@helibernina.ch', u:U.heli, w:U.heliW}
         ],
         smEventsH: 'Events im Winter 2026/27',
         smEvents: [{n:'Snow Polo World Cup',v:'Januar'},{n:'White Turf – Pferderennen auf dem gefrorenen See',v:'Februar'},{n:'Engadin Skimarathon',v:'März'}],
-        smTipsH: 'Unsere Restaurant-Tipps in St. Moritz',
+        smTipsH: 'Weitere Restaurants in St. Moritz',
         smTips: [
           {n:'Chesa Veglia',v:'Engadinerhaus von 1658, heute Teil von Badrutt’s Palace; Pizza und Klassiker in historischem Ambiente',u:U.veglia,w:U.vegliaW},
           {n:'Chesa al Parc',v:'gemütlich und herzhaft am Eingang zum Kulm-Park, ein Dorfklassiker',u:U.parc,w:U.parcW},
@@ -556,9 +550,9 @@ class Component extends DCLogic {
         arrTitle: 'Anreise nach St. Moritz im Winter',
         arrLead: 'Mit dem Auto über den Julierpass, mit der Rhätischen Bahn über die Albulalinie oder per Flug nach Zürich oder Samedan – die Wohnung ist auf allen Wegen gut erreichbar.',
         arrBlocks: [
-          {img:IMG_CAR, pos:'center 70%', alt:'Auto mit Winterreifen auf verschneiter Strasse', h:'Mit dem Auto über den Julierpass', p:'Von Zürich ca. 3 Stunden: Autobahn bis Chur, dann über Thusis und den Julierpass (ganzjährig geöffnet). Alternative im Winter: Vereina-Autoverlad Klosters–Sagliains, danach durchs Unterengadin. Von Mailand ca. 2,5 Stunden über den Malojapass oder den Berninapass.\nWinterreifen sind Pflicht; Schneeketten empfehlen wir mitzuführen.\n\nParkieren: Ein Tiefgaragenplatz im Haus ist im Mietpreis inbegriffen. Für ein zweites Fahrzeug steht das öffentliche Parkhaus Quadrellas in 5 Gehminuten zur Verfügung.'},
-          {img:IMG_TRAIN, pos:'center', alt:'Rhätische Bahn im Schnee Richtung St. Moritz', h:'Mit der Rhätischen Bahn (Albulalinie)', p:'Von Zürich HB mit Umsteigen in Chur in rund 3 Stunden 20 Minuten nach St. Moritz – die Albulalinie der Rhätischen Bahn gehört zum UNESCO-Welterbe und ist die schönste Anreise ins Engadin. Vom Bahnhof St. Moritz erreichen Sie die Wohnung mit dem Engadin Bus (Haltestelle Serlas, 3 Gehminuten) oder in 4 Minuten mit dem Taxi.\n\nGepäck und Ski: Die Wohnung liegt im 3. Stock mit Lift; Skiausrüstung lagern Sie im Skiraum im Haus.'},
-          {img:IMG_JET, pos:'center', alt:'Privatjet auf dem Engadin Airport Samedan', h:'Mit dem Flugzeug: Zürich oder Engadin Airport Samedan', p:'Nächster internationaler Flughafen ist Zürich (ca. 3,5 Stunden mit Auto oder Bahn). Der Engadin Airport in Samedan liegt 10 Autominuten entfernt und ist für Privat- und Charterflüge geöffnet.'}
+          {img:IMG_CAR, pos:'center 70%', alt:'Auto mit Winterreifen auf verschneiter Strasse', h:'Mit dem Auto über den Julierpass', p:'Ab Zürich ca. 3 Stunden (über Chur und den ganzjährig offenen Julierpass), ab Mailand ca. 2,5 Stunden (Maloja- oder Berninapass), ab München ca. 4 Stunden.\nWinterreifen sind Pflicht; Schneeketten empfehlen wir mitzuführen.\n\nParkieren: Ein Tiefgaragenplatz im Haus ist im Mietpreis inbegriffen. Für ein zweites Fahrzeug steht das öffentliche Parkhaus Quadrellas in 5 Gehminuten zur Verfügung.'},
+          {img:IMG_TRAIN, pos:'center', alt:'Rhätische Bahn im Schnee Richtung St. Moritz', h:'Mit der Rhätischen Bahn (Albulalinie)', p:'Ab Zürich HB mit Umsteigen in Chur in rund 3 Stunden 20 Minuten – die Albulalinie der Rhätischen Bahn ist UNESCO-Welterbe und die schönste Anreise ins Engadin.\nVom Bahnhof St. Moritz mit dem Engadin Bus bis Haltestelle Serlas (3 Gehminuten zur Wohnung) oder in 4 Minuten mit dem Taxi.\n\nGepäck und Ski: Lift bis in den 3. Stock; Skiausrüstung lagern Sie im Skiraum im Haus.'},
+          {img:IMG_JET, pos:'center', alt:'Privatjet auf dem Engadin Airport Samedan', h:'Mit dem Flugzeug: Zürich oder Engadin Airport Samedan', p:'Nächster internationaler Flughafen ist Zürich, ca. 3,5 Stunden mit Auto oder Bahn (direkte Bahnverbindung ab Flughafen über Chur).\nDer Engadin Airport in Samedan liegt 10 Autominuten entfernt und ist für Privat- und Charterflüge geöffnet; Taxi oder Mietwagen vor Ort.\n\nAuf Wunsch organisieren wir gerne einen Transfer vom Flughafen Zürich.'}
         ],
         priceTitle: 'Preis Saisonmiete St. Moritz Winter 2026/27',
         priceLead: 'Wir vermieten die Wohnung für die ganze Wintersaison – so haben Sie Ihr eigenes Zuhause in St. Moritz, ohne die Unsicherheit wöchentlicher Buchungen. Zwanzig Jahre lang war die Wohnung fest vermietet; vor der geplanten Renovation im Frühjahr 2027 bieten wir sie diesen Winter zu einem fairen Pauschalpreis an.',
@@ -595,7 +589,9 @@ class Component extends DCLogic {
         faqH: 'Häufige Fragen',
         faqs: [
           {q:'Was kostet die Saisonmiete in St. Moritz?', a:'CHF 18\'000 für den 19. Dezember 2026 bis 6. April 2027, inklusive Nebenkosten, WLAN, Tiefgaragenplatz, Bettwäsche, Handtücher und Endreinigung. Nicht inbegriffen ist die Kurtaxe (CHF 2.90 pro Person und Nacht, Kinder unter 12 frei).'},
-          {q:'Gibt es Skischulen in der Nähe?', a:'Ja – die Schweizer Skischule St. Moritz und die Suvretta Snowsports School bieten Kinder- und Gruppenkurse an, mehrere kleinere Schulen Privatunterricht. Die Liste mit Kontakten finden Sie im Abschnitt St. Moritz.'},
+          {q:'Gibt es Skischulen in der Nähe?', a:'Ja – die Schweizer Skischule St. Moritz und die Suvretta Snowsports School bieten Kinder-, Gruppen- und Privatunterricht; für Skitouren und Heliski die Bergsteigerschule Pontresina und Heli Bernina. Kontakte im Abschnitt St. Moritz.'},
+          {q:'Ist die Wohnung neu eingerichtet?', a:'Ja. Die Wohnung wird Mitte Dezember 2026 komplett neu möbliert – Sie sind die ersten Gäste in der neuen Einrichtung. Küche und Bäder bleiben vorerst im bestehenden Zustand.'},
+          {q:'Kann ich mit zwei Autos anreisen?', a:'Ein Tiefgaragenplatz im Haus (auch für SUV) ist inbegriffen. Für ein zweites Fahrzeug steht das öffentliche Parkhaus Quadrellas in 5 Gehminuten zur Verfügung.'},
           {q:'Ist die Wohnung auch wochenweise oder über Weihnachten mietbar?', a:'Auf Anfrage, sofern die Saison nicht bereits vergeben ist. Schreiben Sie uns Ihren Wunschzeitraum.'},
           {q:'Ist der Julierpass im Winter offen?', a:'Ja, ganzjährig. Winterreifen sind Pflicht, Schneeketten empfehlen wir mitzuführen. Alternativ führt der Vereina-Autoverlad ins Engadin.'},
           {q:'Wie weit ist es zur Corviglia-Bahn?', a:'6 Gehminuten bis zur Standseilbahn Chantarella, 1 Minute ins Dorfzentrum, 3 Minuten zum Coop.'},
@@ -635,6 +631,7 @@ class Component extends DCLogic {
         heroTitle: 'Holiday apartment in St. Moritz Dorf – your home for the winter',
         heroLead: 'Spacious 4.5-room apartment for up to 6 guests, with underground parking and ski room, one minute from the village centre. Seasonal let from 19 December 2026 to 6 April 2027, weekly on request.',
         altHero: 'Winter in the Engadin: Lake Sils mirroring the snow-covered mountains – holiday apartment Chesa Somplaz, St. Moritz Dorf',
+        altLiving: 'Living area with sofa, fireplace and view towards the balcony – holiday apartment Chesa Somplaz St. Moritz',
         altDorf: 'St. Moritz Dorf with its leaning tower, Lake St. Moritz and snow-covered mountains',
         altKid: 'Child skiing with the St. Moritz ski school',
         altTurf: 'White Turf St. Moritz: horse racing on the frozen lake',
@@ -642,14 +639,14 @@ class Component extends DCLogic {
         facts: ['4.5 rooms', '113 m²', 'up to 6 guests', 'Newly furnished from December 2026', '1 min to centre', '6 min to the ski lift', 'Garage parking'],
         heroCta: 'Send enquiry', heroSecondary: 'Rates and terms',
         phApt0: 'Photo living room with balcony (coming soon)', phApt1: 'Photo kitchen', phApt2: 'Photo bedroom', phApt3: 'Photo bathroom', phPlan: 'Floor plan (coming soon)',
-        aptPhotos: [{src:PH.k,alt:'Kitchen of the holiday apartment with oven and dishwasher',cap:'Kitchen'},{src:PH.s3,alt:'Bedroom 2 with bunk bed',cap:'Bedroom 2 – bunk bed'},{src:PH.b,alt:'Bathroom with bathtub',cap:'Bathroom with tub/WC'},{src:PH.d,alt:'Separate shower with WC',cap:'Shower/WC'}],
+        aptPhotos: [{src:PH.k,alt:'Kitchen of the holiday apartment with oven and dishwasher',cap:'Kitchen'},{src:PH.s3,alt:'Bedroom 2 with bunk bed',cap:'Bedroom 2 – bunk bed'},{src:PH.b,alt:'Bathroom with bathtub, bidet and WC',cap:'Bathroom with tub, bidet/WC'},{src:PH.d,alt:'Separate shower with WC',cap:'Shower/WC'}],
         photoNoteH: 'A note on the photos:', photoNote: 'The apartment is occupied until December 2026 and will be newly furnished afterwards. The living-area and bedroom images therefore show the identical apartment on the 5th floor of the building; our apartment will be furnished in the same way (living area digitally adapted to the planned furnishing). Kitchen and bathrooms are photos of the apartment itself and will remain as they are for now.',
         aptTitle: 'The apartment: 4.5 rooms, 113 m², 3rd floor in St. Moritz Dorf',
         aptLead: 'The apartment on the 3rd floor (with lift) sleeps up to 6 – ideal for families or two couples. The bright living room with fireplace and balcony access (mountain side) is the heart of the apartment; the kitchen is fully equipped. For the winter season the apartment will be completely newly furnished in mid-December 2026 – you will be the first guests to enjoy the new interior.',
         aptSleepH: 'Sleeping (6 beds)',
         aptSleep: ['Bedroom 1: double bed 180 cm', 'Bedroom 2: bunk bed with two single beds 90 cm', 'Bedroom 3: double bed 180 cm'],
         aptBathH: 'Bathrooms and laundry',
-        aptBath: ['Bathroom with bathtub/WC', 'Separate shower/WC', 'Washing machine and dryer in a private laundry room next to the apartment'],
+        aptBath: ['Bathroom with bathtub, bidet and WC', 'Separate shower/WC', 'Washing machine and dryer in a private laundry room next to the apartment'],
         aptGoodH: 'Good to know',
         aptGood: ['Max. 6 guests', 'Cot on request', 'Pets welcome on request', 'Non-smoking apartment (smoking permitted on the balcony)', 'Check-in from 4 pm, check-out by 10 am'],
         aptEquipH: 'Amenities',
@@ -671,19 +668,16 @@ class Component extends DCLogic {
           {img:IMG_BANK, alt:'Winter hiking trail by Lake Silvaplana with a bench in the sun', h:'Winter hiking and sledging', p:'Groomed winter trails run along the lakes and through the Staz forest. The Preda–Bergün sledge run and the descent from Muottas Muragl are among the longest in Switzerland.'}
         ],
         schoolH: 'Ski schools, mountain guides and heliskiing',
-        schoolP: 'Children’s ski course, private instructor, ski tour with a mountain guide or heliski – St. Moritz has the right offer for every level. The two large ski schools have their own kids’ areas; the smaller ones specialise in private lessons. Book early in high season.',
+        schoolP: 'Children’s ski course, private instructor, ski tour with a mountain guide or heliski – St. Moritz has the right offer for every level. Both ski schools have their own kids’ areas and offer private lessons. Book early in high season.',
         schools: [
           {n:'Swiss Ski School St. Moritz', d:'Switzerland’s oldest and largest ski school (since 1929): group and private lessons, Swiss Snow Kids Village, cross-country, snowboard. Via Stredas 14.', c:'+41 81 830 01 01', u:U.sss, w:U.sssW},
           {n:'Suvretta Snowsports School', d:'On the Suvretta slope since 1925: private lessons, own children’s ski school with practice area, freestyle academy. Via Chasellas 1.', c:'+41 81 836 61 61 · info@suvretta-sports.ch', u:U.suvretta, w:U.suvrettaW},
-          {n:'PassionSki', d:'Private lessons for adults, children and teenagers.', c:'+41 81 833 66 66', u:U.passion, w:U.passionW},
-          {n:'Ski Cool St. Moritz', d:'Private ski and snowboard lessons for adults and children.', c:'+41 79 915 29 89 · info@skicool.ch', u:U.skicool, w:U.skicoolW},
-          {n:'GR Mountain St. Moritz / Silvaplana', d:'Group and private ski and snowboard lessons, kids’ courses with lunch supervision.', c:'Contact via website', u:U.grm, w:U.grmW},
           {n:'Bergsteigerschule Pontresina', d:'Mountain guides for ski touring, freeride and telemark – guided tours in the Bernina range. Via Maistra 163, Pontresina.', c:'+41 81 842 82 82 · info@bergsteiger-pontresina.ch', u:U.bergs, w:U.bergsW},
           {n:'Heli Bernina – heliskiing', d:'Heliski from the St. Moritz Bad heliport or Samedan to Piz Corvatsch, Fuorcla Grischa or Fuorcla Chamuotsch (with mountain guide); from about CHF 160 per person.', c:'+41 81 851 18 18 · info@helibernina.ch', u:U.heli, w:U.heliW}
         ],
         smEventsH: 'Winter events 2026/27',
         smEvents: [{n:'Snow Polo World Cup',v:'January'},{n:'White Turf – horse racing on the frozen lake',v:'February'},{n:'Engadin Skimarathon',v:'March'}],
-        smTipsH: 'Our restaurant tips in St. Moritz',
+        smTipsH: 'More restaurants in St. Moritz',
         smTips: [
           {n:'Chesa Veglia',v:'Engadin house from 1658, now part of Badrutt’s Palace; pizza and classics in a historic setting',u:U.veglia,w:U.vegliaW},
           {n:'Chesa al Parc',v:'cosy and hearty at the entrance to Kulm Park, a village classic',u:U.parc,w:U.parcW},
@@ -702,9 +696,9 @@ class Component extends DCLogic {
         arrTitle: 'Getting to St. Moritz in winter',
         arrLead: 'By car over the Julier Pass, by Rhaetian Railway along the Albula line, or by air to Zurich or Samedan – the apartment is easy to reach whichever way you travel.',
         arrBlocks: [
-          {img:IMG_CAR, pos:'center 70%', alt:'Car with winter tyres on a snowy road', h:'By car over the Julier Pass', p:'From Zurich about 3 hours: motorway to Chur, then via Thusis and the Julier Pass (open all year). Winter alternative: Vereina car train Klosters–Sagliains, then through the Lower Engadin. From Milan about 2.5 hours via the Maloja or Bernina Pass.\nWinter tyres are mandatory; we recommend carrying snow chains.\n\nParking: an underground parking space in the building is included in the rent. For a second car, the public Quadrellas car park is a 5-minute walk away.'},
-          {img:IMG_TRAIN, pos:'center', alt:'Rhaetian Railway train in the snow heading to St. Moritz', h:'By Rhaetian Railway (Albula line)', p:'From Zurich main station, changing in Chur, in about 3 hours 20 minutes to St. Moritz – the Albula line is a UNESCO World Heritage site and the most beautiful way into the Engadin. From St. Moritz station, reach the apartment by Engadin Bus (Serlas stop, 3-minute walk) or in 4 minutes by taxi.\n\nLuggage and skis: the apartment is on the 3rd floor with lift; ski equipment is stored in the ski room in the building.'},
-          {img:IMG_JET, pos:'center', alt:'Private jet at Engadin Airport Samedan', h:'By plane: Zurich or Engadin Airport Samedan', p:'The nearest international airport is Zurich (about 3.5 hours by car or train). Engadin Airport in Samedan is 10 minutes by car and open to private and charter flights.'}
+          {img:IMG_CAR, pos:'center 70%', alt:'Car with winter tyres on a snowy road', h:'By car over the Julier Pass', p:'From Zurich about 3 hours (via Chur and the Julier Pass, open all year), from Milan about 2.5 hours (Maloja or Bernina Pass), from Munich about 4 hours.\nWinter tyres are mandatory; we recommend carrying snow chains.\n\nParking: an underground parking space in the building is included in the rent. For a second car, the public Quadrellas car park is a 5-minute walk away.'},
+          {img:IMG_TRAIN, pos:'center', alt:'Rhaetian Railway train in the snow heading to St. Moritz', h:'By Rhaetian Railway (Albula line)', p:'From Zurich main station, changing in Chur, in about 3 hours 20 minutes – the Rhaetian Railway\u2019s Albula line is a UNESCO World Heritage site and the most beautiful way into the Engadin.\nFrom St. Moritz station by Engadin Bus to the Serlas stop (3-minute walk to the apartment) or in 4 minutes by taxi.\n\nLuggage and skis: lift to the 3rd floor; ski equipment is stored in the ski room in the building.'},
+          {img:IMG_JET, pos:'center', alt:'Private jet at Engadin Airport Samedan', h:'By plane: Zurich or Engadin Airport Samedan', p:'The nearest international airport is Zurich, about 3.5 hours by car or train (direct rail link from the airport via Chur).\nEngadin Airport in Samedan is 10 minutes by car and open to private and charter flights; taxis and rental cars available locally.\n\nOn request we are happy to arrange a transfer from Zurich Airport.'}
         ],
         priceTitle: 'Seasonal let St. Moritz winter 2026/27: rates',
         priceLead: 'We let the apartment for the whole winter season – your own home in St. Moritz, without the uncertainty of weekly bookings. For twenty years the apartment was let long-term; before the planned renovation in spring 2027 we offer it this winter at a fair all-in rate.',
@@ -741,7 +735,9 @@ class Component extends DCLogic {
         faqH: 'Frequently asked questions',
         faqs: [
           {q:'What does the seasonal let in St. Moritz cost?', a:'CHF 18,000 for 19 December 2026 to 6 April 2027, including utilities, Wi-Fi, garage parking, bed linen, towels and final cleaning. Not included: tourist tax (CHF 2.90 per person and night, children under 12 free).'},
-          {q:'Are there ski schools nearby?', a:'Yes – the Swiss Ski School St. Moritz and the Suvretta Snowsports School offer children’s and group courses, several smaller schools private lessons. You will find the list with contacts in the St. Moritz section.'},
+          {q:'Are there ski schools nearby?', a:'Yes – the Swiss Ski School St. Moritz and the Suvretta Snowsports School offer children’s, group and private lessons; for ski touring and heliski, Bergsteigerschule Pontresina and Heli Bernina. Contacts in the St. Moritz section.'},
+          {q:'Is the apartment newly furnished?', a:'Yes. The apartment will be completely newly furnished in mid-December 2026 – you will be the first guests to enjoy the new interior. Kitchen and bathrooms remain in their current state for now.'},
+          {q:'Can we arrive with two cars?', a:'One underground parking space in the building (suitable for SUVs) is included. For a second car, the public Quadrellas car park is a 5-minute walk away.'},
           {q:'Can I rent by the week or over Christmas?', a:'On request, provided the season has not already been let. Tell us your preferred dates.'},
           {q:'Is the Julier Pass open in winter?', a:'Yes, all year round. Winter tyres are mandatory and we recommend carrying snow chains. Alternatively, the Vereina car train takes you into the Engadin.'},
           {q:'How far is the Corviglia funicular?', a:'A 6-minute walk to the Chantarella funicular, 1 minute to the village centre, 3 minutes to the Coop.'},
@@ -781,6 +777,7 @@ class Component extends DCLogic {
         heroTitle: 'Appartamento di vacanza a St. Moritz Dorf – la vostra casa per l’inverno',
         heroLead: 'Spazioso appartamento di 4,5 locali per 6 persone, con posto auto in garage e deposito sci, a un minuto dal centro. Affitto stagionale dal 19 dicembre 2026 al 6 aprile 2027, settimanale su richiesta.',
         altHero: 'Inverno in Engadina: il lago di Sils con il riflesso delle montagne innevate – appartamento Chesa Somplaz, St. Moritz Dorf',
+        altLiving: 'Soggiorno con divano, camino e vista verso il balcone – appartamento Chesa Somplaz St. Moritz',
         altDorf: 'St. Moritz Dorf con la torre pendente, il lago e le montagne innevate',
         altKid: 'Bambino che scia con la scuola di sci di St. Moritz',
         altTurf: 'White Turf St. Moritz: corse di cavalli sul lago ghiacciato',
@@ -788,14 +785,14 @@ class Component extends DCLogic {
         facts: ['4,5 locali', '113 m²', 'fino a 6 persone', 'Arredo nuovo da dicembre 2026', '1 min dal centro', '6 min dagli impianti', 'Garage'],
         heroCta: 'Invia richiesta', heroSecondary: 'Prezzi e condizioni',
         phApt0: 'Foto soggiorno con balcone (in arrivo)', phApt1: 'Foto cucina', phApt2: 'Foto camera', phApt3: 'Foto bagno', phPlan: 'Planimetria (in arrivo)',
-        aptPhotos: [{src:PH.k,alt:'Cucina dell\u2019appartamento con forno e lavastoviglie',cap:'Cucina'},{src:PH.s3,alt:'Camera 2 con letto a castello',cap:'Camera 2 – letto a castello'},{src:PH.b,alt:'Bagno con vasca',cap:'Bagno con vasca/WC'},{src:PH.d,alt:'Doccia separata con WC',cap:'Doccia/WC'}],
+        aptPhotos: [{src:PH.k,alt:'Cucina dell\u2019appartamento con forno e lavastoviglie',cap:'Cucina'},{src:PH.s3,alt:'Camera 2 con letto a castello',cap:'Camera 2 – letto a castello'},{src:PH.b,alt:'Bagno con vasca, bidet e WC',cap:'Bagno con vasca, bidet/WC'},{src:PH.d,alt:'Doccia separata con WC',cap:'Doccia/WC'}],
         photoNoteH: 'Nota sulle foto:', photoNote: 'L\u2019appartamento è occupato fino a dicembre 2026 e sarà poi arredato a nuovo. Le immagini del soggiorno e della camera mostrano quindi l\u2019appartamento identico al 5° piano dell\u2019edificio; il nostro appartamento sarà arredato allo stesso modo (soggiorno adattato digitalmente all\u2019arredamento previsto). Cucina e bagni sono foto dell\u2019appartamento stesso e per ora restano così.',
         aptTitle: 'L’appartamento: 4,5 locali, 113 m², 3° piano a St. Moritz Dorf',
         aptLead: 'L’appartamento al 3° piano (con ascensore) ospita fino a 6 persone – ideale per famiglie o due coppie di amici. Il luminoso soggiorno con camino e accesso al balcone (lato monte) è il cuore della casa; la cucina è completamente attrezzata. Per la stagione invernale l\u2019appartamento sarà completamente arredato a nuovo a metà dicembre 2026 – sarete i primi ospiti del nuovo arredamento.',
         aptSleepH: 'Camere (6 posti letto)',
         aptSleep: ['Camera 1: letto matrimoniale 180 cm', 'Camera 2: letto a castello con due letti singoli 90 cm', 'Camera 3: letto matrimoniale 180 cm'],
         aptBathH: 'Bagni e lavanderia',
-        aptBath: ['Bagno con vasca/WC', 'Doccia/WC separata', 'Lavatrice e asciugatrice nella lavanderia privata accanto all’appartamento'],
+        aptBath: ['Bagno con vasca, bidet e WC', 'Doccia/WC separata', 'Lavatrice e asciugatrice nella lavanderia privata accanto all’appartamento'],
         aptGoodH: 'Buono a sapersi',
         aptGood: ['Max. 6 persone', 'Lettino per bambini su richiesta', 'Animali domestici su richiesta', 'Appartamento non fumatori (fumare consentito sul balcone)', 'Check-in dalle 16, check-out entro le 10'],
         aptEquipH: 'Dotazione',
@@ -817,19 +814,16 @@ class Component extends DCLogic {
           {img:IMG_BANK, alt:'Sentiero invernale sul lago di Silvaplana con panchina al sole', h:'Escursioni invernali e slittino', p:'Sentieri invernali battuti costeggiano i laghi e attraversano il bosco di Staz. La pista per slittini Preda–Bergün e la discesa dal Muottas Muragl sono tra le più lunghe della Svizzera.'}
         ],
         schoolH: 'Scuole di sci, guide alpine e heliski',
-        schoolP: 'Corso di sci per bambini, maestro privato, scialpinismo con guida o heliski – a St. Moritz c’è l’offerta giusta per ogni livello. Le due grandi scuole di sci hanno aree dedicate ai bambini; le più piccole sono specializzate in lezioni private. In alta stagione prenotate per tempo.',
+        schoolP: 'Corso di sci per bambini, maestro privato, scialpinismo con guida o heliski – a St. Moritz c’è l’offerta giusta per ogni livello. Entrambe le scuole di sci hanno aree dedicate ai bambini e offrono lezioni private. In alta stagione prenotate per tempo.',
         schools: [
           {n:'Scuola Svizzera di Sci St. Moritz', d:'La scuola di sci più antica e grande della Svizzera (dal 1929): lezioni di gruppo e private, Swiss Snow Kids Village, fondo, snowboard. Via Stredas 14.', c:'+41 81 830 01 01', u:U.sss, w:U.sssW},
           {n:'Suvretta Snowsports School', d:'Dal 1925 sul pendio del Suvretta: lezioni private, scuola di sci per bambini con area di pratica, freestyle academy. Via Chasellas 1.', c:'+41 81 836 61 61 · info@suvretta-sports.ch', u:U.suvretta, w:U.suvrettaW},
-          {n:'PassionSki', d:'Lezioni private per adulti, bambini e ragazzi.', c:'+41 81 833 66 66', u:U.passion, w:U.passionW},
-          {n:'Ski Cool St. Moritz', d:'Lezioni private di sci e snowboard per adulti e bambini.', c:'+41 79 915 29 89 · info@skicool.ch', u:U.skicool, w:U.skicoolW},
-          {n:'GR Mountain St. Moritz / Silvaplana', d:'Lezioni di gruppo e private di sci e snowboard, corsi per bambini con assistenza a pranzo.', c:'Contatto tramite sito', u:U.grm, w:U.grmW},
           {n:'Bergsteigerschule Pontresina', d:'Guide alpine per scialpinismo, freeride e telemark – tour guidati nel gruppo del Bernina. Via Maistra 163, Pontresina.', c:'+41 81 842 82 82 · info@bergsteiger-pontresina.ch', u:U.bergs, w:U.bergsW},
           {n:'Heli Bernina – heliski', d:'Heliski dall’eliporto di St. Moritz Bad o da Samedan verso Piz Corvatsch, Fuorcla Grischa o Fuorcla Chamuotsch (con guida alpina); da circa CHF 160 a persona.', c:'+41 81 851 18 18 · info@helibernina.ch', u:U.heli, w:U.heliW}
         ],
         smEventsH: 'Eventi invernali 2026/27',
         smEvents: [{n:'Snow Polo World Cup',v:'Gennaio'},{n:'White Turf – corse di cavalli sul lago ghiacciato',v:'Febbraio'},{n:'Engadin Skimarathon',v:'Marzo'}],
-        smTipsH: 'I nostri ristoranti consigliati a St. Moritz',
+        smTipsH: 'Altri ristoranti a St. Moritz',
         smTips: [
           {n:'Chesa Veglia',v:'casa engadinese del 1658, oggi parte del Badrutt’s Palace; pizza e classici in un ambiente storico',u:U.veglia,w:U.vegliaW},
           {n:'Chesa al Parc',v:'accogliente e sostanzioso all’ingresso del parco del Kulm, un classico del paese',u:U.parc,w:U.parcW},
@@ -848,9 +842,9 @@ class Component extends DCLogic {
         arrTitle: 'Come arrivare a St. Moritz in inverno',
         arrLead: 'In auto attraverso il passo del Giulia, con la Ferrovia Retica lungo la linea dell’Albula o in aereo su Zurigo o Samedan – l’appartamento è facilmente raggiungibile in ogni modo.',
         arrBlocks: [
-          {img:IMG_CAR, pos:'center 70%', alt:'Auto con pneumatici invernali su strada innevata', h:'In auto attraverso il passo del Giulia', p:'Da Zurigo circa 3 ore: autostrada fino a Coira, poi via Thusis e il passo del Giulia (aperto tutto l’anno). Alternativa invernale: treno navetta Vereina Klosters–Sagliains, poi attraverso la Bassa Engadina. Da Milano circa 2,5 ore via passo del Maloja o del Bernina.\nPneumatici invernali obbligatori; consigliamo di avere le catene a bordo.\n\nParcheggio: un posto auto nel garage dell’edificio è incluso nel prezzo. Per una seconda auto è disponibile l’autosilo pubblico Quadrellas a 5 minuti a piedi.'},
-          {img:IMG_TRAIN, pos:'center', alt:'Treno della Ferrovia Retica nella neve verso St. Moritz', h:'Con la Ferrovia Retica (linea dell’Albula)', p:'Da Zurigo HB con cambio a Coira in circa 3 ore e 20 minuti fino a St. Moritz – la linea dell’Albula è Patrimonio UNESCO ed è il modo più bello per arrivare in Engadina. Dalla stazione di St. Moritz si raggiunge l’appartamento con l’Engadin Bus (fermata Serlas, 3 minuti a piedi) o in 4 minuti in taxi.\n\nBagagli e sci: l’appartamento è al 3° piano con ascensore; l’attrezzatura da sci si ripone nel deposito sci dell’edificio.'},
-          {img:IMG_JET, pos:'center', alt:'Jet privato all’Engadin Airport di Samedan', h:'In aereo: Zurigo o Engadin Airport Samedan', p:'L’aeroporto internazionale più vicino è Zurigo (circa 3,5 ore in auto o in treno). L’Engadin Airport di Samedan è a 10 minuti in auto ed è aperto a voli privati e charter.'}
+          {img:IMG_CAR, pos:'center 70%', alt:'Auto con pneumatici invernali su strada innevata', h:'In auto attraverso il passo del Giulia', p:'Da Zurigo circa 3 ore (via Coira e il passo del Giulia, aperto tutto l’anno), da Milano circa 2,5 ore (passo del Maloja o del Bernina), da Monaco circa 4 ore.\nPneumatici invernali obbligatori; consigliamo di avere le catene a bordo.\n\nParcheggio: un posto auto nel garage dell’edificio è incluso nel prezzo. Per una seconda auto è disponibile l’autosilo pubblico Quadrellas a 5 minuti a piedi.'},
+          {img:IMG_TRAIN, pos:'center', alt:'Treno della Ferrovia Retica nella neve verso St. Moritz', h:'Con la Ferrovia Retica (linea dell’Albula)', p:'Da Zurigo HB con cambio a Coira in circa 3 ore e 20 minuti – la linea dell’Albula della Ferrovia Retica è Patrimonio UNESCO ed è il modo più bello per arrivare in Engadina.\nDalla stazione di St. Moritz con l’Engadin Bus fino alla fermata Serlas (3 minuti a piedi dall’appartamento) o in 4 minuti in taxi.\n\nBagagli e sci: ascensore fino al 3° piano; l’attrezzatura da sci si ripone nel deposito sci dell’edificio.'},
+          {img:IMG_JET, pos:'center', alt:'Jet privato all’Engadin Airport di Samedan', h:'In aereo: Zurigo o Engadin Airport Samedan', p:'L’aeroporto internazionale più vicino è Zurigo, a circa 3,5 ore in auto o in treno (collegamento ferroviario diretto dall’aeroporto via Coira).\nL’Engadin Airport di Samedan è a 10 minuti in auto ed è aperto a voli privati e charter; taxi e auto a noleggio sul posto.\n\nSu richiesta organizziamo volentieri un transfer dall’aeroporto di Zurigo.'}
         ],
         priceTitle: 'Prezzo affitto stagionale St. Moritz inverno 2026/27',
         priceLead: 'Affittiamo l’appartamento per l’intera stagione invernale – la vostra casa a St. Moritz, senza l’incertezza delle prenotazioni settimanali. Per vent’anni l’appartamento è stato affittato a lungo termine; prima della ristrutturazione prevista nella primavera 2027 lo offriamo quest’inverno a un prezzo forfettario equo.',
@@ -887,7 +881,9 @@ class Component extends DCLogic {
         faqH: 'Domande frequenti',
         faqs: [
           {q:'Quanto costa l’affitto stagionale a St. Moritz?', a:'CHF 18\'000 dal 19 dicembre 2026 al 6 aprile 2027, incluse spese accessorie, Wi-Fi, posto auto, biancheria, asciugamani e pulizia finale. Non inclusa la tassa di soggiorno (CHF 2.90 per persona e notte, bambini sotto i 12 anni esenti).'},
-          {q:'Ci sono scuole di sci nelle vicinanze?', a:'Sì – la Scuola Svizzera di Sci St. Moritz e la Suvretta Snowsports School offrono corsi per bambini e di gruppo, diverse scuole più piccole lezioni private. L’elenco con i contatti si trova nella sezione St. Moritz.'},
+          {q:'Ci sono scuole di sci nelle vicinanze?', a:'Sì – la Scuola Svizzera di Sci St. Moritz e la Suvretta Snowsports School offrono corsi per bambini, di gruppo e privati; per scialpinismo ed heliski la Bergsteigerschule Pontresina e Heli Bernina. Contatti nella sezione St. Moritz.'},
+          {q:'L’appartamento è arredato a nuovo?', a:'Sì. L’appartamento sarà completamente arredato a nuovo a metà dicembre 2026 – sarete i primi ospiti del nuovo arredamento. Cucina e bagni restano per ora nello stato attuale.'},
+          {q:'Possiamo arrivare con due auto?', a:'Un posto auto nel garage dell’edificio (adatto anche a SUV) è incluso. Per una seconda auto è disponibile l’autosilo pubblico Quadrellas a 5 minuti a piedi.'},
           {q:'È possibile affittare a settimane o per Natale?', a:'Su richiesta, se la stagione non è già stata assegnata. Scriveteci il periodo desiderato.'},
           {q:'Il passo del Giulia è aperto in inverno?', a:'Sì, tutto l’anno. Pneumatici invernali obbligatori, consigliamo le catene a bordo. In alternativa il treno navetta Vereina porta in Engadina.'},
           {q:'Quanto dista la funicolare del Corviglia?', a:'6 minuti a piedi fino alla funicolare Chantarella, 1 minuto al centro del paese, 3 minuti al Coop.'},

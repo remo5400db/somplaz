@@ -33,6 +33,7 @@ const IMG = {
   '/_blob/820de93755cca8b66f1b41ac91393657': 'img/wohnung-schlafzimmer3.jpg',
   '/_blob/64e13dc22b33e73cca2749ff1e7787c5': 'img/wohnung-bad.jpg',
   '/_blob/03ea634d2e8491620385622a4bfce219': 'img/wohnung-dusche.jpg',
+  '/_blob/5318799f00f3bbaf9f0d87a6b4d11ea9': 'img/wohnung-wohnbereich.jpg',
 };
 const img = (blob) => IMG[blob] || blob;
 
@@ -182,7 +183,7 @@ ${t.facts.map((f) => `<li style="background:#f3f5f3;border-radius:999px;padding:
 <div class="eyebrow">${esc(t.navApt)}</div>
 <h2 class="h2">${esc(t.aptTitle)}</h2>
 <p class="lead" style="margin:0">${esc(t.aptLead)}</p>
-<div class="ph" style="height:420px;margin-top:40px">${esc(t.phApt0)}</div>
+<img class="img" src="/img/wohnung-wohnbereich.jpg" alt="${esc(t.altLiving)}" width="1091" height="622" loading="lazy" style="height:520px;margin-top:40px">
 <div class="grid4" style="margin-top:16px;gap:16px">
 ${t.aptPhotos.map((p) => `<figure style="margin:0"><img class="img" src="/${img(p.src)}" alt="${esc(p.alt)}" width="788" height="1400" loading="lazy" style="height:260px"><figcaption style="font-size:14px;color:#5a6361;margin-top:8px">${esc(p.cap)}</figcaption></figure>`).join('\n')}
 </div>
@@ -206,7 +207,7 @@ ${t.aptPhotos.map((p) => `<figure style="margin:0"><img class="img" src="/${img(
 <div class="eyebrow">${esc(t.navLoc)}</div>
 <h2 class="h2">${esc(t.locTitle)}</h2>
 <p class="lead" style="margin:0">${esc(t.locLead)}</p>
-<img class="img" src="/img/st-moritz-dorf.jpg" alt="${esc(t.altDorf)}" width="2400" height="1600" loading="lazy" style="height:480px;margin-top:40px">
+<img class="img" src="/img/st-moritz-dorf.jpg" alt="${esc(t.altDorf)}" width="2400" height="1600" loading="lazy" style="height:520px;margin-top:40px;object-position:center 80%">
 <div class="grid2">
 <div class="card"><h3>${esc(t.locWalkH)}</h3><ul>${liKV(t.locWalk)}</ul></div>
 <div class="card"><h3>${esc(t.locDriveH)}</h3><ul>${liKV(t.locDrive)}</ul>
@@ -239,18 +240,14 @@ ${t.schools.map((s) => `<li class="tip"><strong>${esc(s.n)}</strong><br><span st
 <h3>${esc(t.smEventsH)}</h3>
 <ul>${liKV(t.smEvents)}</ul>
 </div>
-<div>
-<details>
+<div class="card">
+<h3>${esc(t.smSecretH)}</h3>
+${t.smSecrets.map((x) => `<div class="tip"><strong>${esc(x.n)}</strong> – ${esc(x.v)}${ext(x.u, x.w)}</div>`).join('\n')}
+<details style="margin-top:20px">
 <summary>${esc(t.smTipsH)}</summary>
 <div style="padding:0 0 20px">
 ${t.smTips.map((x) => `<div class="tip"><strong>${esc(x.n)}</strong> – ${esc(x.v)}${ext(x.u, x.w)}</div>`).join('\n')}
 <p style="margin:14px 0 0;font-size:15px;color:#5a6361">${esc(t.smTipsNote)}</p>
-</div>
-</details>
-<details style="margin-top:16px">
-<summary>${esc(t.smSecretH)}</summary>
-<div style="padding:0 0 20px">
-${t.smSecrets.map((x) => `<div class="tip"><strong>${esc(x.n)}</strong> – ${esc(x.v)}${ext(x.u, x.w)}</div>`).join('\n')}
 </div>
 </details>
 </div>
