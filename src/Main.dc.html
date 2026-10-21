@@ -87,7 +87,7 @@ details[open] summary::after{content:"–"}
 .faq strong{display:block;margin-bottom:4px}
 .hero-img{height:460px}
 .avatar{width:72px;height:72px;border-radius:50%;background:#dfe8ec;display:flex;align-items:center;justify-content:center;color:#3c5661;font-weight:700;font-size:12px;flex:0 0 72px}
-@media (max-width:760px){.grid4{grid-template-columns:repeat(2,minmax(0,1fr))}.grid3,.grid2{grid-template-columns:repeat(1,minmax(0,1fr));gap:20px}.sec{padding:56px 0}.h2{font-size:28px}.hero-h{font-size:34px !important}.hero-grid{grid-template-columns:repeat(1,minmax(0,1fr)) !important;gap:28px !important}.navlinks{display:none !important}.hero-img{height:240px}#skischulen{grid-template-columns:repeat(1,minmax(0,1fr)) !important}.brand{font-size:17px !important}.cta-txt{display:none}.price{font-size:36px}}
+@media (max-width:760px){.img{height:auto !important;aspect-ratio:3/2}.grid4 .img{aspect-ratio:3/4}.grid4{grid-template-columns:repeat(2,minmax(0,1fr))}.btn-sm{display:none}.lang{min-width:34px;padding:6px 7px;font-size:12px;min-height:36px}.grid3,.grid2{grid-template-columns:repeat(1,minmax(0,1fr));gap:20px}.sec{padding:56px 0}.h2{font-size:28px}.hero-h{font-size:34px !important}.hero-grid{grid-template-columns:repeat(1,minmax(0,1fr)) !important;gap:28px !important}.navlinks{display:none !important}.hero-img{height:240px}#skischulen{grid-template-columns:repeat(1,minmax(0,1fr)) !important}.brand{font-size:17px !important}.cta-txt{display:none}.price{font-size:36px}}
 </style>
 </helmet>
 
@@ -142,7 +142,7 @@ details[open] summary::after{content:"–"}
 <div class="eyebrow">{{t.navApt}}</div>
 <h2 class="h2">{{t.aptTitle}}</h2>
 <p class="lead" style="margin:0">{{t.aptLead}}</p>
-<img class="img" src="/_blob/5318799f00f3bbaf9f0d87a6b4d11ea9" alt="{{t.altLiving}}" width="1091" height="622" loading="lazy" style="height:520px;margin-top:40px">
+<img class="img" src="/_blob/ff07dd1ba2f6dcaccb357ac73124f5e7" alt="{{t.altLiving}}" width="1536" height="1024" loading="lazy" style="height:520px;margin-top:40px">
 <div class="grid4" style="margin-top:16px;gap:16px">
 <sc-for list="{{t.aptPhotos}}" as="p" hint-placeholder-count="4">
 <figure style="margin:0"><img class="img" src="{{p.src}}" alt="{{p.alt}}" width="788" height="1400" loading="lazy" style="height:260px"><figcaption style="font-size:14px;color:#5a6361;margin-top:8px">{{p.cap}}</figcaption></figure>
