@@ -99,7 +99,7 @@ function jsonLd(lang, t) {
         floorSize: { '@type': 'QuantitativeValue', value: 113, unitCode: 'MTK' },
         occupancy: { '@type': 'QuantitativeValue', maxValue: 6 },
         checkinTime: '16:00', checkoutTime: '10:00', petsAllowed: 'on request',
-        containsPlace: [{ '@type': 'Accommodation', name: t.aptSleep[0], bed: { '@type': 'BedDetails', typeOfBed: 'double 180 cm', numberOfBeds: 1 } }, { '@type': 'Accommodation', name: t.aptSleep[1], bed: { '@type': 'BedDetails', typeOfBed: 'bunk bed 2 x 90 cm', numberOfBeds: 2 } }, { '@type': 'Accommodation', name: t.aptSleep[2], bed: { '@type': 'BedDetails', typeOfBed: 'double 180 cm', numberOfBeds: 1 } }],
+        containsPlace: [{ '@type': 'Accommodation', name: t.aptSleep[0], bed: { '@type': 'BedDetails', typeOfBed: 'double 160 cm', numberOfBeds: 1 } }, { '@type': 'Accommodation', name: t.aptSleep[1], bed: { '@type': 'BedDetails', typeOfBed: 'bunk bed 2 x 90 cm', numberOfBeds: 2 } }, { '@type': 'Accommodation', name: t.aptSleep[2], bed: { '@type': 'BedDetails', typeOfBed: 'double 180 cm', numberOfBeds: 1 } }],
         amenityFeature: t.aptEquip.map((n) => ({ '@type': 'LocationFeatureSpecification', name: n, value: true })),
         image: [DOMAIN + '/img/st-moritz-dorf.jpg', DOMAIN + '/img/abendstimmung.jpg'],
         offers: { '@type': 'Offer', price: '18000', priceCurrency: 'CHF', validFrom: '2026-12-19', validThrough: '2027-04-06', description: t.priceLead, availability: 'https://schema.org/InStock', url: url + '#preise' },
