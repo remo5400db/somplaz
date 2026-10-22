@@ -28,7 +28,10 @@ jobs:
           { echo "== node $(node -v) / npm $(npm -v)"; cat /tmp/optimize.log; echo "== site/img"; ls -la site/img; } > site/build-info.txt
           tail -20 site/build-info.txt
       - name: Build pages
-        run: node build.js
+        run: |
+          node build.js
+          echo "== picture elements in index.html: $(grep -c '<picture>' site/index.html)" >> site/build-info.txt
+          echo "== webp files: $(ls site/img/*.webp | wc -l)" >> site/build-info.txt
       - name: Add self-hosted fonts (Manrope)
         run: |
           npm install --no-save --no-audit --no-fund @fontsource-variable/manrope
