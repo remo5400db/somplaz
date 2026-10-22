@@ -401,6 +401,7 @@ ${t.ds.map((x) => `<div class="faq"><strong>${esc(x.h)}</strong><span style="whi
 </html>
 `;
   return html.replace(/<img class="img([^"]*)" src="\/img\/([a-z0-9-]+)\.jpg"([^>]*)>/g, (m, cls, name, rest) => {
+    if (!fs.existsSync(path.join(OUT, 'img', `${name}-800.webp`)) || !fs.existsSync(path.join(OUT, 'img', `${name}-1600.webp`))) return m;
     const sizes = cls.includes('hero-img') ? '(max-width:760px) 100vw, 560px' : /height:(200|220|260|300)px/.test(rest) ? '(max-width:760px) 100vw, 400px' : '(max-width:760px) 100vw, 1120px';
     return `<picture><source type="image/webp" srcset="/img/${name}-800.webp 800w, /img/${name}-1600.webp 1600w" sizes="${sizes}">${m}</picture>`;
   });

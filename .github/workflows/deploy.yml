@@ -22,12 +22,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Build pages
-        run: node build.js
       - name: Optimize images (WebP, responsive sizes)
         run: |
           npm install --no-save --no-audit --no-fund sharp
           node optimize-images.js
+          ls site/img | grep -c webp
+      - name: Build pages
+        run: node build.js
       - name: Add self-hosted fonts (Manrope)
         run: |
           npm install --no-save --no-audit --no-fund @fontsource-variable/manrope
