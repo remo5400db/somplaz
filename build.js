@@ -24,7 +24,7 @@ const IMG = {
   '/_blob/b1711a7eb60a1bcefd72c04cac01f2b0': 'img/abendstimmung.jpg',
   '/_blob/6607d9a383b98d8b3132bea778274854': 'img/white-turf.jpg',
   '/_blob/978fc29e3a16e1e9269c35e8b9f482fe': 'img/engadin-airport.jpg',
-  '/_blob/4afb7bdf7ec1ac731b087ecfae47ec09': 'img/winterreifen.jpg',
+  '/_blob/4afb7bdf7ec1ac731b087ecfae47ec09': 'img/anreise-auto-engadin.jpg',
   '/_blob/130ade634ed0d60f26c55972d34849a5': 'img/rhaetische-bahn.jpg',
   '/_blob/c15d97683232ee879fb306c9dd11e2ea': 'img/winterwandern.jpg',
   '/_blob/4d6a196a9ae86d033418a413b3e25fb5': 'img/skischule.jpg',
@@ -80,8 +80,8 @@ const LANGS = { de: { dir: '', hreflang: 'de', extra: ['de-CH', 'de-DE', 'de-AT'
 const HREFLANGS = Object.values(LANGS).flatMap((v) => [v.hreflang, ...v.extra].map((h) => [h, v.dir]));
 const META = {
   de: { title: 'Ferienwohnung St. Moritz Dorf – Saisonmiete Winter 2026/27', desc: "4.5-Zimmer-Ferienwohnung im Zentrum von St. Moritz Dorf, 113 m², bis 6 Personen, Tiefgarage. Saisonmiete Winter 2026/27 CHF 24'000." },
-  en: { title: 'Holiday apartment St. Moritz Dorf – winter 2026/27', desc: '4.5-room holiday apartment in the centre of St. Moritz Dorf, 113 m², up to 6 guests, garage. Seasonal let winter 2026/27, CHF 24,000.' },
-  it: { title: 'Appartamento vacanze St. Moritz Dorf – inverno 2026/27', desc: "Appartamento di 4,5 locali nel centro di St. Moritz Dorf, 113 m², fino a 6 persone, garage. Affitto stagionale inverno 2026/27, CHF 24'000." },
+  en: { title: 'Holiday apartment St. Moritz Dorf – winter season let 2026/27', desc: '4.5-room holiday apartment in the centre of St. Moritz Dorf, 113 m², up to 6 guests, garage. Seasonal let winter 2026/27, CHF 24,000.' },
+  it: { title: 'Appartamento vacanze St. Moritz – affitto stagionale 2026/27', desc: "Appartamento di 4,5 locali nel centro di St. Moritz Dorf, 113 m², fino a 6 persone, garage. Affitto stagionale inverno 2026/27, CHF 24'000." },
 };
 const WA = '41794191462';
 
@@ -140,7 +140,6 @@ ${Object.values(LANGS).filter((v) => v.ogLocale !== L.ogLocale).map((v) => `<met
 <meta name="twitter:card" content="summary_large_image">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="preload" as="image" href="/img/st-moritz-dorf.jpg" fetchpriority="high">
 <script type="application/ld+json">${jsonLd(lang, t)}</script>
 <style>${css}</style>
 </head>
@@ -290,7 +289,7 @@ ${t.arrBlocks.map((b) => `<div class="card"><img class="img" src="/${img(b.img)}
 <div class="grid2" style="align-items:start">
 <div class="card" style="background:#1e4d3f;color:#ffffff;border-color:#1e4d3f">
 <div style="font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;opacity:0.85">${esc(t.priceSeasonLabel)}</div>
-<div class="price" style="margin:6px 0 4px">CHF 24'000</div>
+<div class="price" style="margin:6px 0 4px">${lang === 'en' ? 'CHF 24,000' : "CHF 24'000"}</div>
 <div style="font-size:15px;opacity:0.9;margin-bottom:20px">${esc(t.pricePeriod)}</div>
 <table class="table"><tbody>
 ${t.priceRows.map((r) => `<tr><td>${esc(r.n)}</td><td>${esc(r.v)}</td></tr>`).join('')}
