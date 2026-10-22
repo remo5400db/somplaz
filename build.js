@@ -140,6 +140,8 @@ ${Object.values(LANGS).filter((v) => v.ogLocale !== L.ogLocale).map((v) => `<met
 <meta name="twitter:card" content="summary_large_image">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BSRVJ46BE5"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-BSRVJ46BE5');</script>
 <script type="application/ld+json">${jsonLd(lang, t)}</script>
 <style>${css}</style>
 </head>
