@@ -79,9 +79,9 @@ const svgChat = (size) => `<svg aria-hidden="true" width="${size}" height="${siz
 const LANGS = { de: { dir: '', hreflang: 'de', extra: ['de-CH', 'de-DE', 'de-AT'], ogLocale: 'de_CH' }, en: { dir: 'en/', hreflang: 'en', extra: ['en-GB'], ogLocale: 'en_GB' }, it: { dir: 'it/', hreflang: 'it', extra: ['it-IT', 'it-CH'], ogLocale: 'it_IT' } };
 const HREFLANGS = Object.values(LANGS).flatMap((v) => [v.hreflang, ...v.extra].map((h) => [h, v.dir]));
 const META = {
-  de: { title: 'Ferienwohnung St. Moritz Dorf – Saisonmiete Winter 2026/27', desc: "4.5-Zimmer-Ferienwohnung in St. Moritz Dorf, 113 m², bis 6 Personen, Tiefgarage, im Zentrum von St. Moritz Dorf. Saisonmiete Winter 2026/27 CHF 18'000." },
-  en: { title: 'Holiday apartment St. Moritz Dorf – seasonal let winter 2026/27', desc: '4.5-room holiday apartment in St. Moritz Dorf, 113 m², up to 6 guests, garage, in the centre of St. Moritz Dorf. Seasonal let winter 2026/27, CHF 18,000.' },
-  it: { title: 'Appartamento di vacanza St. Moritz Dorf – affitto stagionale inverno 2026/27', desc: "Appartamento di 4,5 locali a St. Moritz Dorf, 113 m², fino a 6 persone, garage, nel centro di St. Moritz Dorf. Affitto stagionale inverno 2026/27, CHF 18'000." },
+  de: { title: 'Ferienwohnung St. Moritz Dorf – Saisonmiete Winter 2026/27', desc: "4.5-Zimmer-Ferienwohnung in St. Moritz Dorf, 113 m², bis 6 Personen, Tiefgarage, im Zentrum von St. Moritz Dorf. Saisonmiete Winter 2026/27 CHF 24'000." },
+  en: { title: 'Holiday apartment St. Moritz Dorf – seasonal let winter 2026/27', desc: '4.5-room holiday apartment in St. Moritz Dorf, 113 m², up to 6 guests, garage, in the centre of St. Moritz Dorf. Seasonal let winter 2026/27, CHF 24,000.' },
+  it: { title: 'Appartamento di vacanza St. Moritz Dorf – affitto stagionale inverno 2026/27', desc: "Appartamento di 4,5 locali a St. Moritz Dorf, 113 m², fino a 6 persone, garage, nel centro di St. Moritz Dorf. Affitto stagionale inverno 2026/27, CHF 24'000." },
 };
 const WA = '41794191462';
 
@@ -102,7 +102,7 @@ function jsonLd(lang, t) {
         containsPlace: [{ '@type': 'Accommodation', name: t.aptSleep[0], bed: { '@type': 'BedDetails', typeOfBed: 'double 160 cm', numberOfBeds: 1 } }, { '@type': 'Accommodation', name: t.aptSleep[1], bed: { '@type': 'BedDetails', typeOfBed: 'bunk bed 2 x 90 cm', numberOfBeds: 2 } }, { '@type': 'Accommodation', name: t.aptSleep[2], bed: { '@type': 'BedDetails', typeOfBed: 'double 180 cm', numberOfBeds: 1 } }],
         amenityFeature: t.aptEquip.map((n) => ({ '@type': 'LocationFeatureSpecification', name: n, value: true })),
         image: [DOMAIN + '/img/st-moritz-dorf.jpg', DOMAIN + '/img/abendstimmung.jpg'],
-        offers: { '@type': 'Offer', price: '18000', priceCurrency: 'CHF', validFrom: '2026-12-19', validThrough: '2027-04-06', description: t.priceLead, availability: 'https://schema.org/InStock', url: url + '#preise' },
+        offers: { '@type': 'Offer', price: '24000', priceCurrency: 'CHF', validFrom: '2026-12-19', validThrough: '2027-04-06', description: t.priceLead, availability: 'https://schema.org/InStock', url: url + '#preise' },
       },
       { '@type': 'FAQPage', mainEntity: t.faqs.map((q) => ({ '@type': 'Question', name: q.q, acceptedAnswer: { '@type': 'Answer', text: q.a } })) },
     ],
@@ -290,7 +290,7 @@ ${t.arrBlocks.map((b) => `<div class="card"><img class="img" src="/${img(b.img)}
 <div class="grid2" style="align-items:start">
 <div class="card" style="background:#1e4d3f;color:#ffffff;border-color:#1e4d3f">
 <div style="font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;opacity:0.85">${esc(t.priceSeasonLabel)}</div>
-<div class="price" style="margin:6px 0 4px">CHF 18'000</div>
+<div class="price" style="margin:6px 0 4px">CHF 24'000</div>
 <div style="font-size:15px;opacity:0.9;margin-bottom:20px">${esc(t.pricePeriod)}</div>
 <table class="table"><tbody>
 ${t.priceRows.map((r) => `<tr><td>${esc(r.n)}</td><td>${esc(r.v)}</td></tr>`).join('')}
