@@ -79,9 +79,9 @@ const svgChat = (size) => `<svg aria-hidden="true" width="${size}" height="${siz
 const LANGS = { de: { dir: '', hreflang: 'de', extra: ['de-CH', 'de-DE', 'de-AT'], ogLocale: 'de_CH' }, en: { dir: 'en/', hreflang: 'en', extra: ['en-GB'], ogLocale: 'en_GB' }, it: { dir: 'it/', hreflang: 'it', extra: ['it-IT', 'it-CH'], ogLocale: 'it_IT' } };
 const HREFLANGS = Object.values(LANGS).flatMap((v) => [v.hreflang, ...v.extra].map((h) => [h, v.dir]));
 const META = {
-  de: { title: 'Ferienwohnung St. Moritz Dorf – Saisonmiete Winter 2026/27', desc: "4.5-Zimmer-Ferienwohnung in St. Moritz Dorf, 113 m², bis 6 Personen, Tiefgarage, im Zentrum von St. Moritz Dorf. Saisonmiete Winter 2026/27 CHF 24'000." },
-  en: { title: 'Holiday apartment St. Moritz Dorf – seasonal let winter 2026/27', desc: '4.5-room holiday apartment in St. Moritz Dorf, 113 m², up to 6 guests, garage, in the centre of St. Moritz Dorf. Seasonal let winter 2026/27, CHF 24,000.' },
-  it: { title: 'Appartamento di vacanza St. Moritz Dorf – affitto stagionale inverno 2026/27', desc: "Appartamento di 4,5 locali a St. Moritz Dorf, 113 m², fino a 6 persone, garage, nel centro di St. Moritz Dorf. Affitto stagionale inverno 2026/27, CHF 24'000." },
+  de: { title: 'Ferienwohnung St. Moritz Dorf – Saisonmiete Winter 2026/27', desc: "4.5-Zimmer-Ferienwohnung im Zentrum von St. Moritz Dorf, 113 m², bis 6 Personen, Tiefgarage. Saisonmiete Winter 2026/27 CHF 24'000." },
+  en: { title: 'Holiday apartment St. Moritz Dorf – winter 2026/27', desc: '4.5-room holiday apartment in the centre of St. Moritz Dorf, 113 m², up to 6 guests, garage. Seasonal let winter 2026/27, CHF 24,000.' },
+  it: { title: 'Appartamento vacanze St. Moritz Dorf – inverno 2026/27', desc: "Appartamento di 4,5 locali nel centro di St. Moritz Dorf, 113 m², fino a 6 persone, garage. Affitto stagionale inverno 2026/27, CHF 24'000." },
 };
 const WA = '41794191462';
 
@@ -350,7 +350,7 @@ ${t.bookSteps.map((s) => `<div class="step"><div class="num">${esc(s.n)}</div><d
 <div style="margin-top:48px">
 <h3 style="font-size:22px;margin-bottom:16px">${esc(t.faqH)}</h3>
 <div class="card" style="padding:8px 28px">
-${t.faqs.map((q) => `<div class="faq"><h3 style="font-size:16px;margin:0 0 4px">${esc(q.q)}</h3>${esc(q.a)}</div>`).join('\n')}
+${t.faqs.map((q) => `<div class="faq"><h4 style="font-size:16px;margin:0 0 4px">${esc(q.q)}</h4>${esc(q.a)}</div>`).join('\n')}
 </div>
 </div>
 </div>
