@@ -91,7 +91,7 @@ function jsonLd(lang, t) {
     '@context': 'https://schema.org',
     '@graph': [
       {
-        '@type': 'VacationRental', '@id': url + '#rental', identifier: 'chesa-somplaz-via-somplaz-10', additionalType: 'EntirePlace', latitude: 46.4979, longitude: 9.8355, knowsLanguage: ['de', 'en', 'it'], brand: { '@type': 'Brand', name: 'Chesa Somplaz' }, name: 'Chesa Somplaz – ' + t.navApt + ' St. Moritz Dorf', url, inLanguage: lang, telephone: '+41794191462', email: 'booking@chesa-somplaz.ch',
+        '@type': 'VacationRental', '@id': url + '#rental', identifier: 'chesa-somplaz-via-somplaz-10', additionalType: 'Apartment', latitude: 46.4979, longitude: 9.8355, knowsLanguage: ['de', 'en', 'it'], brand: { '@type': 'Brand', name: 'Chesa Somplaz' }, name: 'Chesa Somplaz – ' + t.navApt + ' St. Moritz Dorf', url, inLanguage: lang, telephone: '+41794191462', email: 'booking@chesa-somplaz.ch',
         description: t.aptLead,
         address: { '@type': 'PostalAddress', streetAddress: 'Via Somplaz 10', postalCode: '7500', addressLocality: 'St. Moritz', addressRegion: 'GR', addressCountry: 'CH' },
         geo: { '@type': 'GeoCoordinates', latitude: 46.4979, longitude: 9.8355 },
