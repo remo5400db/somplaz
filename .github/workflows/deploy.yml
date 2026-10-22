@@ -24,9 +24,9 @@ jobs:
           node-version: 20
       - name: Optimize images (WebP, responsive sizes)
         run: |
-          npm install --no-save --no-audit --no-fund sharp
-          node optimize-images.js
-          ls site/img | grep -c webp
+          (npm install --no-save --no-audit --no-fund sharp && node optimize-images.js) > /tmp/optimize.log 2>&1 || echo "OPTIMIZE FAILED (exit $?)" >> /tmp/optimize.log
+          { echo "== node $(node -v) / npm $(npm -v)"; cat /tmp/optimize.log; echo "== site/img"; ls -la site/img; } > site/build-info.txt
+          tail -20 site/build-info.txt
       - name: Build pages
         run: node build.js
       - name: Add self-hosted fonts (Manrope)
