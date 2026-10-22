@@ -33,7 +33,7 @@ const IMG = {
   '/_blob/820de93755cca8b66f1b41ac91393657': 'img/wohnung-schlafzimmer3.jpg',
   '/_blob/64e13dc22b33e73cca2749ff1e7787c5': 'img/wohnung-bad.jpg',
   '/_blob/03ea634d2e8491620385622a4bfce219': 'img/wohnung-dusche.jpg',
-  '/_blob/5318799f00f3bbaf9f0d87a6b4d11ea9': 'img/wohnbereich-cheminee-v2.jpg',
+  '/_blob/5318799f00f3bbaf9f0d87a6b4d11ea9': 'img/wohnbereich-cheminee-v3.jpg',
 };
 const img = (blob) => IMG[blob] || blob;
 
@@ -190,7 +190,7 @@ ${t.facts.map((f) => `<li style="background:#f3f5f3;border-radius:999px;padding:
 <div class="eyebrow">${esc(t.navApt)}</div>
 <h2 class="h2">${esc(t.aptTitle)}</h2>
 <p class="lead" style="margin:0">${esc(t.aptLead)}</p>
-<figure style="margin:40px 0 0"><img class="img" src="/img/wohnbereich-cheminee-v2.jpg" alt="${esc(t.altLiving)}" width="1536" height="1024" loading="lazy" style="height:520px"><figcaption style="font-size:14px;color:#5a6361;margin-top:8px">${esc(t.capLiving)}</figcaption></figure>
+<figure style="margin:40px 0 0"><img class="img" src="/img/wohnbereich-cheminee-v3.jpg" alt="${esc(t.altLiving)}" width="1536" height="1024" loading="lazy" style="height:520px"><figcaption style="font-size:14px;color:#5a6361;margin-top:8px">${esc(t.capLiving)}</figcaption></figure>
 <div class="grid4" style="margin-top:16px;gap:16px">
 ${t.aptPhotos.map((p) => `<figure style="margin:0"><img class="img" src="/${img(p.src)}" alt="${esc(p.alt)}" width="788" height="1400" loading="lazy" style="height:260px"><figcaption style="font-size:14px;color:#5a6361;margin-top:8px">${esc(p.cap)}</figcaption></figure>`).join('\n')}
 </div>
