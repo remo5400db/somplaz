@@ -52,3 +52,11 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+      - name: Notify search engines via IndexNow (Bing, Yandex, …)
+        continue-on-error: true
+        run: |
+          sleep 60
+          curl -sS -X POST https://api.indexnow.org/indexnow \
+            -H 'Content-Type: application/json; charset=utf-8' \
+            -d '{"host":"chesa-somplaz.ch","key":"30a98f94c0fa4958990dec08f692916c","keyLocation":"https://chesa-somplaz.ch/30a98f94c0fa4958990dec08f692916c.txt","urlList":["https://chesa-somplaz.ch/","https://chesa-somplaz.ch/en/","https://chesa-somplaz.ch/it/"]}' \
+            -w '\nIndexNow HTTP %{http_code}\n'

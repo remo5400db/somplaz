@@ -440,6 +440,9 @@ ${Object.values(LANGS).map((v) => `<url><loc>${DOMAIN}/${v.dir}</loc><lastmod>${
 `);
 fs.writeFileSync(path.join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${DOMAIN}/sitemap.xml\n`);
 fs.writeFileSync(path.join(OUT, 'CNAME'), 'chesa-somplaz.ch\n');
+// IndexNow (Bing & Co.): Schlüsseldatei muss unter /<key>.txt erreichbar sein; Ping erfolgt im Deploy-Workflow
+const INDEXNOW_KEY = '30a98f94c0fa4958990dec08f692916c';
+fs.writeFileSync(path.join(OUT, `${INDEXNOW_KEY}.txt`), INDEXNOW_KEY);
 fs.writeFileSync(path.join(OUT, 'favicon.svg'), `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#1e4d3f"/><path d="M12 44 L26 22 L34 34 L40 27 L52 44 Z" fill="#ffffff"/><circle cx="46" cy="18" r="5" fill="#dfe8ec"/></svg>`);
 fs.writeFileSync(path.join(OUT, '404.html'), `<!doctype html><html lang="de"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=/"><title>Chesa Somplaz</title></head><body><a href="/">chesa-somplaz.ch</a></body></html>`);
 console.log('built:', Object.values(LANGS).map((v) => v.dir + 'index.html').join(', '));
