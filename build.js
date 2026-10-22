@@ -140,8 +140,6 @@ ${Object.values(LANGS).filter((v) => v.ogLocale !== L.ogLocale).map((v) => `<met
 <meta name="twitter:card" content="summary_large_image">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-BSRVJ46BE5"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-BSRVJ46BE5');</script>
 <script type="application/ld+json">${jsonLd(lang, t)}</script>
 <style>${css}</style>
 </head>
@@ -375,7 +373,7 @@ ${t.ds.map((x) => `<div class="faq"><strong>${esc(x.h)}</strong><span style="whi
 <footer style="background:#1b1f1e;color:#c9d1cd;padding:40px 0;font-size:14px">
 <div class="wrap" style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap">
 <address style="font-style:normal"><strong style="color:#ffffff;font-size:16px">${esc(t.brand)}</strong><br>Via Somplaz 10 · 7500 St. Moritz · ${esc(t.footSwiss)}</address>
-<div style="display:flex;gap:18px;flex-wrap:wrap"><a href="#impressum" style="color:#ffffff">${esc(t.impH)}</a><a href="#datenschutz" style="color:#ffffff">${esc(t.dsH)}</a><span>© 2026 Vanessa Fasciati</span></div>
+<div style="display:flex;gap:18px;flex-wrap:wrap"><a href="#impressum" style="color:#ffffff">${esc(t.impH)}</a><a href="#datenschutz" style="color:#ffffff">${esc(t.dsH)}</a><a href="#" id="consent-open" style="color:#ffffff">${esc(t.consentSettings)}</a><span>© 2026 Vanessa Fasciati</span></div>
 </div>
 </footer>
 
@@ -396,6 +394,27 @@ ${t.ds.map((x) => `<div class="faq"><strong>${esc(x.h)}</strong><span style="whi
     if(!g('name')||!/\\S+@\\S+\\.\\S+/.test(g('mail'))){document.getElementById('form-hint').textContent=${JSON.stringify(t.formNeed)};f.elements[g('name')?'mail':'name'].focus();return;}
     var body=[L.name+': '+g('name'),L.mail+': '+g('mail'),L.from+': '+g('from'),L.to+': '+g('to'),L.pers+': '+g('pers'),L.pet+': '+(g('pet')==='yes'?L.yes:L.no),'',L.msg+':',g('msg')].join('\\n');
     window.location.href='mailto:booking@chesa-somplaz.ch?subject='+encodeURIComponent(${JSON.stringify(t.mailSubject)})+'&body='+encodeURIComponent(body);});}
+})();
+</script>
+<div id="consent" role="dialog" aria-live="polite" aria-label="Cookies" hidden style="position:fixed;left:16px;right:16px;bottom:16px;z-index:60;max-width:560px;margin:0 auto;background:#1b1f1e;color:#e8ece9;padding:18px 20px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.3);font-size:14px;line-height:1.5">
+<p style="margin:0 0 12px">${esc(t.consentText)} <a href="#datenschutz" id="consent-more" style="color:#fff;text-decoration:underline">${esc(t.consentMore)}</a></p>
+<div style="display:flex;gap:10px;flex-wrap:wrap"><button type="button" id="consent-accept" class="btn" style="padding:10px 18px;font-size:14px">${esc(t.consentAccept)}</button><button type="button" id="consent-decline" style="padding:10px 18px;font-size:14px;background:transparent;color:#e8ece9;border:1px solid #5a6361;border-radius:999px;cursor:pointer;font-family:inherit">${esc(t.consentDecline)}</button></div>
+</div>
+<script>
+(function(){
+  var KEY='cs-consent',GA='G-BSRVJ46BE5',box=document.getElementById('consent');
+  function loadGA(){if(window.__gaLoaded)return;window.__gaLoaded=true;var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+GA;document.head.appendChild(s);window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments);};gtag('js',new Date());gtag('config',GA,{anonymize_ip:true});}
+  function get(){try{return localStorage.getItem(KEY);}catch(e){return null;}}
+  function set(v){try{localStorage.setItem(KEY,v);}catch(e){}}
+  function show(){if(box)box.hidden=false;}
+  function hide(){if(box)box.hidden=true;}
+  var c=get();
+  if(c==='granted')loadGA();else if(c!=='denied')show();
+  var a=document.getElementById('consent-accept'),d=document.getElementById('consent-decline'),o=document.getElementById('consent-open'),m=document.getElementById('consent-more');
+  if(a)a.addEventListener('click',function(){set('granted');hide();loadGA();});
+  if(d)d.addEventListener('click',function(){set('denied');hide();});
+  if(o)o.addEventListener('click',function(e){e.preventDefault();show();});
+  if(m)m.addEventListener('click',function(){var ds=document.querySelector('#datenschutz');if(ds)ds.open=true;});
 })();
 </script>
 </body>
