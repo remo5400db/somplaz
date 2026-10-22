@@ -64,7 +64,7 @@ picture{display:block;width:100%}
 .card,.tip,.faq,.li,.lead,.step,.table td,details,summary,.mobnav a{overflow-wrap:anywhere;word-break:normal}
 .li{align-items:flex-start}
 .tip a,.faq a,.card a{overflow-wrap:anywhere}
-@media (max-width:760px){.burger{display:flex}.table td:first-child{width:40%}.price{font-size:32px}
+@media (max-width:760px){.burger{display:flex}.hero-grid>picture{order:-1}.table td:first-child{width:40%}.price{font-size:32px}
 .hdr-cta{display:none !important}.langs{gap:4px}.lang{min-width:34px;padding:6px 7px;font-size:12px;min-height:36px}.brand{font-size:16px !important}
 .li span:first-child{flex:1 1 auto}.li span+span{text-align:right}}
 `;
