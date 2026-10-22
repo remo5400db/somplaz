@@ -190,7 +190,7 @@ ${t.facts.map((f) => `<li style="background:#f3f5f3;border-radius:999px;padding:
 <div class="eyebrow">${esc(t.navApt)}</div>
 <h2 class="h2">${esc(t.aptTitle)}</h2>
 <p class="lead" style="margin:0">${esc(t.aptLead)}</p>
-<img class="img" src="/img/wohnbereich-sofa-cheminee.jpg" alt="${esc(t.altLiving)}" width="1536" height="1024" loading="lazy" style="height:520px;margin-top:40px">
+<figure style="margin:40px 0 0"><img class="img" src="/img/wohnbereich-sofa-cheminee.jpg" alt="${esc(t.altLiving)}" width="1536" height="1024" loading="lazy" style="height:520px"><figcaption style="font-size:14px;color:#5a6361;margin-top:8px">${esc(t.capLiving)}</figcaption></figure>
 <div class="grid4" style="margin-top:16px;gap:16px">
 ${t.aptPhotos.map((p) => `<figure style="margin:0"><img class="img" src="/${img(p.src)}" alt="${esc(p.alt)}" width="788" height="1400" loading="lazy" style="height:260px"><figcaption style="font-size:14px;color:#5a6361;margin-top:8px">${esc(p.cap)}</figcaption></figure>`).join('\n')}
 </div>
