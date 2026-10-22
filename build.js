@@ -267,7 +267,7 @@ ${t.smTips.map((x) => `<div class="tip"><strong>${esc(x.n)}</strong> – ${esc(x
 </details>
 </div>
 </div>
-<div class="grid2" style="gap:16px"><img class="img" src="/img/abendstimmung.jpg" alt="${esc(t.altAbend)}" width="1800" height="1013" loading="lazy" style="height:300px"><img class="img" src="/img/hero-silsersee.jpg" alt="${esc(t.altSils)}" width="1800" height="1013" loading="lazy" style="height:300px"></div>
+<div class="grid2 pair" style="gap:16px"><img class="img" src="/img/abendstimmung.jpg" alt="${esc(t.altAbend)}" width="1800" height="1013" loading="lazy" style="height:300px"><img class="img" src="/img/hero-silsersee.jpg" alt="${esc(t.altSils)}" width="1800" height="1013" loading="lazy" style="height:300px"></div>
 </div>
 </section>
 
