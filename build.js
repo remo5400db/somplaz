@@ -91,7 +91,7 @@ function jsonLd(lang, t) {
     '@context': 'https://schema.org',
     '@graph': [
       {
-        '@type': 'VacationRental', '@id': url + '#rental', name: 'Chesa Somplaz – ' + t.navApt + ' St. Moritz Dorf', url, inLanguage: lang, telephone: '+41794191462', email: 'booking@chesa-somplaz.ch',
+        '@type': 'VacationRental', '@id': url + '#rental', identifier: 'chesa-somplaz-via-somplaz-10', additionalType: 'EntirePlace', latitude: 46.4979, longitude: 9.8355, knowsLanguage: ['de', 'en', 'it'], brand: { '@type': 'Brand', name: 'Chesa Somplaz' }, name: 'Chesa Somplaz – ' + t.navApt + ' St. Moritz Dorf', url, inLanguage: lang, telephone: '+41794191462', email: 'booking@chesa-somplaz.ch',
         description: t.aptLead,
         address: { '@type': 'PostalAddress', streetAddress: 'Via Somplaz 10', postalCode: '7500', addressLocality: 'St. Moritz', addressRegion: 'GR', addressCountry: 'CH' },
         geo: { '@type': 'GeoCoordinates', latitude: 46.4979, longitude: 9.8355 },
@@ -99,9 +99,9 @@ function jsonLd(lang, t) {
         floorSize: { '@type': 'QuantitativeValue', value: 113, unitCode: 'MTK' },
         occupancy: { '@type': 'QuantitativeValue', maxValue: 6 },
         checkinTime: '16:00', checkoutTime: '10:00', petsAllowed: 'on request',
-        containsPlace: [{ '@type': 'Accommodation', name: t.aptSleep[0], bed: { '@type': 'BedDetails', typeOfBed: 'double 160 cm', numberOfBeds: 1 } }, { '@type': 'Accommodation', name: t.aptSleep[1], bed: { '@type': 'BedDetails', typeOfBed: 'bunk bed 2 x 90 cm', numberOfBeds: 2 } }, { '@type': 'Accommodation', name: t.aptSleep[2], bed: { '@type': 'BedDetails', typeOfBed: 'double 180 cm', numberOfBeds: 1 } }],
+        containsPlace: [{ '@type': 'Accommodation', name: t.aptSleep[0], occupancy: { '@type': 'QuantitativeValue', value: 2 }, bed: { '@type': 'BedDetails', typeOfBed: 'double 160 cm', numberOfBeds: 1 } }, { '@type': 'Accommodation', name: t.aptSleep[1], occupancy: { '@type': 'QuantitativeValue', value: 2 }, bed: { '@type': 'BedDetails', typeOfBed: 'bunk bed 2 x 90 cm', numberOfBeds: 2 } }, { '@type': 'Accommodation', name: t.aptSleep[2], occupancy: { '@type': 'QuantitativeValue', value: 2 }, bed: { '@type': 'BedDetails', typeOfBed: 'double 180 cm', numberOfBeds: 1 } }],
         amenityFeature: t.aptEquip.map((n) => ({ '@type': 'LocationFeatureSpecification', name: n, value: true })),
-        image: [DOMAIN + '/img/st-moritz-dorf.jpg', DOMAIN + '/img/abendstimmung.jpg'],
+        image: ['st-moritz-dorf', 'wohnbereich-cheminee-v3', 'wohnung-kueche', 'wohnung-schlafzimmer3', 'wohnung-bad', 'wohnung-dusche', 'abendstimmung', 'hero-silsersee', 'piste-corviglia', 'langlauf'].map((n) => DOMAIN + '/img/' + n + '.jpg'),
         offers: { '@type': 'Offer', price: '20000', priceCurrency: 'CHF', validFrom: '2026-12-19', validThrough: '2027-04-06', description: t.priceLead, availability: 'https://schema.org/InStock', url: url + '#preise' },
       },
       { '@type': 'FAQPage', mainEntity: t.faqs.map((q) => ({ '@type': 'Question', name: q.q, acceptedAnswer: { '@type': 'Answer', text: q.a } })) },
