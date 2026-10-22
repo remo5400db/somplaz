@@ -142,7 +142,7 @@ details[open] summary::after{content:"–"}
 <div class="eyebrow">{{t.navApt}}</div>
 <h2 class="h2">{{t.aptTitle}}</h2>
 <p class="lead" style="margin:0">{{t.aptLead}}</p>
-<figure style="margin:40px 0 0"><img class="img" src="/_blob/ff07dd1ba2f6dcaccb357ac73124f5e7" alt="{{t.altLiving}}" width="1536" height="1024" loading="lazy" style="height:520px"><figcaption style="font-size:14px;color:#5a6361;margin-top:8px">{{t.capLiving}}</figcaption></figure>
+<figure style="margin:40px 0 0"><img class="img" src="/_blob/e97edc1b14e9e30915cf23a38a095646" alt="{{t.altLiving}}" width="1536" height="1024" loading="lazy" style="height:520px"><figcaption style="font-size:14px;color:#5a6361;margin-top:8px">{{t.capLiving}}</figcaption></figure>
 <div class="grid4" style="margin-top:16px;gap:16px">
 <sc-for list="{{t.aptPhotos}}" as="p" hint-placeholder-count="4">
 <figure style="margin:0"><img class="img" src="{{p.src}}" alt="{{p.alt}}" width="788" height="1400" loading="lazy" style="height:260px"><figcaption style="font-size:14px;color:#5a6361;margin-top:8px">{{p.cap}}</figcaption></figure>
@@ -518,9 +518,9 @@ class Component extends DCLogic {
         locLead: 'Die Wohnung liegt an der Via Somplaz, mitten im Zentrum von St. Moritz Dorf. Restaurants, Bars, Boutiquen und die Fussgängerzone sind direkt vor der Haustür – das Auto bleibt während der Ferien in der Tiefgarage.',
         addrH: 'Adresse', addrP: '3. Stock mit Lift · Tiefgarage im Haus · Eingang an der Via Somplaz', addrMap: 'In Google Maps öffnen', mapPh: 'Kartenausschnitt Google Maps (auf der Website)',
         locWalkH: 'Zu Fuss',
-        locWalk: [{n:'Dorfzentrum',v:'1 Min.'},{n:'Coop',v:'3 Min.'},{n:'Bushaltestelle Serlas (Engadin Bus, gratis mit Gästekarte)',v:'3 Min.'},{n:'Bergbahnen Chantarella–Corviglia (bergauf)',v:'6 Min.'}],
+        locWalk: [{n:'Dorfzentrum',v:'1 Min.'},{n:'Coop',v:'3 Min.'},{n:'Bushaltestelle Serlas (Engadin Bus, gratis mit Gästekarte)',v:'3 Min.'},{n:'Bergbahnen Chantarella–Corviglia',v:'6 Min.'}],
         locDriveH: 'Mit Auto oder Bus',
-        locDrive: [{n:'St. Moritzersee',v:'4 Min.'},{n:'Bahnhof St. Moritz',v:'4 Min.'},{n:'Hallenbad Ovaverva',v:'5 Min.'},{n:'Engadin Airport Samedan',v:'10 Min.'}],
+        locDrive: [{n:'St. Moritzersee',v:'4 Min.'},{n:'Bahnhof St. Moritz',v:'4 Min.'},{n:'Hallenbad Ovaverva',v:'5 Min.'},{n:'Engadin Airport Samedan',v:'12 Min.'}],
         locNote: 'Schweiz',
         smTitle: 'Winter in St. Moritz: Ski, Langlauf und Events vor der Haustür',
         smLead: 'St. Moritz liegt auf 1856 m im Oberengadin und zählt zu den sonnigsten Orten der Schweiz – im Winter trifft ein nahezu garantiertes Schneeangebot auf einen oft tiefblauen Himmel. Der Ort war zweimal Gastgeber Olympischer Winterspiele (1928 und 1948) und ist bis heute ein Treffpunkt für Wintersport, Kultur und gutes Essen.',
@@ -560,7 +560,7 @@ class Component extends DCLogic {
         arrBlocks: [
           {img:IMG_CAR, pos:'center 70%', alt:'Auto mit Winterreifen auf verschneiter Strasse', h:'Mit dem Auto über den Julierpass', p:'Ab Zürich ca. 3 Stunden (über Chur und den ganzjährig offenen Julierpass), ab Mailand ca. 2,5 Stunden (Maloja- oder Berninapass), ab München ca. 4 Stunden.\nWinterreifen sind Pflicht; Schneeketten empfehlen wir mitzuführen.\n\nParkieren: Ein Tiefgaragenplatz im Haus ist im Mietpreis inbegriffen. Für ein zweites Fahrzeug steht das öffentliche Parkhaus Quadrellas in 5 Gehminuten zur Verfügung.'},
           {img:IMG_TRAIN, pos:'center', alt:'Rhätische Bahn im Schnee Richtung St. Moritz', h:'Mit der Rhätischen Bahn (Albulalinie)', p:'Ab Zürich HB mit Umsteigen in Chur in rund 3 Stunden 20 Minuten – die Albulalinie der Rhätischen Bahn ist UNESCO-Welterbe und die schönste Anreise ins Engadin.\nVom Bahnhof St. Moritz mit dem Engadin Bus bis Haltestelle Serlas (3 Gehminuten zur Wohnung) oder in 4 Minuten mit dem Taxi.\n\nGepäck und Ski: Lift bis in den 3. Stock; Skiausrüstung lagern Sie im Skiraum im Haus.'},
-          {img:IMG_JET, pos:'center', alt:'Privatjet auf dem Engadin Airport Samedan', h:'Mit dem Flugzeug: Zürich oder Engadin Airport Samedan', p:'Nächster internationaler Flughafen ist Zürich, ca. 3,5 Stunden mit Auto oder Bahn (direkte Bahnverbindung ab Flughafen über Chur).\nDer Engadin Airport in Samedan liegt 10 Autominuten entfernt und ist für Privat- und Charterflüge geöffnet; Taxi oder Mietwagen vor Ort.\n\nAuf Wunsch organisieren wir gerne einen Transfer vom Flughafen Zürich.'}
+          {img:IMG_JET, pos:'center', alt:'Privatjet auf dem Engadin Airport Samedan', h:'Mit dem Flugzeug: Zürich oder Engadin Airport Samedan', p:'Nächster internationaler Flughafen ist Zürich, ca. 3,5 Stunden mit Auto oder Bahn (direkte Bahnverbindung ab Flughafen über Chur).\nDer Engadin Airport in Samedan liegt 12 Autominuten entfernt und ist für Privat- und Charterflüge geöffnet; Taxi oder Mietwagen vor Ort.\n\nAuf Wunsch organisieren wir gerne einen Transfer vom Flughafen Zürich.'}
         ],
         priceTitle: 'Preis Saisonmiete St. Moritz Winter 2026/27',
         priceLead: 'Wir vermieten die Wohnung für die ganze Wintersaison – so haben Sie Ihr eigenes Zuhause in St. Moritz, ohne die Unsicherheit wöchentlicher Buchungen. Zwanzig Jahre lang war die Wohnung fest vermietet; vor der geplanten Renovation im Frühjahr 2027 bieten wir sie diesen Winter zu einem fairen Pauschalpreis an.',
@@ -665,9 +665,9 @@ class Component extends DCLogic {
         locLead: 'The apartment is on Via Somplaz, right in the centre of St. Moritz Dorf. Restaurants, bars, boutiques and the pedestrian zone are right outside the door – the car stays in the garage all holiday.',
         addrH: 'Address', addrP: '3rd floor with lift · garage in the building · entrance on Via Somplaz', addrMap: 'Open in Google Maps', mapPh: 'Google Maps excerpt (on the website)',
         locWalkH: 'On foot',
-        locWalk: [{n:'Village centre',v:'1 min'},{n:'Coop supermarket',v:'3 min'},{n:'Serlas bus stop (Engadin Bus, free with guest card)',v:'3 min'},{n:'Chantarella–Corviglia funicular (uphill)',v:'6 min'}],
+        locWalk: [{n:'Village centre',v:'1 min'},{n:'Coop supermarket',v:'3 min'},{n:'Serlas bus stop (Engadin Bus, free with guest card)',v:'3 min'},{n:'Chantarella–Corviglia funicular',v:'6 min'}],
         locDriveH: 'By car or bus',
-        locDrive: [{n:'Lake St. Moritz',v:'4 min'},{n:'St. Moritz railway station',v:'4 min'},{n:'Ovaverva indoor pool',v:'5 min'},{n:'Engadin Airport Samedan',v:'10 min'}],
+        locDrive: [{n:'Lake St. Moritz',v:'4 min'},{n:'St. Moritz railway station',v:'4 min'},{n:'Ovaverva indoor pool',v:'5 min'},{n:'Engadin Airport Samedan',v:'12 min'}],
         locNote: 'Switzerland',
         smTitle: 'Winter in St. Moritz: skiing, cross-country and events on your doorstep',
         smLead: 'St. Moritz sits at 1,856 m in the Upper Engadin and is one of the sunniest places in Switzerland – in winter, near-guaranteed snow meets a deep blue sky. Twice host of the Winter Olympics (1928 and 1948), it remains a meeting point for winter sports, culture and good food.',
@@ -707,7 +707,7 @@ class Component extends DCLogic {
         arrBlocks: [
           {img:IMG_CAR, pos:'center 70%', alt:'Car with winter tyres on a snowy road', h:'By car over the Julier Pass', p:'From Zurich about 3 hours (via Chur and the Julier Pass, open all year), from Milan about 2.5 hours (Maloja or Bernina Pass), from Munich about 4 hours.\nWinter tyres are mandatory; we recommend carrying snow chains.\n\nParking: an underground parking space in the building is included in the rent. For a second car, the public Quadrellas car park is a 5-minute walk away.'},
           {img:IMG_TRAIN, pos:'center', alt:'Rhaetian Railway train in the snow heading to St. Moritz', h:'By Rhaetian Railway (Albula line)', p:'From Zurich main station, changing in Chur, in about 3 hours 20 minutes – the Rhaetian Railway\u2019s Albula line is a UNESCO World Heritage site and the most beautiful way into the Engadin.\nFrom St. Moritz station by Engadin Bus to the Serlas stop (3-minute walk to the apartment) or in 4 minutes by taxi.\n\nLuggage and skis: lift to the 3rd floor; ski equipment is stored in the ski room in the building.'},
-          {img:IMG_JET, pos:'center', alt:'Private jet at Engadin Airport Samedan', h:'By plane: Zurich or Engadin Airport Samedan', p:'The nearest international airport is Zurich, about 3.5 hours by car or train (direct rail link from the airport via Chur).\nEngadin Airport in Samedan is 10 minutes by car and open to private and charter flights; taxis and rental cars available locally.\n\nOn request we are happy to arrange a transfer from Zurich Airport.'}
+          {img:IMG_JET, pos:'center', alt:'Private jet at Engadin Airport Samedan', h:'By plane: Zurich or Engadin Airport Samedan', p:'The nearest international airport is Zurich, about 3.5 hours by car or train (direct rail link from the airport via Chur).\nEngadin Airport in Samedan is 12 minutes by car and open to private and charter flights; taxis and rental cars available locally.\n\nOn request we are happy to arrange a transfer from Zurich Airport.'}
         ],
         priceTitle: 'Seasonal let St. Moritz winter 2026/27: rates',
         priceLead: 'We let the apartment for the whole winter season – your own home in St. Moritz, without the uncertainty of weekly bookings. For twenty years the apartment was let long-term; before the planned renovation in spring 2027 we offer it this winter at a fair all-in rate.',
@@ -812,9 +812,9 @@ class Component extends DCLogic {
         locLead: 'L’appartamento si trova in Via Somplaz, nel pieno centro di St. Moritz Dorf. Ristoranti, bar, boutique e la zona pedonale sono proprio davanti alla porta – l’auto resta in garage per tutta la vacanza.',
         addrH: 'Indirizzo', addrP: '3° piano con ascensore · garage nell\u2019edificio · ingresso in Via Somplaz', addrMap: 'Apri in Google Maps', mapPh: 'Mappa Google Maps (sul sito)',
         locWalkH: 'A piedi',
-        locWalk: [{n:'Centro del paese',v:'1 min'},{n:'Coop',v:'3 min'},{n:'Fermata bus Serlas (Engadin Bus, gratuito con la carta ospiti)',v:'3 min'},{n:'Funicolare Chantarella–Corviglia (in salita)',v:'6 min'}],
+        locWalk: [{n:'Centro del paese',v:'1 min'},{n:'Coop',v:'3 min'},{n:'Fermata bus Serlas (Engadin Bus, gratuito con la carta ospiti)',v:'3 min'},{n:'Funicolare Chantarella–Corviglia',v:'6 min'}],
         locDriveH: 'In auto o in bus',
-        locDrive: [{n:'Lago di St. Moritz',v:'4 min'},{n:'Stazione di St. Moritz',v:'4 min'},{n:'Piscina coperta Ovaverva',v:'5 min'},{n:'Engadin Airport Samedan',v:'10 min'}],
+        locDrive: [{n:'Lago di St. Moritz',v:'4 min'},{n:'Stazione di St. Moritz',v:'4 min'},{n:'Piscina coperta Ovaverva',v:'5 min'},{n:'Engadin Airport Samedan',v:'12 min'}],
         locNote: 'Svizzera',
         smTitle: 'Inverno a St. Moritz: sci, fondo ed eventi davanti alla porta',
         smLead: 'St. Moritz si trova a 1856 m nell’Alta Engadina ed è una delle località più soleggiate della Svizzera: in inverno la neve quasi garantita incontra un cielo spesso blu intenso. Due volte sede dei Giochi olimpici invernali (1928 e 1948), è ancora oggi un punto d’incontro per sport invernali, cultura e buona cucina.',
@@ -854,7 +854,7 @@ class Component extends DCLogic {
         arrBlocks: [
           {img:IMG_CAR, pos:'center 70%', alt:'Auto con pneumatici invernali su strada innevata', h:'In auto attraverso il passo del Giulia', p:'Da Zurigo circa 3 ore (via Coira e il passo del Giulia, aperto tutto l’anno), da Milano circa 2,5 ore (passo del Maloja o del Bernina), da Monaco circa 4 ore.\nPneumatici invernali obbligatori; consigliamo di avere le catene a bordo.\n\nParcheggio: un posto auto nel garage dell’edificio è incluso nel prezzo. Per una seconda auto è disponibile l’autosilo pubblico Quadrellas a 5 minuti a piedi.'},
           {img:IMG_TRAIN, pos:'center', alt:'Treno della Ferrovia Retica nella neve verso St. Moritz', h:'Con la Ferrovia Retica (linea dell’Albula)', p:'Da Zurigo HB con cambio a Coira in circa 3 ore e 20 minuti – la linea dell’Albula della Ferrovia Retica è Patrimonio UNESCO ed è il modo più bello per arrivare in Engadina.\nDalla stazione di St. Moritz con l’Engadin Bus fino alla fermata Serlas (3 minuti a piedi dall’appartamento) o in 4 minuti in taxi.\n\nBagagli e sci: ascensore fino al 3° piano; l’attrezzatura da sci si ripone nel deposito sci dell’edificio.'},
-          {img:IMG_JET, pos:'center', alt:'Jet privato all’Engadin Airport di Samedan', h:'In aereo: Zurigo o Engadin Airport Samedan', p:'L’aeroporto internazionale più vicino è Zurigo, a circa 3,5 ore in auto o in treno (collegamento ferroviario diretto dall’aeroporto via Coira).\nL’Engadin Airport di Samedan è a 10 minuti in auto ed è aperto a voli privati e charter; taxi e auto a noleggio sul posto.\n\nSu richiesta organizziamo volentieri un transfer dall’aeroporto di Zurigo.'}
+          {img:IMG_JET, pos:'center', alt:'Jet privato all’Engadin Airport di Samedan', h:'In aereo: Zurigo o Engadin Airport Samedan', p:'L’aeroporto internazionale più vicino è Zurigo, a circa 3,5 ore in auto o in treno (collegamento ferroviario diretto dall’aeroporto via Coira).\nL’Engadin Airport di Samedan è a 12 minuti in auto ed è aperto a voli privati e charter; taxi e auto a noleggio sul posto.\n\nSu richiesta organizziamo volentieri un transfer dall’aeroporto di Zurigo.'}
         ],
         priceTitle: 'Prezzo affitto stagionale St. Moritz inverno 2026/27',
         priceLead: 'Affittiamo l’appartamento per l’intera stagione invernale – la vostra casa a St. Moritz, senza l’incertezza delle prenotazioni settimanali. Per vent’anni l’appartamento è stato affittato a lungo termine; prima della ristrutturazione prevista nella primavera 2027 lo offriamo quest’inverno a un prezzo forfettario equo.',
