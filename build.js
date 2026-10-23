@@ -438,7 +438,8 @@ fs.writeFileSync(path.join(OUT, 'sitemap.xml'), `<?xml version="1.0" encoding="U
 ${Object.values(LANGS).map((v) => `<url><loc>${DOMAIN}/${v.dir}</loc><lastmod>${new Date().toISOString().slice(0, 10)}</lastmod>${HREFLANGS.map(([h, d]) => `<xhtml:link rel="alternate" hreflang="${h}" href="${DOMAIN}/${d}"/>`).join('')}<xhtml:link rel="alternate" hreflang="x-default" href="${DOMAIN}/"/></url>`).join('\n')}
 </urlset>
 `);
-fs.writeFileSync(path.join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${DOMAIN}/sitemap.xml\n`);
+fs.writeFileSync(path.join(OUT, 'robots.txt'), ['User-agent: *', 'Allow: /', '', ...['GPTBot', 'OAI-SearchBot', 'ChatGPT-User', 'ClaudeBot', 'Claude-User', 'PerplexityBot', 'Google-Extended', 'Bingbot', 'Applebot'].flatMap((ua) => [`User-agent: ${ua}`, 'Allow: /', '']), `Sitemap: ${DOMAIN}/sitemap.xml`, ''].join('\n'));
+fs.writeFileSync(path.join(OUT, 'llms.txt'), `# Chesa Somplaz – Ferienwohnung St. Moritz Dorf\n\n> 4.5-Zimmer-Ferienwohnung (113 m², 3. Stock, Lift) für bis zu 6 Personen im Zentrum von St. Moritz Dorf, Via Somplaz 10. Saisonmiete Winter 2026/27 vom 19. Dezember 2026 bis 6. April 2027 für CHF 20'000 all-in (Nebenkosten, WLAN, Tiefgaragenplatz, Bettwäsche, Endreinigung). Kontakt: booking@chesa-somplaz.ch, WhatsApp +41 79 419 14 62.\n\n## Seiten\n\n- [Deutsch](${DOMAIN}/)\n- [English](${DOMAIN}/en/)\n- [Italiano](${DOMAIN}/it/)\n`);
 fs.writeFileSync(path.join(OUT, 'CNAME'), 'chesa-somplaz.ch\n');
 // IndexNow (Bing & Co.): Schlüsseldatei muss unter /<key>.txt erreichbar sein; Ping erfolgt im Deploy-Workflow
 const INDEXNOW_KEY = '30a98f94c0fa4958990dec08f692916c';
