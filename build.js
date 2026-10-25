@@ -79,9 +79,9 @@ const svgChat = (size) => `<svg aria-hidden="true" width="${size}" height="${siz
 const LANGS = { de: { dir: '', hreflang: 'de', extra: ['de-CH', 'de-DE', 'de-AT'], ogLocale: 'de_CH' }, en: { dir: 'en/', hreflang: 'en', extra: ['en-GB'], ogLocale: 'en_GB' }, it: { dir: 'it/', hreflang: 'it', extra: ['it-IT', 'it-CH'], ogLocale: 'it_IT' } };
 const HREFLANGS = Object.values(LANGS).flatMap((v) => [v.hreflang, ...v.extra].map((h) => [h, v.dir]));
 const META = {
-  de: { title: 'Ferienwohnung St. Moritz Dorf – Saisonmiete Winter 2026/27', desc: "4.5-Zimmer-Ferienwohnung im Zentrum von St. Moritz Dorf, 113 m², bis 6 Personen, Tiefgarage. Saisonmiete Winter 2026/27 CHF 20'000." },
-  en: { title: 'Holiday apartment St. Moritz Dorf – winter season let 2026/27', desc: '4.5-room holiday apartment in the centre of St. Moritz Dorf, 113 m², up to 6 guests, garage. Seasonal let winter 2026/27, CHF 20,000.' },
-  it: { title: 'Appartamento vacanze St. Moritz – affitto stagionale 2026/27', desc: "Appartamento di 4,5 locali nel centro di St. Moritz Dorf, 113 m², fino a 6 persone, garage. Affitto stagionale inverno 2026/27, CHF 20'000." },
+  de: { title: 'Chesa Somplaz – Ferienwohnung St. Moritz Dorf, Winter 2026/27', desc: "Chesa Somplaz: 4.5-Zimmer-Ferienwohnung im Zentrum von St. Moritz Dorf, 113 m², bis 6 Personen, Tiefgarage. Saisonmiete Winter 2026/27 CHF 20'000." },
+  en: { title: 'Chesa Somplaz – Holiday apartment St. Moritz Dorf, winter 2026/27', desc: 'Chesa Somplaz: 4.5-room holiday apartment in the centre of St. Moritz Dorf, 113 m², up to 6 guests, garage. Seasonal let winter 2026/27, CHF 20,000.' },
+  it: { title: 'Chesa Somplaz – Appartamento vacanze St. Moritz, inverno 2026/27', desc: "Chesa Somplaz: appartamento di 4,5 locali nel centro di St. Moritz Dorf, 113 m², fino a 6 persone, garage. Affitto stagionale inverno 2026/27, CHF 20'000." },
 };
 const WA = '41794191462';
 
@@ -90,6 +90,7 @@ function jsonLd(lang, t) {
   const d = {
     '@context': 'https://schema.org',
     '@graph': [
+      { '@type': 'WebSite', '@id': DOMAIN + '/#website', url: DOMAIN + '/', name: 'Chesa Somplaz', alternateName: 'chesa-somplaz.ch', inLanguage: lang },
       {
         '@type': 'VacationRental', '@id': url + '#rental', identifier: 'chesa-somplaz-via-somplaz-10', additionalType: 'Apartment', latitude: 46.4979, longitude: 9.8355, knowsLanguage: ['de', 'en', 'it'], brand: { '@type': 'Brand', name: 'Chesa Somplaz' }, name: 'Chesa Somplaz – ' + t.navApt + ' St. Moritz Dorf', url, inLanguage: lang, telephone: '+41794191462', email: 'booking@chesa-somplaz.ch',
         description: t.aptLead,
@@ -140,6 +141,9 @@ ${Object.values(LANGS).filter((v) => v.ogLocale !== L.ogLocale).map((v) => `<met
 <meta name="twitter:card" content="summary_large_image">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-48.png" type="image/png" sizes="48x48">
+<link rel="icon" href="/favicon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="/favicon-192.png">
 <script type="application/ld+json">${jsonLd(lang, t)}</script>
 <style>${css}</style>
 </head>
@@ -358,11 +362,11 @@ ${t.faqs.map((q) => `<div class="faq"><h4 style="font-size:16px;margin:0 0 4px">
 <section id="rechtliches" class="sec sec-alt" style="padding-top:56px;padding-bottom:56px">
 <div class="wrap">
 <details id="impressum"><summary>${esc(t.impH)}</summary><div style="padding:0 0 20px;font-size:15px">
-${t.imp.map((x) => `<div class="faq"><strong>${esc(x.h)}</strong><span style="white-space:pre-line">${esc(x.p)}</span></div>`).join('\n')}
+${t.imp.map((x) => `<div class="faq"><strong style="display:block">${esc(x.h)}</strong><span style="white-space:pre-line">${esc(x.p)}</span></div>`).join('\n')}
 </div></details>
 <details id="datenschutz" style="margin-top:16px"><summary>${esc(t.dsH)}</summary><div style="padding:0 0 20px;font-size:15px">
 <p style="margin:0 0 12px;color:#5a6361">${esc(t.dsDate)}</p>
-${t.ds.map((x) => `<div class="faq"><strong>${esc(x.h)}</strong><span style="white-space:pre-line">${esc(x.p)}</span></div>`).join('\n')}
+${t.ds.map((x) => `<div class="faq"><strong style="display:block">${esc(x.h)}</strong><span style="white-space:pre-line">${esc(x.p)}</span></div>`).join('\n')}
 </div></details>
 </div>
 </section>
