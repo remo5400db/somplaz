@@ -79,9 +79,9 @@ const svgChat = (size) => `<svg aria-hidden="true" width="${size}" height="${siz
 const LANGS = { de: { dir: '', hreflang: 'de', extra: ['de-CH', 'de-DE', 'de-AT'], ogLocale: 'de_CH' }, en: { dir: 'en/', hreflang: 'en', extra: ['en-GB'], ogLocale: 'en_GB' }, it: { dir: 'it/', hreflang: 'it', extra: ['it-IT', 'it-CH'], ogLocale: 'it_IT' } };
 const HREFLANGS = Object.values(LANGS).flatMap((v) => [v.hreflang, ...v.extra].map((h) => [h, v.dir]));
 const META = {
-  de: { title: 'Chesa Somplaz – Ferienwohnung St. Moritz Dorf, Winter 2026/27', desc: "Chesa Somplaz: 4.5-Zimmer-Ferienwohnung im Zentrum von St. Moritz Dorf, 113 m², bis 6 Personen, Tiefgarage. Saison 2026/27 reserviert – Warteliste und Anfragen ab Sommer 2027." },
-  en: { title: 'Chesa Somplaz – Holiday apartment St. Moritz Dorf, winter 2026/27', desc: 'Chesa Somplaz: 4.5-room holiday apartment in the centre of St. Moritz Dorf, 113 m², up to 6 guests, garage. Season 2026/27 reserved – waiting list and enquiries from summer 2027.' },
-  it: { title: 'Chesa Somplaz – Appartamento vacanze St. Moritz, inverno 2026/27', desc: "Chesa Somplaz: appartamento di 4,5 locali nel centro di St. Moritz Dorf, 113 m², fino a 6 persone, garage. Stagione 2026/27 riservata – lista d’attesa e richieste dall’estate 2027." },
+  de: { title: 'Chesa Somplaz – Ferienwohnung St. Moritz Dorf', desc: "Chesa Somplaz: 4.5-Zimmer-Ferienwohnung im Zentrum von St. Moritz Dorf, 113 m², bis 6 Personen, Tiefgarage. Saison 2026/27 reserviert – Warteliste und Anfragen ab Sommer 2027." },
+  en: { title: 'Chesa Somplaz – Holiday apartment St. Moritz Dorf', desc: 'Chesa Somplaz: 4.5-room holiday apartment in the centre of St. Moritz Dorf, 113 m², up to 6 guests, garage. Season 2026/27 reserved – waiting list and enquiries from summer 2027.' },
+  it: { title: 'Chesa Somplaz – Appartamento vacanze St. Moritz Dorf', desc: "Chesa Somplaz: appartamento di 4,5 locali nel centro di St. Moritz Dorf, 113 m², fino a 6 persone, garage. Stagione 2026/27 riservata – lista d’attesa e richieste dall’estate 2027." },
 };
 const WA = '41794191462';
 
