@@ -504,7 +504,7 @@ fs.writeFileSync(path.join(OUT, 'llms.txt'), `# Chesa Somplaz – Ferienwohnung 
 ## Sommer und Herbst
 - Wandern (580 km Wege), Biken (Flow-Trails Corviglia, Suvretta Loop 671, Bernina Express 673), Seen (Segeln/Surfen Silvaplana, Baden Lej da Staz), goldene Lärchen im Oktober.
 - Lieblingstouren: Piz Nair über den Suvrettapass; Lagh da Saoseo im Herbst; Bike Suvretta-Trail ins Val Bever; Bike Bernina-Downhill nach Poschiavo.
-- Events: Festival da Jazz, British Classic Car Meeting, Summer Country Polo (Juli), Engadin Festival (Juli–August), Music mondaine (Juli–September), St. Moritz Gourmet Festival, Art Film Festival, Running Festival (August), Bernina Gran Turismo (September), The Alpine Rendezvous (Oktober).
+- Events: Festival da Jazz, British Classic Car Meeting, Summer Country Polo (Juli), Engadin Festival (Juli–August), St. Moritz Gourmet Festival, Running Festival (August), Bernina Gran Turismo (September), The Alpine Rendezvous (Oktober).
 
 ## Seiten
 - [Deutsch](${DOMAIN}/)
