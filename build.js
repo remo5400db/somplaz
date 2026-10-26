@@ -91,9 +91,9 @@ const svgChat = (size) => `<svg aria-hidden="true" width="${size}" height="${siz
 const LANGS = { de: { dir: '', hreflang: 'de', extra: ['de-CH', 'de-DE', 'de-AT'], ogLocale: 'de_CH' }, en: { dir: 'en/', hreflang: 'en', extra: ['en-GB'], ogLocale: 'en_GB' }, it: { dir: 'it/', hreflang: 'it', extra: ['it-IT', 'it-CH'], ogLocale: 'it_IT' } };
 const HREFLANGS = Object.values(LANGS).flatMap((v) => [v.hreflang, ...v.extra].map((h) => [h, v.dir]));
 const META = {
-  de: { title: 'Chesa Somplaz – Ferienwohnung St. Moritz Dorf', desc: "Chesa Somplaz: 4.5-Zimmer-Ferienwohnung im Zentrum von St. Moritz Dorf, 113 m², bis 6 Personen, Tiefgarage – Sommer und Winter im Engadin. Winter 2026/27 reserviert, ab Herbst 2027 frisch renoviert. Warteliste offen." },
-  en: { title: 'Chesa Somplaz – Holiday apartment St. Moritz Dorf', desc: 'Chesa Somplaz: 4.5-room holiday apartment in the centre of St. Moritz Dorf, 113 m², up to 6 guests, garage – summer and winter in the Engadin. Winter 2026/27 reserved, freshly renovated from autumn 2027. Waiting list open.' },
-  it: { title: 'Chesa Somplaz – Appartamento vacanze St. Moritz Dorf', desc: "Chesa Somplaz: appartamento di 4,5 locali nel centro di St. Moritz Dorf, 113 m², fino a 6 persone, garage – estate e inverno in Engadina. Inverno 2026/27 riservato, dall’autunno 2027 appena ristrutturato. Lista d’attesa aperta." },
+  de: { title: 'Chesa Somplaz – Ferienwohnung St. Moritz Dorf', desc: "4.5-Zimmer-Ferienwohnung im Zentrum von St. Moritz Dorf, 113 m², bis 6 Personen – Sommer und Winter im Engadin. Ab Herbst 2027 frisch renoviert, Warteliste offen." },
+  en: { title: 'Chesa Somplaz – Holiday apartment St. Moritz Dorf', desc: '4.5-room holiday apartment in the centre of St. Moritz Dorf, 113 m², up to 6 guests – summer and winter in the Engadin. Freshly renovated from autumn 2027, waiting list open.' },
+  it: { title: 'Chesa Somplaz – Appartamento vacanze St. Moritz Dorf', desc: "Appartamento di 4,5 locali nel centro di St. Moritz Dorf, 113 m², fino a 6 persone – estate e inverno in Engadina. Dall’autunno 2027 appena ristrutturato, lista d’attesa aperta." },
 };
 const WA = '41794191462';
 
