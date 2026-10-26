@@ -120,6 +120,8 @@ html[data-season="summer"] [data-s="winter"],html[data-season="winter"] [data-s=
 .seg-lang .lang-on{background:#1b1f1e;color:#fff}
 .seasons{margin-right:8px}
 .sub-h{font-size:22px;margin:0 0 12px}
+.school-top .img{height:220px !important}
+@media (max-width:760px){.school-top{grid-template-columns:repeat(1,minmax(0,1fr)) !important}}
 .grid2,.grid3,.grid4{align-items:stretch}
 @media (max-width:760px){.tour-0{order:0}.tour-2{order:1}.tour-1{order:2}.tour-3{order:3}}
 .grid2>.card,.grid3>.card,.grid4>.card{height:100%;box-sizing:border-box}
@@ -494,31 +496,35 @@ html[data-season="summer"] [data-s="winter"],html[data-season="winter"] [data-s=
 </div>
 </div>
 </div>
-<div class="card" data-s="winter" style="margin-top:32px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;align-items:start" id="skischulen">
-<div>
+<div class="card" data-s="winter" style="margin-top:32px" id="skischulen">
+<div class="school-top" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:28px;align-items:center;margin-bottom:20px">
 <img class="img" src="/img/skischule.jpg" alt="Kind beim Skifahren in der Skischule St. Moritz" width="1920" height="1280" loading="lazy" style="height:260px;border-radius:8px;margin-bottom:18px">
+<div>
 <h3>Skischulen, Bergführer und Heliskiing</h3>
 <p style="margin:0;font-size:16px">Ob Kinder-Skikurs, Privatlehrer, Skitour mit Bergführer oder Heliski – in St. Moritz gibt es für jedes Niveau das passende Angebot. Beide Skischulen haben eigene Kinderbereiche und bieten Privatunterricht an. Reservieren Sie in der Hochsaison frühzeitig.</p>
 </div>
-<ul>
+</div>
+<details class="contacts"><summary>Wertvolle Kontakte</summary><div style="padding:0 0 8px"><ul>
 <li class="tip"><strong>Schweizer Skischule St. Moritz</strong><br><span style="color:#2f3634">Die älteste und grösste Skischule der Schweiz (seit 1929): Gruppen- und Privatunterricht, Swiss Snow Kids Village, Langlauf, Snowboard. Via Stredas 14.</span><br><span style="font-size:15px">+41 81 830 01 01 · <a href="https://www.skischool.ch" target="_blank" rel="noopener">skischool.ch</a></span></li>
 <li class="tip"><strong>Suvretta Snowsports School</strong><br><span style="color:#2f3634">Seit 1925 am Suvretta-Hang: Privatunterricht, eigene Kinderskischule mit Übungsgelände, Freestyle Academy. Via Chasellas 1.</span><br><span style="font-size:15px">+41 81 836 61 61 · info@suvretta-sports.ch · <a href="https://www.suvretta-sports.ch" target="_blank" rel="noopener">suvretta-sports.ch</a></span></li>
 <li class="tip"><strong>Bergsteigerschule Pontresina</strong><br><span style="color:#2f3634">Bergführer für Skitouren, Freeride und Telemark – geführte Touren im Bernina-Gebiet. Via Maistra 163, Pontresina.</span><br><span style="font-size:15px">+41 81 842 82 82 · info@bergsteiger-pontresina.ch · <a href="https://www.bergsteiger-pontresina.ch" target="_blank" rel="noopener">bergsteiger-pontresina.ch</a></span></li>
 <li class="tip"><strong>Heli Bernina – Heliskiing</strong><br><span style="color:#2f3634">Heliski ab Heliport St. Moritz Bad oder Samedan auf Piz Corvatsch, Fuorcla Grischa oder Fuorcla Chamuotsch (mit Bergführer); ab ca. CHF 160 pro Person.</span><br><span style="font-size:15px">+41 81 851 18 18 · info@helibernina.ch · <a href="https://www.helibernina.ch/angebote/touristische-fluege/heliski" target="_blank" rel="noopener">helibernina.ch</a></span></li>
-</ul>
+</ul></div></details>
 </div>
-<div class="card" data-s="summer" style="margin-top:32px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;align-items:start" id="sommerschulen">
-<div>
+<div class="card" data-s="summer" style="margin-top:32px" id="sommerschulen">
+<div class="school-top" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:28px;align-items:center;margin-bottom:20px">
 <img class="img" src="/img/sommer-biketrail-corviglia.jpg" alt="Flow-Trail auf Corviglia mit Blick auf den Silvaplanersee" width="2400" height="1351" loading="lazy" style="height:260px;border-radius:8px;margin-bottom:18px;object-position:center 30%">
+<div>
 <h3>Bergführer, Bikeschulen und Wassersport</h3>
 <p style="margin:0;font-size:16px">Ob geführte Hochtour, Biketechnik-Kurs, Trail-Tag auf Corviglia oder der erste Kitekurs auf dem Silvaplanersee – im Sommer gibt es im Oberengadin für jedes Niveau das passende Angebot. In der Hochsaison frühzeitig reservieren.</p>
 </div>
-<ul>
+</div>
+<details class="contacts"><summary>Wertvolle Kontakte</summary><div style="padding:0 0 8px"><ul>
 <li class="tip"><strong>Bergsteigerschule Pontresina</strong><br><span style="color:#2f3634">Bergführer für Hochtouren, Klettern und geführte Wanderungen im Bernina-Gebiet. Via Maistra 163, Pontresina.</span><br><span style="font-size:15px">+41 81 842 82 82 · info@bergsteiger-pontresina.ch · <a href="https://www.bergsteiger-pontresina.ch" target="_blank" rel="noopener">bergsteiger-pontresina.ch</a></span></li>
 <li class="tip"><strong>St. Moritz Bike School – Suvretta Sports</strong><br><span style="color:#2f3634">Fahrtechnik-Kurse, Private Guiding, Kids Days und geführte Touren mit Swiss Cycling Guides; Bike- und E-Bike-Verleih. Via Mezdi 17, St. Moritz.</span><br><span style="font-size:15px">+41 81 836 61 61 · info@suvretta-sports.ch · <a href="https://www.suvretta-sports.ch" target="_blank" rel="noopener">suvretta-sports.ch</a></span></li>
 <li class="tip"><strong>Trails auf Corviglia</strong><br><span style="color:#2f3634">WM Flow Trail mit 360°-Kurve, Olympic- und Foppettas-Trail sowie Skill Park zum Üben – Bikemitnahme mit der Standseilbahn ab St. Moritz Dorf.</span><br><span style="font-size:15px">Engadin St. Moritz Mountains · <a href="https://www.mountains.ch" target="_blank" rel="noopener">mountains.ch</a></span></li>
 <li class="tip"><strong>Swiss Kitesurf, Silvaplana</strong><br><span style="color:#2f3634">Kite-, Kitefoil- und Wingschule am Silvaplanersee seit 1999; Windsurf- und SUP-Verleih bei Windsurfing Silvaplana nebenan.</span><br><span style="font-size:15px">+41 81 828 97 67 · info@kitesailing.ch · <a href="https://kitesailing.ch" target="_blank" rel="noopener">kitesailing.ch</a></span></li>
-</ul>
+</ul></div></details>
 </div>
 <div class="grid2">
 <div>

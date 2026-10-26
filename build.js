@@ -76,6 +76,8 @@ html[data-season="summer"] [data-s="winter"],html[data-season="winter"] [data-s=
 .seg-lang .lang-on{background:#1b1f1e;color:#fff}
 .seasons{margin-right:8px}
 .sub-h{font-size:22px;margin:0 0 12px}
+.school-top .img{height:220px !important}
+@media (max-width:760px){.school-top{grid-template-columns:repeat(1,minmax(0,1fr)) !important}}
 .grid2,.grid3,.grid4{align-items:stretch}
 @media (max-width:760px){.tour-0{order:0}.tour-2{order:1}.tour-1{order:2}.tour-3{order:3}}
 .grid2>.card,.grid3>.card,.grid4>.card{height:100%;box-sizing:border-box}
@@ -274,25 +276,29 @@ ${t.tours.map((x, i) => `<div class="card tour-${i}">${x.img ? `<img class="img"
 </div>
 </div>
 </div>
-<div class="card" data-s="winter" style="margin-top:32px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;align-items:start" id="skischulen">
-<div>
+<div class="card" data-s="winter" style="margin-top:32px" id="skischulen">
+<div class="school-top" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:28px;align-items:center;margin-bottom:20px">
 <img class="img" src="/img/skischule.jpg" alt="${esc(t.altKid)}" width="1920" height="1280" loading="lazy" style="height:260px;border-radius:8px;margin-bottom:18px">
+<div>
 <h3>${esc(t.schoolH)}</h3>
 <p style="margin:0;font-size:16px">${esc(t.schoolP)}</p>
 </div>
-<ul>
-${t.schools.map((s) => `<li class="tip"><strong>${esc(s.n)}</strong><br><span style="color:#2f3634">${esc(s.d)}</span><br><span style="font-size:15px">${esc(s.c)} · <a href="${esc(s.u)}" target="_blank" rel="noopener">${esc(s.w)}</a></span></li>`).join('\n')}
-</ul>
 </div>
-<div class="card" data-s="summer" style="margin-top:32px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;align-items:start" id="sommerschulen">
-<div>
+<details class="contacts"><summary>${esc(t.contactsH)}</summary><div style="padding:0 0 8px"><ul>
+${t.schools.map((s) => `<li class="tip"><strong>${esc(s.n)}</strong><br><span style="color:#2f3634">${esc(s.d)}</span><br><span style="font-size:15px">${esc(s.c)} · <a href="${esc(s.u)}" target="_blank" rel="noopener">${esc(s.w)}</a></span></li>`).join('\n')}
+</ul></div></details>
+</div>
+<div class="card" data-s="summer" style="margin-top:32px" id="sommerschulen">
+<div class="school-top" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:28px;align-items:center;margin-bottom:20px">
 <img class="img" src="/img/sommer-biketrail-corviglia.jpg" alt="${esc(t.smCardsS[1].alt)}" width="2400" height="1351" loading="lazy" style="height:260px;border-radius:8px;margin-bottom:18px;object-position:center 30%">
+<div>
 <h3>${esc(t.schoolHS)}</h3>
 <p style="margin:0;font-size:16px">${esc(t.schoolPS)}</p>
 </div>
-<ul>
+</div>
+<details class="contacts"><summary>${esc(t.contactsH)}</summary><div style="padding:0 0 8px"><ul>
 ${t.schoolsS.map((s) => `<li class="tip"><strong>${esc(s.n)}</strong><br><span style="color:#2f3634">${esc(s.d)}</span><br><span style="font-size:15px">${esc(s.c)} · <a href="${esc(s.u)}" target="_blank" rel="noopener">${esc(s.w)}</a></span></li>`).join('\n')}
-</ul>
+</ul></div></details>
 </div>
 <div class="grid2">
 <div>
