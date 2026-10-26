@@ -286,6 +286,7 @@ ${t.schools.map((s) => `<li class="tip"><strong>${esc(s.n)}</strong><br><span st
 </div>
 <div class="card" data-s="summer" style="margin-top:32px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;align-items:start" id="sommerschulen">
 <div>
+<img class="img" src="/img/sommer-biketrail-corviglia.jpg" alt="${esc(t.smCardsS[1].alt)}" width="2400" height="1351" loading="lazy" style="height:260px;border-radius:8px;margin-bottom:18px;object-position:center 30%">
 <h3>${esc(t.schoolHS)}</h3>
 <p style="margin:0;font-size:16px">${esc(t.schoolPS)}</p>
 </div>
