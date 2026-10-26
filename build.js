@@ -68,12 +68,17 @@ picture{display:block;width:100%}
 .hdr-cta{display:none !important}.langs{gap:4px}.lang{min-width:34px;padding:6px 7px;font-size:12px;min-height:36px}.brand{font-size:16px !important}
 .li span:first-child{flex:1 1 auto}.li span+span{text-align:right}.hero-grid>.hero-pic{order:-1}}
 html[data-season="summer"] [data-s="winter"],html[data-season="winter"] [data-s="summer"]{display:none !important}
-.seasons{display:flex;gap:4px;align-items:center;margin-right:10px;border-right:1px solid #e3e7e4;padding-right:10px}
-.season{min-width:0;padding:8px 12px;white-space:nowrap}
+.seg{display:inline-flex;align-items:center;padding:3px;border-radius:999px;gap:2px}
+.seg-season{background:#e6f0ea}
+.seg-lang{background:#eef1ef}
+.seg .lang{border:0;background:transparent;min-height:30px;min-width:0;padding:5px 13px;font-size:13px;border-radius:999px;white-space:nowrap;line-height:1.2}
+.seg-season .lang-on{background:#1e4d3f;color:#fff}
+.seg-lang .lang-on{background:#1b1f1e;color:#fff}
+.seasons{margin-right:8px}
 .sub-h{font-size:22px;margin:0 0 12px}
 .tour-meta{font-size:13px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#1e4d3f;margin:0 0 8px}
-.s-ico{display:none}.mob-seasons{display:none}
-@media (max-width:760px){.seasons{display:none}.mob-seasons{display:flex}.mob-seasons .season{min-height:40px;font-size:14px;padding:8px 10px}}
+.s-ico{display:none}.mob-seasons-wrap{display:none}
+@media (max-width:760px){.seasons{display:none}.mob-seasons-wrap{display:block}.mob-seasons .season{min-height:36px;font-size:14px}.seg .lang{padding:5px 10px;font-size:12px;min-height:28px}}
 `;
 
 // ---------- 4. Helpers ----------
@@ -86,9 +91,9 @@ const svgChat = (size) => `<svg aria-hidden="true" width="${size}" height="${siz
 const LANGS = { de: { dir: '', hreflang: 'de', extra: ['de-CH', 'de-DE', 'de-AT'], ogLocale: 'de_CH' }, en: { dir: 'en/', hreflang: 'en', extra: ['en-GB'], ogLocale: 'en_GB' }, it: { dir: 'it/', hreflang: 'it', extra: ['it-IT', 'it-CH'], ogLocale: 'it_IT' } };
 const HREFLANGS = Object.values(LANGS).flatMap((v) => [v.hreflang, ...v.extra].map((h) => [h, v.dir]));
 const META = {
-  de: { title: 'Chesa Somplaz – Ferienwohnung St. Moritz Dorf', desc: "Chesa Somplaz: 4.5-Zimmer-Ferienwohnung im Zentrum von St. Moritz Dorf, 113 m², bis 6 Personen, Tiefgarage. Winter 2026/27 reserviert – ab Herbst 2027 frisch renoviert und neu möbliert. Jetzt in die Warteliste eintragen." },
-  en: { title: 'Chesa Somplaz – Holiday apartment St. Moritz Dorf', desc: 'Chesa Somplaz: 4.5-room holiday apartment in the centre of St. Moritz Dorf, 113 m², up to 6 guests, garage. Winter 2026/27 reserved – freshly renovated and newly furnished from autumn 2027. Join the waiting list now.' },
-  it: { title: 'Chesa Somplaz – Appartamento vacanze St. Moritz Dorf', desc: "Chesa Somplaz: appartamento di 4,5 locali nel centro di St. Moritz Dorf, 113 m², fino a 6 persone, garage. Inverno 2026/27 riservato – dall’autunno 2027 appena ristrutturato e arredato a nuovo. Iscrivetevi alla lista d’attesa." },
+  de: { title: 'Chesa Somplaz – Ferienwohnung St. Moritz Dorf', desc: "Chesa Somplaz: 4.5-Zimmer-Ferienwohnung im Zentrum von St. Moritz Dorf, 113 m², bis 6 Personen, Tiefgarage – Sommer und Winter im Engadin. Winter 2026/27 reserviert, ab Herbst 2027 frisch renoviert. Warteliste offen." },
+  en: { title: 'Chesa Somplaz – Holiday apartment St. Moritz Dorf', desc: 'Chesa Somplaz: 4.5-room holiday apartment in the centre of St. Moritz Dorf, 113 m², up to 6 guests, garage – summer and winter in the Engadin. Winter 2026/27 reserved, freshly renovated from autumn 2027. Waiting list open.' },
+  it: { title: 'Chesa Somplaz – Appartamento vacanze St. Moritz Dorf', desc: "Chesa Somplaz: appartamento di 4,5 locali nel centro di St. Moritz Dorf, 113 m², fino a 6 persone, garage – estate e inverno in Engadina. Inverno 2026/27 riservato, dall’autunno 2027 appena ristrutturato. Lista d’attesa aperta." },
 };
 const WA = '41794191462';
 
@@ -109,7 +114,7 @@ function jsonLd(lang, t) {
         checkinTime: '16:00', checkoutTime: '10:00', petsAllowed: 'on request',
         containsPlace: { '@type': 'Accommodation', additionalType: 'EntirePlace', occupancy: { '@type': 'QuantitativeValue', value: 6 }, numberOfBedrooms: 3, numberOfBathroomsTotal: 2, floorSize: { '@type': 'QuantitativeValue', value: 113, unitCode: 'MTK' }, amenityFeature: t.aptEquip.map((n) => ({ '@type': 'LocationFeatureSpecification', name: n, value: true })), bed: [{ '@type': 'BedDetails', typeOfBed: 'double 160 cm', numberOfBeds: 1 }, { '@type': 'BedDetails', typeOfBed: 'bunk bed 2 x 90 cm', numberOfBeds: 2 }, { '@type': 'BedDetails', typeOfBed: 'double 180 cm', numberOfBeds: 1 }] },
         amenityFeature: t.aptEquip.map((n) => ({ '@type': 'LocationFeatureSpecification', name: n, value: true })),
-        image: ['st-moritz-dorf', 'wohnbereich-cheminee-v3', 'wohnung-kueche', 'wohnung-schlafzimmer3', 'wohnung-bad', 'wohnung-dusche', 'abendstimmung', 'hero-silsersee', 'piste-corviglia', 'langlauf'].map((n) => DOMAIN + '/img/' + n + '.jpg'),
+        image: ['st-moritz-dorf', 'sommer-st-moritz-hero', 'wohnbereich-cheminee-v3', 'wohnung-kueche', 'wohnung-schlafzimmer3', 'abendstimmung', 'hero-silsersee', 'piste-corviglia', 'langlauf', 'sommer-silsersee', 'sommer-biketrail-corviglia', 'herbst-silvaplanersee'].map((n) => DOMAIN + '/img/' + n + '.jpg'),
         offers: { '@type': 'Offer', availabilityStarts: '2027-10-01', description: t.priceLead, availability: 'https://schema.org/PreOrder', url: url + '#preise' },
       },
       { '@type': 'FAQPage', mainEntity: t.faqs.map((q) => ({ '@type': 'Question', name: q.q, acceptedAnswer: { '@type': 'Answer', text: q.a } })) },
@@ -164,15 +169,15 @@ ${Object.values(LANGS).filter((v) => v.ogLocale !== L.ogLocale).map((v) => `<met
 ${navLinks.slice(0, 5).map(([h, n]) => `<a href="${h}">${esc(n)}</a>`).join('\n')}
 </nav>
 <div class="langs" style="display:flex;gap:6px;align-items:center;flex-wrap:nowrap">
-<div class="seasons" role="group" aria-label="Season"><button type="button" class="lang season" data-set-season="winter" title="${esc(t.seasonWinter)}">${esc(t.seasonWinter)}</button><button type="button" class="lang season" data-set-season="summer" title="${esc(t.seasonSummer)}">${esc(t.seasonSummer)}</button></div>
-${langLinks}
+<div class="seasons seg seg-season" role="group" aria-label="Season"><button type="button" class="lang season" data-set-season="winter" title="${esc(t.seasonWinter)}">${esc(t.seasonWinter)}</button><button type="button" class="lang season" data-set-season="summer" title="${esc(t.seasonSummer)}">${esc(t.seasonSummer)}</button></div>
+<div class="seg seg-lang">${langLinks}</div>
 <button class="burger" id="burger" aria-label="${esc(t.navMenu)}" aria-expanded="false" aria-controls="mobnav"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1b1f1e" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>
 </div>
 </div>
 <nav class="mobnav" id="mobnav" aria-label="Navigation">
 ${navLinks.slice(0, 5).map(([h, n]) => `<a href="${h}">${esc(n)}</a>`).join('\n')}
 <a href="#buchung" style="color:#1e4d3f;font-weight:800">${esc(t.navBook)} →</a>
-<div class="mob-seasons" style="display:flex;gap:8px;padding:14px 24px;border-top:1px solid #eef1ef"><button type="button" class="lang season" data-set-season="winter" style="flex:1">${esc(t.seasonWinter)}</button><button type="button" class="lang season" data-set-season="summer" style="flex:1">${esc(t.seasonSummer)}</button></div>
+<div class="mob-seasons-wrap" style="padding:14px 24px;border-top:1px solid #eef1ef"><div class="mob-seasons seg seg-season" style="display:flex;width:100%"><button type="button" class="lang season" data-set-season="winter" style="flex:1">${esc(t.seasonWinter)}</button><button type="button" class="lang season" data-set-season="summer" style="flex:1">${esc(t.seasonSummer)}</button></div></div>
 </nav>
 </header>
 
@@ -481,7 +486,28 @@ ${Object.values(LANGS).map((v) => `<url><loc>${DOMAIN}/${v.dir}</loc><lastmod>${
 </urlset>
 `);
 fs.writeFileSync(path.join(OUT, 'robots.txt'), ['User-agent: *', 'Allow: /', '', ...['GPTBot', 'OAI-SearchBot', 'ChatGPT-User', 'ClaudeBot', 'Claude-User', 'PerplexityBot', 'Google-Extended', 'Bingbot', 'Applebot'].flatMap((ua) => [`User-agent: ${ua}`, 'Allow: /', '']), `Sitemap: ${DOMAIN}/sitemap.xml`, ''].join('\n'));
-fs.writeFileSync(path.join(OUT, 'llms.txt'), `# Chesa Somplaz – Ferienwohnung St. Moritz Dorf\n\n> 4.5-Zimmer-Ferienwohnung (113 m², 3. Stock, Lift) für bis zu 6 Personen im Zentrum von St. Moritz Dorf, Via Somplaz 10. Die Wintersaison 2026/27 ist reserviert. Im Frühling 2027 werden Küche und Bäder renoviert; ab Herbst 2027 wird die Wohnung frisch renoviert und neu möbliert vermietet. Warteliste offen – Interessenten werden vor der offiziellen Vermarktung informiert. Preise auf Anfrage. Kontakt: booking@chesa-somplaz.ch, WhatsApp +41 79 419 14 62.\n\n## Seiten\n\n- [Deutsch](${DOMAIN}/)\n- [English](${DOMAIN}/en/)\n- [Italiano](${DOMAIN}/it/)\n`);
+fs.writeFileSync(path.join(OUT, 'llms.txt'), `# Chesa Somplaz – Ferienwohnung St. Moritz Dorf
+
+> 4.5-Zimmer-Ferienwohnung (113 m², 3. Stock, Lift) für bis zu 6 Personen im Zentrum von St. Moritz Dorf, Via Somplaz 10, Engadin, Schweiz. Drei Schlafzimmer (Doppelbett 160 cm, Kajütenbett 2×90 cm, Doppelbett 180 cm), Bad/WC, Dusche/WC, eigene Waschküche, Cheminée, Balkon, Tiefgaragenplatz, Skiraum, WLAN. Die Wintersaison 2026/27 ist reserviert. Im Frühling 2027 werden Küche und Bäder renoviert; ab Herbst 2027 wird die Wohnung frisch renoviert und komplett neu möbliert vermietet – Sommer und Winter. Warteliste offen: Interessenten werden vor der offiziellen Vermarktung informiert. Preise auf Anfrage. Kontakt: booking@chesa-somplaz.ch, WhatsApp +41 79 419 14 62. Gastgeberin: Vanessa Fasciati (Familienbesitz seit dem Bau des Hauses).
+
+## Lage
+- Mitten im Zentrum von St. Moritz Dorf: Coop 3 Min., Bushaltestelle Serlas 3 Min., Standseilbahn Chantarella–Corviglia 6 Min. zu Fuss; St. Moritzersee und Bahnhof 4 Min. mit dem Auto, Engadin Airport Samedan 12 Min.
+
+## Winter
+- Skigebiete Corviglia, Corvatsch, Diavolezza; Langlauf (über 200 km Loipen); Winterwandern; Skischulen (Schweizer Skischule St. Moritz, Suvretta Snowsports), Bergsteigerschule Pontresina, Heli Bernina.
+- Events: Snow Polo World Cup (Januar), White Turf (Februar), Engadin Skimarathon (März), Chalandamarz (1. März), SunIce Festival (April).
+
+## Sommer und Herbst
+- Wandern (580 km Wege), Biken (Flow-Trails Corviglia, Suvretta Loop 671, Bernina Express 673), Seen (Segeln/Surfen Silvaplana, Baden Lej da Staz), goldene Lärchen im Oktober.
+- Lieblingstouren: Piz Nair über den Suvrettapass; Lagh da Saoseo im Herbst; Bike Suvretta-Trail ins Val Bever; Bike Bernina-Downhill nach Poschiavo.
+- Events: Festival da Jazz, British Classic Car Meeting, Summer Country Polo (Juli), Engadin Festival (Juli–August), Music mondaine (Juli–September), St. Moritz Gourmet Festival, Art Film Festival, Running Festival (August), Bernina Gran Turismo (September), The Alpine Rendezvous (Oktober).
+
+## Seiten
+- [Deutsch](${DOMAIN}/)
+- [English](${DOMAIN}/en/)
+- [Italiano](${DOMAIN}/it/)
+- Sitemap: ${DOMAIN}/sitemap.xml
+`);
 fs.writeFileSync(path.join(OUT, 'CNAME'), 'chesa-somplaz.ch\n');
 // IndexNow (Bing & Co.): Schlüsseldatei muss unter /<key>.txt erreichbar sein; Ping erfolgt im Deploy-Workflow
 const INDEXNOW_KEY = '30a98f94c0fa4958990dec08f692916c';
