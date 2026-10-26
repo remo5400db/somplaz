@@ -194,7 +194,6 @@ ${t.facts.map((f) => `<li style="background:#f3f5f3;border-radius:999px;padding:
 <h2 class="h2">${esc(t.aptTitle)}</h2>
 <p class="lead" style="margin:0">${esc(t.aptLead)}</p>
 <figure style="margin:40px 0 0"><img class="img" src="/img/wohnbereich-cheminee-v3.jpg" alt="${esc(t.altLiving)}" width="1536" height="1024" loading="lazy" style="height:520px"><figcaption style="font-size:14px;color:#5a6361;margin-top:8px">${esc(t.capLiving)}</figcaption></figure>
-<p style="margin:16px 0 0;font-size:14px;color:#5a6361"><strong>${esc(t.photoNoteH)}</strong> ${esc(t.photoNote)}</p>
 <div class="grid2">
 <div class="card"><h3>${esc(t.aptSleepH)}</h3><ul>${li(t.aptSleep)}</ul></div>
 <div class="card"><h3>${esc(t.aptBathH)}</h3><ul>${li(t.aptBath)}</ul></div>
