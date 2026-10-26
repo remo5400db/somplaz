@@ -79,9 +79,9 @@ const svgChat = (size) => `<svg aria-hidden="true" width="${size}" height="${siz
 const LANGS = { de: { dir: '', hreflang: 'de', extra: ['de-CH', 'de-DE', 'de-AT'], ogLocale: 'de_CH' }, en: { dir: 'en/', hreflang: 'en', extra: ['en-GB'], ogLocale: 'en_GB' }, it: { dir: 'it/', hreflang: 'it', extra: ['it-IT', 'it-CH'], ogLocale: 'it_IT' } };
 const HREFLANGS = Object.values(LANGS).flatMap((v) => [v.hreflang, ...v.extra].map((h) => [h, v.dir]));
 const META = {
-  de: { title: 'Chesa Somplaz – Ferienwohnung St. Moritz Dorf, Winter 2026/27', desc: "Chesa Somplaz: 4.5-Zimmer-Ferienwohnung im Zentrum von St. Moritz Dorf, 113 m², bis 6 Personen, Tiefgarage. Saisonmiete Winter 2026/27 CHF 20'000." },
-  en: { title: 'Chesa Somplaz – Holiday apartment St. Moritz Dorf, winter 2026/27', desc: 'Chesa Somplaz: 4.5-room holiday apartment in the centre of St. Moritz Dorf, 113 m², up to 6 guests, garage. Seasonal let winter 2026/27, CHF 20,000.' },
-  it: { title: 'Chesa Somplaz – Appartamento vacanze St. Moritz, inverno 2026/27', desc: "Chesa Somplaz: appartamento di 4,5 locali nel centro di St. Moritz Dorf, 113 m², fino a 6 persone, garage. Affitto stagionale inverno 2026/27, CHF 20'000." },
+  de: { title: 'Chesa Somplaz – Ferienwohnung St. Moritz Dorf, Winter 2026/27', desc: "Chesa Somplaz: 4.5-Zimmer-Ferienwohnung im Zentrum von St. Moritz Dorf, 113 m², bis 6 Personen, Tiefgarage. Saison 2026/27 reserviert – Warteliste und Anfragen ab Sommer 2027." },
+  en: { title: 'Chesa Somplaz – Holiday apartment St. Moritz Dorf, winter 2026/27', desc: 'Chesa Somplaz: 4.5-room holiday apartment in the centre of St. Moritz Dorf, 113 m², up to 6 guests, garage. Season 2026/27 reserved – waiting list and enquiries from summer 2027.' },
+  it: { title: 'Chesa Somplaz – Appartamento vacanze St. Moritz, inverno 2026/27', desc: "Chesa Somplaz: appartamento di 4,5 locali nel centro di St. Moritz Dorf, 113 m², fino a 6 persone, garage. Stagione 2026/27 riservata – lista d’attesa e richieste dall’estate 2027." },
 };
 const WA = '41794191462';
 
@@ -103,7 +103,7 @@ function jsonLd(lang, t) {
         containsPlace: { '@type': 'Accommodation', additionalType: 'EntirePlace', occupancy: { '@type': 'QuantitativeValue', value: 6 }, numberOfBedrooms: 3, numberOfBathroomsTotal: 2, floorSize: { '@type': 'QuantitativeValue', value: 113, unitCode: 'MTK' }, amenityFeature: t.aptEquip.map((n) => ({ '@type': 'LocationFeatureSpecification', name: n, value: true })), bed: [{ '@type': 'BedDetails', typeOfBed: 'double 160 cm', numberOfBeds: 1 }, { '@type': 'BedDetails', typeOfBed: 'bunk bed 2 x 90 cm', numberOfBeds: 2 }, { '@type': 'BedDetails', typeOfBed: 'double 180 cm', numberOfBeds: 1 }] },
         amenityFeature: t.aptEquip.map((n) => ({ '@type': 'LocationFeatureSpecification', name: n, value: true })),
         image: ['st-moritz-dorf', 'wohnbereich-cheminee-v3', 'wohnung-kueche', 'wohnung-schlafzimmer3', 'wohnung-bad', 'wohnung-dusche', 'abendstimmung', 'hero-silsersee', 'piste-corviglia', 'langlauf'].map((n) => DOMAIN + '/img/' + n + '.jpg'),
-        offers: { '@type': 'Offer', price: '20000', priceCurrency: 'CHF', validFrom: '2026-12-19', validThrough: '2027-04-06', description: t.priceLead, availability: 'https://schema.org/InStock', url: url + '#preise' },
+        offers: { '@type': 'Offer', validFrom: '2026-12-19', validThrough: '2027-04-06', description: t.priceLead, availability: 'https://schema.org/LimitedAvailability', url: url + '#preise' },
       },
       { '@type': 'FAQPage', mainEntity: t.faqs.map((q) => ({ '@type': 'Question', name: q.q, acceptedAnswer: { '@type': 'Answer', text: q.a } })) },
     ],
@@ -293,7 +293,7 @@ ${t.arrBlocks.map((b) => `<div class="card"><img class="img" src="/${img(b.img)}
 <div class="grid2" style="align-items:start">
 <div class="card" style="background:#1e4d3f;color:#ffffff;border-color:#1e4d3f">
 <div style="font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;opacity:0.85">${esc(t.priceSeasonLabel)}</div>
-<div class="price" style="margin:6px 0 4px">${lang === 'en' ? 'CHF 20,000' : "CHF 20'000"}</div>
+<div class="price" style="margin:6px 0 4px">${esc(t.priceAmount)}</div>
 <div style="font-size:15px;opacity:0.9;margin-bottom:20px">${esc(t.pricePeriod)}</div>
 <table class="table"><tbody>
 ${t.priceRows.map((r) => `<tr><td>${esc(r.n)}</td><td>${esc(r.v)}</td></tr>`).join('')}
@@ -443,7 +443,7 @@ ${Object.values(LANGS).map((v) => `<url><loc>${DOMAIN}/${v.dir}</loc><lastmod>${
 </urlset>
 `);
 fs.writeFileSync(path.join(OUT, 'robots.txt'), ['User-agent: *', 'Allow: /', '', ...['GPTBot', 'OAI-SearchBot', 'ChatGPT-User', 'ClaudeBot', 'Claude-User', 'PerplexityBot', 'Google-Extended', 'Bingbot', 'Applebot'].flatMap((ua) => [`User-agent: ${ua}`, 'Allow: /', '']), `Sitemap: ${DOMAIN}/sitemap.xml`, ''].join('\n'));
-fs.writeFileSync(path.join(OUT, 'llms.txt'), `# Chesa Somplaz – Ferienwohnung St. Moritz Dorf\n\n> 4.5-Zimmer-Ferienwohnung (113 m², 3. Stock, Lift) für bis zu 6 Personen im Zentrum von St. Moritz Dorf, Via Somplaz 10. Saisonmiete Winter 2026/27 vom 19. Dezember 2026 bis 6. April 2027 für CHF 20'000 all-in (Nebenkosten, WLAN, Tiefgaragenplatz, Bettwäsche, Endreinigung). Kontakt: booking@chesa-somplaz.ch, WhatsApp +41 79 419 14 62.\n\n## Seiten\n\n- [Deutsch](${DOMAIN}/)\n- [English](${DOMAIN}/en/)\n- [Italiano](${DOMAIN}/it/)\n`);
+fs.writeFileSync(path.join(OUT, 'llms.txt'), `# Chesa Somplaz – Ferienwohnung St. Moritz Dorf\n\n> 4.5-Zimmer-Ferienwohnung (113 m², 3. Stock, Lift) für bis zu 6 Personen im Zentrum von St. Moritz Dorf, Via Somplaz 10. Die Wintersaison 2026/27 (19. Dezember 2026 bis 6. April 2027) ist reserviert; Warteliste und Anfragen ab Sommer 2027 (nach Renovation) willkommen. Preis auf Anfrage. Kontakt: booking@chesa-somplaz.ch, WhatsApp +41 79 419 14 62.\n\n## Seiten\n\n- [Deutsch](${DOMAIN}/)\n- [English](${DOMAIN}/en/)\n- [Italiano](${DOMAIN}/it/)\n`);
 fs.writeFileSync(path.join(OUT, 'CNAME'), 'chesa-somplaz.ch\n');
 // IndexNow (Bing & Co.): Schlüsseldatei muss unter /<key>.txt erreichbar sein; Ping erfolgt im Deploy-Workflow
 const INDEXNOW_KEY = '30a98f94c0fa4958990dec08f692916c';
