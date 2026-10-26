@@ -382,7 +382,7 @@ ${t.bookSteps.map((s) => `<div class="step"><div class="num">${esc(s.n)}</div><d
 <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
 <div class="field"><label class="label" for="f-name">${esc(t.fName)} <span class="req">*</span></label><input class="input" id="f-name" name="name" type="text" required autocomplete="name"></div>
 <div class="field"><label class="label" for="f-mail">${esc(t.fMail)} <span class="req">*</span></label><input class="input" id="f-mail" name="mail" type="email" required autocomplete="email"></div>
-<div class="field"><label class="label" for="f-period">${esc(t.fPeriod)}</label><input class="input" id="f-period" name="period" type="text" placeholder="${esc(t.fPeriodPh)}"></div>
+<div class="field"><div class="label">${esc(t.fPeriod)}</div><div class="grid2" style="margin-top:0;gap:16px"><div><label class="label" for="f-from" style="font-weight:500">${esc(t.fFrom)}</label><input class="input" id="f-from" name="from" type="date" min="2027-10-01"></div><div><label class="label" for="f-to" style="font-weight:500">${esc(t.fTo)}</label><input class="input" id="f-to" name="to" type="date" min="2027-10-01"></div></div></div>
 <div class="grid2" style="margin-top:0;gap:16px">
 <div class="field"><label class="label" for="f-pers">${esc(t.fPers)}</label><input class="input" id="f-pers" name="pers" type="number" min="1" max="6" value="6"></div>
 <div class="field"><label class="label" for="f-pet">${esc(t.fPet)}</label><select class="input" id="f-pet" name="pet"><option value="no">${esc(t.fNo)}</option><option value="yes">${esc(t.fYes)}</option></select></div>
@@ -445,12 +445,12 @@ ${t.ds.map((x) => `<div class="faq"><strong style="display:block">${esc(x.h)}</s
   if(f){var hint=document.getElementById('form-hint'),btn=f.querySelector('button[type=submit],.btn[type=submit],button.btn');f.addEventListener('submit',function(e){e.preventDefault();var g=function(n){return f.elements[n]?f.elements[n].value.trim():'';};var L=${JSON.stringify(t.mailLabels)};
     if(!g('name')||!/\\S+@\\S+\\.\\S+/.test(g('mail'))){hint.textContent=${JSON.stringify(t.formNeed)};f.elements[g('name')?'mail':'name'].focus();return;}
     if(f.elements.botcheck&&f.elements.botcheck.checked){return;}
-    var body=[L.name+': '+g('name'),L.mail+': '+g('mail'),L.period+': '+g('period'),L.pers+': '+g('pers'),L.pet+': '+(g('pet')==='yes'?L.yes:L.no),'',L.msg+':',g('msg')].join('\\n');
+    var body=[L.name+': '+g('name'),L.mail+': '+g('mail'),L.period+': '+(g('from')||'–')+' '+L.to+' '+(g('to')||'–'),L.pers+': '+g('pers'),L.pet+': '+(g('pet')==='yes'?L.yes:L.no),'',L.msg+':',g('msg')].join('\\n');
     var mailto='mailto:booking@chesa-somplaz.ch?subject='+encodeURIComponent(${JSON.stringify(t.mailSubject)})+'&body='+encodeURIComponent(body);
     if(!window.fetch){window.location.href=mailto;return;}
     hint.textContent=${JSON.stringify(t.formSending)};if(btn)btn.disabled=true;
     var payload={access_key:'00f01204-495a-4d56-9112-0858d3dfa444',subject:${JSON.stringify(t.mailSubject)},from_name:'chesa-somplaz.ch',name:g('name'),email:g('mail'),replyto:g('mail'),message:body};
-    payload[L.period]=g('period');payload[L.pers]=g('pers');payload[L.pet]=(g('pet')==='yes'?L.yes:L.no);payload['language']=document.documentElement.lang;
+    payload[L.period]=(g('from')||'–')+' '+L.to+' '+(g('to')||'–');payload[L.pers]=g('pers');payload[L.pet]=(g('pet')==='yes'?L.yes:L.no);payload['language']=document.documentElement.lang;
     fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(payload)}).then(function(r){return r.json();}).then(function(d){
       if(d&&d.success){hint.textContent=${JSON.stringify(t.formDone)};hint.style.color='#1e4d3f';hint.style.fontWeight='700';f.reset();if(btn)btn.disabled=false;}
       else{throw new Error('fail');}

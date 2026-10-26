@@ -379,7 +379,7 @@ details[open] summary::after{content:"–"}
 <p style="margin:0 0 20px;font-size:15px;color:#5a6361">{{t.formLead}}</p>
 <div class="field"><label class="label" for="f-name">{{t.fName}} <span class="req">*</span></label><input class="input" id="f-name" type="text" required="required" value="{{form.name}}" onChange="{{onName}}"></div>
 <div class="field"><label class="label" for="f-mail">{{t.fMail}} <span class="req">*</span></label><input class="input" id="f-mail" type="email" required="required" value="{{form.mail}}" onChange="{{onMail}}"></div>
-<div class="field"><label class="label" for="f-period">{{t.fPeriod}}</label><input class="input" id="f-period" type="text" placeholder="{{t.fPeriodPh}}" value="{{form.from}}" onChange="{{onFrom}}"></div>
+<div class="field"><label class="label">{{t.fPeriod}}</label><div class="grid2" style="margin-top:0;gap:16px"><div><label class="label" for="f-from" style="font-weight:500">{{t.fFrom}}</label><input class="input" id="f-from" type="date" value="{{form.from}}" onChange="{{onFrom}}"></div><div><label class="label" for="f-to" style="font-weight:500">{{t.fTo}}</label><input class="input" id="f-to" type="date" value="{{form.to}}" onChange="{{onTo}}"></div></div></div>
 <div class="grid2" style="margin-top:0;gap:16px">
 <div class="field"><label class="label" for="f-pers">{{t.fPers}}</label><input class="input" id="f-pers" type="number" min="1" max="6" value="{{form.pers}}" onChange="{{onPers}}"></div>
 <div class="field"><label class="label" for="f-pet">{{t.fPet}}</label><select class="input" id="f-pet" value="{{form.pet}}" onChange="{{onPet}}"><option value="no">{{t.fNo}}</option><option value="yes">{{t.fYes}}</option></select></div>
@@ -608,7 +608,7 @@ class Component extends DCLogic {
         bookCancel: ['Bis 60 Tage vor Mietbeginn: Rückerstattung der Anzahlung abzüglich CHF 300 Bearbeitungsgebühr', '59 bis 30 Tage vor Mietbeginn: 50 % des Mietpreises', 'Weniger als 30 Tage vor Mietbeginn: 100 % des Mietpreises', 'Wir empfehlen den Abschluss einer Reiserücktrittsversicherung.'],
         formH: 'Warteliste für die Vermietung ab Herbst 2027',
         formLead: 'Unverbindlich – wir melden uns vor der offiziellen Vermarktung bei Ihnen. Pflichtfelder sind mit * markiert.',
-        fName: 'Name', fMail: 'E-Mail', fPeriod: 'Gewünschter Zeitraum', fPeriodPh: 'z. B. Winter 2027/28 oder Februar 2028', fPers: 'Personen', fPet: 'Haustier', fNo: 'Nein', fYes: 'Ja', fMsg: 'Nachricht', fSend: 'In die Warteliste eintragen',
+        fName: 'Name', fMail: 'E-Mail', fPeriod: 'Gewünschter Zeitraum', fFrom: 'von', fTo: 'bis', fPers: 'Personen', fPet: 'Haustier', fNo: 'Nein', fYes: 'Ja', fMsg: 'Nachricht', fSend: 'In die Warteliste eintragen',
         formAfter: 'Ihr Eintrag wird direkt an uns übermittelt – Sie erhalten keine automatische Bestätigung, wir melden uns persönlich.', formDone: 'Vielen Dank! Ihr Eintrag ist bei uns eingegangen – wir melden uns vor der offiziellen Vermarktung.', formError: 'Die Übermittlung hat nicht geklappt – bitte schreiben Sie uns direkt per E-Mail oder WhatsApp.', formSending: 'Wird gesendet …',
         formNeed: 'Name und E-Mail ausfüllen – dann wird der Button aktiv.',
         waBtn: 'Per WhatsApp anfragen',
@@ -653,7 +653,7 @@ class Component extends DCLogic {
           {h:'10. Änderungen', p:'Wir können diese Datenschutzerklärung jederzeit anpassen. Es gilt die jeweils auf dieser Website veröffentlichte Fassung.'}
         ],
         mailSubject: 'Warteliste Chesa Somplaz – Ferienwohnung St. Moritz',
-        mailLabels: {name:'Name',mail:'E-Mail',period:'Gewünschter Zeitraum',pers:'Personen',pet:'Haustier',msg:'Nachricht',yes:'Ja',no:'Nein'}
+        mailLabels: {name:'Name',mail:'E-Mail',period:'Gewünschter Zeitraum',from:'von',to:'bis',pers:'Personen',pet:'Haustier',msg:'Nachricht',yes:'Ja',no:'Nein'}
       },
       en: {
         brand: 'Chesa Somplaz',
@@ -787,7 +787,7 @@ class Component extends DCLogic {
         bookCancel: ['Up to 60 days before arrival: refund of the down payment minus CHF 300 handling fee', '59 to 30 days before arrival: 50% of the rent', 'Less than 30 days before arrival: 100% of the rent', 'We recommend taking out travel cancellation insurance.'],
         formH: 'Waiting list for letting from autumn 2027',
         formLead: 'No obligation – we will contact you before the official launch. Required fields are marked with *.',
-        fName: 'Name', fMail: 'E-mail', fPeriod: 'Preferred period', fPeriodPh: 'e.g. winter 2027/28 or February 2028', fPers: 'Guests', fPet: 'Pet', fNo: 'No', fYes: 'Yes', fMsg: 'Message', fSend: 'Join the waiting list',
+        fName: 'Name', fMail: 'E-mail', fPeriod: 'Preferred period', fFrom: 'from', fTo: 'to', fPers: 'Guests', fPet: 'Pet', fNo: 'No', fYes: 'Yes', fMsg: 'Message', fSend: 'Join the waiting list',
         formAfter: 'Your entry is sent directly to us – there is no automatic confirmation, we will get in touch personally.', formDone: 'Thank you! Your entry has reached us – we will be in touch before the official launch.', formError: 'Sending failed – please contact us directly by e-mail or WhatsApp.', formSending: 'Sending …',
         formNeed: 'Fill in name and e-mail – the button then becomes active.',
         waBtn: 'Enquire via WhatsApp',
@@ -832,7 +832,7 @@ class Component extends DCLogic {
           {h:'10. Changes', p:'We may amend this privacy policy at any time. The version published on this website applies.'}
         ],
         mailSubject: 'Waiting list Chesa Somplaz – holiday apartment St. Moritz',
-        mailLabels: {name:'Name',mail:'E-mail',period:'Preferred period',pers:'Guests',pet:'Pet',msg:'Message',yes:'Yes',no:'No'}
+        mailLabels: {name:'Name',mail:'E-mail',period:'Preferred period',from:'from',to:'to',pers:'Guests',pet:'Pet',msg:'Message',yes:'Yes',no:'No'}
       },
       it: {
         brand: 'Chesa Somplaz',
@@ -966,7 +966,7 @@ class Component extends DCLogic {
         bookCancel: ['Fino a 60 giorni prima dell’arrivo: rimborso dell’acconto meno CHF 300 di spese', 'Da 59 a 30 giorni prima dell’arrivo: 50% del canone', 'Meno di 30 giorni prima dell’arrivo: 100% del canone', 'Consigliamo di stipulare un’assicurazione annullamento viaggio.'],
         formH: 'Lista d’attesa per l’affitto dall’autunno 2027',
         formLead: 'Senza impegno – vi contatteremo prima della commercializzazione ufficiale. I campi obbligatori sono contrassegnati con *.',
-        fName: 'Nome', fMail: 'E-mail', fPeriod: 'Periodo desiderato', fPeriodPh: 'ad es. inverno 2027/28 o febbraio 2028', fPers: 'Persone', fPet: 'Animale', fNo: 'No', fYes: 'Sì', fMsg: 'Messaggio', fSend: 'Iscriviti alla lista d’attesa',
+        fName: 'Nome', fMail: 'E-mail', fPeriod: 'Periodo desiderato', fFrom: 'dal', fTo: 'al', fPers: 'Persone', fPet: 'Animale', fNo: 'No', fYes: 'Sì', fMsg: 'Messaggio', fSend: 'Iscriviti alla lista d’attesa',
         formAfter: 'La vostra iscrizione viene inviata direttamente a noi – nessuna conferma automatica, vi contatteremo personalmente.', formDone: 'Grazie! La vostra iscrizione è arrivata – vi contatteremo prima della commercializzazione ufficiale.', formError: 'L’invio non è riuscito – scriveteci direttamente via e-mail o WhatsApp.', formSending: 'Invio in corso …',
         formNeed: 'Compilate nome ed e-mail – il pulsante diventa attivo.',
         waBtn: 'Richiesta via WhatsApp',
@@ -1011,7 +1011,7 @@ class Component extends DCLogic {
           {h:'10. Modifiche', p:'Possiamo modificare questa informativa in qualsiasi momento. Fa fede la versione pubblicata su questo sito.'}
         ],
         mailSubject: 'Lista d’attesa Chesa Somplaz – appartamento St. Moritz',
-        mailLabels: {name:'Nome',mail:'E-mail',period:'Periodo desiderato',pers:'Persone',pet:'Animale',msg:'Messaggio',yes:'Sì',no:'No'}
+        mailLabels: {name:'Nome',mail:'E-mail',period:'Periodo desiderato',from:'dal',to:'al',pers:'Persone',pet:'Animale',msg:'Messaggio',yes:'Sì',no:'No'}
       }
     };
   }
