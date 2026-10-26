@@ -26,6 +26,7 @@
 <meta property="og:locale:alternate" content="en_GB">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="robots" content="index,follow,max-image-preview:large">
+<script>(function(){var s=null;try{s=localStorage.getItem('cs-season');}catch(e){}if(s!=='summer'&&s!=='winter'){var m=new Date().getMonth()+1;s=(m>=5&&m<=10)?'summer':'winter';}document.documentElement.setAttribute('data-season',s);})();</script>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-48.png" type="image/png" sizes="48x48">
 <link rel="icon" href="/favicon-192.png" type="image/png" sizes="192x192">
@@ -107,9 +108,15 @@ picture{display:block;width:100%}
 .card,.tip,.faq,.li,.lead,.step,.table td,details,summary,.mobnav a{overflow-wrap:anywhere;word-break:normal}
 .li{align-items:flex-start}
 .tip a,.faq a,.card a{overflow-wrap:anywhere}
-@media (max-width:760px){.burger{display:flex}.hero-grid>picture{order:-1}.table td:first-child{width:40%}.price{font-size:32px}
+@media (max-width:760px){.burger{display:flex}.hero-grid>picture,.hero-grid>.hero-pic{order:-1}.table td:first-child{width:40%}.price{font-size:32px}
 .hdr-cta{display:none !important}.langs{gap:4px}.lang{min-width:34px;padding:6px 7px;font-size:12px;min-height:36px}.brand{font-size:16px !important}
-.li span:first-child{flex:1 1 auto}.li span+span{text-align:right}}
+.li span:first-child{flex:1 1 auto}.li span+span{text-align:right}.hero-grid>.hero-pic{order:-1}}
+html[data-season="summer"] [data-s="winter"],html[data-season="winter"] [data-s="summer"]{display:none !important}
+.seasons{display:flex;gap:4px;align-items:center;margin-right:10px;border-right:1px solid #e3e7e4;padding-right:10px}
+.season{min-width:0;padding:8px 12px;white-space:nowrap}
+.tour-meta{font-size:13px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#1e4d3f;margin:0 0 8px}
+.s-ico{display:none}.mob-seasons{display:none}
+@media (max-width:760px){.seasons{display:none}.mob-seasons{display:flex}.mob-seasons .season{min-height:40px;font-size:14px;padding:8px 10px}}
 </style>
 </head>
 <body>
@@ -125,6 +132,7 @@ picture{display:block;width:100%}
 <a href="#preise">Prezzi</a>
 </nav>
 <div class="langs" style="display:flex;gap:6px;align-items:center;flex-wrap:nowrap">
+<div class="seasons" role="group" aria-label="Season"><button type="button" class="lang season" data-set-season="winter" title="Inverno">Inverno</button><button type="button" class="lang season" data-set-season="summer" title="Estate">Estate</button></div>
 <a class="lang" href="/" lang="de" hreflang="de" style="display:inline-flex;align-items:center;justify-content:center">DE</a><a class="lang" href="/en/" lang="en" hreflang="en" style="display:inline-flex;align-items:center;justify-content:center">EN</a><a class="lang lang-on" href="/it/" lang="it" hreflang="it" style="display:inline-flex;align-items:center;justify-content:center">IT</a>
 <button class="burger" id="burger" aria-label="Apri menu" aria-expanded="false" aria-controls="mobnav"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1b1f1e" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>
 </div>
@@ -135,7 +143,8 @@ picture{display:block;width:100%}
 <a href="#stmoritz">St. Moritz</a>
 <a href="#anreise">Come arrivare</a>
 <a href="#preise">Prezzi</a>
-<a href="#buchung" style="color:#1e4d3f;font-weight:800">Lista d’attesa / Lista d’attesa →</a>
+<a href="#buchung" style="color:#1e4d3f;font-weight:800">Lista d’attesa →</a>
+<div class="mob-seasons" style="display:flex;gap:8px;padding:14px 24px;border-top:1px solid #eef1ef"><button type="button" class="lang season" data-set-season="winter" style="flex:1">Inverno</button><button type="button" class="lang season" data-set-season="summer" style="flex:1">Estate</button></div>
 </nav>
 </header>
 
@@ -155,7 +164,8 @@ picture{display:block;width:100%}
 <a class="link hero-sec" href="#wohnung">Vedi l’appartamento</a>
 </div>
 </div>
-<img class="img hero-img" src="/img/st-moritz-dorf.jpg" alt="St. Moritz Dorf in inverno: torre pendente, lago e montagne innevate" width="2400" height="1600" fetchpriority="high" style="object-position:center 70%">
+<div class="hero-pic" data-s="winter"><img class="img hero-img" src="/img/st-moritz-dorf.jpg" alt="St. Moritz Dorf in inverno: torre pendente, lago e montagne innevate" width="2400" height="1600" fetchpriority="high" style="object-position:center 70%"></div>
+<div class="hero-pic" data-s="summer"><img class="img hero-img" src="/img/sommer-st-moritz-hero.jpg" alt="St. Moritz Dorf in estate con il lago di St. Moritz e una barca a remi" width="2400" height="1597" fetchpriority="high" style="object-position:center 55%"></div>
 </div>
 </div>
 </section>
@@ -445,6 +455,7 @@ picture{display:block;width:100%}
 <section id="stmoritz" class="sec sec-alt">
 <div class="wrap">
 <div class="eyebrow">St. Moritz</div>
+<div data-s="winter">
 <h2 class="h2">Inverno a St. Moritz e in Engadina: sci, fondo ed eventi davanti alla porta</h2>
 <p class="lead" style="margin:0">St. Moritz si trova a 1856 m nell’Alta Engadina ed è una delle località più soleggiate della Svizzera: in inverno la neve quasi garantita incontra un cielo spesso blu intenso. Due volte sede dei Giochi olimpici invernali (1928 e 1948), è ancora oggi un punto d’incontro per sport invernali, cultura e buona cucina.</p>
 <div class="grid3">
@@ -452,7 +463,28 @@ picture{display:block;width:100%}
 <div class="card"><img class="img" src="/img/langlauf.jpg" alt="Pista di fondo sul lago ghiacciato di Silvaplana" width="1400" height="900" loading="lazy" style="height:200px;border-radius:8px;margin-bottom:18px"><h3>Sci di fondo in Engadina</h3><p style="margin:0;font-size:16px">L’Engadina è una delle migliori regioni europee per lo sci di fondo: oltre 200 km di piste battute, molte in piano sui laghi ghiacciati.</p></div>
 <div class="card"><img class="img" src="/img/winterwandern.jpg" alt="Sentiero invernale sul lago di Silvaplana con panchina al sole" width="1400" height="900" loading="lazy" style="height:200px;border-radius:8px;margin-bottom:18px"><h3>Escursioni invernali e slittino</h3><p style="margin:0;font-size:16px">Sentieri invernali battuti costeggiano i laghi e attraversano il bosco di Staz. La pista per slittini Preda–Bergün e la discesa dal Muottas Muragl sono tra le più lunghe della Svizzera.</p></div>
 </div>
-<div class="card" style="margin-top:32px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;align-items:start" id="skischulen">
+</div>
+<div data-s="summer">
+<h2 class="h2">Estate e autunno a St. Moritz e in Engadina: montagne, laghi e larici dorati</h2>
+<p class="lead" style="margin:0">In estate l’Alta Engadina diventa l’altopiano dei laghi: velisti e surfisti sul lago di Silvaplana, sentieri tra 1800 e 3000 metri, flow trail per i biker e, in ottobre, i boschi di larici dorati per cui la valle è famosa. Gli impianti di risalita di St. Moritz Dorf distano sei minuti a piedi dall’appartamento.</p>
+<div class="grid2" style="align-items:start">
+<div class="card"><img class="img" src="/img/sommer-seen-panorama.jpg" alt="Vista sui laghi dell’Alta Engadina in estate" width="1400" height="900" loading="lazy" style="height:220px;border-radius:8px;margin-bottom:18px"><h3>Escursioni su tre livelli</h3><p style="margin:0;font-size:16px">Dalla riva del lago ai sentieri nel bosco fino alle alte vie di Corviglia e Muottas Muragl: 580 chilometri di sentieri segnalati, molti raggiungibili con gli impianti. La passeggiata dei laghi da St. Moritz a Maloja è il classico.</p></div>
+<div class="card"><img class="img" src="/img/sommer-biketrail-corviglia.jpg" alt="Flow trail sul Corviglia con vista sul lago di Silvaplana" width="1400" height="900" loading="lazy" style="height:220px;border-radius:8px;margin-bottom:18px"><h3>In bici sul Corviglia</h3><p style="margin:0;font-size:16px">L’Engadina è una delle grandi regioni bike delle Alpi: flow trail dalla stazione a monte del Corviglia, il Suvretta Loop e il trail del Bernina fino a Poschiavo. Bici ed e-bike si noleggiano in paese.</p></div>
+<div class="card"><img class="img" src="/img/sommer-silsersee.jpg" alt="Lago di Sils dall’alto in estate" width="1400" height="900" loading="lazy" style="height:220px;border-radius:8px;margin-bottom:18px"><h3>Laghi: vela, surf, bagni</h3><p style="margin:0;font-size:16px">Il vento del Maloja fa del lago di Silvaplana il regno di velisti, windsurfisti e kitesurfisti. Per un bagno c’è il Lej da Staz nel bosco di larici, per una passeggiata il lungolago di St. Moritz.</p></div>
+<div class="card"><img class="img" src="/img/herbst-silvaplanersee.jpg" alt="Larice dorato sul lago di Silvaplana in autunno" width="1400" height="900" loading="lazy" style="height:220px;border-radius:8px;margin-bottom:18px"><h3>Autunno dorato</h3><p style="margin:0;font-size:16px">Da inizio ottobre i boschi di larici dell’Engadina si tingono d’oro – due settimane in cui la valle è al suo meglio: aria limpida, sentieri silenziosi e le prime nevi sulle cime.</p></div>
+</div>
+<div style="margin-top:40px">
+<h3 style="font-size:22px;margin-bottom:8px">I nostri itinerari preferiti</h3>
+<p style="margin:0 0 20px;font-size:16px;color:#5a6361">Quattro itinerari che rifacciamo sempre volentieri – i tempi sono indicativi, i dettagli sulle pagine ufficiali collegate.</p>
+<div class="grid2" style="align-items:start;margin-top:0">
+<div class="card"><div class="tour-meta">Escursione · estate · ca. 5 h · 1250 m di dislivello</div><h3>Piz Nair attraverso il passo Suvretta</h3><p style="margin:0;font-size:16px">Da St. Moritz Dorf attraverso la silenziosa Val Suvretta fino al Lej Suvretta e, superato il passo Suvretta (2615 m), al Piz Nair (3056 m) – in cima il panorama sui laghi dell’Alta Engadina e sul gruppo del Bernina, oltre al ristorante di vetta. Ritorno comodo con la funivia del Piz Nair e la funicolare del Corviglia fino a casa.</p> · <a href="https://www.myswitzerland.com/it-ch/esperienze/piz-nair/" target="_blank" rel="noopener">myswitzerland.com</a></div>
+<div class="card"><img class="img" src="/img/lago-di-saoseo.jpg" alt="Lago di Saoseo con larici gialli in autunno" width="1400" height="900" loading="lazy" style="height:220px;border-radius:8px;margin-bottom:18px"><div class="tour-meta">Escursione · settembre–ottobre · ca. 15 km · 650 m di dislivello</div><h3>Lagh da Saoseo in autunno</h3><p style="margin:0;font-size:16px">Il lago alpino blu intenso della Val da Camp (Valposchiavo) è considerato uno dei più belli delle Alpi – in ottobre, quando i larici si accendono, è il nostro preferito. In treno sul Bernina e con l’autopostale fino a Sfazù; da lì via Rifugio Saoseo al lago e oltre fino al Lagh da Val Viola. Variante comoda con la navetta fino ad Alp Camp.</p> · <a href="https://www.graubuenden.ch/it/tour/escursione-alpina-al-lagh-da-saoseo" target="_blank" rel="noopener">graubuenden.ch</a></div>
+<div class="card"><img class="img" src="/img/herbst-bach-laerchen.jpg" alt="Torrente di montagna con larici dorati in Engadina" width="1400" height="900" loading="lazy" style="height:220px;border-radius:8px;margin-bottom:18px"><div class="tour-meta">Mountain bike · impegnativo · 34 km · 1150 m di dislivello</div><h3>Bike: Suvretta Trail nella Val Bever</h3><p style="margin:0;font-size:16px">Su con la funicolare del Corviglia, lungo il trail attorno al Piz Nair fino al passo Suvretta e giù per il single trail di oltre cinque chilometri fino all’Alp Suvretta. Poi attraverso la selvaggia Val Bever fino a Spinas (torta di noci engadinese alla locanda) e lungo il fondovalle di ritorno a St. Moritz – il percorso ufficiale «Suvretta Loop» n. 671.</p> · <a href="https://www.myswitzerland.com/it-ch/esperienze/route/suvretta-loop/" target="_blank" rel="noopener">myswitzerland.com</a></div>
+<div class="card"><div class="tour-meta">Mountain bike · enduro · 38 km · 950 m in salita, 1600 m in discesa</div><h3>Bike: discesa del Bernina fino a Poschiavo</h3><p style="margin:0;font-size:16px">Da St. Moritz via Pontresina fino al passo del Bernina (2328 m), oltre il Lago Bianco fino ad Alp Grüm con vista sul ghiacciaio del Palü e giù per il single trail lungo la ferrovia fino a Poschiavo – un trail che l’International Mountain Bike Association definisce «epico». Gelato in piazza, poi ritorno sul passo con il Bernina Express (trasporto bici).</p> · <a href="https://www.myswitzerland.com/it-ch/esperienze/route/bernina-express/" target="_blank" rel="noopener">myswitzerland.com</a></div>
+</div>
+</div>
+</div>
+<div class="card" data-s="winter" style="margin-top:32px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;align-items:start" id="skischulen">
 <div>
 <img class="img" src="/img/skischule.jpg" alt="Bambino che scia con la scuola di sci di St. Moritz" width="1920" height="1280" loading="lazy" style="height:260px;border-radius:8px;margin-bottom:18px">
 <h3>Scuole di sci, guide alpine e heliski</h3>
@@ -467,14 +499,18 @@ picture{display:block;width:100%}
 </div>
 <div class="grid2" style="align-items:start">
 <div class="card">
-<img class="img" src="/img/white-turf.jpg" alt="White Turf St. Moritz: corse di cavalli sul lago ghiacciato" width="2000" height="1333" loading="lazy" style="height:220px;border-radius:8px;margin-bottom:18px">
+<div data-s="winter"><img class="img" src="/img/white-turf.jpg" alt="White Turf St. Moritz: corse di cavalli sul lago ghiacciato" width="2000" height="1333" loading="lazy" style="height:220px;border-radius:8px;margin-bottom:18px">
 <h3>Eventi invernali</h3>
-<ul><li class="li"><span>Snow Polo World Cup</span><span>Gennaio</span></li><li class="li"><span>White Turf – corse di cavalli e skikjöring sul lago ghiacciato</span><span>Febbraio</span></li><li class="li"><span>Engadin Skimarathon</span><span>Marzo</span></li><li class="li"><span>Chalandamarz – usanza engadinese di primavera</span><span>1° marzo</span></li><li class="li"><span>SunIce Festival – musica elettronica in montagna</span><span>Aprile</span></li></ul>
+<ul><li class="li"><span>Snow Polo World Cup</span><span>Gennaio</span></li><li class="li"><span>White Turf – corse di cavalli e skikjöring sul lago ghiacciato</span><span>Febbraio</span></li><li class="li"><span>Engadin Skimarathon</span><span>Marzo</span></li><li class="li"><span>Chalandamarz – usanza engadinese di primavera</span><span>1° marzo</span></li><li class="li"><span>SunIce Festival – musica elettronica in montagna</span><span>Aprile</span></li></ul></div>
+<div data-s="summer"><h3>Eventi in estate e autunno</h3>
+<ul><li class="li"><span>Festival da Jazz, British Classic Car Meeting, Summer Country Polo Tournament</span><span>Luglio</span></li><li class="li"><span>Engadin Festival – concerti di musica classica</span><span>Luglio–agosto</span></li><li class="li"><span>Concerti «Music mondaine»</span><span>Luglio–settembre</span></li><li class="li"><span>St. Moritz Gourmet Festival, Art Film Festival, Running Festival</span><span>Agosto</span></li><li class="li"><span>Bernina Gran Turismo – auto da corsa storiche sul passo</span><span>Settembre</span></li><li class="li"><span>The Alpine Rendezvous</span><span>Ottobre</span></li></ul></div>
 </div>
 <div class="card">
 <h3>I nostri consigli segreti</h3>
-<div class="tip"><strong>Bellavista, Surlej</strong> – albergo-ristorante a conduzione familiare ai piedi del Corvatsch, a circa 10 minuti in auto. Il nostro consiglio: la fondue chinoise – prenotare in anticipo. · <a href="https://www.bellavista.ch" target="_blank" rel="noopener">bellavista.ch</a></div>
-<div class="tip"><strong>La Baracca, St. Moritz Bad</strong> – rustica baracca di legno in Via Rosatsch, lunghi tavoli, classici semplici e lunghe serate – aperta solo in inverno, senza prenotazione. · <a href="https://www.labaraccastmoritz.com/" target="_blank" rel="noopener">labaraccastmoritz.com</a></div>
+<div data-s="winter"><div class="tip"><strong>Bellavista, Surlej</strong> – albergo-ristorante a conduzione familiare ai piedi del Corvatsch, a circa 10 minuti in auto. Il nostro consiglio: la fondue chinoise – prenotare in anticipo. · <a href="https://www.bellavista.ch" target="_blank" rel="noopener">bellavista.ch</a></div>
+<div class="tip"><strong>La Baracca, St. Moritz Bad</strong> – rustica baracca di legno in Via Rosatsch, lunghi tavoli, classici semplici e lunghe serate – aperta solo in inverno, senza prenotazione. · <a href="https://www.labaraccastmoritz.com/" target="_blank" rel="noopener">labaraccastmoritz.com</a></div></div>
+<div data-s="summer"><div class="tip"><strong>Bellavista, Surlej</strong> – hotel-ristorante a conduzione familiare ai piedi del Corvatsch, circa 10 minuti in auto. Il nostro consiglio estivo: la terrazza con vista su Corvatsch e laghi – prenotate in anticipo. · <a href="https://www.bellavista.ch" target="_blank" rel="noopener">bellavista.ch</a></div>
+<div class="tip"><strong>Lej da Staz</strong> – piccolo lago balneabile nel bosco di larici tra St. Moritz e Celerina, raggiungibile a piedi o in bici – con ristorante e terrazza al sole direttamente sulla riva. · <a href="https://www.lejdastaz.ch" target="_blank" rel="noopener">lejdastaz.ch</a></div></div>
 <details style="margin-top:20px">
 <summary>Altri ristoranti a St. Moritz</summary>
 <div style="padding:0 0 20px">
@@ -490,13 +526,14 @@ picture{display:block;width:100%}
 </details>
 </div>
 </div>
-<div class="grid2 pair" style="gap:16px"><img class="img" src="/img/abendstimmung.jpg" alt="Luce della sera sulle piste sopra St. Moritz" width="1800" height="1013" loading="lazy" style="height:300px"><img class="img" src="/img/hero-silsersee.jpg" alt="Inverno in Engadina: il lago di Sils con il riflesso delle montagne innevate" width="1800" height="1013" loading="lazy" style="height:300px"></div>
+<div class="grid2 pair" data-s="winter" style="gap:16px"><img class="img" src="/img/abendstimmung.jpg" alt="Luce della sera sulle piste sopra St. Moritz" width="1800" height="1013" loading="lazy" style="height:300px"><img class="img" src="/img/hero-silsersee.jpg" alt="Inverno in Engadina: il lago di Sils con il riflesso delle montagne innevate" width="1800" height="1013" loading="lazy" style="height:300px"></div>
 </div>
 </section>
 
 <section id="anreise" class="sec">
 <div class="wrap">
 <div class="eyebrow">Come arrivare</div>
+<div data-s="winter">
 <h2 class="h2">Come arrivare a St. Moritz in inverno</h2>
 <p class="lead" style="margin:0">In auto attraverso il passo del Giulia, con la Ferrovia Retica lungo la linea dell’Albula o in aereo su Zurigo o Samedan – l’appartamento è facilmente raggiungibile in ogni modo.</p>
 <div class="grid3">
@@ -511,6 +548,22 @@ Bagagli e sci: ascensore fino al 3° piano; l’attrezzatura da sci si ripone ne
 L’Engadin Airport di Samedan è a 12 minuti in auto ed è aperto a voli privati e charter; taxi e auto a noleggio sul posto.
 
 Su richiesta organizziamo volentieri un transfer dall’aeroporto di Zurigo.</p></div>
+</div>
+</div>
+<div data-s="summer">
+<h2 class="h2">Come arrivare a St. Moritz in estate</h2>
+<p class="lead" style="margin:0">In auto attraverso i passi, con la Ferrovia Retica lungo la linea dell’Albula o in aereo fino a Zurigo o Samedan – l’appartamento è facilmente raggiungibile da ogni direzione.</p>
+<div class="grid3">
+<div class="card"><img class="img" src="/img/sommer-julierpass.jpg" alt="Strada di passo in Engadina in estate" width="1400" height="900" loading="lazy" style="height:200px;border-radius:8px;margin-bottom:18px;object-position:center"><h3>In auto attraverso i passi</h3><p style="margin:0;font-size:16px;white-space:pre-line">Da Zurigo circa 3 ore via Coira e il passo del Giulia; in estate sono aperti anche i passi dell’Albula e del Flüela. Da Milano circa 2,5 ore attraverso il Maloja o il Bernina, da Monaco circa 4 ore.
+
+Parcheggio: un posto auto nel garage dell’edificio è incluso nel canone. Un secondo posto auto nel garage può essere affittato a CHF 250 al mese; in alternativa è disponibile l’autosilo pubblico Quadrellas a 5 minuti a piedi.</p></div>
+<div class="card"><img class="img" src="/img/sommer-rhaetische-bahn.jpg" alt="Treno della Ferrovia Retica verso Tirano in estate" width="1400" height="900" loading="lazy" style="height:200px;border-radius:8px;margin-bottom:18px;object-position:center"><h3>Con la Ferrovia Retica (linea dell’Albula)</h3><p style="margin:0;font-size:16px;white-space:pre-line">Da Zurigo HB con cambio a Coira in circa 3 ore e 20 minuti – la linea dell’Albula della Ferrovia Retica è patrimonio UNESCO e il modo più bello per arrivare in Engadina. Da St. Moritz vale la pena proseguire con il Bernina Express fino a Tirano come gita di un giorno.
+Dalla stazione di St. Moritz con il bus fino alla fermata Serlas (3 minuti a piedi dall’appartamento) o in 4 minuti di taxi.</p></div>
+<div class="card"><img class="img" src="/img/sommer-jet.jpg" alt="Jet privato in avvicinamento all’Engadin Airport di Samedan" width="1400" height="900" loading="lazy" style="height:200px;border-radius:8px;margin-bottom:18px;object-position:center"><h3>In aereo: Zurigo o Engadin Airport Samedan</h3><p style="margin:0;font-size:16px;white-space:pre-line">L’aeroporto internazionale più vicino è Zurigo, circa 3,5 ore in auto o in treno (collegamento ferroviario diretto dall’aeroporto via Coira).
+L’Engadin Airport di Samedan dista 12 minuti in auto ed è aperto a voli privati e charter; taxi o auto a noleggio sul posto.
+
+Su richiesta organizziamo volentieri un transfer dall’aeroporto di Zurigo.</p></div>
+</div>
 </div>
 </div>
 </section>
@@ -643,6 +696,9 @@ Durante la visita del sito, il provider di hosting registra automaticamente dati
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&m){m.classList.remove('open');b.setAttribute('aria-expanded','false');}});
   document.addEventListener('click',function(e){if(m&&m.classList.contains('open')&&!m.contains(e.target)&&!b.contains(e.target)){m.classList.remove('open');b.setAttribute('aria-expanded','false');}});
   var wa=document.querySelector('.wa-float'),bk=document.getElementById('buchung');if(wa&&bk&&'IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(x){wa.style.display=x.isIntersecting?'none':'flex';});},{threshold:0.05}).observe(bk);}
+  function paintSeason(){var cur=document.documentElement.getAttribute('data-season')||'winter';document.querySelectorAll('[data-set-season]').forEach(function(x){var on=x.getAttribute('data-set-season')===cur;x.classList.toggle('lang-on',on);x.setAttribute('aria-pressed',on?'true':'false');});}
+  document.querySelectorAll('[data-set-season]').forEach(function(x){x.addEventListener('click',function(){var v=x.getAttribute('data-set-season');document.documentElement.setAttribute('data-season',v);try{localStorage.setItem('cs-season',v);}catch(e){}paintSeason();scalePlans();});});
+  paintSeason();
   scalePlans();window.addEventListener('resize',scalePlans);
   try{var sy=sessionStorage.getItem('cs-scroll');if(sy!==null){sessionStorage.removeItem('cs-scroll');window.scrollTo(0,parseInt(sy,10)||0);}}catch(e){}
   document.querySelectorAll('.langs a.lang').forEach(function(a){a.addEventListener('click',function(){try{sessionStorage.setItem('cs-scroll',String(window.scrollY));}catch(e){}});});

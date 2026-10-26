@@ -64,9 +64,15 @@ picture{display:block;width:100%}
 .card,.tip,.faq,.li,.lead,.step,.table td,details,summary,.mobnav a{overflow-wrap:anywhere;word-break:normal}
 .li{align-items:flex-start}
 .tip a,.faq a,.card a{overflow-wrap:anywhere}
-@media (max-width:760px){.burger{display:flex}.hero-grid>picture{order:-1}.table td:first-child{width:40%}.price{font-size:32px}
+@media (max-width:760px){.burger{display:flex}.hero-grid>picture,.hero-grid>.hero-pic{order:-1}.table td:first-child{width:40%}.price{font-size:32px}
 .hdr-cta{display:none !important}.langs{gap:4px}.lang{min-width:34px;padding:6px 7px;font-size:12px;min-height:36px}.brand{font-size:16px !important}
-.li span:first-child{flex:1 1 auto}.li span+span{text-align:right}}
+.li span:first-child{flex:1 1 auto}.li span+span{text-align:right}.hero-grid>.hero-pic{order:-1}}
+html[data-season="summer"] [data-s="winter"],html[data-season="winter"] [data-s="summer"]{display:none !important}
+.seasons{display:flex;gap:4px;align-items:center;margin-right:10px;border-right:1px solid #e3e7e4;padding-right:10px}
+.season{min-width:0;padding:8px 12px;white-space:nowrap}
+.tour-meta{font-size:13px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#1e4d3f;margin:0 0 8px}
+.s-ico{display:none}.mob-seasons{display:none}
+@media (max-width:760px){.seasons{display:none}.mob-seasons{display:flex}.mob-seasons .season{min-height:40px;font-size:14px;padding:8px 10px}}
 `;
 
 // ---------- 4. Helpers ----------
@@ -140,6 +146,7 @@ ${alternates}
 ${Object.values(LANGS).filter((v) => v.ogLocale !== L.ogLocale).map((v) => `<meta property="og:locale:alternate" content="${v.ogLocale}">`).join('\n')}
 <meta name="twitter:card" content="summary_large_image">
 <meta name="robots" content="index,follow,max-image-preview:large">
+<script>(function(){var s=null;try{s=localStorage.getItem('cs-season');}catch(e){}if(s!=='summer'&&s!=='winter'){var m=new Date().getMonth()+1;s=(m>=5&&m<=10)?'summer':'winter';}document.documentElement.setAttribute('data-season',s);})();</script>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-48.png" type="image/png" sizes="48x48">
 <link rel="icon" href="/favicon-192.png" type="image/png" sizes="192x192">
@@ -156,13 +163,15 @@ ${Object.values(LANGS).filter((v) => v.ogLocale !== L.ogLocale).map((v) => `<met
 ${navLinks.slice(0, 5).map(([h, n]) => `<a href="${h}">${esc(n)}</a>`).join('\n')}
 </nav>
 <div class="langs" style="display:flex;gap:6px;align-items:center;flex-wrap:nowrap">
+<div class="seasons" role="group" aria-label="Season"><button type="button" class="lang season" data-set-season="winter" title="${esc(t.seasonWinter)}">${esc(t.seasonWinter)}</button><button type="button" class="lang season" data-set-season="summer" title="${esc(t.seasonSummer)}">${esc(t.seasonSummer)}</button></div>
 ${langLinks}
 <button class="burger" id="burger" aria-label="${esc(t.navMenu)}" aria-expanded="false" aria-controls="mobnav"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1b1f1e" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>
 </div>
 </div>
 <nav class="mobnav" id="mobnav" aria-label="Navigation">
 ${navLinks.slice(0, 5).map(([h, n]) => `<a href="${h}">${esc(n)}</a>`).join('\n')}
-<a href="#buchung" style="color:#1e4d3f;font-weight:800">${esc(t.navBook)} / ${esc(t.navCta)} →</a>
+<a href="#buchung" style="color:#1e4d3f;font-weight:800">${esc(t.navBook)} →</a>
+<div class="mob-seasons" style="display:flex;gap:8px;padding:14px 24px;border-top:1px solid #eef1ef"><button type="button" class="lang season" data-set-season="winter" style="flex:1">${esc(t.seasonWinter)}</button><button type="button" class="lang season" data-set-season="summer" style="flex:1">${esc(t.seasonSummer)}</button></div>
 </nav>
 </header>
 
@@ -182,7 +191,8 @@ ${t.facts.map((f) => `<li style="background:#f3f5f3;border-radius:999px;padding:
 <a class="link hero-sec" href="#wohnung">${esc(t.heroSecondary)}</a>
 </div>
 </div>
-<img class="img hero-img" src="/img/st-moritz-dorf.jpg" alt="${esc(t.altHero)}" width="2400" height="1600" fetchpriority="high" style="object-position:center 70%">
+<div class="hero-pic" data-s="winter"><img class="img hero-img" src="/img/st-moritz-dorf.jpg" alt="${esc(t.altHero)}" width="2400" height="1600" fetchpriority="high" style="object-position:center 70%"></div>
+<div class="hero-pic" data-s="summer"><img class="img hero-img" src="/img/sommer-st-moritz-hero.jpg" alt="${esc(t.altHeroS)}" width="2400" height="1597" fetchpriority="high" style="object-position:center 55%"></div>
 </div>
 </div>
 </section>
@@ -232,12 +242,28 @@ ${t.facts.map((f) => `<li style="background:#f3f5f3;border-radius:999px;padding:
 <section id="stmoritz" class="sec sec-alt">
 <div class="wrap">
 <div class="eyebrow">${esc(t.navSm)}</div>
+<div data-s="winter">
 <h2 class="h2">${esc(t.smTitle)}</h2>
 <p class="lead" style="margin:0">${esc(t.smLead)}</p>
 <div class="grid3">
 ${t.smCards.map((c) => `<div class="card"><img class="img" src="/${img(c.img)}" alt="${esc(c.alt)}" width="1400" height="900" loading="lazy" style="height:200px;border-radius:8px;margin-bottom:18px"><h3>${esc(c.h)}</h3><p style="margin:0;font-size:16px">${esc(c.p)}</p></div>`).join('\n')}
 </div>
-<div class="card" style="margin-top:32px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;align-items:start" id="skischulen">
+</div>
+<div data-s="summer">
+<h2 class="h2">${esc(t.smTitleS)}</h2>
+<p class="lead" style="margin:0">${esc(t.smLeadS)}</p>
+<div class="grid2" style="align-items:start">
+${t.smCardsS.map((c) => `<div class="card"><img class="img" src="/${c.img}" alt="${esc(c.alt)}" width="1400" height="900" loading="lazy" style="height:220px;border-radius:8px;margin-bottom:18px"><h3>${esc(c.h)}</h3><p style="margin:0;font-size:16px">${esc(c.p)}</p></div>`).join('\n')}
+</div>
+<div style="margin-top:40px">
+<h3 style="font-size:22px;margin-bottom:8px">${esc(t.toursH)}</h3>
+<p style="margin:0 0 20px;font-size:16px;color:#5a6361">${esc(t.toursLead)}</p>
+<div class="grid2" style="align-items:start;margin-top:0">
+${t.tours.map((x) => `<div class="card">${x.img ? `<img class="img" src="/${x.img}" alt="${esc(x.alt)}" width="1400" height="900" loading="lazy" style="height:220px;border-radius:8px;margin-bottom:18px">` : ''}<div class="tour-meta">${esc(x.m)}</div><h3>${esc(x.h)}</h3><p style="margin:0;font-size:16px">${esc(x.p)}</p>${ext(x.u, x.w)}</div>`).join('\n')}
+</div>
+</div>
+</div>
+<div class="card" data-s="winter" style="margin-top:32px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;align-items:start" id="skischulen">
 <div>
 <img class="img" src="/img/skischule.jpg" alt="${esc(t.altKid)}" width="1920" height="1280" loading="lazy" style="height:260px;border-radius:8px;margin-bottom:18px">
 <h3>${esc(t.schoolH)}</h3>
@@ -249,13 +275,16 @@ ${t.schools.map((s) => `<li class="tip"><strong>${esc(s.n)}</strong><br><span st
 </div>
 <div class="grid2" style="align-items:start">
 <div class="card">
-<img class="img" src="/img/white-turf.jpg" alt="${esc(t.altTurf)}" width="2000" height="1333" loading="lazy" style="height:220px;border-radius:8px;margin-bottom:18px">
+<div data-s="winter"><img class="img" src="/img/white-turf.jpg" alt="${esc(t.altTurf)}" width="2000" height="1333" loading="lazy" style="height:220px;border-radius:8px;margin-bottom:18px">
 <h3>${esc(t.smEventsH)}</h3>
-<ul>${liKV(t.smEvents)}</ul>
+<ul>${liKV(t.smEvents)}</ul></div>
+<div data-s="summer"><h3>${esc(t.smEventsHS)}</h3>
+<ul>${liKV(t.smEventsS)}</ul></div>
 </div>
 <div class="card">
 <h3>${esc(t.smSecretH)}</h3>
-${t.smSecrets.map((x) => `<div class="tip"><strong>${esc(x.n)}</strong> – ${esc(x.v)}${ext(x.u, x.w)}</div>`).join('\n')}
+<div data-s="winter">${t.smSecrets.map((x) => `<div class="tip"><strong>${esc(x.n)}</strong> – ${esc(x.v)}${ext(x.u, x.w)}</div>`).join('\n')}</div>
+<div data-s="summer">${t.smSecretsS.map((x) => `<div class="tip"><strong>${esc(x.n)}</strong> – ${esc(x.v)}${ext(x.u, x.w)}</div>`).join('\n')}</div>
 <details style="margin-top:20px">
 <summary>${esc(t.smTipsH)}</summary>
 <div style="padding:0 0 20px">
@@ -265,17 +294,26 @@ ${t.smTips.map((x) => `<div class="tip"><strong>${esc(x.n)}</strong> – ${esc(x
 </details>
 </div>
 </div>
-<div class="grid2 pair" style="gap:16px"><img class="img" src="/img/abendstimmung.jpg" alt="${esc(t.altAbend)}" width="1800" height="1013" loading="lazy" style="height:300px"><img class="img" src="/img/hero-silsersee.jpg" alt="${esc(t.altSils)}" width="1800" height="1013" loading="lazy" style="height:300px"></div>
+<div class="grid2 pair" data-s="winter" style="gap:16px"><img class="img" src="/img/abendstimmung.jpg" alt="${esc(t.altAbend)}" width="1800" height="1013" loading="lazy" style="height:300px"><img class="img" src="/img/hero-silsersee.jpg" alt="${esc(t.altSils)}" width="1800" height="1013" loading="lazy" style="height:300px"></div>
 </div>
 </section>
 
 <section id="anreise" class="sec">
 <div class="wrap">
 <div class="eyebrow">${esc(t.navArr)}</div>
+<div data-s="winter">
 <h2 class="h2">${esc(t.arrTitle)}</h2>
 <p class="lead" style="margin:0">${esc(t.arrLead)}</p>
 <div class="grid3">
 ${t.arrBlocks.map((b) => `<div class="card"><img class="img" src="/${img(b.img)}" alt="${esc(b.alt)}" width="1400" height="900" loading="lazy" style="height:200px;border-radius:8px;margin-bottom:18px;object-position:${b.pos}"><h3>${esc(b.h)}</h3><p style="margin:0;font-size:16px;white-space:pre-line">${esc(b.p)}</p></div>`).join('\n')}
+</div>
+</div>
+<div data-s="summer">
+<h2 class="h2">${esc(t.arrTitleS)}</h2>
+<p class="lead" style="margin:0">${esc(t.arrLeadS)}</p>
+<div class="grid3">
+${t.arrBlocksS.map((b) => `<div class="card"><img class="img" src="/${b.img}" alt="${esc(b.alt)}" width="1400" height="900" loading="lazy" style="height:200px;border-radius:8px;margin-bottom:18px;object-position:${b.pos}"><h3>${esc(b.h)}</h3><p style="margin:0;font-size:16px;white-space:pre-line">${esc(b.p)}</p></div>`).join('\n')}
+</div>
 </div>
 </div>
 </section>
@@ -383,6 +421,9 @@ ${t.ds.map((x) => `<div class="faq"><strong style="display:block">${esc(x.h)}</s
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&m){m.classList.remove('open');b.setAttribute('aria-expanded','false');}});
   document.addEventListener('click',function(e){if(m&&m.classList.contains('open')&&!m.contains(e.target)&&!b.contains(e.target)){m.classList.remove('open');b.setAttribute('aria-expanded','false');}});
   var wa=document.querySelector('.wa-float'),bk=document.getElementById('buchung');if(wa&&bk&&'IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(x){wa.style.display=x.isIntersecting?'none':'flex';});},{threshold:0.05}).observe(bk);}
+  function paintSeason(){var cur=document.documentElement.getAttribute('data-season')||'winter';document.querySelectorAll('[data-set-season]').forEach(function(x){var on=x.getAttribute('data-set-season')===cur;x.classList.toggle('lang-on',on);x.setAttribute('aria-pressed',on?'true':'false');});}
+  document.querySelectorAll('[data-set-season]').forEach(function(x){x.addEventListener('click',function(){var v=x.getAttribute('data-set-season');document.documentElement.setAttribute('data-season',v);try{localStorage.setItem('cs-season',v);}catch(e){}paintSeason();scalePlans();});});
+  paintSeason();
   scalePlans();window.addEventListener('resize',scalePlans);
   try{var sy=sessionStorage.getItem('cs-scroll');if(sy!==null){sessionStorage.removeItem('cs-scroll');window.scrollTo(0,parseInt(sy,10)||0);}}catch(e){}
   document.querySelectorAll('.langs a.lang').forEach(function(a){a.addEventListener('click',function(){try{sessionStorage.setItem('cs-scroll',String(window.scrollY));}catch(e){}});});
