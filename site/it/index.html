@@ -120,6 +120,10 @@ html[data-season="summer"] [data-s="winter"],html[data-season="winter"] [data-s=
 .seg-lang .lang-on{background:#1b1f1e;color:#fff}
 .seasons{margin-right:8px}
 .sub-h{font-size:22px;margin:0 0 12px}
+.grid2,.grid3,.grid4{align-items:stretch}
+.grid2>.card,.grid3>.card,.grid4>.card{height:100%;box-sizing:border-box}
+.grid2>div:not(.card),.grid3>div:not(.card){display:flex;flex-direction:column}
+.grid2>div:not(.card)>.card:last-child,.grid3>div:not(.card)>.card:last-child{flex:1 1 auto}
 .tour-meta{font-size:13px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#1e4d3f;margin:0 0 8px}
 .s-ico{display:none}.mob-seasons-wrap{display:none}
 @media (max-width:760px){.seasons{display:none}.mob-seasons-wrap{display:block}.mob-seasons .season{min-height:36px;font-size:14px}.seg .lang{padding:5px 10px;font-size:12px;min-height:28px}}
@@ -473,7 +477,7 @@ html[data-season="summer"] [data-s="winter"],html[data-season="winter"] [data-s=
 <div data-s="summer">
 <h2 class="h2">Estate e autunno a St. Moritz e in Engadina: montagne, laghi e larici dorati</h2>
 <p class="lead" style="margin:0">In estate l’Alta Engadina diventa l’altopiano dei laghi: velisti e surfisti sul lago di Silvaplana, sentieri tra 1800 e 3000 metri, flow trail per i biker e, in ottobre, i boschi di larici dorati per cui la valle è famosa. Gli impianti di risalita di St. Moritz Dorf distano sei minuti a piedi dall’appartamento.</p>
-<div class="grid2" style="align-items:start">
+<div class="grid2">
 <div class="card"><img class="img" src="/img/sommer-seen-panorama.jpg" alt="Vista sui laghi dell’Alta Engadina in estate" width="1400" height="900" loading="lazy" style="height:220px;border-radius:8px;margin-bottom:18px"><h3>Escursioni su tre livelli</h3><p style="margin:0;font-size:16px">Dalla riva del lago ai sentieri nel bosco fino alle alte vie di Corviglia e Muottas Muragl: 580 chilometri di sentieri segnalati, molti raggiungibili con gli impianti. La passeggiata dei laghi da St. Moritz a Maloja è il classico.</p></div>
 <div class="card"><img class="img" src="/img/sommer-biketrail-corviglia.jpg" alt="Flow trail sul Corviglia con vista sul lago di Silvaplana" width="1400" height="900" loading="lazy" style="height:220px;border-radius:8px;margin-bottom:18px"><h3>In bici sul Corviglia</h3><p style="margin:0;font-size:16px">L’Engadina è una delle grandi regioni bike delle Alpi: flow trail dalla stazione a monte del Corviglia, il Suvretta Loop e il trail del Bernina fino a Poschiavo. Bici ed e-bike si noleggiano in paese.</p></div>
 <div class="card"><img class="img" src="/img/sommer-silsersee.jpg" alt="Lago di Sils dall’alto in estate" width="1400" height="900" loading="lazy" style="height:220px;border-radius:8px;margin-bottom:18px"><h3>Laghi: vela, surf, bagni</h3><p style="margin:0;font-size:16px">Il vento del Maloja fa del lago di Silvaplana il regno di velisti, windsurfisti e kitesurfisti. Per un bagno c’è il Lej da Staz nel bosco di larici, per una passeggiata il lungolago di St. Moritz.</p></div>
@@ -482,7 +486,7 @@ html[data-season="summer"] [data-s="winter"],html[data-season="winter"] [data-s=
 <div style="margin-top:40px">
 <h3 class="sub-h">I nostri itinerari preferiti</h3>
 <p style="margin:0 0 20px;font-size:16px;color:#5a6361">Quattro itinerari che rifacciamo sempre volentieri – i tempi sono indicativi, i dettagli sulle pagine ufficiali collegate.</p>
-<div class="grid2" style="align-items:start;margin-top:0">
+<div class="grid2" style="margin-top:0">
 <div class="card"><img class="img" src="/img/lago-di-saoseo.jpg" alt="Lago di Saoseo con larici gialli in autunno" width="1400" height="900" loading="lazy" style="height:220px;border-radius:8px;margin-bottom:18px"><div class="tour-meta">Escursione · settembre–ottobre · ca. 15 km · 650 m di dislivello</div><h3>Lagh da Saoseo in autunno</h3><p style="margin:0;font-size:16px">Il lago alpino blu intenso della Val da Camp (Valposchiavo) è considerato uno dei più belli delle Alpi – in ottobre, quando i larici si accendono, è il nostro preferito. In treno sul Bernina e con l’autopostale fino a Sfazù; da lì via Rifugio Saoseo al lago e oltre fino al Lagh da Val Viola. Variante comoda con la navetta fino ad Alp Camp.</p> · <a href="https://www.graubuenden.ch/it/tour/escursione-montagna-al-lagh-da-saoseo" target="_blank" rel="noopener">Descrizione su graubuenden.ch</a></div>
 <div class="card"><img class="img" src="/img/herbst-bach-laerchen.jpg" alt="Torrente di montagna con larici dorati in Engadina" width="1400" height="900" loading="lazy" style="height:220px;border-radius:8px;margin-bottom:18px"><div class="tour-meta">Mountain bike · anello da Celerina · 34 km · 1150 m di dislivello · ca. 4 h</div><h3>Bike: Suvretta Loop attraverso il passo Suvretta</h3><p style="margin:0;font-size:16px">Da Celerina sulla strada sterrata circa 400 metri di dislivello fino all’Alp Laret, oltre il Lej Alv fino alla stazione a monte del Corviglia (2400 m) e, superati gli ultimi metri ripidi, sul trail attorno al Piz Nair fino al passo Suvretta, il punto più alto. Poi il single trail Suvretta da Samedan di oltre cinque chilometri giù fino all’Alp Suvretta, lungo il sentiero alpino della Val Bever fino a Spinas (torta di noci engadinese alla locanda) e via Bever lungo il fondovalle di ritorno a Celerina. Tecnicamente impegnativo, fisicamente medio.</p> · <a href="https://www.graubuenden.ch/it/tour/671-suvretta-loop" target="_blank" rel="noopener">Percorso 671 su graubuenden.ch</a></div>
 <div class="card"><div class="tour-meta">Escursione · estate · ca. 5 h · 1250 m di dislivello</div><h3>Piz Nair attraverso il passo Suvretta</h3><p style="margin:0;font-size:16px">Da St. Moritz Dorf attraverso la silenziosa Val Suvretta fino al Lej Suvretta e, superato il passo Suvretta (2615 m), al Piz Nair (3056 m) – in cima il panorama sui laghi dell’Alta Engadina e sul gruppo del Bernina, oltre al ristorante di vetta. Ritorno comodo con la funivia del Piz Nair e la funicolare del Corviglia fino a casa.</p> · <a href="https://www.myswitzerland.com/it-ch/esperienze/piz-nair/" target="_blank" rel="noopener">Funivia Piz Nair su myswitzerland.com</a></div>
@@ -503,7 +507,7 @@ html[data-season="summer"] [data-s="winter"],html[data-season="winter"] [data-s=
 <li class="tip"><strong>Heli Bernina – heliski</strong><br><span style="color:#2f3634">Heliski dall’eliporto di St. Moritz Bad o da Samedan verso Piz Corvatsch, Fuorcla Grischa o Fuorcla Chamuotsch (con guida alpina); da circa CHF 160 a persona.</span><br><span style="font-size:15px">+41 81 851 18 18 · info@helibernina.ch · <a href="https://www.helibernina.ch/angebote/touristische-fluege/heliski" target="_blank" rel="noopener">helibernina.ch</a></span></li>
 </ul>
 </div>
-<div class="grid2" style="align-items:start">
+<div class="grid2">
 <div>
 <h3 class="sub-h"><span data-s="winter">Eventi invernali</span><span data-s="summer">Eventi in estate e autunno</span></h3>
 <div class="card">
@@ -582,7 +586,7 @@ Su richiesta organizziamo volentieri un transfer dall’aeroporto di Zurigo.</p>
 <div class="eyebrow">Prezzi</div>
 <h2 class="h2">Affitto dall’autunno 2027</h2>
 <p class="lead" style="margin:0">La stagione invernale 2026/27 è riservata. Dall’autunno 2027 affittiamo l’appartamento appena ristrutturato e arredato a nuovo. Prezzi e condizioni verranno comunicati prima della commercializzazione ufficiale – chi è in lista d’attesa lo saprà per primo.</p>
-<div class="grid2" style="align-items:start">
+<div class="grid2">
 <div class="card" style="background:#1e4d3f;color:#ffffff;border-color:#1e4d3f">
 <div style="font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;opacity:0.85">Prezzi</div>
 <div class="price" style="margin:6px 0 4px">Su richiesta</div>
@@ -614,7 +618,7 @@ Su richiesta organizziamo volentieri un transfer dall’aeroporto di Zurigo.</p>
 <div class="eyebrow">Lista d’attesa</div>
 <h2 class="h2">Lista d’attesa e contatto</h2>
 <p class="lead" style="margin:0">Iscrivetevi senza impegno. Vi informeremo su prezzi e disponibilità dall’autunno 2027 prima della commercializzazione ufficiale.</p>
-<div class="grid2" style="margin-top:28px;align-items:start">
+<div class="grid2" style="margin-top:28px">
 <div>
 <div class="card"><h3>Come funzionerà la prenotazione</h3>
 <div class="step"><div class="num">1</div><div><strong>Lista d’attesa</strong><div style="font-size:15px;color:#2f3634">Iscrizione tramite modulo o e-mail. Vi informeremo su prezzi e disponibilità prima della commercializzazione ufficiale.</div></div></div><div class="step"><div class="num">2</div><div><strong>Conferma</strong><div style="font-size:15px;color:#2f3634">Ricevete un contratto di locazione scritto con tutte le condizioni.</div></div></div><div class="step"><div class="num">3</div><div><strong>Acconto</strong><div style="font-size:15px;color:#2f3634">Il 30% del canone entro 10 giorni dalla firma garantisce la prenotazione.</div></div></div><div class="step"><div class="num">4</div><div><strong>Saldo</strong><div style="font-size:15px;color:#2f3634">Il saldo e la cauzione sono dovuti 30 giorni prima dell’inizio della locazione. Chiediamo inoltre una prova della vostra assicurazione di responsabilità civile privata.</div></div></div><div class="step"><div class="num">5</div><div><strong>Consegna delle chiavi</strong><div style="font-size:15px;color:#2f3634">Di persona o tramite cassetta delle chiavi; check-in dalle 16, check-out entro le 10.</div></div></div>

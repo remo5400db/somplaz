@@ -120,6 +120,10 @@ html[data-season="summer"] [data-s="winter"],html[data-season="winter"] [data-s=
 .seg-lang .lang-on{background:#1b1f1e;color:#fff}
 .seasons{margin-right:8px}
 .sub-h{font-size:22px;margin:0 0 12px}
+.grid2,.grid3,.grid4{align-items:stretch}
+.grid2>.card,.grid3>.card,.grid4>.card{height:100%;box-sizing:border-box}
+.grid2>div:not(.card),.grid3>div:not(.card){display:flex;flex-direction:column}
+.grid2>div:not(.card)>.card:last-child,.grid3>div:not(.card)>.card:last-child{flex:1 1 auto}
 .tour-meta{font-size:13px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#1e4d3f;margin:0 0 8px}
 .s-ico{display:none}.mob-seasons-wrap{display:none}
 @media (max-width:760px){.seasons{display:none}.mob-seasons-wrap{display:block}.mob-seasons .season{min-height:36px;font-size:14px}.seg .lang{padding:5px 10px;font-size:12px;min-height:28px}}
@@ -473,7 +477,7 @@ html[data-season="summer"] [data-s="winter"],html[data-season="winter"] [data-s=
 <div data-s="summer">
 <h2 class="h2">Sommer und Herbst in St. Moritz und im Engadin: Berge, Seen und goldene Lärchen</h2>
 <p class="lead" style="margin:0">Im Sommer wird das Oberengadin zur Hochebene der Seen: Segler und Surfer auf dem Silvaplanersee, Wanderwege auf 1800 bis 3000 Metern, Flow-Trails für Biker und im Oktober die goldenen Lärchenwälder, für die das Tal berühmt ist. Die Bergbahnen ab St. Moritz Dorf liegen sechs Gehminuten von der Wohnung entfernt.</p>
-<div class="grid2" style="align-items:start">
+<div class="grid2">
 <div class="card"><img class="img" src="/img/sommer-seen-panorama.jpg" alt="Blick über die Oberengadiner Seen im Sommer" width="1400" height="900" loading="lazy" style="height:220px;border-radius:8px;margin-bottom:18px"><h3>Wandern auf drei Ebenen</h3><p style="margin:0;font-size:16px">Vom Seeufer über die Waldwege bis zu den Höhenwegen auf Corviglia und Muottas Muragl: 580 Kilometer markierte Wege, viele davon mit der Bahn erreichbar. Die Seenwanderung von St. Moritz nach Maloja ist der Klassiker.</p></div>
 <div class="card"><img class="img" src="/img/sommer-biketrail-corviglia.jpg" alt="Flow-Trail auf Corviglia mit Blick auf den Silvaplanersee" width="1400" height="900" loading="lazy" style="height:220px;border-radius:8px;margin-bottom:18px"><h3>Biken auf Corviglia</h3><p style="margin:0;font-size:16px">Das Engadin ist eine der grossen Bike-Regionen der Alpen: Flow-Trails ab der Corviglia-Bergstation, die Suvretta-Loop und der Bernina-Trail nach Poschiavo. Bikes und E-Bikes gibt es im Dorf zu mieten.</p></div>
 <div class="card"><img class="img" src="/img/sommer-silsersee.jpg" alt="Silsersee von oben im Sommer" width="1400" height="900" loading="lazy" style="height:220px;border-radius:8px;margin-bottom:18px"><h3>Seen: Segeln, Surfen, Baden</h3><p style="margin:0;font-size:16px">Der Malojawind macht den Silvaplanersee zum Revier für Segler, Wind- und Kitesurfer. Zum Baden lockt der Lej da Staz im Lärchenwald, zum Flanieren die Seepromenade in St. Moritz.</p></div>
@@ -482,7 +486,7 @@ html[data-season="summer"] [data-s="winter"],html[data-season="winter"] [data-s=
 <div style="margin-top:40px">
 <h3 class="sub-h">Unsere Lieblingstouren</h3>
 <p style="margin:0 0 20px;font-size:16px;color:#5a6361">Vier Touren, die wir selbst immer wieder machen – Zeiten sind Richtwerte, Details auf den verlinkten offiziellen Seiten.</p>
-<div class="grid2" style="align-items:start;margin-top:0">
+<div class="grid2" style="margin-top:0">
 <div class="card"><img class="img" src="/img/lago-di-saoseo.jpg" alt="Lago di Saoseo mit gelben Lärchen im Herbst" width="1400" height="900" loading="lazy" style="height:220px;border-radius:8px;margin-bottom:18px"><div class="tour-meta">Wandern · September–Oktober · ca. 15 km · 650 Hm</div><h3>Lagh da Saoseo im Herbst</h3><p style="margin:0;font-size:16px">Der tiefblaue Bergsee im Val da Camp (Puschlav) gilt als einer der schönsten der Alpen – im Oktober, wenn die Lärchen leuchten, ist er unser Favorit. Mit der Bahn über den Bernina und dem Postauto bis Sfazù; von dort über das Rifugio Saoseo zum See und weiter zum Lagh da Val Viola. Gemütliche Variante mit dem Shuttlebus bis Alp Camp.</p> · <a href="https://www.graubuenden.ch/de/touren/bergwanderung-zum-lagh-da-saoseo" target="_blank" rel="noopener">Tourbeschrieb auf graubuenden.ch</a></div>
 <div class="card"><img class="img" src="/img/herbst-bach-laerchen.jpg" alt="Bergbach mit goldenen Lärchen im Engadin" width="1400" height="900" loading="lazy" style="height:220px;border-radius:8px;margin-bottom:18px"><div class="tour-meta">Mountainbike · Rundtour ab Celerina · 34 km · 1150 Hm · ca. 4 h</div><h3>Bike: Suvretta Loop über den Suvrettapass</h3><p style="margin:0;font-size:16px">Ab Celerina auf der Schotterstrasse rund 400 Höhenmeter hinauf zur Alp Laret, vorbei am Lej Alv zur Corviglia-Bergstation (2400 m) und über die letzten steilen Meter auf den Trail um den Piz Nair zum Suvrettapass, dem höchsten Punkt. Dann der über fünf Kilometer lange Singletrail Suvretta da Samedan hinunter zur Alp Suvretta, auf dem Alpweg durch das Val Bever bis Spinas (Engadiner Nusstorte im Berggasthaus) und über Bever auf dem Talweg zurück nach Celerina. Technisch anspruchsvoll, konditionell mittel.</p> · <a href="https://www.graubuenden.ch/de/touren/671-suvretta-loop" target="_blank" rel="noopener">Route 671 auf graubuenden.ch</a></div>
 <div class="card"><div class="tour-meta">Wandern · Sommer · ca. 5 h · 1250 Hm</div><h3>Piz Nair über den Suvrettapass</h3><p style="margin:0;font-size:16px">Von St. Moritz Dorf durch das stille Val Suvretta hinauf zum Lej Suvretta und über den Suvrettapass (2615 m) auf den Piz Nair (3056 m) – oben wartet das Panorama über die Oberengadiner Seen und die Berninagruppe, dazu das Gipfelrestaurant. Zurück bequem mit Piz-Nair-Bahn und Corviglia-Standseilbahn bis vor die Haustür.</p> · <a href="https://www.myswitzerland.com/de-ch/erlebnisse/piz-nair/" target="_blank" rel="noopener">Piz-Nair-Bahn auf myswitzerland.com</a></div>
@@ -503,7 +507,7 @@ html[data-season="summer"] [data-s="winter"],html[data-season="winter"] [data-s=
 <li class="tip"><strong>Heli Bernina – Heliskiing</strong><br><span style="color:#2f3634">Heliski ab Heliport St. Moritz Bad oder Samedan auf Piz Corvatsch, Fuorcla Grischa oder Fuorcla Chamuotsch (mit Bergführer); ab ca. CHF 160 pro Person.</span><br><span style="font-size:15px">+41 81 851 18 18 · info@helibernina.ch · <a href="https://www.helibernina.ch/angebote/touristische-fluege/heliski" target="_blank" rel="noopener">helibernina.ch</a></span></li>
 </ul>
 </div>
-<div class="grid2" style="align-items:start">
+<div class="grid2">
 <div>
 <h3 class="sub-h"><span data-s="winter">Events im Winter</span><span data-s="summer">Events im Sommer und Herbst</span></h3>
 <div class="card">
@@ -582,7 +586,7 @@ Auf Wunsch organisieren wir gerne einen Transfer vom Flughafen Zürich.</p></div
 <div class="eyebrow">Preise</div>
 <h2 class="h2">Vermietung ab Herbst 2027</h2>
 <p class="lead" style="margin:0">Die Wintersaison 2026/27 ist reserviert. Ab Herbst 2027 vermieten wir die Wohnung frisch renoviert und neu möbliert. Preise und Konditionen kommunizieren wir vor der offiziellen Vermarktung – Interessenten auf der Warteliste erfahren es zuerst.</p>
-<div class="grid2" style="align-items:start">
+<div class="grid2">
 <div class="card" style="background:#1e4d3f;color:#ffffff;border-color:#1e4d3f">
 <div style="font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;opacity:0.85">Preise</div>
 <div class="price" style="margin:6px 0 4px">Auf Anfrage</div>
@@ -614,7 +618,7 @@ Auf Wunsch organisieren wir gerne einen Transfer vom Flughafen Zürich.</p></div
 <div class="eyebrow">Warteliste</div>
 <h2 class="h2">Warteliste und Kontakt</h2>
 <p class="lead" style="margin:0">Tragen Sie sich unverbindlich ein. Wir informieren Sie vor der offiziellen Vermarktung über Preise und Verfügbarkeit ab Herbst 2027.</p>
-<div class="grid2" style="margin-top:28px;align-items:start">
+<div class="grid2" style="margin-top:28px">
 <div>
 <div class="card"><h3>So läuft die Buchung später ab</h3>
 <div class="step"><div class="num">1</div><div><strong>Warteliste</strong><div style="font-size:15px;color:#2f3634">Eintrag per Formular oder E-Mail. Wir informieren Sie vor der offiziellen Vermarktung über Preise und Verfügbarkeit.</div></div></div><div class="step"><div class="num">2</div><div><strong>Bestätigung</strong><div style="font-size:15px;color:#2f3634">Sie erhalten einen schriftlichen Mietvertrag mit allen Konditionen.</div></div></div><div class="step"><div class="num">3</div><div><strong>Anzahlung</strong><div style="font-size:15px;color:#2f3634">30 % des Mietpreises innert 10 Tagen nach Vertragsunterzeichnung sichern die Reservation.</div></div></div><div class="step"><div class="num">4</div><div><strong>Restzahlung</strong><div style="font-size:15px;color:#2f3634">Der Restbetrag und die Kaution sind 30 Tage vor Mietbeginn fällig. Wir bitten zudem um einen Nachweis Ihrer Privathaftpflichtversicherung.</div></div></div><div class="step"><div class="num">5</div><div><strong>Schlüsselübergabe</strong><div style="font-size:15px;color:#2f3634">Persönlich vor Ort oder über eine Schlüsselbox; Check-in ab 16 Uhr, Check-out bis 10 Uhr.</div></div></div>
