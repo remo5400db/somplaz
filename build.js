@@ -323,7 +323,7 @@ ${t.priceRows.map((r) => `<tr><td>${esc(r.n)}</td><td>${esc(r.v)}</td></tr>`).jo
 <div class="card"><h3>${esc(t.bookHowH)}</h3>
 ${t.bookSteps.map((s) => `<div class="step"><div class="num">${esc(s.n)}</div><div><strong>${esc(s.h)}</strong><div style="font-size:15px;color:#2f3634">${esc(s.p)}</div></div></div>`).join('')}
 </div>
-<div class="card" style="margin-top:24px"><h3>${esc(t.bookCancelH)}</h3><ul>${t.bookCancel.map((x) => `<li class="li" style="display:block;font-size:15px">${esc(x)}</li>`).join('')}</ul></div>
+<div class="card" style="margin-top:24px"><h3>${esc(t.bookCancelH)}</h3><p style="margin:0 0 12px;font-size:14px;color:#5a6361">${esc(t.bookCancelNote)}</p><ul>${t.bookCancel.map((x) => `<li class="li" style="display:block;font-size:15px">${esc(x)}</li>`).join('')}</ul></div>
 </div>
 <div class="card">
 <h3>${esc(t.formH)}</h3>
