@@ -239,7 +239,7 @@ ${t.facts.map((f) => `<li style="background:#f3f5f3;border-radius:999px;padding:
 <p style="margin:6px 0 0;font-size:15px;color:#5a6361">${esc(t.addrP)}</p>
 <a class="link" href="https://www.google.com/maps/search/?api=1&amp;query=Via+Somplaz+10%2C+7500+St.+Moritz" target="_blank" rel="noopener" style="align-self:flex-start">${esc(t.addrMap)}</a>
 </div>
-<iframe title="Google Maps – Via Somplaz 10, St. Moritz" src="https://www.google.com/maps?q=Via+Somplaz+10,+7500+St.+Moritz&amp;z=16&amp;output=embed" width="600" height="300" style="width:100%;height:100%;min-height:300px;border:0;border-radius:12px" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+<div id="map-box" data-src="https://www.google.com/maps?q=Via+Somplaz+10,+7500+St.+Moritz&amp;z=16&amp;output=embed" style="width:100%;height:100%;min-height:300px;border-radius:12px;background:#e6ebe8;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:24px;box-sizing:border-box;text-align:center"><button type="button" class="btn" id="map-load">${esc(t.mapLoad)}</button><div style="font-size:13px;color:#5a6361">${esc(t.mapNote)}</div></div>
 </div>
 <div class="grid2">
 <div class="card"><h3>${esc(t.locWalkH)}</h3><ul>${liKV(t.locWalk)}</ul></div>
@@ -281,6 +281,15 @@ ${t.tours.map((x) => `<div class="card">${x.img ? `<img class="img" src="/${x.im
 </div>
 <ul>
 ${t.schools.map((s) => `<li class="tip"><strong>${esc(s.n)}</strong><br><span style="color:#2f3634">${esc(s.d)}</span><br><span style="font-size:15px">${esc(s.c)} · <a href="${esc(s.u)}" target="_blank" rel="noopener">${esc(s.w)}</a></span></li>`).join('\n')}
+</ul>
+</div>
+<div class="card" data-s="summer" style="margin-top:32px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;align-items:start" id="sommerschulen">
+<div>
+<h3>${esc(t.schoolHS)}</h3>
+<p style="margin:0;font-size:16px">${esc(t.schoolPS)}</p>
+</div>
+<ul>
+${t.schoolsS.map((s) => `<li class="tip"><strong>${esc(s.n)}</strong><br><span style="color:#2f3634">${esc(s.d)}</span><br><span style="font-size:15px">${esc(s.c)} · <a href="${esc(s.u)}" target="_blank" rel="noopener">${esc(s.w)}</a></span></li>`).join('\n')}
 </ul>
 </div>
 <div class="grid2">
@@ -371,6 +380,7 @@ ${t.priceRows.map((r) => `<tr><td>${esc(r.n)}</td><td>${esc(r.v)}</td></tr>`).jo
 <div class="grid2" style="margin-top:28px">
 <div>
 <div class="card"><h3>${esc(t.bookHowH)}</h3>
+<p style="margin:0 0 14px;font-size:14px;color:#5a6361">${esc(t.bookHowNote)}</p>
 ${t.bookSteps.map((s) => `<div class="step"><div class="num">${esc(s.n)}</div><div><strong>${esc(s.h)}</strong><div style="font-size:15px;color:#2f3634">${esc(s.p)}</div></div></div>`).join('')}
 </div>
 <div class="card" style="margin-top:24px"><h3>${esc(t.bookCancelH)}</h3><p style="margin:0 0 12px;font-size:14px;color:#5a6361">${esc(t.bookCancelNote)}</p><ul>${t.bookCancel.map((x) => `<li class="li" style="display:block;font-size:15px">${esc(x)}</li>`).join('')}</ul></div>
@@ -464,15 +474,17 @@ ${t.ds.map((x) => `<div class="faq"><strong style="display:block">${esc(x.h)}</s
 <script>
 (function(){
   var KEY='cs-consent',GA='G-BSRVJ46BE5',box=document.getElementById('consent');
+  function loadMap(){var m=document.getElementById('map-box');if(!m||m.dataset.done)return;m.dataset.done='1';var i=document.createElement('iframe');i.title='Google Maps – Via Somplaz 10, St. Moritz';i.src=m.getAttribute('data-src');i.setAttribute('loading','lazy');i.setAttribute('referrerpolicy','no-referrer-when-downgrade');i.setAttribute('allowfullscreen','');i.style.cssText='width:100%;height:100%;min-height:300px;border:0;border-radius:12px';m.replaceWith(i);}
+  var ml=document.getElementById('map-load');if(ml)ml.addEventListener('click',loadMap);
   function loadGA(){if(window.__gaLoaded)return;window.__gaLoaded=true;var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+GA;document.head.appendChild(s);window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments);};gtag('js',new Date());gtag('config',GA,{anonymize_ip:true});}
   function get(){try{return localStorage.getItem(KEY);}catch(e){return null;}}
   function set(v){try{localStorage.setItem(KEY,v);}catch(e){}}
   function show(){if(box)box.hidden=false;}
   function hide(){if(box)box.hidden=true;}
   var c=get();
-  if(c==='granted')loadGA();else if(c!=='denied')show();
+  if(c==='granted'){loadGA();loadMap();}else if(c!=='denied')show();
   var a=document.getElementById('consent-accept'),d=document.getElementById('consent-decline'),o=document.getElementById('consent-open'),m=document.getElementById('consent-more');
-  if(a)a.addEventListener('click',function(){set('granted');hide();loadGA();});
+  if(a)a.addEventListener('click',function(){set('granted');hide();loadGA();loadMap();});
   if(d)d.addEventListener('click',function(){set('denied');hide();});
   if(o)o.addEventListener('click',function(e){e.preventDefault();show();});
   if(m)m.addEventListener('click',function(){var ds=document.querySelector('#datenschutz');if(ds)ds.open=true;});
