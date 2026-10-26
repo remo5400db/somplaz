@@ -316,7 +316,6 @@ details[open] summary::after{content:"–"}
 <div class="card" style="background:#1e4d3f;color:#ffffff;border-color:#1e4d3f">
 <div style="font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;opacity:0.85">{{t.priceSeasonLabel}}</div>
 <div class="price" style="margin:6px 0 4px">{{t.priceAmount}}</div>
-<div style="font-size:15px;opacity:0.9;margin-bottom:20px">{{t.pricePeriod}}</div>
 <table class="table">
 <tbody>
 <sc-for list="{{t.priceRows}}" as="r" hint-placeholder-count="4">
@@ -566,7 +565,7 @@ class Component extends DCLogic {
         priceLead: 'Die Saison 2026/27 ist reserviert. Für die Warteliste oder Anfragen ab Sommer 2027 nutzen Sie bitte das Formular. Wir vermieten die Wohnung für die ganze Wintersaison – so haben Sie Ihr eigenes Zuhause in St. Moritz, ohne die Unsicherheit wöchentlicher Buchungen. Vor der geplanten Renovation im Frühjahr 2027 bieten wir sie diesen Winter zu einem fairen Pauschalpreis an.',
         priceSeasonLabel: 'Saisonpreis',
         pricePeriod: 'Samstag, 19. Dezember 2026 bis Dienstag, 6. April 2027 (Ostern inklusive)',
-        priceRows: [{n:'Inbegriffen',v:'Nebenkosten (Heizung, Strom, Wasser), WLAN, Tiefgaragenplatz, Bettwäsche und Handtücher, Endreinigung'},{n:'Nicht inbegriffen',v:'Kurtaxe (CHF 2.90 pro Person und Nacht, Kinder unter 12 Jahren frei)'},{n:'Kaution',v:'CHF 5\'000'},{n:'Personen',v:'max. 6'}],
+        priceRows: [{n:'Inbegriffen',v:'Nebenkosten (Heizung, Strom, Wasser), WLAN, Tiefgaragenplatz, Bettwäsche und Handtücher, Endreinigung'},{n:'Nicht inbegriffen',v:'Kurtaxe (CHF 2.90 pro Person und Nacht, Kinder unter 12 Jahren frei)'},{n:'Personen',v:'max. 6'}],
         priceWeekH: 'Wochenweise mieten?',
         priceWeek: 'Für die Saison 2026/27 nicht mehr möglich. Für künftige Zeiträume schreiben Sie uns gerne Ihren Wunsch.',
         priceWeekCta: 'Wunschzeitraum anfragen',
@@ -580,7 +579,7 @@ class Component extends DCLogic {
           {n:'1',h:'Anfrage',p:'Per Formular oder E-Mail. Wir melden uns innert 24 Stunden.'},
           {n:'2',h:'Bestätigung',p:'Sie erhalten einen schriftlichen Mietvertrag mit allen Konditionen.'},
           {n:'3',h:'Anzahlung',p:'30 % des Mietpreises innert 10 Tagen nach Vertragsunterzeichnung sichern die Reservation.'},
-          {n:'4',h:'Restzahlung',p:'Der Restbetrag und die Kaution (CHF 5\'000) sind 30 Tage vor Mietbeginn fällig. Wir bitten zudem um einen Nachweis Ihrer Privathaftpflichtversicherung.'},
+          {n:'4',h:'Restzahlung',p:'Der Restbetrag und die Kaution sind 30 Tage vor Mietbeginn fällig. Wir bitten zudem um einen Nachweis Ihrer Privathaftpflichtversicherung.'},
           {n:'5',h:'Schlüsselübergabe',p:'Persönlich vor Ort oder über eine Schlüsselbox; Check-in ab 16 Uhr, Check-out bis 10 Uhr.'}
         ],
         bookCancelH: 'Stornierungsbedingungen',
@@ -715,7 +714,7 @@ class Component extends DCLogic {
         priceLead: 'The 2026/27 season is reserved. For the waiting list or enquiries from summer 2027, please use the form. We let the apartment for the whole winter season – your own home in St. Moritz, without the uncertainty of weekly bookings. Before the planned renovation in spring 2027 we offer it this winter at a fair all-in rate.',
         priceSeasonLabel: 'Season rate',
         pricePeriod: 'Saturday 19 December 2026 to Tuesday 6 April 2027 (Easter included)',
-        priceRows: [{n:'Included',v:'Utilities (heating, electricity, water), Wi-Fi, garage parking, bed linen and towels, final cleaning'},{n:'Not included',v:'Tourist tax (CHF 2.90 per person and night, children under 12 free)'},{n:'Security deposit',v:'CHF 5,000'},{n:'Guests',v:'max. 6'}],
+        priceRows: [{n:'Included',v:'Utilities (heating, electricity, water), Wi-Fi, garage parking, bed linen and towels, final cleaning'},{n:'Not included',v:'Tourist tax (CHF 2.90 per person and night, children under 12 free)'},{n:'Guests',v:'max. 6'}],
         priceWeekH: 'Weekly rental?',
         priceWeek: 'No longer possible for the 2026/27 season. For future periods, do tell us your preferred dates.',
         priceWeekCta: 'Enquire about your dates',
@@ -729,7 +728,7 @@ class Component extends DCLogic {
           {n:'1',h:'Enquiry',p:'By form or e-mail. We reply within 24 hours.'},
           {n:'2',h:'Confirmation',p:'You receive a written rental agreement with all terms.'},
           {n:'3',h:'Down payment',p:'30% of the rent within 10 days of signing secures the reservation.'},
-          {n:'4',h:'Balance',p:'The balance and the security deposit (CHF 5,000) are due 30 days before the start of the rental. We also ask for proof of your personal liability insurance.'},
+          {n:'4',h:'Balance',p:'The balance and the security deposit are due 30 days before the start of the rental. We also ask for proof of your personal liability insurance.'},
           {n:'5',h:'Key handover',p:'In person or via key box; check-in from 4 pm, check-out by 10 am.'}
         ],
         bookCancelH: 'Cancellation policy',
@@ -864,7 +863,7 @@ class Component extends DCLogic {
         priceLead: 'La stagione 2026/27 è riservata. Per la lista d’attesa o richieste dall’estate 2027 utilizzate il modulo. Affittiamo l’appartamento per l’intera stagione invernale – la vostra casa a St. Moritz, senza l’incertezza delle prenotazioni settimanali. Prima della ristrutturazione prevista nella primavera 2027 lo offriamo quest’inverno a un prezzo forfettario equo.',
         priceSeasonLabel: 'Prezzo stagionale',
         pricePeriod: 'Da sabato 19 dicembre 2026 a martedì 6 aprile 2027 (Pasqua inclusa)',
-        priceRows: [{n:'Incluso',v:'Spese accessorie (riscaldamento, elettricità, acqua), Wi-Fi, posto auto, biancheria da letto e asciugamani, pulizia finale'},{n:'Non incluso',v:'Tassa di soggiorno (CHF 2.90 per persona e notte, bambini sotto i 12 anni esenti)'},{n:'Cauzione',v:'CHF 5\'000'},{n:'Persone',v:'max. 6'}],
+        priceRows: [{n:'Incluso',v:'Spese accessorie (riscaldamento, elettricità, acqua), Wi-Fi, posto auto, biancheria da letto e asciugamani, pulizia finale'},{n:'Non incluso',v:'Tassa di soggiorno (CHF 2.90 per persona e notte, bambini sotto i 12 anni esenti)'},{n:'Persone',v:'max. 6'}],
         priceWeekH: 'Affitto settimanale?',
         priceWeek: 'Non più possibile per la stagione 2026/27. Per periodi futuri scriveteci volentieri il vostro desiderio.',
         priceWeekCta: 'Richiedi il tuo periodo',
@@ -878,7 +877,7 @@ class Component extends DCLogic {
           {n:'1',h:'Richiesta',p:'Tramite modulo o e-mail. Rispondiamo entro 24 ore.'},
           {n:'2',h:'Conferma',p:'Ricevete un contratto di locazione scritto con tutte le condizioni.'},
           {n:'3',h:'Acconto',p:'Il 30% del canone entro 10 giorni dalla firma garantisce la prenotazione.'},
-          {n:'4',h:'Saldo',p:'Il saldo e la cauzione (CHF 5\'000) sono dovuti 30 giorni prima dell’inizio della locazione. Chiediamo inoltre una prova della vostra assicurazione di responsabilità civile privata.'},
+          {n:'4',h:'Saldo',p:'Il saldo e la cauzione sono dovuti 30 giorni prima dell’inizio della locazione. Chiediamo inoltre una prova della vostra assicurazione di responsabilità civile privata.'},
           {n:'5',h:'Consegna delle chiavi',p:'Di persona o tramite cassetta delle chiavi; check-in dalle 16, check-out entro le 10.'}
         ],
         bookCancelH: 'Condizioni di cancellazione',

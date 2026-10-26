@@ -294,7 +294,7 @@ ${t.arrBlocks.map((b) => `<div class="card"><img class="img" src="/${img(b.img)}
 <div class="card" style="background:#1e4d3f;color:#ffffff;border-color:#1e4d3f">
 <div style="font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;opacity:0.85">${esc(t.priceSeasonLabel)}</div>
 <div class="price" style="margin:6px 0 4px">${esc(t.priceAmount)}</div>
-<div style="font-size:15px;opacity:0.9;margin-bottom:20px">${esc(t.pricePeriod)}</div>
+<div style="margin-bottom:20px"></div>
 <table class="table"><tbody>
 ${t.priceRows.map((r) => `<tr><td>${esc(r.n)}</td><td>${esc(r.v)}</td></tr>`).join('')}
 </tbody></table>
