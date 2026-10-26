@@ -157,7 +157,6 @@ ${navLinks.slice(0, 5).map(([h, n]) => `<a href="${h}">${esc(n)}</a>`).join('\n'
 </nav>
 <div class="langs" style="display:flex;gap:6px;align-items:center;flex-wrap:nowrap">
 ${langLinks}
-<a class="btn btn-sm hdr-cta" href="#buchung" style="margin-left:6px;white-space:nowrap">${esc(t.navCta)}</a>
 <button class="burger" id="burger" aria-label="${esc(t.navMenu)}" aria-expanded="false" aria-controls="mobnav"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1b1f1e" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>
 </div>
 </div>
