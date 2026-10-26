@@ -76,6 +76,7 @@ html[data-season="summer"] [data-s="winter"],html[data-season="winter"] [data-s=
 .seg-lang .lang-on{background:#1b1f1e;color:#fff}
 .seasons{margin-right:8px}
 .sub-h{font-size:22px;margin:0 0 12px}
+details.inl{border:0;padding:0;background:transparent}details.inl>summary{padding:6px 0;font-size:15px;color:#1e4d3f;text-decoration:underline;text-underline-offset:3px}
 .school-top .img{height:220px !important}
 @media (max-width:760px){.school-top{grid-template-columns:repeat(1,minmax(0,1fr)) !important}}
 .grid2,.grid3,.grid4{align-items:stretch}
@@ -272,7 +273,7 @@ ${t.smCardsS.map((c) => `<div class="card"><img class="img" src="/${c.img}" alt=
 <h3 class="sub-h">${esc(t.toursH)}</h3>
 <p style="margin:0 0 20px;font-size:16px;color:#5a6361">${esc(t.toursLead)}</p>
 <div class="grid2" style="margin-top:0">
-${t.tours.map((x, i) => `<div class="card tour-${i}">${x.img ? `<img class="img" src="/${x.img}" alt="${esc(x.alt)}" width="1400" height="900" loading="lazy" style="height:220px;border-radius:8px;margin-bottom:18px">` : ''}<div class="tour-meta">${esc(x.m)}</div><h4 style="font-size:18px;margin:0 0 8px">${esc(x.h)}</h4><p style="margin:0;font-size:16px">${esc(x.p)}</p>${ext(x.u, x.w)}</div>`).join('\n')}
+${t.tours.map((x, i) => `<div class="card tour-${i}">${x.img ? `<img class="img" src="/${x.img}" alt="${esc(x.alt)}" width="1400" height="900" loading="lazy" style="height:220px;border-radius:8px;margin-bottom:18px">` : ''}<div class="tour-meta">${esc(x.m)}</div><h4 style="font-size:18px;margin:0 0 8px">${esc(x.h)}</h4><details class="inl"><summary>${esc(t.tourMore)}</summary><div style="padding:6px 0 4px"><p style="margin:0;font-size:16px">${esc(x.p)}</p>${ext(x.u, x.w)}</div></details></div>`).join('\n')}
 </div>
 </div>
 </div>
