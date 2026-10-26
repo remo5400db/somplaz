@@ -71,7 +71,7 @@ html[data-season="summer"] [data-s="winter"],html[data-season="winter"] [data-s=
 .seg{display:inline-flex;align-items:center;padding:3px;border-radius:999px;gap:2px}
 .seg-season{background:#e6f0ea}
 .seg-lang{background:#eef1ef}
-.seg .lang{border:0;background:transparent;min-height:30px;min-width:0;padding:5px 13px;font-size:13px;border-radius:999px;white-space:nowrap;line-height:1.2}
+.seg .lang{border:0;background:transparent;min-height:36px;min-width:0;padding:7px 14px;font-size:13px;border-radius:999px;white-space:nowrap;line-height:1.2}
 .seg-season .lang-on{background:#1e4d3f;color:#fff}
 .seg-lang .lang-on{background:#1b1f1e;color:#fff}
 .seasons{margin-right:8px}
@@ -118,7 +118,7 @@ function jsonLd(lang, t) {
         checkinTime: '16:00', checkoutTime: '10:00', petsAllowed: 'on request',
         containsPlace: { '@type': 'Accommodation', additionalType: 'EntirePlace', occupancy: { '@type': 'QuantitativeValue', value: 6 }, numberOfBedrooms: 3, numberOfBathroomsTotal: 2, floorSize: { '@type': 'QuantitativeValue', value: 113, unitCode: 'MTK' }, amenityFeature: t.aptEquip.map((n) => ({ '@type': 'LocationFeatureSpecification', name: n, value: true })), bed: [{ '@type': 'BedDetails', typeOfBed: 'double 160 cm', numberOfBeds: 1 }, { '@type': 'BedDetails', typeOfBed: 'bunk bed 2 x 90 cm', numberOfBeds: 2 }, { '@type': 'BedDetails', typeOfBed: 'double 180 cm', numberOfBeds: 1 }] },
         amenityFeature: t.aptEquip.map((n) => ({ '@type': 'LocationFeatureSpecification', name: n, value: true })),
-        image: ['st-moritz-dorf', 'sommer-st-moritz-hero', 'wohnbereich-cheminee-v3', 'wohnung-kueche', 'wohnung-schlafzimmer3', 'abendstimmung', 'hero-silsersee', 'piste-corviglia', 'langlauf', 'sommer-silsersee', 'sommer-biketrail-corviglia', 'herbst-silvaplanersee'].map((n) => DOMAIN + '/img/' + n + '.jpg'),
+        image: ['st-moritz-dorf', 'sommer-st-moritz-hero', 'wohnbereich-cheminee-v3', 'abendstimmung', 'hero-silsersee', 'piste-corviglia', 'langlauf', 'sommer-silsersee', 'sommer-biketrail-corviglia', 'herbst-silvaplanersee'].map((n) => DOMAIN + '/img/' + n + '.jpg'),
         offers: { '@type': 'Offer', availabilityStarts: '2027-10-01', description: t.priceLead, availability: 'https://schema.org/PreOrder', url: url + '#preise' },
       },
       { '@type': 'FAQPage', mainEntity: t.faqs.map((q) => ({ '@type': 'Question', name: q.q, acceptedAnswer: { '@type': 'Answer', text: q.a } })) },
@@ -156,7 +156,7 @@ ${alternates}
 ${Object.values(LANGS).filter((v) => v.ogLocale !== L.ogLocale).map((v) => `<meta property="og:locale:alternate" content="${v.ogLocale}">`).join('\n')}
 <meta name="twitter:card" content="summary_large_image">
 <meta name="robots" content="index,follow,max-image-preview:large">
-<script>(function(){var s=null;try{s=localStorage.getItem('cs-season');}catch(e){}if(s!=='summer'&&s!=='winter'){var m=new Date().getMonth()+1;s=(m>=5&&m<=10)?'summer':'winter';}document.documentElement.setAttribute('data-season',s);})();</script>
+<script>(function(){var s=null;try{s=localStorage.getItem('cs-season');}catch(e){}if(s!=='summer'&&s!=='winter'){s='winter';}document.documentElement.setAttribute('data-season',s);})();</script>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-48.png" type="image/png" sizes="48x48">
 <link rel="icon" href="/favicon-192.png" type="image/png" sizes="192x192">
@@ -202,7 +202,7 @@ ${t.facts.map((f) => `<li style="background:#f3f5f3;border-radius:999px;padding:
 </div>
 </div>
 <div class="hero-pic" data-s="winter"><img class="img hero-img" src="/img/st-moritz-dorf.jpg" alt="${esc(t.altHero)}" width="2400" height="1600" fetchpriority="high" style="object-position:center 70%"></div>
-<div class="hero-pic" data-s="summer"><img class="img hero-img" src="/img/sommer-st-moritz-hero.jpg" alt="${esc(t.altHeroS)}" width="2400" height="1597" fetchpriority="high" style="object-position:center 55%"></div>
+<div class="hero-pic" data-s="summer"><img class="img hero-img" src="/img/sommer-st-moritz-hero.jpg" alt="${esc(t.altHeroS)}" width="2400" height="1597" loading="lazy" style="object-position:center 55%"></div>
 </div>
 </div>
 </section>
@@ -269,7 +269,7 @@ ${t.smCardsS.map((c) => `<div class="card"><img class="img" src="/${c.img}" alt=
 <h3 class="sub-h">${esc(t.toursH)}</h3>
 <p style="margin:0 0 20px;font-size:16px;color:#5a6361">${esc(t.toursLead)}</p>
 <div class="grid2" style="margin-top:0">
-${t.tours.map((x) => `<div class="card">${x.img ? `<img class="img" src="/${x.img}" alt="${esc(x.alt)}" width="1400" height="900" loading="lazy" style="height:220px;border-radius:8px;margin-bottom:18px">` : ''}<div class="tour-meta">${esc(x.m)}</div><h3>${esc(x.h)}</h3><p style="margin:0;font-size:16px">${esc(x.p)}</p>${ext(x.u, x.w)}</div>`).join('\n')}
+${t.tours.map((x) => `<div class="card">${x.img ? `<img class="img" src="/${x.img}" alt="${esc(x.alt)}" width="1400" height="900" loading="lazy" style="height:220px;border-radius:8px;margin-bottom:18px">` : ''}<div class="tour-meta">${esc(x.m)}</div><h4 style="font-size:18px;margin:0 0 8px">${esc(x.h)}</h4><p style="margin:0;font-size:16px">${esc(x.p)}</p>${ext(x.u, x.w)}</div>`).join('\n')}
 </div>
 </div>
 </div>
@@ -384,7 +384,7 @@ ${t.bookSteps.map((s) => `<div class="step"><div class="num">${esc(s.n)}</div><d
 <div class="field"><label class="label" for="f-mail">${esc(t.fMail)} <span class="req">*</span></label><input class="input" id="f-mail" name="mail" type="email" required autocomplete="email"></div>
 <div class="field"><div class="label">${esc(t.fPeriod)}</div><div class="grid2" style="margin-top:0;gap:16px"><div><label class="label" for="f-from" style="font-weight:500">${esc(t.fFrom)}</label><input class="input" id="f-from" name="from" type="date" min="2027-10-01"></div><div><label class="label" for="f-to" style="font-weight:500">${esc(t.fTo)}</label><input class="input" id="f-to" name="to" type="date" min="2027-10-01"></div></div></div>
 <div class="grid2" style="margin-top:0;gap:16px">
-<div class="field"><label class="label" for="f-pers">${esc(t.fPers)}</label><input class="input" id="f-pers" name="pers" type="number" min="1" max="6" value="6"></div>
+<div class="field"><label class="label" for="f-pers">${esc(t.fPers)}</label><input class="input" id="f-pers" name="pers" type="number" min="1" max="6" placeholder="1–6"></div>
 <div class="field"><label class="label" for="f-pet">${esc(t.fPet)}</label><select class="input" id="f-pet" name="pet"><option value="no">${esc(t.fNo)}</option><option value="yes">${esc(t.fYes)}</option></select></div>
 </div>
 <div class="field"><label class="label" for="f-msg">${esc(t.fMsg)}</label><textarea class="input" id="f-msg" name="msg" rows="4"></textarea></div>
@@ -431,12 +431,12 @@ ${t.ds.map((x) => `<div class="faq"><strong style="display:block">${esc(x.h)}</s
   var b=document.getElementById('burger'),m=document.getElementById('mobnav');
   if(b&&m){b.addEventListener('click',function(){var o=m.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');});m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){m.classList.remove('open');b.setAttribute('aria-expanded','false');});});}
   ['#impressum','#datenschutz'].forEach(function(id){document.querySelectorAll('a[href="'+id+'"]').forEach(function(a){a.addEventListener('click',function(){var d=document.querySelector(id);if(d)d.open=true;});});});
-  function scalePlans(){document.querySelectorAll('[data-plan]').forEach(function(w){var s=w.querySelector('.plan-scale');var k=Math.min(1,Math.max(0.72,w.clientWidth/980));s.style.transform='scale('+k+')';s.style.height='900px';w.style.height=Math.round(900*k)+'px';w.style.overflowX=(w.clientWidth/980<0.72)?'auto':'hidden';});}
+  function scalePlans(){document.querySelectorAll('[data-plan]').forEach(function(w){var s=w.querySelector('.plan-scale');var k=Math.min(1,w.clientWidth/980);s.style.transform='scale('+k+')';s.style.height='900px';w.style.height=Math.round(900*k)+'px';w.style.overflowX=(w.clientWidth/980<0.72)?'auto':'hidden';});}
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&m){m.classList.remove('open');b.setAttribute('aria-expanded','false');}});
   document.addEventListener('click',function(e){if(m&&m.classList.contains('open')&&!m.contains(e.target)&&!b.contains(e.target)){m.classList.remove('open');b.setAttribute('aria-expanded','false');}});
   var wa=document.querySelector('.wa-float'),bk=document.getElementById('buchung');if(wa&&bk&&'IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(x){wa.style.display=x.isIntersecting?'none':'flex';});},{threshold:0.05}).observe(bk);}
   function paintSeason(){var cur=document.documentElement.getAttribute('data-season')||'winter';document.querySelectorAll('[data-set-season]').forEach(function(x){var on=x.getAttribute('data-set-season')===cur;x.classList.toggle('lang-on',on);x.setAttribute('aria-pressed',on?'true':'false');});}
-  document.querySelectorAll('[data-set-season]').forEach(function(x){x.addEventListener('click',function(){var v=x.getAttribute('data-set-season');document.documentElement.setAttribute('data-season',v);try{localStorage.setItem('cs-season',v);}catch(e){}paintSeason();scalePlans();});});
+  document.querySelectorAll('[data-set-season]').forEach(function(x){x.addEventListener('click',function(){var v=x.getAttribute('data-set-season');document.documentElement.setAttribute('data-season',v);try{localStorage.setItem('cs-season',v);}catch(e){}paintSeason();scalePlans();if(m&&m.classList.contains('open')){m.classList.remove('open');b.setAttribute('aria-expanded','false');}});});
   paintSeason();
   scalePlans();window.addEventListener('resize',scalePlans);
   try{var sy=sessionStorage.getItem('cs-scroll');if(sy!==null){sessionStorage.removeItem('cs-scroll');window.scrollTo(0,parseInt(sy,10)||0);}}catch(e){}
