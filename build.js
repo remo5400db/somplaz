@@ -70,6 +70,7 @@ picture{display:block;width:100%}
 html[data-season="summer"] [data-s="winter"],html[data-season="winter"] [data-s="summer"]{display:none !important}
 .seasons{display:flex;gap:4px;align-items:center;margin-right:10px;border-right:1px solid #e3e7e4;padding-right:10px}
 .season{min-width:0;padding:8px 12px;white-space:nowrap}
+.sub-h{font-size:22px;margin:0 0 12px}
 .tour-meta{font-size:13px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#1e4d3f;margin:0 0 8px}
 .s-ico{display:none}.mob-seasons{display:none}
 @media (max-width:760px){.seasons{display:none}.mob-seasons{display:flex}.mob-seasons .season{min-height:40px;font-size:14px;padding:8px 10px}}
@@ -256,7 +257,7 @@ ${t.smCards.map((c) => `<div class="card"><img class="img" src="/${img(c.img)}" 
 ${t.smCardsS.map((c) => `<div class="card"><img class="img" src="/${c.img}" alt="${esc(c.alt)}" width="1400" height="900" loading="lazy" style="height:220px;border-radius:8px;margin-bottom:18px"><h3>${esc(c.h)}</h3><p style="margin:0;font-size:16px">${esc(c.p)}</p></div>`).join('\n')}
 </div>
 <div style="margin-top:40px">
-<h3 style="font-size:22px;margin-bottom:8px">${esc(t.toursH)}</h3>
+<h3 class="sub-h">${esc(t.toursH)}</h3>
 <p style="margin:0 0 20px;font-size:16px;color:#5a6361">${esc(t.toursLead)}</p>
 <div class="grid2" style="align-items:start;margin-top:0">
 ${t.tours.map((x) => `<div class="card">${x.img ? `<img class="img" src="/${x.img}" alt="${esc(x.alt)}" width="1400" height="900" loading="lazy" style="height:220px;border-radius:8px;margin-bottom:18px">` : ''}<div class="tour-meta">${esc(x.m)}</div><h3>${esc(x.h)}</h3><p style="margin:0;font-size:16px">${esc(x.p)}</p>${ext(x.u, x.w)}</div>`).join('\n')}
@@ -274,15 +275,17 @@ ${t.schools.map((s) => `<li class="tip"><strong>${esc(s.n)}</strong><br><span st
 </ul>
 </div>
 <div class="grid2" style="align-items:start">
+<div>
+<h3 class="sub-h"><span data-s="winter">${esc(t.smEventsH)}</span><span data-s="summer">${esc(t.smEventsHS)}</span></h3>
 <div class="card">
 <div data-s="winter"><img class="img" src="/img/white-turf.jpg" alt="${esc(t.altTurf)}" width="2000" height="1333" loading="lazy" style="height:220px;border-radius:8px;margin-bottom:18px">
-<h3>${esc(t.smEventsH)}</h3>
 <ul>${liKV(t.smEvents)}</ul></div>
-<div data-s="summer"><h3>${esc(t.smEventsHS)}</h3>
-<ul>${liKV(t.smEventsS)}</ul></div>
+<div data-s="summer"><ul>${liKV(t.smEventsS)}</ul></div>
 </div>
+</div>
+<div>
+<h3 class="sub-h">${esc(t.smSecretH)}</h3>
 <div class="card">
-<h3>${esc(t.smSecretH)}</h3>
 <div data-s="winter">${t.smSecrets.map((x) => `<div class="tip"><strong>${esc(x.n)}</strong> – ${esc(x.v)}${ext(x.u, x.w)}</div>`).join('\n')}</div>
 <div data-s="summer">${t.smSecretsS.map((x) => `<div class="tip"><strong>${esc(x.n)}</strong> – ${esc(x.v)}${ext(x.u, x.w)}</div>`).join('\n')}</div>
 <details style="margin-top:20px">
@@ -292,6 +295,7 @@ ${t.smTips.map((x) => `<div class="tip"><strong>${esc(x.n)}</strong> – ${esc(x
 <p style="margin:14px 0 0;font-size:15px;color:#5a6361">${esc(t.smTipsNote)}</p>
 </div>
 </details>
+</div>
 </div>
 </div>
 <div class="grid2 pair" data-s="winter" style="gap:16px"><img class="img" src="/img/abendstimmung.jpg" alt="${esc(t.altAbend)}" width="1800" height="1013" loading="lazy" style="height:300px"><img class="img" src="/img/hero-silsersee.jpg" alt="${esc(t.altSils)}" width="1800" height="1013" loading="lazy" style="height:300px"></div>

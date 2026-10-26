@@ -114,6 +114,7 @@ picture{display:block;width:100%}
 html[data-season="summer"] [data-s="winter"],html[data-season="winter"] [data-s="summer"]{display:none !important}
 .seasons{display:flex;gap:4px;align-items:center;margin-right:10px;border-right:1px solid #e3e7e4;padding-right:10px}
 .season{min-width:0;padding:8px 12px;white-space:nowrap}
+.sub-h{font-size:22px;margin:0 0 12px}
 .tour-meta{font-size:13px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#1e4d3f;margin:0 0 8px}
 .s-ico{display:none}.mob-seasons{display:none}
 @media (max-width:760px){.seasons{display:none}.mob-seasons{display:flex}.mob-seasons .season{min-height:40px;font-size:14px;padding:8px 10px}}
@@ -157,7 +158,7 @@ html[data-season="summer"] [data-s="winter"],html[data-season="winter"] [data-s=
 <h1 class="hero-h" style="font-size:50px;margin-bottom:20px">Appartamento di vacanza a St. Moritz Dorf – 4,5 locali nel pieno centro</h1>
 <p class="lead" style="margin:0 0 24px">Spazioso appartamento di 4,5 locali per 6 persone, con posto auto in garage e deposito sci, nel pieno centro di St. Moritz Dorf. Nella primavera 2027 verranno ristrutturati cucina e bagni; dall’autunno 2027 affittiamo l’appartamento appena ristrutturato e arredato a nuovo. Iscrivetevi ora alla lista d’attesa – sarete informati prima della commercializzazione ufficiale.</p>
 <ul style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px">
-<li style="background:#f3f5f3;border-radius:999px;padding:8px 16px;font-size:14px;font-weight:600">4,5 locali</li><li style="background:#f3f5f3;border-radius:999px;padding:8px 16px;font-size:14px;font-weight:600">113 m²</li><li style="background:#f3f5f3;border-radius:999px;padding:8px 16px;font-size:14px;font-weight:600">fino a 6 persone</li><li style="background:#f3f5f3;border-radius:999px;padding:8px 16px;font-size:14px;font-weight:600">Cucina e bagni nuovi dalla primavera 2027</li><li style="background:#f3f5f3;border-radius:999px;padding:8px 16px;font-size:14px;font-weight:600">6 min dagli impianti</li><li style="background:#f3f5f3;border-radius:999px;padding:8px 16px;font-size:14px;font-weight:600">Garage</li>
+<li style="background:#f3f5f3;border-radius:999px;padding:8px 16px;font-size:14px;font-weight:600">4,5 locali</li><li style="background:#f3f5f3;border-radius:999px;padding:8px 16px;font-size:14px;font-weight:600">113 m²</li><li style="background:#f3f5f3;border-radius:999px;padding:8px 16px;font-size:14px;font-weight:600">fino a 6 persone</li><li style="background:#f3f5f3;border-radius:999px;padding:8px 16px;font-size:14px;font-weight:600">Garage</li><li style="background:#f3f5f3;border-radius:999px;padding:8px 16px;font-size:14px;font-weight:600">6 min dagli impianti</li><li style="background:#f3f5f3;border-radius:999px;padding:8px 16px;font-size:14px;font-weight:600">Cucina e bagni nuovi dalla primavera 2027</li>
 </ul>
 <div style="display:flex;gap:22px;align-items:center;flex-wrap:wrap">
 <a class="btn" href="#buchung">Lista d’attesa</a>
@@ -474,7 +475,7 @@ html[data-season="summer"] [data-s="winter"],html[data-season="winter"] [data-s=
 <div class="card"><img class="img" src="/img/herbst-silvaplanersee.jpg" alt="Larice dorato sul lago di Silvaplana in autunno" width="1400" height="900" loading="lazy" style="height:220px;border-radius:8px;margin-bottom:18px"><h3>Autunno dorato</h3><p style="margin:0;font-size:16px">Da inizio ottobre i boschi di larici dell’Engadina si tingono d’oro – due settimane in cui la valle è al suo meglio: aria limpida, sentieri silenziosi e le prime nevi sulle cime.</p></div>
 </div>
 <div style="margin-top:40px">
-<h3 style="font-size:22px;margin-bottom:8px">I nostri itinerari preferiti</h3>
+<h3 class="sub-h">I nostri itinerari preferiti</h3>
 <p style="margin:0 0 20px;font-size:16px;color:#5a6361">Quattro itinerari che rifacciamo sempre volentieri – i tempi sono indicativi, i dettagli sulle pagine ufficiali collegate.</p>
 <div class="grid2" style="align-items:start;margin-top:0">
 <div class="card"><img class="img" src="/img/lago-di-saoseo.jpg" alt="Lago di Saoseo con larici gialli in autunno" width="1400" height="900" loading="lazy" style="height:220px;border-radius:8px;margin-bottom:18px"><div class="tour-meta">Escursione · settembre–ottobre · ca. 15 km · 650 m di dislivello</div><h3>Lagh da Saoseo in autunno</h3><p style="margin:0;font-size:16px">Il lago alpino blu intenso della Val da Camp (Valposchiavo) è considerato uno dei più belli delle Alpi – in ottobre, quando i larici si accendono, è il nostro preferito. In treno sul Bernina e con l’autopostale fino a Sfazù; da lì via Rifugio Saoseo al lago e oltre fino al Lagh da Val Viola. Variante comoda con la navetta fino ad Alp Camp.</p> · <a href="https://www.graubuenden.ch/it/tour/escursione-montagna-al-lagh-da-saoseo" target="_blank" rel="noopener">Descrizione su graubuenden.ch</a></div>
@@ -498,15 +499,17 @@ html[data-season="summer"] [data-s="winter"],html[data-season="winter"] [data-s=
 </ul>
 </div>
 <div class="grid2" style="align-items:start">
+<div>
+<h3 class="sub-h"><span data-s="winter">Eventi invernali</span><span data-s="summer">Eventi in estate e autunno</span></h3>
 <div class="card">
 <div data-s="winter"><img class="img" src="/img/white-turf.jpg" alt="White Turf St. Moritz: corse di cavalli sul lago ghiacciato" width="2000" height="1333" loading="lazy" style="height:220px;border-radius:8px;margin-bottom:18px">
-<h3>Eventi invernali</h3>
 <ul><li class="li"><span>Snow Polo World Cup</span><span>Gennaio</span></li><li class="li"><span>White Turf – corse di cavalli e skikjöring sul lago ghiacciato</span><span>Febbraio</span></li><li class="li"><span>Engadin Skimarathon</span><span>Marzo</span></li><li class="li"><span>Chalandamarz – usanza engadinese di primavera</span><span>1° marzo</span></li><li class="li"><span>SunIce Festival – musica elettronica in montagna</span><span>Aprile</span></li></ul></div>
-<div data-s="summer"><h3>Eventi in estate e autunno</h3>
-<ul><li class="li"><span>Festival da Jazz, British Classic Car Meeting, Summer Country Polo Tournament</span><span>Luglio</span></li><li class="li"><span>Engadin Festival – concerti di musica classica</span><span>Luglio–agosto</span></li><li class="li"><span>Concerti «Music mondaine»</span><span>Luglio–settembre</span></li><li class="li"><span>St. Moritz Gourmet Festival, Art Film Festival, Running Festival</span><span>Agosto</span></li><li class="li"><span>Bernina Gran Turismo – auto da corsa storiche sul passo</span><span>Settembre</span></li><li class="li"><span>The Alpine Rendezvous</span><span>Ottobre</span></li></ul></div>
+<div data-s="summer"><ul><li class="li"><span>Festival da Jazz</span><span>Luglio</span></li><li class="li"><span>British Classic Car Meeting</span><span>Luglio</span></li><li class="li"><span>Summer Country Polo Tournament</span><span>Luglio</span></li><li class="li"><span>Engadin Festival – concerti di musica classica</span><span>Luglio–agosto</span></li><li class="li"><span>Concerti «Music mondaine»</span><span>Luglio–settembre</span></li><li class="li"><span>St. Moritz Gourmet Festival</span><span>Agosto</span></li><li class="li"><span>Art Film Festival</span><span>Agosto</span></li><li class="li"><span>Running Festival</span><span>Agosto</span></li><li class="li"><span>Bernina Gran Turismo – auto da corsa storiche sul passo</span><span>Settembre</span></li><li class="li"><span>The Alpine Rendezvous</span><span>Ottobre</span></li></ul></div>
 </div>
+</div>
+<div>
+<h3 class="sub-h">Ristoranti: i nostri consigli</h3>
 <div class="card">
-<h3>I nostri consigli segreti</h3>
 <div data-s="winter"><div class="tip"><strong>Bellavista, Surlej</strong> – albergo-ristorante a conduzione familiare ai piedi del Corvatsch, a circa 10 minuti in auto. Il nostro consiglio: la fondue chinoise – prenotare in anticipo. · <a href="https://www.bellavista.ch" target="_blank" rel="noopener">bellavista.ch</a></div>
 <div class="tip"><strong>La Baracca, St. Moritz Bad</strong> – rustica baracca di legno in Via Rosatsch, lunghi tavoli, classici semplici e lunghe serate – aperta solo in inverno, senza prenotazione. · <a href="https://www.labaraccastmoritz.com/" target="_blank" rel="noopener">labaraccastmoritz.com</a></div></div>
 <div data-s="summer"><div class="tip"><strong>Bellavista, Surlej</strong> – hotel-ristorante a conduzione familiare ai piedi del Corvatsch, circa 10 minuti in auto. Il nostro consiglio estivo: la terrazza con vista su Corvatsch e laghi – prenotate in anticipo. · <a href="https://www.bellavista.ch" target="_blank" rel="noopener">bellavista.ch</a></div>
@@ -524,6 +527,7 @@ html[data-season="summer"] [data-s="winter"],html[data-season="winter"] [data-s=
 <p style="margin:14px 0 0;font-size:15px;color:#5a6361">In alta stagione consigliamo di prenotare ovunque – saremo lieti di aiutarvi.</p>
 </div>
 </details>
+</div>
 </div>
 </div>
 <div class="grid2 pair" data-s="winter" style="gap:16px"><img class="img" src="/img/abendstimmung.jpg" alt="Luce della sera sulle piste sopra St. Moritz" width="1800" height="1013" loading="lazy" style="height:300px"><img class="img" src="/img/hero-silsersee.jpg" alt="Inverno in Engadina: il lago di Sils con il riflesso delle montagne innevate" width="1800" height="1013" loading="lazy" style="height:300px"></div>
