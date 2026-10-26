@@ -77,6 +77,7 @@ html[data-season="summer"] [data-s="winter"],html[data-season="winter"] [data-s=
 .seasons{margin-right:8px}
 .sub-h{font-size:22px;margin:0 0 12px}
 .grid2,.grid3,.grid4{align-items:stretch}
+@media (max-width:760px){.tour-0{order:0}.tour-2{order:1}.tour-1{order:2}.tour-3{order:3}}
 .grid2>.card,.grid3>.card,.grid4>.card{height:100%;box-sizing:border-box}
 .grid2>div:not(.card),.grid3>div:not(.card){display:flex;flex-direction:column}
 .grid2>div:not(.card)>.card:last-child,.grid3>div:not(.card)>.card:last-child{flex:1 1 auto}
@@ -269,7 +270,7 @@ ${t.smCardsS.map((c) => `<div class="card"><img class="img" src="/${c.img}" alt=
 <h3 class="sub-h">${esc(t.toursH)}</h3>
 <p style="margin:0 0 20px;font-size:16px;color:#5a6361">${esc(t.toursLead)}</p>
 <div class="grid2" style="margin-top:0">
-${t.tours.map((x) => `<div class="card">${x.img ? `<img class="img" src="/${x.img}" alt="${esc(x.alt)}" width="1400" height="900" loading="lazy" style="height:220px;border-radius:8px;margin-bottom:18px">` : ''}<div class="tour-meta">${esc(x.m)}</div><h4 style="font-size:18px;margin:0 0 8px">${esc(x.h)}</h4><p style="margin:0;font-size:16px">${esc(x.p)}</p>${ext(x.u, x.w)}</div>`).join('\n')}
+${t.tours.map((x, i) => `<div class="card tour-${i}">${x.img ? `<img class="img" src="/${x.img}" alt="${esc(x.alt)}" width="1400" height="900" loading="lazy" style="height:220px;border-radius:8px;margin-bottom:18px">` : ''}<div class="tour-meta">${esc(x.m)}</div><h4 style="font-size:18px;margin:0 0 8px">${esc(x.h)}</h4><p style="margin:0;font-size:16px">${esc(x.p)}</p>${ext(x.u, x.w)}</div>`).join('\n')}
 </div>
 </div>
 </div>
