@@ -79,9 +79,9 @@ const svgChat = (size) => `<svg aria-hidden="true" width="${size}" height="${siz
 const LANGS = { de: { dir: '', hreflang: 'de', extra: ['de-CH', 'de-DE', 'de-AT'], ogLocale: 'de_CH' }, en: { dir: 'en/', hreflang: 'en', extra: ['en-GB'], ogLocale: 'en_GB' }, it: { dir: 'it/', hreflang: 'it', extra: ['it-IT', 'it-CH'], ogLocale: 'it_IT' } };
 const HREFLANGS = Object.values(LANGS).flatMap((v) => [v.hreflang, ...v.extra].map((h) => [h, v.dir]));
 const META = {
-  de: { title: 'Chesa Somplaz – Ferienwohnung St. Moritz Dorf', desc: "Chesa Somplaz: 4.5-Zimmer-Ferienwohnung im Zentrum von St. Moritz Dorf, 113 m², bis 6 Personen, Tiefgarage. Saison 2026/27 reserviert – Warteliste und Anfragen ab Sommer 2027." },
-  en: { title: 'Chesa Somplaz – Holiday apartment St. Moritz Dorf', desc: 'Chesa Somplaz: 4.5-room holiday apartment in the centre of St. Moritz Dorf, 113 m², up to 6 guests, garage. Season 2026/27 reserved – waiting list and enquiries from summer 2027.' },
-  it: { title: 'Chesa Somplaz – Appartamento vacanze St. Moritz Dorf', desc: "Chesa Somplaz: appartamento di 4,5 locali nel centro di St. Moritz Dorf, 113 m², fino a 6 persone, garage. Stagione 2026/27 riservata – lista d’attesa e richieste dall’estate 2027." },
+  de: { title: 'Chesa Somplaz – Ferienwohnung St. Moritz Dorf', desc: "Chesa Somplaz: 4.5-Zimmer-Ferienwohnung im Zentrum von St. Moritz Dorf, 113 m², bis 6 Personen, Tiefgarage. Winter 2026/27 reserviert – ab Herbst 2027 frisch renoviert und neu möbliert. Jetzt in die Warteliste eintragen." },
+  en: { title: 'Chesa Somplaz – Holiday apartment St. Moritz Dorf', desc: 'Chesa Somplaz: 4.5-room holiday apartment in the centre of St. Moritz Dorf, 113 m², up to 6 guests, garage. Winter 2026/27 reserved – freshly renovated and newly furnished from autumn 2027. Join the waiting list now.' },
+  it: { title: 'Chesa Somplaz – Appartamento vacanze St. Moritz Dorf', desc: "Chesa Somplaz: appartamento di 4,5 locali nel centro di St. Moritz Dorf, 113 m², fino a 6 persone, garage. Inverno 2026/27 riservato – dall’autunno 2027 appena ristrutturato e arredato a nuovo. Iscrivetevi alla lista d’attesa." },
 };
 const WA = '41794191462';
 
@@ -103,7 +103,7 @@ function jsonLd(lang, t) {
         containsPlace: { '@type': 'Accommodation', additionalType: 'EntirePlace', occupancy: { '@type': 'QuantitativeValue', value: 6 }, numberOfBedrooms: 3, numberOfBathroomsTotal: 2, floorSize: { '@type': 'QuantitativeValue', value: 113, unitCode: 'MTK' }, amenityFeature: t.aptEquip.map((n) => ({ '@type': 'LocationFeatureSpecification', name: n, value: true })), bed: [{ '@type': 'BedDetails', typeOfBed: 'double 160 cm', numberOfBeds: 1 }, { '@type': 'BedDetails', typeOfBed: 'bunk bed 2 x 90 cm', numberOfBeds: 2 }, { '@type': 'BedDetails', typeOfBed: 'double 180 cm', numberOfBeds: 1 }] },
         amenityFeature: t.aptEquip.map((n) => ({ '@type': 'LocationFeatureSpecification', name: n, value: true })),
         image: ['st-moritz-dorf', 'wohnbereich-cheminee-v3', 'wohnung-kueche', 'wohnung-schlafzimmer3', 'wohnung-bad', 'wohnung-dusche', 'abendstimmung', 'hero-silsersee', 'piste-corviglia', 'langlauf'].map((n) => DOMAIN + '/img/' + n + '.jpg'),
-        offers: { '@type': 'Offer', validFrom: '2026-12-19', validThrough: '2027-04-06', description: t.priceLead, availability: 'https://schema.org/LimitedAvailability', url: url + '#preise' },
+        offers: { '@type': 'Offer', availabilityStarts: '2027-10-01', description: t.priceLead, availability: 'https://schema.org/PreOrder', url: url + '#preise' },
       },
       { '@type': 'FAQPage', mainEntity: t.faqs.map((q) => ({ '@type': 'Question', name: q.q, acceptedAnswer: { '@type': 'Answer', text: q.a } })) },
     ],
@@ -180,7 +180,7 @@ ${t.facts.map((f) => `<li style="background:#f3f5f3;border-radius:999px;padding:
 </ul>
 <div style="display:flex;gap:22px;align-items:center;flex-wrap:wrap">
 <a class="btn" href="#buchung">${esc(t.heroCta)}</a>
-<a class="link hero-sec" href="#preise">${esc(t.heroSecondary)}</a>
+<a class="link hero-sec" href="#wohnung">${esc(t.heroSecondary)}</a>
 </div>
 </div>
 <img class="img hero-img" src="/img/st-moritz-dorf.jpg" alt="${esc(t.altHero)}" width="2400" height="1600" fetchpriority="high" style="object-position:center 70%">
@@ -194,9 +194,6 @@ ${t.facts.map((f) => `<li style="background:#f3f5f3;border-radius:999px;padding:
 <h2 class="h2">${esc(t.aptTitle)}</h2>
 <p class="lead" style="margin:0">${esc(t.aptLead)}</p>
 <figure style="margin:40px 0 0"><img class="img" src="/img/wohnbereich-cheminee-v3.jpg" alt="${esc(t.altLiving)}" width="1536" height="1024" loading="lazy" style="height:520px"><figcaption style="font-size:14px;color:#5a6361;margin-top:8px">${esc(t.capLiving)}</figcaption></figure>
-<div class="grid4" style="margin-top:16px;gap:16px">
-${t.aptPhotos.map((p) => `<figure style="margin:0"><img class="img" src="/${img(p.src)}" alt="${esc(p.alt)}" width="788" height="1400" loading="lazy" style="height:260px"><figcaption style="font-size:14px;color:#5a6361;margin-top:8px">${esc(p.cap)}</figcaption></figure>`).join('\n')}
-</div>
 <p style="margin:16px 0 0;font-size:14px;color:#5a6361"><strong>${esc(t.photoNoteH)}</strong> ${esc(t.photoNote)}</p>
 <div class="grid2">
 <div class="card"><h3>${esc(t.aptSleepH)}</h3><ul>${li(t.aptSleep)}</ul></div>
@@ -321,6 +318,7 @@ ${t.priceRows.map((r) => `<tr><td>${esc(r.n)}</td><td>${esc(r.v)}</td></tr>`).jo
 <div class="wrap">
 <div class="eyebrow">${esc(t.navBook)}</div>
 <h2 class="h2">${esc(t.bookTitle)}</h2>
+<p class="lead" style="margin:0">${esc(t.bookLead)}</p>
 <div class="grid2" style="margin-top:28px;align-items:start">
 <div>
 <div class="card"><h3>${esc(t.bookHowH)}</h3>
@@ -334,10 +332,7 @@ ${t.bookSteps.map((s) => `<div class="step"><div class="num">${esc(s.n)}</div><d
 <form id="enquiry" action="#" novalidate>
 <div class="field"><label class="label" for="f-name">${esc(t.fName)} <span class="req">*</span></label><input class="input" id="f-name" name="name" type="text" required autocomplete="name"></div>
 <div class="field"><label class="label" for="f-mail">${esc(t.fMail)} <span class="req">*</span></label><input class="input" id="f-mail" name="mail" type="email" required autocomplete="email"></div>
-<div class="grid2" style="margin-top:0;gap:16px">
-<div class="field"><label class="label" for="f-from">${esc(t.fFrom)}</label><input class="input" id="f-from" name="from" type="date" min="2026-12-01" max="2027-04-30"></div>
-<div class="field"><label class="label" for="f-to">${esc(t.fTo)}</label><input class="input" id="f-to" name="to" type="date" min="2026-12-01" max="2027-04-30"></div>
-</div>
+<div class="field"><label class="label" for="f-period">${esc(t.fPeriod)}</label><input class="input" id="f-period" name="period" type="text" placeholder="${esc(t.fPeriodPh)}"></div>
 <div class="grid2" style="margin-top:0;gap:16px">
 <div class="field"><label class="label" for="f-pers">${esc(t.fPers)}</label><input class="input" id="f-pers" name="pers" type="number" min="1" max="6" value="6"></div>
 <div class="field"><label class="label" for="f-pet">${esc(t.fPet)}</label><select class="input" id="f-pet" name="pet"><option value="no">${esc(t.fNo)}</option><option value="yes">${esc(t.fYes)}</option></select></div>
@@ -396,7 +391,7 @@ ${t.ds.map((x) => `<div class="faq"><strong style="display:block">${esc(x.h)}</s
   var f=document.getElementById('enquiry');
   if(f){f.addEventListener('submit',function(e){e.preventDefault();var g=function(n){return f.elements[n].value.trim();};var L=${JSON.stringify(t.mailLabels)};
     if(!g('name')||!/\\S+@\\S+\\.\\S+/.test(g('mail'))){document.getElementById('form-hint').textContent=${JSON.stringify(t.formNeed)};f.elements[g('name')?'mail':'name'].focus();return;}
-    var body=[L.name+': '+g('name'),L.mail+': '+g('mail'),L.from+': '+g('from'),L.to+': '+g('to'),L.pers+': '+g('pers'),L.pet+': '+(g('pet')==='yes'?L.yes:L.no),'',L.msg+':',g('msg')].join('\\n');
+    var body=[L.name+': '+g('name'),L.mail+': '+g('mail'),L.period+': '+g('period'),L.pers+': '+g('pers'),L.pet+': '+(g('pet')==='yes'?L.yes:L.no),'',L.msg+':',g('msg')].join('\\n');
     window.location.href='mailto:booking@chesa-somplaz.ch?subject='+encodeURIComponent(${JSON.stringify(t.mailSubject)})+'&body='+encodeURIComponent(body);});}
 })();
 </script>
@@ -443,7 +438,7 @@ ${Object.values(LANGS).map((v) => `<url><loc>${DOMAIN}/${v.dir}</loc><lastmod>${
 </urlset>
 `);
 fs.writeFileSync(path.join(OUT, 'robots.txt'), ['User-agent: *', 'Allow: /', '', ...['GPTBot', 'OAI-SearchBot', 'ChatGPT-User', 'ClaudeBot', 'Claude-User', 'PerplexityBot', 'Google-Extended', 'Bingbot', 'Applebot'].flatMap((ua) => [`User-agent: ${ua}`, 'Allow: /', '']), `Sitemap: ${DOMAIN}/sitemap.xml`, ''].join('\n'));
-fs.writeFileSync(path.join(OUT, 'llms.txt'), `# Chesa Somplaz – Ferienwohnung St. Moritz Dorf\n\n> 4.5-Zimmer-Ferienwohnung (113 m², 3. Stock, Lift) für bis zu 6 Personen im Zentrum von St. Moritz Dorf, Via Somplaz 10. Die Wintersaison 2026/27 (19. Dezember 2026 bis 6. April 2027) ist reserviert; Warteliste und Anfragen ab Sommer 2027 (nach Renovation) willkommen. Preis auf Anfrage. Kontakt: booking@chesa-somplaz.ch, WhatsApp +41 79 419 14 62.\n\n## Seiten\n\n- [Deutsch](${DOMAIN}/)\n- [English](${DOMAIN}/en/)\n- [Italiano](${DOMAIN}/it/)\n`);
+fs.writeFileSync(path.join(OUT, 'llms.txt'), `# Chesa Somplaz – Ferienwohnung St. Moritz Dorf\n\n> 4.5-Zimmer-Ferienwohnung (113 m², 3. Stock, Lift) für bis zu 6 Personen im Zentrum von St. Moritz Dorf, Via Somplaz 10. Die Wintersaison 2026/27 ist reserviert. Im Frühling 2027 werden Küche und Bäder renoviert; ab Herbst 2027 wird die Wohnung frisch renoviert und neu möbliert vermietet. Warteliste offen – Interessenten werden vor der offiziellen Vermarktung informiert. Preise auf Anfrage. Kontakt: booking@chesa-somplaz.ch, WhatsApp +41 79 419 14 62.\n\n## Seiten\n\n- [Deutsch](${DOMAIN}/)\n- [English](${DOMAIN}/en/)\n- [Italiano](${DOMAIN}/it/)\n`);
 fs.writeFileSync(path.join(OUT, 'CNAME'), 'chesa-somplaz.ch\n');
 // IndexNow (Bing & Co.): Schlüsseldatei muss unter /<key>.txt erreichbar sein; Ping erfolgt im Deploy-Workflow
 const INDEXNOW_KEY = '30a98f94c0fa4958990dec08f692916c';

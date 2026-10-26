@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ferienwohnung St. Moritz Dorf – Saisonmiete Winter 2026/27</title>
+<title>Chesa Somplaz – Ferienwohnung St. Moritz Dorf</title>
 <meta name="description" content="4.5-Zimmer-Ferienwohnung im Zentrum von St. Moritz Dorf, 113 m², bis 6 Personen, Tiefgarage. Saison 2026/27 reserviert – Warteliste und Anfragen ab Sommer 2027.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Ferienwohnung St. Moritz Dorf – Saisonmiete Winter 2026/27">
+<meta property="og:title" content="Chesa Somplaz – Ferienwohnung St. Moritz Dorf">
 <meta property="og:description" content="4.5 Zimmer, 113 m², bis 6 Personen, Tiefgarage und Skiraum – im Zentrum von St. Moritz Dorf. Saison 2026/27 reserviert.">
 <meta property="og:image" content="/_blob/536f17e277a8257cf305326e2fe7cb15">
 <meta property="og:locale" content="de_CH">
@@ -128,7 +128,7 @@ details[open] summary::after{content:"–"}
 </ul>
 <div style="display:flex;gap:22px;align-items:center;flex-wrap:wrap">
 <a class="btn" href="#buchung">{{t.heroCta}}</a>
-<a class="link hero-sec" href="#preise">{{t.heroSecondary}}</a>
+<a class="link hero-sec" href="#wohnung">{{t.heroSecondary}}</a>
 </div>
 </div>
 <img class="img hero-img" src="/_blob/536f17e277a8257cf305326e2fe7cb15" alt="{{t.altHero}}" width="2400" height="1600" fetchpriority="high" style="object-position:center 70%">
@@ -143,11 +143,6 @@ details[open] summary::after{content:"–"}
 <h2 class="h2">{{t.aptTitle}}</h2>
 <p class="lead" style="margin:0">{{t.aptLead}}</p>
 <figure style="margin:40px 0 0"><img class="img" src="/_blob/e97edc1b14e9e30915cf23a38a095646" alt="{{t.altLiving}}" width="1536" height="1024" loading="lazy" style="height:520px"><figcaption style="font-size:14px;color:#5a6361;margin-top:8px">{{t.capLiving}}</figcaption></figure>
-<div class="grid4" style="margin-top:16px;gap:16px">
-<sc-for list="{{t.aptPhotos}}" as="p" hint-placeholder-count="4">
-<figure style="margin:0"><img class="img" src="{{p.src}}" alt="{{p.alt}}" width="788" height="1400" loading="lazy" style="height:260px"><figcaption style="font-size:14px;color:#5a6361;margin-top:8px">{{p.cap}}</figcaption></figure>
-</sc-for>
-</div>
 <p style="margin:16px 0 0;font-size:14px;color:#5a6361"><strong>{{t.photoNoteH}}</strong> {{t.photoNote}}</p>
 <div class="grid2">
 <div class="card">
@@ -362,6 +357,7 @@ details[open] summary::after{content:"–"}
 <div class="wrap">
 <div class="eyebrow">{{t.navBook}}</div>
 <h2 class="h2">{{t.bookTitle}}</h2>
+<p class="lead" style="margin:0">{{t.bookLead}}</p>
 <div class="grid2" style="margin-top:28px;align-items:start">
 <div>
 <div class="card">
@@ -384,10 +380,7 @@ details[open] summary::after{content:"–"}
 <p style="margin:0 0 20px;font-size:15px;color:#5a6361">{{t.formLead}}</p>
 <div class="field"><label class="label" for="f-name">{{t.fName}} <span class="req">*</span></label><input class="input" id="f-name" type="text" required="required" value="{{form.name}}" onChange="{{onName}}"></div>
 <div class="field"><label class="label" for="f-mail">{{t.fMail}} <span class="req">*</span></label><input class="input" id="f-mail" type="email" required="required" value="{{form.mail}}" onChange="{{onMail}}"></div>
-<div class="grid2" style="margin-top:0;gap:16px">
-<div class="field"><label class="label" for="f-from">{{t.fFrom}}</label><input class="input" id="f-from" type="date" value="{{form.from}}" onChange="{{onFrom}}"></div>
-<div class="field"><label class="label" for="f-to">{{t.fTo}}</label><input class="input" id="f-to" type="date" value="{{form.to}}" onChange="{{onTo}}"></div>
-</div>
+<div class="field"><label class="label" for="f-period">{{t.fPeriod}}</label><input class="input" id="f-period" type="text" placeholder="{{t.fPeriodPh}}" value="{{form.from}}" onChange="{{onFrom}}"></div>
 <div class="grid2" style="margin-top:0;gap:16px">
 <div class="field"><label class="label" for="f-pers">{{t.fPers}}</label><input class="input" id="f-pers" type="number" min="1" max="6" value="{{form.pers}}" onChange="{{onPers}}"></div>
 <div class="field"><label class="label" for="f-pet">{{t.fPet}}</label><select class="input" id="f-pet" value="{{form.pet}}" onChange="{{onPet}}"><option value="no">{{t.fNo}}</option><option value="yes">{{t.fYes}}</option></select></div>
@@ -486,23 +479,23 @@ class Component extends DCLogic {
     return {
       de: {
         brand: 'Chesa Somplaz',
-        navApt: 'Wohnung', navLoc: 'Lage', navSm: 'St. Moritz', navArr: 'Anreise', navPrice: 'Preise', navBook: 'Buchung', navCta: 'Anfragen', navMenu: 'Menü öffnen', planAria: 'Grundriss der 4.5-Zimmer-Wohnung: 113 m², 3 Schlafzimmer, Wohn- und Essbereich mit Balkon 11 m², Küche, Bad/WC, Dusche/WC, Waschküche',
-        badgeAvail: 'Saison 2026/27: reserviert',
+        navApt: 'Wohnung', navLoc: 'Lage', navSm: 'St. Moritz', navArr: 'Anreise', navPrice: 'Preise', navBook: 'Warteliste', navCta: 'Warteliste', navMenu: 'Menü öffnen', planAria: 'Grundriss der 4.5-Zimmer-Wohnung: 113 m², 3 Schlafzimmer, Wohn- und Essbereich mit Balkon 11 m², Küche, Bad/WC, Dusche/WC, Waschküche',
+        badgeAvail: 'Winter 2026/27 reserviert · ab Herbst 2027 frisch renoviert',
         heroTitle: 'Ferienwohnung in St. Moritz Dorf – 4.5 Zimmer mitten im Zentrum',
-        heroLead: 'Grosszügige 4.5-Zimmer-Wohnung für bis zu 6 Personen, mit Tiefgaragenplatz und Skiraum, mitten im Zentrum von St. Moritz Dorf. Die Saison von Dezember 2026 bis April 2027 ist reserviert – Warteliste und Anfragen ab Sommer 2027 sind willkommen.',
+        heroLead: 'Grosszügige 4.5-Zimmer-Wohnung für bis zu 6 Personen, mit Tiefgaragenplatz und Skiraum, mitten im Zentrum von St. Moritz Dorf. Im Frühling 2027 werden Küche und Bäder renoviert; ab Herbst 2027 vermieten wir die Wohnung frisch renoviert und neu möbliert. Tragen Sie sich jetzt in die Warteliste ein – Sie werden vor der offiziellen Vermarktung informiert.',
         altHero: 'St. Moritz Dorf im Winter: schiefer Turm, St. Moritzersee und verschneite Berge',
         altLiving: 'Wohnbereich mit Sofa, Cheminée und Blick zum Balkon – Ferienwohnung Chesa Somplaz St. Moritz',
         altDorf: 'St. Moritz Dorf mit schiefem Turm, St. Moritzersee und verschneiten Bergen',
         altKid: 'Kind beim Skifahren in der Skischule St. Moritz',
         altTurf: 'White Turf St. Moritz: Pferderennen auf dem gefrorenen See',
         altAbend: 'Abendstimmung auf der Piste über St. Moritz', altSils: 'Winter im Engadin: Silsersee mit Spiegelung der verschneiten Berge',
-        facts: ['4.5 Zimmer', '113 m²', 'bis 6 Personen', 'Neu möbliert ab Dezember 2026', '6 Min. zur Bergbahn', 'Tiefgarage'],
-        heroCta: 'Auf die Warteliste', priceAmount: 'Auf Anfrage', heroSecondary: 'Preise und Konditionen',
+        facts: ['4.5 Zimmer', '113 m²', 'bis 6 Personen', 'Küche und Bäder neu ab Frühling 2027', '6 Min. zur Bergbahn', 'Tiefgarage'],
+        heroCta: 'Auf die Warteliste', priceAmount: 'Auf Anfrage', heroSecondary: 'Wohnung ansehen',
         phApt0: 'Foto Wohnraum mit Balkon (folgt)', phApt1: 'Foto Küche', phApt2: 'Foto Schlafzimmer', phApt3: 'Foto Bad', phPlan: 'Grundriss (folgt)',
         aptPhotos: [{src:PH.k,alt:'Küche der 4.5-Zimmer-Ferienwohnung an der Via Somplaz, St. Moritz Dorf',cap:'Küche'},{src:PH.s3,alt:'Schlafzimmer 2 mit Kajütenbett',cap:'Schlafzimmer 2 – Kajütenbett'},{src:PH.b,alt:'Bad mit Badewanne, Bidet und WC',cap:'Bad mit Badewanne, Bidet/WC'},{src:PH.d,alt:'Separate Dusche mit WC',cap:'Dusche/WC'}],
-        photoNoteH: 'Zu den Fotos:', photoNote: 'Die Wohnung ist bis Dezember 2026 bewohnt. Wohnbereich und Schlafzimmer zeigen die baugleiche Wohnung im 5. Stock, die als Vorlage für unsere neue Einrichtung dient (Wohnbereich als Visualisierung). Küche und Bäder sind Aufnahmen der Wohnung selbst.', capLiving: 'Wohnbereich – Visualisierung der neuen Einrichtung, aufgenommen in der baugleichen Wohnung im 5. Stock',
+        photoNoteH: 'Zu den Fotos:', photoNote: 'Das Bild zeigt den Wohnbereich als Visualisierung der neuen Einrichtung, aufgenommen in der baugleichen Wohnung im 5. Stock. Küche und Bäder werden im Frühling 2027 vollständig renoviert; neue Fotos folgen nach der Renovation.', capLiving: 'Wohnbereich – Visualisierung der neuen Einrichtung, aufgenommen in der baugleichen Wohnung im 5. Stock',
         aptTitle: 'Die Wohnung: 4.5 Zimmer, 113 m², 3. Stock in St. Moritz Dorf',
-        aptLead: 'Die Wohnung im 3. Stock (mit Lift) bietet Platz für bis zu 6 Personen – ideal für Familien oder zwei befreundete Paare. Der helle Wohnraum mit Cheminée und Zugang zum Balkon (Bergseite) ist der Mittelpunkt der Wohnung; die Küche ist vollständig ausgestattet. Auf die Wintersaison hin wird die Wohnung Mitte Dezember 2026 komplett neu eingerichtet – sämtliche Möbel, Betten, Lampen und Textilien sind neu; Sie sind die ersten Gäste in der neuen Einrichtung. Küche und Bäder sind im gepflegten Originalzustand und voll funktionsfähig; ihre Renovation folgt im Frühling 2027.',
+        aptLead: 'Die Wohnung im 3. Stock (mit Lift) bietet Platz für bis zu 6 Personen – ideal für Familien oder zwei befreundete Paare. Der helle Wohnraum mit Cheminée und Zugang zum Balkon (Bergseite) ist der Mittelpunkt der Wohnung. Im Frühling 2027 werden Küche und Bäder vollständig renoviert; ab Herbst 2027 vermieten wir die Wohnung frisch renoviert und komplett neu möbliert – sämtliche Möbel, Betten, Lampen und Textilien sind dann neu.',
         aptSleepH: 'Schlafen (6 Betten)',
         aptSleep: ['Schlafzimmer 1: Doppelbett 160 cm', 'Schlafzimmer 2: Kajütenbett mit zwei Einzelbetten 90 cm', 'Schlafzimmer 3: Doppelbett 180 cm'],
         aptBathH: 'Bad und Wäsche',
@@ -561,20 +554,20 @@ class Component extends DCLogic {
           {img:IMG_TRAIN, pos:'center', alt:'Rhätische Bahn im Schnee Richtung St. Moritz', h:'Mit der Rhätischen Bahn (Albulalinie)', p:'Ab Zürich HB mit Umsteigen in Chur in rund 3 Stunden 20 Minuten – die Albulalinie der Rhätischen Bahn ist UNESCO-Welterbe und die schönste Anreise ins Engadin.\nVom Bahnhof St. Moritz mit dem Bus bis Haltestelle Serlas (3 Gehminuten zur Wohnung) oder in 4 Minuten mit dem Taxi.\n\nGepäck und Ski: Lift bis in den 3. Stock; Skiausrüstung lagern Sie im Skiraum im Haus.'},
           {img:IMG_JET, pos:'center', alt:'Privatjet auf dem Engadin Airport Samedan', h:'Mit dem Flugzeug: Zürich oder Engadin Airport Samedan', p:'Nächster internationaler Flughafen ist Zürich, ca. 3,5 Stunden mit Auto oder Bahn (direkte Bahnverbindung ab Flughafen über Chur).\nDer Engadin Airport in Samedan liegt 12 Autominuten entfernt und ist für Privat- und Charterflüge geöffnet; Taxi oder Mietwagen vor Ort.\n\nAuf Wunsch organisieren wir gerne einen Transfer vom Flughafen Zürich.'}
         ],
-        priceTitle: 'Preis Saisonmiete St. Moritz Winter 2026/27',
-        priceLead: 'Die Saison 2026/27 ist reserviert. Für die Warteliste oder Anfragen ab Sommer 2027 nutzen Sie bitte das Formular. Wir vermieten die Wohnung für die ganze Wintersaison – so haben Sie Ihr eigenes Zuhause in St. Moritz, ohne die Unsicherheit wöchentlicher Buchungen. Vor der geplanten Renovation im Frühjahr 2027 bieten wir sie diesen Winter zu einem fairen Pauschalpreis an.',
-        priceSeasonLabel: 'Saisonpreis',
+        priceTitle: 'Vermietung ab Herbst 2027',
+        priceLead: 'Die Wintersaison 2026/27 ist reserviert. Ab Herbst 2027 vermieten wir die Wohnung frisch renoviert und neu möbliert. Preise und Konditionen kommunizieren wir vor der offiziellen Vermarktung – Interessenten auf der Warteliste erfahren es zuerst.',
+        priceSeasonLabel: 'Preise',
         pricePeriod: 'Samstag, 19. Dezember 2026 bis Dienstag, 6. April 2027 (Ostern inklusive)',
         priceRows: [{n:'Inbegriffen',v:'Nebenkosten (Heizung, Strom, Wasser), WLAN, Tiefgaragenplatz, Bettwäsche und Handtücher, Endreinigung'},{n:'Nicht inbegriffen',v:'Kurtaxe (CHF 2.90 pro Person und Nacht, Kinder unter 12 Jahren frei)'},{n:'Personen',v:'max. 6'}],
-        priceWeekH: 'Wochenweise mieten?',
-        priceWeek: 'Für die Saison 2026/27 nicht mehr möglich. Für künftige Zeiträume schreiben Sie uns gerne Ihren Wunsch.',
-        priceWeekCta: 'Wunschzeitraum anfragen',
+        priceWeekH: 'Saison oder wochenweise?',
+        priceWeek: 'Wir entscheiden vor der Vermarktung, ob wir ab Herbst 2027 saisonweise oder wochenweise vermieten – Interessenten auf der Warteliste erfahren es zuerst.',
+        priceWeekCta: 'In die Warteliste eintragen',
         priceExtraH: 'Weitere Hinweise',
         priceExtra: ['Kurtaxe: wird von der Gemeinde St. Moritz erhoben; Gäste erhalten dafür die Gästekarte', 'Reinigung und Wäsche während der Saison: Sache der Mieter (eigene Waschküche) – auf Wunsch vermitteln wir gerne eine Reinigungskraft', 'Kinderbett: auf Anfrage, ohne Aufpreis', 'Zweiter Tiefgaragenplatz: auf Anfrage für CHF 250 pro Monat'],
         hostPh: 'Foto', hostsH: 'Ihre Gastgeberin: Vanessa',
         hostsText: 'Die Wohnung ist seit dem Bau des Hauses im Besitz unserer Familie und war zwanzig Jahre lang an dasselbe Paar vermietet. Im Frühjahr 2027 wird sie renoviert – diesen Winter öffnen wir sie erstmals für Gäste, die St. Moritz eine ganze Saison lang geniessen möchten.',
-        bookTitle: 'Buchung und Kontakt',
-        bookHowH: 'So funktioniert’s',
+        bookTitle: 'Warteliste und Kontakt', bookLead: 'Tragen Sie sich unverbindlich ein. Wir informieren Sie vor der offiziellen Vermarktung über Preise und Verfügbarkeit ab Herbst 2027.',
+        bookHowH: 'So läuft die Buchung später ab',
         bookSteps: [
           {n:'1',h:'Anfrage',p:'Per Formular oder E-Mail. Wir melden uns innert 24 Stunden.'},
           {n:'2',h:'Bestätigung',p:'Sie erhalten einen schriftlichen Mietvertrag mit allen Konditionen.'},
@@ -584,9 +577,9 @@ class Component extends DCLogic {
         ],
         bookCancelH: 'Stornierungsbedingungen',
         bookCancel: ['Bis 60 Tage vor Mietbeginn: Rückerstattung der Anzahlung abzüglich CHF 300 Bearbeitungsgebühr', '59 bis 30 Tage vor Mietbeginn: 50 % des Mietpreises', 'Weniger als 30 Tage vor Mietbeginn: 100 % des Mietpreises', 'Wir empfehlen den Abschluss einer Reiserücktrittsversicherung.'],
-        formH: 'Anfrage',
-        formLead: 'Füllen Sie das Formular aus – es öffnet eine E-Mail an uns mit Ihren Angaben. Pflichtfelder sind mit * markiert.',
-        fName: 'Name', fMail: 'E-Mail', fFrom: 'Anreise', fTo: 'Abreise', fPers: 'Personen', fPet: 'Haustier', fNo: 'Nein', fYes: 'Ja', fMsg: 'Nachricht', fSend: 'Anfrage per E-Mail senden',
+        formH: 'Warteliste',
+        formLead: 'Unverbindlich – wir melden uns vor der offiziellen Vermarktung bei Ihnen. Pflichtfelder sind mit * markiert.',
+        fName: 'Name', fMail: 'E-Mail', fPeriod: 'Gewünschter Zeitraum', fPeriodPh: 'z. B. Winter 2027/28 oder Februar 2028', fPers: 'Personen', fPet: 'Haustier', fNo: 'Nein', fYes: 'Ja', fMsg: 'Nachricht', fSend: 'In die Warteliste eintragen',
         formAfter: 'Es öffnet sich Ihr E-Mail-Programm mit der vorbereiteten Anfrage – bitte dort auf «Senden» klicken.',
         formNeed: 'Name und E-Mail ausfüllen – dann wird der Button aktiv.',
         waBtn: 'Per WhatsApp anfragen',
@@ -596,15 +589,15 @@ class Component extends DCLogic {
         replyLangs: 'Wir antworten auf Deutsch, Englisch und Italienisch.',
         faqH: 'Häufige Fragen',
         faqs: [
-          {q:'Was kostet die Saisonmiete in St. Moritz?', a:'Den Preis für die Saisonmiete teilen wir auf Anfrage mit – die Saison 2026/27 ist bereits reserviert. Inbegriffen sind jeweils Nebenkosten, WLAN, Tiefgaragenplatz, Bettwäsche, Handtücher und Endreinigung. Nicht inbegriffen ist die Kurtaxe (CHF 2.90 pro Person und Nacht, Kinder unter 12 frei).'},
+          {q:'Was kostet die Miete?', a:'Preise und Konditionen kommunizieren wir vor der offiziellen Vermarktung ab Herbst 2027. Inbegriffen sind jeweils Nebenkosten, WLAN, Tiefgaragenplatz, Bettwäsche, Handtücher und Endreinigung. Nicht inbegriffen ist die Kurtaxe (CHF 2.90 pro Person und Nacht, Kinder unter 12 frei).'},
           {q:'Gibt es Skischulen in der Nähe?', a:'Ja – die Schweizer Skischule St. Moritz und die Suvretta Snowsports School bieten Kinder-, Gruppen- und Privatunterricht; für Skitouren und Heliski die Bergsteigerschule Pontresina und Heli Bernina. Kontakte im Abschnitt St. Moritz.'},
-          {q:'Ist die Wohnung neu eingerichtet?', a:'Ja. Die Wohnung wird Mitte Dezember 2026 komplett neu möbliert – Sie sind die ersten Gäste in der neuen Einrichtung. Küche und Bäder bleiben vorerst im bestehenden Zustand.'},
+          {q:'Ist die Wohnung neu eingerichtet?', a:'Ja. Ab Herbst 2027 vermieten wir die Wohnung komplett neu möbliert – sämtliche Möbel, Betten, Lampen und Textilien sind dann neu. Küche und Bäder werden im Frühling 2027 vollständig renoviert.'},
           {q:'Kann ich mit zwei Autos anreisen?', a:'Ein Tiefgaragenplatz im Haus (auch für SUV) ist inbegriffen. Ein zweiter Tiefgaragenplatz kann für CHF 250 pro Monat dazugemietet werden; alternativ steht das öffentliche Parkhaus Quadrellas in 5 Gehminuten zur Verfügung.'},
-          {q:'Ist die Wohnung auch wochenweise oder über Weihnachten mietbar?', a:'Für die Saison 2026/27 nicht mehr – sie ist reserviert. Für künftige Zeiträume schreiben Sie uns gerne.'},
+          {q:'Wird die Wohnung saisonweise oder wochenweise vermietet?', a:'Das entscheiden wir vor der Vermarktung ab Herbst 2027. Tragen Sie sich in die Warteliste ein – Sie erfahren es zuerst.'},
           {q:'Ist der Julierpass im Winter offen?', a:'Ja, ganzjährig. Alternativ führt der Vereina-Autoverlad ins Engadin.'},
           {q:'Wie weit ist es zur Corviglia-Bahn?', a:'6 Gehminuten bis zur Standseilbahn Chantarella; die Wohnung liegt mitten im Dorfzentrum, der Coop ist 3 Minuten entfernt.'},
           {q:'Sind Haustiere erlaubt?', a:'Auf Anfrage willkommen. Bitte geben Sie Ihr Tier bei der Anfrage an; die Konditionen klären wir mit Ihnen persönlich.'},
-          {q:'Was ist, wenn die Saison bereits vergeben ist?', a:'Schreiben Sie uns trotzdem – wir führen eine Warteliste für den Fall einer Absage und informieren Sie gerne, sobald die Wohnung nach der Renovation ab Sommer 2027 wieder verfügbar ist.'}
+          {q:'Wann kann ich die Wohnung mieten?', a:'Ab Herbst 2027, nach der Renovation von Küche und Bädern. Die Wintersaison 2026/27 ist reserviert. Tragen Sie sich jetzt in die Warteliste ein – wir informieren Sie vor der offiziellen Vermarktung.'}
         ],
         footSwiss: 'Schweiz', footImpressum: 'Impressum',
         impH: 'Impressum',
@@ -630,28 +623,28 @@ class Component extends DCLogic {
           {h:'9. Datensicherheit', p:'Wir treffen angemessene technische und organisatorische Massnahmen, um Ihre Daten vor Verlust, Missbrauch und unbefugtem Zugriff zu schützen. Die Übertragung dieser Website erfolgt verschlüsselt (HTTPS).'},
           {h:'10. Änderungen', p:'Wir können diese Datenschutzerklärung jederzeit anpassen. Es gilt die jeweils auf dieser Website veröffentlichte Fassung.'}
         ],
-        mailSubject: 'Anfrage Chesa Somplaz – Ferienwohnung St. Moritz',
-        mailLabels: {name:'Name',mail:'E-Mail',from:'Anreise',to:'Abreise',pers:'Personen',pet:'Haustier',msg:'Nachricht',yes:'Ja',no:'Nein'}
+        mailSubject: 'Warteliste Chesa Somplaz – Ferienwohnung St. Moritz',
+        mailLabels: {name:'Name',mail:'E-Mail',period:'Gewünschter Zeitraum',pers:'Personen',pet:'Haustier',msg:'Nachricht',yes:'Ja',no:'Nein'}
       },
       en: {
         brand: 'Chesa Somplaz',
-        navApt: 'Apartment', navLoc: 'Location', navSm: 'St. Moritz', navArr: 'Getting here', navPrice: 'Rates', navBook: 'Booking', navCta: 'Enquire', navMenu: 'Open menu', planAria: 'Floor plan of the 4.5-room apartment: 113 m², 3 bedrooms, living and dining area with 11 m² balcony, kitchen, bathroom/WC, shower/WC, laundry room',
-        badgeAvail: 'Season 2026/27: reserved',
+        navApt: 'Apartment', navLoc: 'Location', navSm: 'St. Moritz', navArr: 'Getting here', navPrice: 'Rates', navBook: 'Waiting list', navCta: 'Waiting list', navMenu: 'Open menu', planAria: 'Floor plan of the 4.5-room apartment: 113 m², 3 bedrooms, living and dining area with 11 m² balcony, kitchen, bathroom/WC, shower/WC, laundry room',
+        badgeAvail: 'Winter 2026/27 reserved · newly renovated from autumn 2027',
         heroTitle: 'Holiday apartment in St. Moritz Dorf – 4.5 rooms right in the centre',
-        heroLead: 'Spacious 4.5-room apartment for up to 6 guests, with underground parking and ski room, right in the centre of St. Moritz Dorf. The season from December 2026 to April 2027 is reserved – waiting list and enquiries from summer 2027 welcome.',
+        heroLead: 'Spacious 4.5-room apartment for up to 6 guests, with underground parking and ski room, right in the centre of St. Moritz Dorf. Kitchen and bathrooms will be renovated in spring 2027; from autumn 2027 we let the apartment freshly renovated and newly furnished. Join the waiting list now – you will be informed before the official launch.',
         altHero: 'St. Moritz Dorf in winter: leaning tower, Lake St. Moritz and snow-covered mountains',
         altLiving: 'Living area with sofa, fireplace and view towards the balcony – holiday apartment Chesa Somplaz St. Moritz',
         altDorf: 'St. Moritz Dorf with its leaning tower, Lake St. Moritz and snow-covered mountains',
         altKid: 'Child skiing with the St. Moritz ski school',
         altTurf: 'White Turf St. Moritz: horse racing on the frozen lake',
         altAbend: 'Evening light on the slopes above St. Moritz', altSils: 'Winter in the Engadin: Lake Sils mirroring the snow-covered mountains',
-        facts: ['4.5 rooms', '113 m²', 'up to 6 guests', 'Newly furnished from December 2026', '6 min to the ski lift', 'Garage parking'],
-        heroCta: 'Join the waiting list', priceAmount: 'On request', heroSecondary: 'Rates and terms',
+        facts: ['4.5 rooms', '113 m²', 'up to 6 guests', 'New kitchen and bathrooms from spring 2027', '6 min to the ski lift', 'Garage parking'],
+        heroCta: 'Join the waiting list', priceAmount: 'On request', heroSecondary: 'See the apartment',
         phApt0: 'Photo living room with balcony (coming soon)', phApt1: 'Photo kitchen', phApt2: 'Photo bedroom', phApt3: 'Photo bathroom', phPlan: 'Floor plan (coming soon)',
         aptPhotos: [{src:PH.k,alt:'Kitchen of the 4.5-room holiday apartment on Via Somplaz, St. Moritz Dorf',cap:'Kitchen'},{src:PH.s3,alt:'Bedroom 2 with bunk bed',cap:'Bedroom 2 – bunk bed'},{src:PH.b,alt:'Bathroom with bathtub, bidet and WC',cap:'Bathroom with tub, bidet/WC'},{src:PH.d,alt:'Separate shower with WC',cap:'Shower/WC'}],
-        photoNoteH: 'About the photos:', photoNote: 'The apartment is occupied until December 2026. Living area and bedroom show the identical apartment on the 5th floor, which serves as the model for our new furnishing (living area as a visualisation). Kitchen and bathrooms are photos of the apartment itself.', capLiving: 'Living area – visualisation of the new furnishing, photographed in the identical apartment on the 5th floor',
+        photoNoteH: 'About the photo:', photoNote: 'The picture shows the living area as a visualisation of the new furnishing, photographed in the identical apartment on the 5th floor. Kitchen and bathrooms will be fully renovated in spring 2027; new photos will follow after the renovation.', capLiving: 'Living area – visualisation of the new furnishing, photographed in the identical apartment on the 5th floor',
         aptTitle: 'The apartment: 4.5 rooms, 113 m², 3rd floor in St. Moritz Dorf',
-        aptLead: 'The apartment on the 3rd floor (with lift) sleeps up to 6 – ideal for families or two couples. The bright living room with fireplace and balcony access (mountain side) is the heart of the apartment; the kitchen is fully equipped. For the winter season the apartment will be completely refurnished in mid-December 2026 – all furniture, beds, lamps and textiles are new; you will be the first guests to enjoy the new interior. Kitchen and bathrooms are in their well-kept original condition and fully functional; their renovation follows in spring 2027.',
+        aptLead: 'The apartment on the 3rd floor (with lift) sleeps up to 6 – ideal for families or two couples. The bright living room with fireplace and balcony access (mountain side) is the heart of the apartment. Kitchen and bathrooms will be fully renovated in spring 2027; from autumn 2027 we let the apartment freshly renovated and completely refurnished – all furniture, beds, lamps and textiles will be new.',
         aptSleepH: 'Sleeping (6 beds)',
         aptSleep: ['Bedroom 1: double bed 160 cm', 'Bedroom 2: bunk bed with two single beds 90 cm', 'Bedroom 3: double bed 180 cm'],
         aptBathH: 'Bathrooms and laundry',
@@ -710,20 +703,20 @@ class Component extends DCLogic {
           {img:IMG_TRAIN, pos:'center', alt:'Rhaetian Railway train in the snow heading to St. Moritz', h:'By Rhaetian Railway (Albula line)', p:'From Zurich main station, changing in Chur, in about 3 hours 20 minutes – the Rhaetian Railway\u2019s Albula line is a UNESCO World Heritage site and the most beautiful way into the Engadin.\nFrom St. Moritz station by bus to the Serlas stop (3-minute walk to the apartment) or in 4 minutes by taxi.\n\nLuggage and skis: lift to the 3rd floor; ski equipment is stored in the ski room in the building.'},
           {img:IMG_JET, pos:'center', alt:'Private jet at Engadin Airport Samedan', h:'By plane: Zurich or Engadin Airport Samedan', p:'The nearest international airport is Zurich, about 3.5 hours by car or train (direct rail link from the airport via Chur).\nEngadin Airport in Samedan is 12 minutes by car and open to private and charter flights; taxis and rental cars available locally.\n\nOn request we are happy to arrange a transfer from Zurich Airport.'}
         ],
-        priceTitle: 'Seasonal let St. Moritz winter 2026/27: rates',
-        priceLead: 'The 2026/27 season is reserved. For the waiting list or enquiries from summer 2027, please use the form. We let the apartment for the whole winter season – your own home in St. Moritz, without the uncertainty of weekly bookings. Before the planned renovation in spring 2027 we offer it this winter at a fair all-in rate.',
-        priceSeasonLabel: 'Season rate',
+        priceTitle: 'Letting from autumn 2027',
+        priceLead: 'The 2026/27 winter season is reserved. From autumn 2027 we let the apartment freshly renovated and newly furnished. Rates and terms will be communicated before the official launch – those on the waiting list hear first.',
+        priceSeasonLabel: 'Rates',
         pricePeriod: 'Saturday 19 December 2026 to Tuesday 6 April 2027 (Easter included)',
         priceRows: [{n:'Included',v:'Utilities (heating, electricity, water), Wi-Fi, garage parking, bed linen and towels, final cleaning'},{n:'Not included',v:'Tourist tax (CHF 2.90 per person and night, children under 12 free)'},{n:'Guests',v:'max. 6'}],
-        priceWeekH: 'Weekly rental?',
-        priceWeek: 'No longer possible for the 2026/27 season. For future periods, do tell us your preferred dates.',
-        priceWeekCta: 'Enquire about your dates',
+        priceWeekH: 'Seasonal or weekly?',
+        priceWeek: 'We will decide before the launch whether to let seasonally or by the week from autumn 2027 – those on the waiting list hear first.',
+        priceWeekCta: 'Join the waiting list',
         priceExtraH: 'Further notes',
         priceExtra: ['Tourist tax: levied by the municipality of St. Moritz; guests receive the guest card in return', 'Cleaning and laundry during the season: the tenants\u2019 responsibility (private laundry room) – on request we are happy to arrange a cleaner', 'Cot: on request, free of charge', 'Second garage parking space: on request for CHF 250 per month'],
         hostPh: 'Photo', hostsH: 'Your host: Vanessa',
         hostsText: 'The apartment has been in our family since the building was constructed and was let to the same couple for twenty years. It will be renovated in spring 2027 – this winter we open it for the first time to guests who want to enjoy St. Moritz for a whole season.',
-        bookTitle: 'Booking and contact',
-        bookHowH: 'How it works',
+        bookTitle: 'Waiting list and contact', bookLead: 'Sign up without obligation. We will inform you about rates and availability from autumn 2027 before the official launch.',
+        bookHowH: 'How booking will work later',
         bookSteps: [
           {n:'1',h:'Enquiry',p:'By form or e-mail. We reply within 24 hours.'},
           {n:'2',h:'Confirmation',p:'You receive a written rental agreement with all terms.'},
@@ -733,9 +726,9 @@ class Component extends DCLogic {
         ],
         bookCancelH: 'Cancellation policy',
         bookCancel: ['Up to 60 days before arrival: refund of the down payment minus CHF 300 handling fee', '59 to 30 days before arrival: 50% of the rent', 'Less than 30 days before arrival: 100% of the rent', 'We recommend taking out travel cancellation insurance.'],
-        formH: 'Enquiry',
-        formLead: 'Fill in the form – it opens an e-mail to us with your details. Required fields are marked with *.',
-        fName: 'Name', fMail: 'E-mail', fFrom: 'Arrival', fTo: 'Departure', fPers: 'Guests', fPet: 'Pet', fNo: 'No', fYes: 'Yes', fMsg: 'Message', fSend: 'Send enquiry by e-mail',
+        formH: 'Waiting list',
+        formLead: 'No obligation – we will contact you before the official launch. Required fields are marked with *.',
+        fName: 'Name', fMail: 'E-mail', fPeriod: 'Preferred period', fPeriodPh: 'e.g. winter 2027/28 or February 2028', fPers: 'Guests', fPet: 'Pet', fNo: 'No', fYes: 'Yes', fMsg: 'Message', fSend: 'Join the waiting list',
         formAfter: 'Your e-mail program opens with the prepared enquiry – please click “Send” there.',
         formNeed: 'Fill in name and e-mail – the button then becomes active.',
         waBtn: 'Enquire via WhatsApp',
@@ -745,15 +738,15 @@ class Component extends DCLogic {
         replyLangs: 'We reply in German, English and Italian.',
         faqH: 'Frequently asked questions',
         faqs: [
-          {q:'What does the seasonal let in St. Moritz cost?', a:'The seasonal rate is available on request – the 2026/27 season is already reserved. The rate includes utilities, Wi-Fi, garage parking, bed linen, towels and final cleaning. Not included: tourist tax (CHF 2.90 per person and night, children under 12 free).'},
+          {q:'What does the rental cost?', a:'Rates and terms will be communicated before the official launch from autumn 2027. The rate includes utilities, Wi-Fi, garage parking, bed linen, towels and final cleaning. Not included: tourist tax (CHF 2.90 per person and night, children under 12 free).'},
           {q:'Are there ski schools nearby?', a:'Yes – the Swiss Ski School St. Moritz and the Suvretta Snowsports School offer children’s, group and private lessons; for ski touring and heliski, Bergsteigerschule Pontresina and Heli Bernina. Contacts in the St. Moritz section.'},
-          {q:'Is the apartment newly furnished?', a:'Yes. The apartment will be completely newly furnished in mid-December 2026 – you will be the first guests to enjoy the new interior. Kitchen and bathrooms remain in their current state for now.'},
+          {q:'Is the apartment newly furnished?', a:'Yes. From autumn 2027 we let the apartment completely refurnished – all furniture, beds, lamps and textiles will be new. Kitchen and bathrooms will be fully renovated in spring 2027.'},
           {q:'Can we arrive with two cars?', a:'One underground parking space in the building (suitable for SUVs) is included. A second garage space can be rented for CHF 250 per month; alternatively, the public Quadrellas car park is a 5-minute walk away.'},
-          {q:'Can I rent by the week or over Christmas?', a:'Not for the 2026/27 season – it is reserved. For future periods, do get in touch.'},
+          {q:'Will the apartment be let seasonally or by the week?', a:'We will decide before the launch from autumn 2027. Join the waiting list – you will hear first.'},
           {q:'Is the Julier Pass open in winter?', a:'Yes, all year round. Alternatively, the Vereina car train takes you into the Engadin.'},
           {q:'How far is the Corviglia funicular?', a:'A 6-minute walk to the Chantarella funicular; the apartment is right in the village centre, the Coop is 3 minutes away.'},
           {q:'Are pets allowed?', a:'Welcome on request. Please mention your pet in your enquiry; we will agree the terms with you personally.'},
-          {q:'What if the season has already been let?', a:'Do get in touch anyway – we keep a waiting list in case of a cancellation and will gladly let you know when the apartment is available again after the renovation, from summer 2027.'}
+          {q:'When can I rent the apartment?', a:'From autumn 2027, after the renovation of kitchen and bathrooms. The 2026/27 winter season is reserved. Join the waiting list now – we will inform you before the official launch.'}
         ],
         footSwiss: 'Switzerland', footImpressum: 'Legal notice',
         impH: 'Legal notice',
@@ -779,28 +772,28 @@ class Component extends DCLogic {
           {h:'9. Data security', p:'We take appropriate technical and organisational measures to protect your data against loss, misuse and unauthorised access. This website is transmitted in encrypted form (HTTPS).'},
           {h:'10. Changes', p:'We may amend this privacy policy at any time. The version published on this website applies.'}
         ],
-        mailSubject: 'Enquiry Chesa Somplaz – holiday apartment St. Moritz',
-        mailLabels: {name:'Name',mail:'E-mail',from:'Arrival',to:'Departure',pers:'Guests',pet:'Pet',msg:'Message',yes:'Yes',no:'No'}
+        mailSubject: 'Waiting list Chesa Somplaz – holiday apartment St. Moritz',
+        mailLabels: {name:'Name',mail:'E-mail',period:'Preferred period',pers:'Guests',pet:'Pet',msg:'Message',yes:'Yes',no:'No'}
       },
       it: {
         brand: 'Chesa Somplaz',
-        navApt: 'Appartamento', navLoc: 'Posizione', navSm: 'St. Moritz', navArr: 'Come arrivare', navPrice: 'Prezzi', navBook: 'Prenotazione', navCta: 'Richiesta', navMenu: 'Apri menu', planAria: 'Planimetria dell\u2019appartamento di 4,5 locali: 113 m², 3 camere, soggiorno e pranzo con balcone di 11 m², cucina, bagno/WC, doccia/WC, lavanderia',
-        badgeAvail: 'Stagione 2026/27: riservata',
+        navApt: 'Appartamento', navLoc: 'Posizione', navSm: 'St. Moritz', navArr: 'Come arrivare', navPrice: 'Prezzi', navBook: 'Lista d’attesa', navCta: 'Lista d’attesa', navMenu: 'Apri menu', planAria: 'Planimetria dell\u2019appartamento di 4,5 locali: 113 m², 3 camere, soggiorno e pranzo con balcone di 11 m², cucina, bagno/WC, doccia/WC, lavanderia',
+        badgeAvail: 'Inverno 2026/27 riservato · dall’autunno 2027 appena ristrutturato',
         heroTitle: 'Appartamento di vacanza a St. Moritz Dorf – 4,5 locali nel pieno centro',
-        heroLead: 'Spazioso appartamento di 4,5 locali per 6 persone, con posto auto in garage e deposito sci, nel pieno centro di St. Moritz Dorf. La stagione da dicembre 2026 ad aprile 2027 è riservata – lista d’attesa e richieste dall’estate 2027 benvenute.',
+        heroLead: 'Spazioso appartamento di 4,5 locali per 6 persone, con posto auto in garage e deposito sci, nel pieno centro di St. Moritz Dorf. Nella primavera 2027 verranno ristrutturati cucina e bagni; dall’autunno 2027 affittiamo l’appartamento appena ristrutturato e arredato a nuovo. Iscrivetevi ora alla lista d’attesa – sarete informati prima della commercializzazione ufficiale.',
         altHero: 'St. Moritz Dorf in inverno: torre pendente, lago e montagne innevate',
         altLiving: 'Soggiorno con divano, camino e vista verso il balcone – appartamento Chesa Somplaz St. Moritz',
         altDorf: 'St. Moritz Dorf con la torre pendente, il lago e le montagne innevate',
         altKid: 'Bambino che scia con la scuola di sci di St. Moritz',
         altTurf: 'White Turf St. Moritz: corse di cavalli sul lago ghiacciato',
         altAbend: 'Luce della sera sulle piste sopra St. Moritz', altSils: 'Inverno in Engadina: il lago di Sils con il riflesso delle montagne innevate',
-        facts: ['4,5 locali', '113 m²', 'fino a 6 persone', 'Arredo nuovo da dicembre 2026', '6 min dagli impianti', 'Garage'],
-        heroCta: 'Lista d’attesa', priceAmount: 'Su richiesta', heroSecondary: 'Prezzi e condizioni',
+        facts: ['4,5 locali', '113 m²', 'fino a 6 persone', 'Cucina e bagni nuovi dalla primavera 2027', '6 min dagli impianti', 'Garage'],
+        heroCta: 'Lista d’attesa', priceAmount: 'Su richiesta', heroSecondary: 'Vedi l’appartamento',
         phApt0: 'Foto soggiorno con balcone (in arrivo)', phApt1: 'Foto cucina', phApt2: 'Foto camera', phApt3: 'Foto bagno', phPlan: 'Planimetria (in arrivo)',
         aptPhotos: [{src:PH.k,alt:'Cucina dell\u2019appartamento di 4,5 locali in Via Somplaz, St. Moritz Dorf',cap:'Cucina'},{src:PH.s3,alt:'Camera 2 con letto a castello',cap:'Camera 2 – letto a castello'},{src:PH.b,alt:'Bagno con vasca, bidet e WC',cap:'Bagno con vasca, bidet/WC'},{src:PH.d,alt:'Doccia separata con WC',cap:'Doccia/WC'}],
-        photoNoteH: 'Sulle foto:', photoNote: 'L\u2019appartamento è occupato fino a dicembre 2026. Soggiorno e camera mostrano l\u2019appartamento identico al 5° piano, modello per il nostro nuovo arredamento (soggiorno come visualizzazione). Cucina e bagni sono foto dell\u2019appartamento stesso.', capLiving: 'Soggiorno – visualizzazione del nuovo arredamento, fotografato nell\u2019appartamento identico al 5° piano',
+        photoNoteH: 'Sulla foto:', photoNote: 'L\u2019immagine mostra il soggiorno come visualizzazione del nuovo arredamento, fotografato nell\u2019appartamento identico al 5° piano. Cucina e bagni verranno completamente ristrutturati nella primavera 2027; nuove foto seguiranno dopo la ristrutturazione.', capLiving: 'Soggiorno – visualizzazione del nuovo arredamento, fotografato nell\u2019appartamento identico al 5° piano',
         aptTitle: 'L’appartamento: 4,5 locali, 113 m², 3° piano a St. Moritz Dorf',
-        aptLead: 'L’appartamento al 3° piano (con ascensore) ospita fino a 6 persone – ideale per famiglie o due coppie di amici. Il luminoso soggiorno con camino e accesso al balcone (lato monte) è il cuore della casa; la cucina è completamente attrezzata. Per la stagione invernale l\u2019appartamento sarà completamente arredato a nuovo a metà dicembre 2026 – tutti i mobili, i letti, le lampade e i tessili sono nuovi; sarete i primi ospiti del nuovo arredamento. Cucina e bagni sono nello stato originale, curati e perfettamente funzionanti; la loro ristrutturazione seguirà nella primavera 2027.',
+        aptLead: 'L’appartamento al 3° piano (con ascensore) ospita fino a 6 persone – ideale per famiglie o due coppie di amici. Il luminoso soggiorno con camino e accesso al balcone (lato monte) è il cuore della casa. Nella primavera 2027 cucina e bagni verranno completamente ristrutturati; dall’autunno 2027 affittiamo l’appartamento appena ristrutturato e completamente arredato a nuovo – tutti i mobili, i letti, le lampade e i tessili saranno nuovi.',
         aptSleepH: 'Camere (6 posti letto)',
         aptSleep: ['Camera 1: letto matrimoniale 160 cm', 'Camera 2: letto a castello con due letti singoli 90 cm', 'Camera 3: letto matrimoniale 180 cm'],
         aptBathH: 'Bagni e lavanderia',
@@ -859,20 +852,20 @@ class Component extends DCLogic {
           {img:IMG_TRAIN, pos:'center', alt:'Treno della Ferrovia Retica nella neve verso St. Moritz', h:'Con la Ferrovia Retica (linea dell’Albula)', p:'Da Zurigo HB con cambio a Coira in circa 3 ore e 20 minuti – la linea dell’Albula della Ferrovia Retica è Patrimonio UNESCO ed è il modo più bello per arrivare in Engadina.\nDalla stazione di St. Moritz con il bus fino alla fermata Serlas (3 minuti a piedi dall’appartamento) o in 4 minuti in taxi.\n\nBagagli e sci: ascensore fino al 3° piano; l’attrezzatura da sci si ripone nel deposito sci dell’edificio.'},
           {img:IMG_JET, pos:'center', alt:'Jet privato all’Engadin Airport di Samedan', h:'In aereo: Zurigo o Engadin Airport Samedan', p:'L’aeroporto internazionale più vicino è Zurigo, a circa 3,5 ore in auto o in treno (collegamento ferroviario diretto dall’aeroporto via Coira).\nL’Engadin Airport di Samedan è a 12 minuti in auto ed è aperto a voli privati e charter; taxi e auto a noleggio sul posto.\n\nSu richiesta organizziamo volentieri un transfer dall’aeroporto di Zurigo.'}
         ],
-        priceTitle: 'Prezzo affitto stagionale St. Moritz inverno 2026/27',
-        priceLead: 'La stagione 2026/27 è riservata. Per la lista d’attesa o richieste dall’estate 2027 utilizzate il modulo. Affittiamo l’appartamento per l’intera stagione invernale – la vostra casa a St. Moritz, senza l’incertezza delle prenotazioni settimanali. Prima della ristrutturazione prevista nella primavera 2027 lo offriamo quest’inverno a un prezzo forfettario equo.',
-        priceSeasonLabel: 'Prezzo stagionale',
+        priceTitle: 'Affitto dall’autunno 2027',
+        priceLead: 'La stagione invernale 2026/27 è riservata. Dall’autunno 2027 affittiamo l’appartamento appena ristrutturato e arredato a nuovo. Prezzi e condizioni verranno comunicati prima della commercializzazione ufficiale – chi è in lista d’attesa lo saprà per primo.',
+        priceSeasonLabel: 'Prezzi',
         pricePeriod: 'Da sabato 19 dicembre 2026 a martedì 6 aprile 2027 (Pasqua inclusa)',
         priceRows: [{n:'Incluso',v:'Spese accessorie (riscaldamento, elettricità, acqua), Wi-Fi, posto auto, biancheria da letto e asciugamani, pulizia finale'},{n:'Non incluso',v:'Tassa di soggiorno (CHF 2.90 per persona e notte, bambini sotto i 12 anni esenti)'},{n:'Persone',v:'max. 6'}],
-        priceWeekH: 'Affitto settimanale?',
-        priceWeek: 'Non più possibile per la stagione 2026/27. Per periodi futuri scriveteci volentieri il vostro desiderio.',
-        priceWeekCta: 'Richiedi il tuo periodo',
+        priceWeekH: 'Stagionale o settimanale?',
+        priceWeek: 'Decideremo prima della commercializzazione se affittare a stagione o a settimane dall’autunno 2027 – chi è in lista d’attesa lo saprà per primo.',
+        priceWeekCta: 'Iscriviti alla lista d’attesa',
         priceExtraH: 'Altre indicazioni',
         priceExtra: ['Tassa di soggiorno: riscossa dal Comune di St. Moritz; gli ospiti ricevono in cambio la carta ospiti', 'Pulizia e bucato durante la stagione: a carico degli inquilini (lavanderia privata) – su richiesta organizziamo volentieri una collaboratrice domestica', 'Lettino per bambini: su richiesta, senza supplemento', 'Secondo posto auto in garage: su richiesta a CHF 250 al mese'],
         hostPh: 'Foto', hostsH: 'La vostra ospite: Vanessa',
         hostsText: 'L’appartamento appartiene alla nostra famiglia dalla costruzione dell’edificio ed è stato affittato per vent’anni alla stessa coppia. Nella primavera 2027 sarà ristrutturato – quest’inverno lo apriamo per la prima volta a ospiti che desiderano godersi St. Moritz per un’intera stagione.',
-        bookTitle: 'Prenotazione e contatto',
-        bookHowH: 'Come funziona',
+        bookTitle: 'Lista d’attesa e contatto', bookLead: 'Iscrivetevi senza impegno. Vi informeremo su prezzi e disponibilità dall’autunno 2027 prima della commercializzazione ufficiale.',
+        bookHowH: 'Come funzionerà la prenotazione',
         bookSteps: [
           {n:'1',h:'Richiesta',p:'Tramite modulo o e-mail. Rispondiamo entro 24 ore.'},
           {n:'2',h:'Conferma',p:'Ricevete un contratto di locazione scritto con tutte le condizioni.'},
@@ -882,9 +875,9 @@ class Component extends DCLogic {
         ],
         bookCancelH: 'Condizioni di cancellazione',
         bookCancel: ['Fino a 60 giorni prima dell’arrivo: rimborso dell’acconto meno CHF 300 di spese', 'Da 59 a 30 giorni prima dell’arrivo: 50% del canone', 'Meno di 30 giorni prima dell’arrivo: 100% del canone', 'Consigliamo di stipulare un’assicurazione annullamento viaggio.'],
-        formH: 'Richiesta',
-        formLead: 'Compilate il modulo – si aprirà un’e-mail a noi con i vostri dati. I campi obbligatori sono contrassegnati con *.',
-        fName: 'Nome', fMail: 'E-mail', fFrom: 'Arrivo', fTo: 'Partenza', fPers: 'Persone', fPet: 'Animale', fNo: 'No', fYes: 'Sì', fMsg: 'Messaggio', fSend: 'Invia richiesta via e-mail',
+        formH: 'Lista d’attesa',
+        formLead: 'Senza impegno – vi contatteremo prima della commercializzazione ufficiale. I campi obbligatori sono contrassegnati con *.',
+        fName: 'Nome', fMail: 'E-mail', fPeriod: 'Periodo desiderato', fPeriodPh: 'ad es. inverno 2027/28 o febbraio 2028', fPers: 'Persone', fPet: 'Animale', fNo: 'No', fYes: 'Sì', fMsg: 'Messaggio', fSend: 'Iscriviti alla lista d’attesa',
         formAfter: 'Si apre il vostro programma di posta con la richiesta preparata – cliccate su «Invia».',
         formNeed: 'Compilate nome ed e-mail – il pulsante diventa attivo.',
         waBtn: 'Richiesta via WhatsApp',
@@ -894,15 +887,15 @@ class Component extends DCLogic {
         replyLangs: 'Rispondiamo in tedesco, inglese e italiano.',
         faqH: 'Domande frequenti',
         faqs: [
-          {q:'Quanto costa l’affitto stagionale a St. Moritz?', a:'Il prezzo dell’affitto stagionale viene comunicato su richiesta – la stagione 2026/27 è già riservata. Sono incluse spese accessorie, Wi-Fi, posto auto, biancheria, asciugamani e pulizia finale. Non inclusa la tassa di soggiorno (CHF 2.90 per persona e notte, bambini sotto i 12 anni esenti).'},
+          {q:'Quanto costa l’affitto?', a:'Prezzi e condizioni verranno comunicati prima della commercializzazione ufficiale dall’autunno 2027. Sono incluse spese accessorie, Wi-Fi, posto auto, biancheria, asciugamani e pulizia finale. Non inclusa la tassa di soggiorno (CHF 2.90 per persona e notte, bambini sotto i 12 anni esenti).'},
           {q:'Ci sono scuole di sci nelle vicinanze?', a:'Sì – la Scuola Svizzera di Sci St. Moritz e la Suvretta Snowsports School offrono corsi per bambini, di gruppo e privati; per scialpinismo ed heliski la Bergsteigerschule Pontresina e Heli Bernina. Contatti nella sezione St. Moritz.'},
-          {q:'L’appartamento è arredato a nuovo?', a:'Sì. L’appartamento sarà completamente arredato a nuovo a metà dicembre 2026 – sarete i primi ospiti del nuovo arredamento. Cucina e bagni restano per ora nello stato attuale.'},
+          {q:'L’appartamento è arredato a nuovo?', a:'Sì. Dall’autunno 2027 affittiamo l’appartamento completamente arredato a nuovo – tutti i mobili, i letti, le lampade e i tessili saranno nuovi. Cucina e bagni verranno completamente ristrutturati nella primavera 2027.'},
           {q:'Possiamo arrivare con due auto?', a:'Un posto auto nel garage dell’edificio (adatto anche a SUV) è incluso. Un secondo posto auto nel garage può essere affittato a CHF 250 al mese; in alternativa è disponibile l’autosilo pubblico Quadrellas a 5 minuti a piedi.'},
-          {q:'È possibile affittare a settimane o per Natale?', a:'Non per la stagione 2026/27 – è riservata. Per periodi futuri scriveteci volentieri.'},
+          {q:'L’appartamento sarà affittato a stagione o a settimane?', a:'Lo decideremo prima della commercializzazione dall’autunno 2027. Iscrivetevi alla lista d’attesa – lo saprete per primi.'},
           {q:'Il passo del Giulia è aperto in inverno?', a:'Sì, tutto l’anno. In alternativa il treno navetta Vereina porta in Engadina.'},
           {q:'Quanto dista la funicolare del Corviglia?', a:'6 minuti a piedi fino alla funicolare Chantarella; l’appartamento si trova nel pieno centro del paese, il Coop è a 3 minuti.'},
           {q:'Sono ammessi animali?', a:'Su richiesta. Indicate il vostro animale nella richiesta; le condizioni le concordiamo personalmente.'},
-          {q:'E se la stagione è già assegnata?', a:'Scriveteci comunque – teniamo una lista d’attesa in caso di disdetta e vi informiamo volentieri non appena l’appartamento sarà di nuovo disponibile dopo la ristrutturazione, dall’estate 2027.'}
+          {q:'Quando posso affittare l’appartamento?', a:'Dall’autunno 2027, dopo la ristrutturazione di cucina e bagni. La stagione invernale 2026/27 è riservata. Iscrivetevi ora alla lista d’attesa – vi informeremo prima della commercializzazione ufficiale.'}
         ],
         footSwiss: 'Svizzera', footImpressum: 'Note legali',
         impH: 'Note legali',
@@ -928,8 +921,8 @@ class Component extends DCLogic {
           {h:'9. Sicurezza dei dati', p:'Adottiamo misure tecniche e organizzative adeguate per proteggere i vostri dati da perdita, abuso e accesso non autorizzato. Il sito è trasmesso in forma cifrata (HTTPS).'},
           {h:'10. Modifiche', p:'Possiamo modificare questa informativa in qualsiasi momento. Fa fede la versione pubblicata su questo sito.'}
         ],
-        mailSubject: 'Richiesta Chesa Somplaz – appartamento St. Moritz',
-        mailLabels: {name:'Nome',mail:'E-mail',from:'Arrivo',to:'Partenza',pers:'Persone',pet:'Animale',msg:'Messaggio',yes:'Sì',no:'No'}
+        mailSubject: 'Lista d’attesa Chesa Somplaz – appartamento St. Moritz',
+        mailLabels: {name:'Nome',mail:'E-mail',period:'Periodo desiderato',pers:'Persone',pet:'Animale',msg:'Messaggio',yes:'Sì',no:'No'}
       }
     };
   }
@@ -944,7 +937,7 @@ class Component extends DCLogic {
     const body = [
       L.name + ': ' + f.name,
       L.mail + ': ' + f.mail,
-      L.from + ': ' + f.from,
+      L.period + ': ' + f.from,
       L.to + ': ' + f.to,
       L.pers + ': ' + f.pers,
       L.pet + ': ' + (f.pet === 'yes' ? L.yes : L.no),
