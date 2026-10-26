@@ -379,6 +379,7 @@ ${t.bookSteps.map((s) => `<div class="step"><div class="num">${esc(s.n)}</div><d
 <h3>${esc(t.formH)}</h3>
 <p style="margin:0 0 20px;font-size:15px;color:#5a6361">${esc(t.formLead)}</p>
 <form id="enquiry" action="#" novalidate>
+<input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
 <div class="field"><label class="label" for="f-name">${esc(t.fName)} <span class="req">*</span></label><input class="input" id="f-name" name="name" type="text" required autocomplete="name"></div>
 <div class="field"><label class="label" for="f-mail">${esc(t.fMail)} <span class="req">*</span></label><input class="input" id="f-mail" name="mail" type="email" required autocomplete="email"></div>
 <div class="field"><label class="label" for="f-period">${esc(t.fPeriod)}</label><input class="input" id="f-period" name="period" type="text" placeholder="${esc(t.fPeriodPh)}"></div>
@@ -441,10 +442,19 @@ ${t.ds.map((x) => `<div class="faq"><strong style="display:block">${esc(x.h)}</s
   try{var sy=sessionStorage.getItem('cs-scroll');if(sy!==null){sessionStorage.removeItem('cs-scroll');window.scrollTo(0,parseInt(sy,10)||0);}}catch(e){}
   document.querySelectorAll('.langs a.lang').forEach(function(a){a.addEventListener('click',function(){try{sessionStorage.setItem('cs-scroll',String(window.scrollY));}catch(e){}});});
   var f=document.getElementById('enquiry');
-  if(f){f.addEventListener('submit',function(e){e.preventDefault();var g=function(n){return f.elements[n].value.trim();};var L=${JSON.stringify(t.mailLabels)};
-    if(!g('name')||!/\\S+@\\S+\\.\\S+/.test(g('mail'))){document.getElementById('form-hint').textContent=${JSON.stringify(t.formNeed)};f.elements[g('name')?'mail':'name'].focus();return;}
+  if(f){var hint=document.getElementById('form-hint'),btn=f.querySelector('button[type=submit],.btn[type=submit],button.btn');f.addEventListener('submit',function(e){e.preventDefault();var g=function(n){return f.elements[n]?f.elements[n].value.trim():'';};var L=${JSON.stringify(t.mailLabels)};
+    if(!g('name')||!/\\S+@\\S+\\.\\S+/.test(g('mail'))){hint.textContent=${JSON.stringify(t.formNeed)};f.elements[g('name')?'mail':'name'].focus();return;}
+    if(f.elements.botcheck&&f.elements.botcheck.checked){return;}
     var body=[L.name+': '+g('name'),L.mail+': '+g('mail'),L.period+': '+g('period'),L.pers+': '+g('pers'),L.pet+': '+(g('pet')==='yes'?L.yes:L.no),'',L.msg+':',g('msg')].join('\\n');
-    window.location.href='mailto:booking@chesa-somplaz.ch?subject='+encodeURIComponent(${JSON.stringify(t.mailSubject)})+'&body='+encodeURIComponent(body);});}
+    var mailto='mailto:booking@chesa-somplaz.ch?subject='+encodeURIComponent(${JSON.stringify(t.mailSubject)})+'&body='+encodeURIComponent(body);
+    if(!window.fetch){window.location.href=mailto;return;}
+    hint.textContent=${JSON.stringify(t.formSending)};if(btn)btn.disabled=true;
+    var payload={access_key:'00f01204-495a-4d56-9112-0858d3dfa444',subject:${JSON.stringify(t.mailSubject)},from_name:'chesa-somplaz.ch',name:g('name'),email:g('mail'),replyto:g('mail'),message:body};
+    payload[L.period]=g('period');payload[L.pers]=g('pers');payload[L.pet]=(g('pet')==='yes'?L.yes:L.no);payload['language']=document.documentElement.lang;
+    fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(payload)}).then(function(r){return r.json();}).then(function(d){
+      if(d&&d.success){hint.textContent=${JSON.stringify(t.formDone)};hint.style.color='#1e4d3f';hint.style.fontWeight='700';f.reset();if(btn)btn.disabled=false;}
+      else{throw new Error('fail');}
+    }).catch(function(){hint.textContent=${JSON.stringify(t.formError)};hint.style.color='#9a3b1f';if(btn)btn.disabled=false;window.location.href=mailto;});});}
 })();
 </script>
 <div id="consent" role="dialog" aria-live="polite" aria-label="Cookies" hidden style="position:fixed;left:16px;right:16px;bottom:16px;z-index:60;max-width:560px;margin:0 auto;background:#1b1f1e;color:#e8ece9;padding:18px 20px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.3);font-size:14px;line-height:1.5">
