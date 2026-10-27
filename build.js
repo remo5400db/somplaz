@@ -76,6 +76,7 @@ html[data-season="summer"] [data-s="winter"],html[data-season="winter"] [data-s=
 .seg-lang .lang-on{background:#1b1f1e;color:#fff}
 .seasons{margin-right:8px}
 .sub-h{font-size:22px;margin:0 0 12px}
+@media (max-width:760px){.hide-mobile{display:none !important}}
 details.inl{border:0;padding:0;background:transparent}details.inl>summary{padding:6px 0;font-size:15px;color:#1e4d3f;text-decoration:underline;text-underline-offset:3px}
 .school-top .img{height:220px !important}
 @media (max-width:760px){.school-top{grid-template-columns:repeat(1,minmax(0,1fr)) !important}}
@@ -392,7 +393,7 @@ ${t.priceRows.map((r) => `<tr><td>${esc(r.n)}</td><td>${esc(r.v)}</td></tr>`).jo
 <p style="margin:0 0 14px;font-size:14px;color:#5a6361">${esc(t.bookHowNote)}</p>
 ${t.bookSteps.map((s) => `<div class="step"><div class="num">${esc(s.n)}</div><div><strong>${esc(s.h)}</strong><div style="font-size:15px;color:#2f3634">${esc(s.p)}</div></div></div>`).join('')}
 </div>
-<div class="card" style="margin-top:24px"><h3>${esc(t.bookCancelH)}</h3><p style="margin:0 0 12px;font-size:14px;color:#5a6361">${esc(t.bookCancelNote)}</p><ul>${t.bookCancel.map((x) => `<li class="li" style="display:block;font-size:15px">${esc(x)}</li>`).join('')}</ul></div>
+<div class="card" style="margin-top:24px"><h3>${esc(t.bookCancelH)}</h3><p style="margin:0 0 12px;font-size:14px;color:#5a6361">${esc(t.bookCancelNote)}</p><ul class="hide-mobile">${t.bookCancel.map((x) => `<li class="li" style="display:block;font-size:15px">${esc(x)}</li>`).join('')}</ul></div>
 </div>
 <div class="card">
 <h3>${esc(t.formH)}</h3>
