@@ -288,7 +288,7 @@ ${t.smCardsS.map((c) => `<div class="card"><img class="img" src="/${c.img}" alt=
 </div>
 </div>
 <div style="margin-top:40px">
-<h3 class="sub-h"><span data-s="winter">${esc(t.smEventsH)}</span><span data-s="summer">${esc(t.smEventsHS)}</span></h3>
+<h3 class="sub-h" data-s="winter">${esc(t.smEventsH)}</h3><h3 class="sub-h" data-s="summer">${esc(t.smEventsHS)}</h3>
 <div class="card">
 <div data-s="winter"><ul>${liKV(t.smEvents)}</ul></div>
 <div data-s="summer"><ul>${liKV(t.smEventsS)}</ul></div>
