@@ -76,6 +76,7 @@ html[data-season="summer"] [data-s="winter"],html[data-season="winter"] [data-s=
 .seg-lang .lang-on{background:#1b1f1e;color:#fff}
 .seasons{margin-right:8px}
 .sub-h{font-size:22px;margin:0 0 12px}
+details.faq-d{border:0;border-radius:0;padding:0;background:transparent;border-top:1px solid #e3e7e4}details.faq-d:first-child{border-top:0}details.faq-d>summary{padding:16px 0;font-size:16px}
 .proc{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;counter-reset:none}
 .proc-step{position:relative;background:#fff;border:1px solid #e3e7e4;border-radius:12px;padding:22px 20px}
 .proc-step .num{margin-bottom:12px;width:36px}
@@ -385,7 +386,7 @@ ${t.bookSteps.map((s) => `<li class="proc-step"><div class="num">${esc(s.n)}</di
 <div style="margin-top:48px">
 <h3 style="font-size:22px;margin-bottom:16px">${esc(t.faqH)}</h3>
 <div class="card" style="padding:8px 28px">
-${t.faqs.map((q) => `<div class="faq"><h4 style="font-size:16px;margin:0 0 4px">${esc(q.q)}</h4>${esc(q.a)}</div>`).join('\n')}
+${t.faqs.map((q) => `<details class="faq-d"><summary><h4 style="font-size:16px;margin:0">${esc(q.q)}</h4></summary><div style="padding:0 0 16px;color:#2f3634">${esc(q.a)}</div></details>`).join('\n')}
 </div>
 </div>
 </div>
