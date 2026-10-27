@@ -352,7 +352,6 @@ ${t.priceRows.map((r) => `<tr><td>${esc(r.n)}</td><td>${esc(r.v)}</td></tr>`).jo
 <div class="wrap">
 <div class="eyebrow">${esc(t.navBook)}</div>
 <h2 class="h2">${esc(t.bookTitle)}</h2>
-<p class="lead" style="margin:0">${esc(t.bookLead)}</p>
 <div style="margin-top:32px">
 <h3 class="sub-h" style="margin-bottom:4px">${esc(t.bookHowH)}</h3>
 <p style="margin:0 0 18px;font-size:15px;color:#5a6361">${esc(t.bookHowNote)}</p>
