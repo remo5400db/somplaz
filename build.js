@@ -59,6 +59,13 @@ css += `
 picture{display:block;width:100%}
 .plan-wrap{position:relative;width:100%;overflow:hidden;border-radius:12px;border:1px solid #e3e7e4;background:#FBF9F4;-webkit-overflow-scrolling:touch}
 .plan-scale{transform-origin:top left;width:980px}
+.plan-zoom{display:none;margin-top:10px;background:none;border:0;padding:6px 0;font:inherit;font-size:15px;font-weight:700;color:#1e4d3f;text-decoration:underline;cursor:pointer}
+[data-plan].zoomable{cursor:zoom-in}
+.plan-overlay{position:fixed;inset:0;z-index:80;background:#FBF9F4;overflow:auto;-webkit-overflow-scrolling:touch}
+.plan-overlay .plan-scale{transform:none !important;margin:56px 16px 24px}
+.plan-close{position:fixed;top:10px;right:10px;z-index:81;background:#1e4d3f;color:#fff;border:0;border-radius:999px;padding:10px 18px;font:inherit;font-size:15px;font-weight:700;cursor:pointer}
+@media (max-width:1000px){.navlinks{display:none !important}.burger{display:flex}.hero-grid{grid-template-columns:repeat(1,minmax(0,1fr)) !important;gap:32px !important}.hero-grid>.hero-pic{order:-1}.grid3{grid-template-columns:repeat(1,minmax(0,1fr)) !important}}
+@media (max-width:760px){.fgrid>.grid2{row-gap:0 !important}#enquiry button.btn[type=submit]{width:calc(100% - 68px) !important;padding-left:14px;padding-right:14px}footer{padding-bottom:96px !important}}
 .wa-float{position:fixed;right:20px;bottom:20px;z-index:20;width:56px;height:56px;border-radius:50%;background:#25D366;color:#0b2a16;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,0.2)}
 *{min-width:0}
 .card,.tip,.faq,.li,.lead,.step,.table td,details,summary,.mobnav a{overflow-wrap:anywhere;word-break:normal}
@@ -105,6 +112,13 @@ details.inl{border:0;padding:0;background:transparent}details.inl>summary{paddin
 `;
 
 // ---------- 4. Helpers ----------
+const ZOOM = { de: ['Grundriss vergrössern', 'Schliessen'], en: ['Enlarge floor plan', 'Close'], it: ['Ingrandisci la planimetria', 'Chiudi'] };
+function heroPreload() {
+  const one = (n) => fs.existsSync(path.join(OUT, 'img', `${n}-800.webp`)) && fs.existsSync(path.join(OUT, 'img', `${n}-1600.webp`))
+    ? { set: `/img/${n}-800.webp 800w, /img/${n}-1600.webp 1600w`, sizes: '(max-width:1000px) 100vw, 560px' }
+    : { href: `/img/${n}.jpg` };
+  return { winter: one('st-moritz-dorf'), summer: one('sommer-st-moritz-hero') };
+}
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const li = (arr) => arr.map((x) => `<li class="li"><span>${esc(x)}</span></li>`).join('');
 const liKV = (arr) => arr.map((x) => `<li class="li"><span>${esc(x.n)}</span><span>${esc(x.v)}</span></li>`).join('');
@@ -127,18 +141,23 @@ function jsonLd(lang, t) {
     '@graph': [
       { '@type': 'WebSite', '@id': DOMAIN + '/#website', url: DOMAIN + '/', name: 'Chesa Somplaz', alternateName: 'chesa-somplaz.ch', inLanguage: lang },
       {
-        '@type': 'VacationRental', '@id': url + '#rental', identifier: 'chesa-somplaz-via-somplaz-10', additionalType: 'Apartment', latitude: 46.4979, longitude: 9.8355, knowsLanguage: ['de', 'en', 'it'], brand: { '@type': 'Brand', name: 'Chesa Somplaz' }, name: 'Chesa Somplaz – ' + t.navApt + ' St. Moritz Dorf', url, inLanguage: lang, telephone: '+41794191462', email: 'booking@chesa-somplaz.ch',
+        '@type': 'VacationRental', '@id': url + '#rental', identifier: 'chesa-somplaz-via-somplaz-10', additionalType: 'Apartment', latitude: 46.4979, longitude: 9.8355, knowsLanguage: ['de', 'en', 'it'], brand: { '@type': 'Brand', name: 'Chesa Somplaz' }, name: 'Chesa Somplaz – ' + t.navApt + ' St. Moritz Dorf', url, telephone: '+41794191462', email: 'booking@chesa-somplaz.ch',
         description: t.aptLead,
         address: { '@type': 'PostalAddress', streetAddress: 'Via Somplaz 10', postalCode: '7500', addressLocality: 'St. Moritz', addressRegion: 'GR', addressCountry: 'CH' },
         geo: { '@type': 'GeoCoordinates', latitude: 46.4979, longitude: 9.8355 },
-        numberOfRooms: 4.5, numberOfBedrooms: 3, numberOfBathroomsTotal: 2,
-        floorSize: { '@type': 'QuantitativeValue', value: 113, unitCode: 'MTK' },
-        occupancy: { '@type': 'QuantitativeValue', maxValue: 6 },
-        checkinTime: '16:00', checkoutTime: '10:00', petsAllowed: 'on request',
-        containsPlace: { '@type': 'Accommodation', additionalType: 'EntirePlace', occupancy: { '@type': 'QuantitativeValue', value: 6 }, numberOfBedrooms: 3, numberOfBathroomsTotal: 2, floorSize: { '@type': 'QuantitativeValue', value: 113, unitCode: 'MTK' }, amenityFeature: t.aptEquip.map((n) => ({ '@type': 'LocationFeatureSpecification', name: n, value: true })), bed: [{ '@type': 'BedDetails', typeOfBed: 'double 160 cm', numberOfBeds: 1 }, { '@type': 'BedDetails', typeOfBed: 'bunk bed 2 x 90 cm', numberOfBeds: 2 }, { '@type': 'BedDetails', typeOfBed: 'double 180 cm', numberOfBeds: 1 }] },
-        amenityFeature: t.aptEquip.map((n) => ({ '@type': 'LocationFeatureSpecification', name: n, value: true })),
+        numberOfRooms: 4.5,
+        checkinTime: '16:00:00+01:00', checkoutTime: '10:00:00+01:00',
+        containsPlace: {
+          '@type': 'Accommodation', additionalType: 'EntirePlace',
+          occupancy: { '@type': 'QuantitativeValue', value: 6 },
+          numberOfRooms: 4.5, numberOfBedrooms: 3, numberOfBathroomsTotal: 2,
+          floorSize: { '@type': 'QuantitativeValue', value: 113, unitCode: 'MTK' },
+          bed: [{ '@type': 'BedDetails', typeOfBed: 'Double', numberOfBeds: 2 }, { '@type': 'BedDetails', typeOfBed: 'Single', numberOfBeds: 2 }],
+          amenityFeature: [
+            ['wifi', true], ['tv', true], ['fireplace', true], ['kitchen', true], ['ovenStove', true], ['balcony', true], ['elevator', true], ['washerDryer', true], ['heating', true], ['parkingType', 'Free'],
+          ].map(([name, value]) => ({ '@type': 'LocationFeatureSpecification', name, value })),
+        },
         image: ['st-moritz-dorf', 'sommer-st-moritz-hero', 'wohnbereich-cheminee-v3', 'abendstimmung', 'hero-silsersee', 'piste-corviglia', 'langlauf', 'sommer-silsersee', 'sommer-biketrail-corviglia', 'herbst-silvaplanersee'].map((n) => DOMAIN + '/img/' + n + '.jpg'),
-        offers: { '@type': 'Offer', availabilityStarts: '2027-10-01', description: t.priceLead, availability: 'https://schema.org/PreOrder', url: url + '#preise' },
       },
       { '@type': 'FAQPage', mainEntity: t.faqs.map((q) => ({ '@type': 'Question', name: q.q, acceptedAnswer: { '@type': 'Answer', text: q.a } })) },
     ],
@@ -157,7 +176,7 @@ function page(lang) {
   const langLinks = Object.entries(LANGS).map(([l, v]) => `<a class="lang${l === lang ? ' lang-on' : ''}" href="/${v.dir}" lang="${l}" hreflang="${v.hreflang}" style="display:inline-flex;align-items:center;justify-content:center">${l.toUpperCase()}</a>`).join('');
   const waHref = `https://wa.me/${WA}?text=${encodeURIComponent(t.waText)}`;
 
-  const html = `<!doctype html>
+  let html = `<!doctype html>
 <html lang="${lang}">
 <head>
 <meta charset="utf-8">
@@ -175,7 +194,7 @@ ${alternates}
 ${Object.values(LANGS).filter((v) => v.ogLocale !== L.ogLocale).map((v) => `<meta property="og:locale:alternate" content="${v.ogLocale}">`).join('\n')}
 <meta name="twitter:card" content="summary_large_image">
 <meta name="robots" content="index,follow,max-image-preview:large">
-<script>(function(){var s=null;try{s=localStorage.getItem('cs-season');}catch(e){}if(s!=='summer'&&s!=='winter'){s='winter';}document.documentElement.setAttribute('data-season',s);})();</script>
+<script>(function(){var s=null;try{s=localStorage.getItem('cs-season');}catch(e){}if(s!=='summer'&&s!=='winter'){s='winter';}document.documentElement.setAttribute('data-season',s);var P=${JSON.stringify(heroPreload())};var p=P[s],l=document.createElement('link');l.rel='preload';l.as='image';l.setAttribute('fetchpriority','high');if(p.set){l.setAttribute('imagesrcset',p.set);l.setAttribute('imagesizes',p.sizes);l.type='image/webp';}else{l.href=p.href;}document.head.appendChild(l);})();</script>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-48.png" type="image/png" sizes="48x48">
 <link rel="icon" href="/favicon-192.png" type="image/png" sizes="192x192">
@@ -220,8 +239,8 @@ ${t.facts.map((f) => `<li style="background:#f3f5f3;border-radius:999px;padding:
 <a class="link hero-sec" href="#wohnung">${esc(t.heroSecondary)}</a>
 </div>
 </div>
-<div class="hero-pic" data-s="winter"><img class="img hero-img" src="/img/st-moritz-dorf.jpg" alt="${esc(t.altHero)}" width="2400" height="1600" fetchpriority="high" style="object-position:center 70%"></div>
-<div class="hero-pic" data-s="summer"><img class="img hero-img" src="/img/sommer-st-moritz-hero.jpg" alt="${esc(t.altHeroS)}" width="2400" height="1597" loading="lazy" style="object-position:center 55%"></div>
+<div class="hero-pic" data-s="winter"><img class="img hero-img" src="/img/st-moritz-dorf.jpg" alt="${esc(t.altHero)}" width="2400" height="1600" loading="lazy" fetchpriority="high" style="object-position:center 70%"></div>
+<div class="hero-pic" data-s="summer"><img class="img hero-img" src="/img/sommer-st-moritz-hero.jpg" alt="${esc(t.altHeroS)}" width="2400" height="1597" loading="lazy" fetchpriority="high" style="object-position:center 55%"></div>
 </div>
 </div>
 </section>
@@ -242,6 +261,7 @@ ${t.facts.map((f) => `<li style="background:#f3f5f3;border-radius:999px;padding:
 <h3 style="font-size:22px;margin-bottom:10px">${esc(t.planH)}</h3>
 <p style="margin:0 0 20px;font-size:16px;color:#2f3634">${esc(t.planP)}</p>
 <div class="plan-wrap" data-plan role="img" aria-label="${esc(t.planAria)}"><div class="plan-scale">${plan(lang)}</div></div>
+<button type="button" class="plan-zoom" data-plan-zoom data-close="${esc(ZOOM[lang][1])}">${esc(ZOOM[lang][0])}</button>
 </div>
 <div class="sec-cta" style="margin-top:32px;display:flex;justify-content:center"><a class="btn" href="#buchung">${esc(t.heroCta)}</a></div>
 </div>
@@ -334,12 +354,7 @@ ${t.priceRows.map((r) => `<tr><td>${esc(r.n)}</td><td>${esc(r.v)}</td></tr>`).jo
 </tbody></table>
 </div>
 <div class="card" style="margin-top:20px"><h3>${esc(t.priceWeekH)}</h3><p style="margin:0;font-size:16px;color:#2f3634">${esc(t.priceWeek)}</p></div>
-</div>
-</section>
-
-<section class="sec" style="padding-bottom:0">
-<div class="wrap">
-<div class="card" style="display:flex;gap:24px;align-items:center;flex-wrap:wrap">
+<div class="card" style="margin-top:20px;display:flex;gap:24px;align-items:center;flex-wrap:wrap">
 <img src="/img/vanessa.jpg" alt="${esc(t.hostsH)}" width="400" height="400" loading="lazy" style="width:96px;height:96px;border-radius:50%;object-fit:cover;flex:0 0 96px">
 <div style="flex:1 1 400px"><h3 style="font-size:20px;margin-bottom:6px">${esc(t.hostsH)}</h3><p style="margin:0;font-size:16px;color:#2f3634">${esc(t.hostsText)}</p></div>
 </div>
@@ -414,7 +429,9 @@ ${t.ds.map((x) => `<div class="faq"><strong style="display:block">${esc(x.h)}</s
   var b=document.getElementById('burger'),m=document.getElementById('mobnav');
   if(b&&m){b.addEventListener('click',function(){var o=m.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');});m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){m.classList.remove('open');b.setAttribute('aria-expanded','false');});});}
   ['#impressum','#datenschutz'].forEach(function(id){document.querySelectorAll('a[href="'+id+'"]').forEach(function(a){a.addEventListener('click',function(){var d=document.querySelector(id);if(d)d.open=true;});});});
-  function scalePlans(){document.querySelectorAll('[data-plan]').forEach(function(w){var s=w.querySelector('.plan-scale');var k=Math.min(1,w.clientWidth/980);s.style.transform='scale('+k+')';s.style.height='900px';w.style.height=Math.round(900*k)+'px';w.style.overflowX=(w.clientWidth/980<0.72)?'auto':'hidden';});}
+  function scalePlans(){document.querySelectorAll('[data-plan]').forEach(function(w){var s=w.querySelector('.plan-scale');var k=Math.min(1,w.clientWidth/980);s.style.transform='scale('+k+')';s.style.height='900px';w.style.height=Math.round(900*k)+'px';var z=k<0.72;w.classList.toggle('zoomable',z);var bt=w.nextElementSibling;if(bt&&bt.hasAttribute('data-plan-zoom'))bt.style.display=z?'inline-block':'none';});}
+  function openPlan(w){var bt=w.nextElementSibling;var ov=document.createElement('div');ov.className='plan-overlay';ov.setAttribute('role','dialog');ov.setAttribute('aria-modal','true');ov.setAttribute('aria-label',w.getAttribute('aria-label')||'');var c=w.querySelector('.plan-scale').cloneNode(true);c.removeAttribute('style');ov.appendChild(c);var x=document.createElement('button');x.type='button';x.className='plan-close';x.textContent=(bt&&bt.getAttribute('data-close'))||'×';ov.appendChild(x);function cl(){ov.remove();document.body.style.overflow='';document.removeEventListener('keydown',ek);if(bt)bt.focus();}function ek(e){if(e.key==='Escape')cl();}x.addEventListener('click',cl);document.addEventListener('keydown',ek);document.body.appendChild(ov);document.body.style.overflow='hidden';x.focus();}
+  document.querySelectorAll('[data-plan]').forEach(function(w){w.addEventListener('click',function(){if(w.classList.contains('zoomable'))openPlan(w);});var bt=w.nextElementSibling;if(bt&&bt.hasAttribute('data-plan-zoom'))bt.addEventListener('click',function(){openPlan(w);});});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&m){m.classList.remove('open');b.setAttribute('aria-expanded','false');}});
   document.addEventListener('click',function(e){if(m&&m.classList.contains('open')&&!m.contains(e.target)&&!b.contains(e.target)){m.classList.remove('open');b.setAttribute('aria-expanded','false');}});
   function paintSeason(){var cur=document.documentElement.getAttribute('data-season')||'winter';document.querySelectorAll('[data-set-season]').forEach(function(x){var on=x.getAttribute('data-set-season')===cur;x.classList.toggle('lang-on',on);x.setAttribute('aria-pressed',on?'true':'false');});}
@@ -448,7 +465,7 @@ ${t.ds.map((x) => `<div class="faq"><strong style="display:block">${esc(x.h)}</s
   var KEY='cs-consent',GA='G-BSRVJ46BE5',box=document.getElementById('consent');
   function loadMap(){var m=document.getElementById('map-box');if(!m||m.dataset.done)return;m.dataset.done='1';var i=document.createElement('iframe');i.title='Google Maps – Via Somplaz 10, St. Moritz';i.src=m.getAttribute('data-src');i.setAttribute('loading','lazy');i.setAttribute('referrerpolicy','no-referrer-when-downgrade');i.setAttribute('allowfullscreen','');i.style.cssText='width:100%;height:100%;min-height:300px;border:0;border-radius:12px';m.replaceWith(i);}
   var ml=document.getElementById('map-load');if(ml)ml.addEventListener('click',loadMap);
-  function loadGA(){if(window.__gaLoaded)return;window.__gaLoaded=true;var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+GA;document.head.appendChild(s);window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments);};gtag('js',new Date());gtag('config',GA,{anonymize_ip:true});}
+  function loadGA(){if(window.__gaLoaded)return;window.__gaLoaded=true;var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+GA;document.head.appendChild(s);window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments);};gtag('js',new Date());gtag('config',GA);}
   function get(){try{return localStorage.getItem(KEY);}catch(e){return null;}}
   function set(v){try{localStorage.setItem(KEY,v);}catch(e){}}
   function show(){if(box)box.hidden=false;}
@@ -457,7 +474,7 @@ ${t.ds.map((x) => `<div class="faq"><strong style="display:block">${esc(x.h)}</s
   if(c==='granted'){loadGA();loadMap();}else if(c!=='denied')show();
   var a=document.getElementById('consent-accept'),d=document.getElementById('consent-decline'),o=document.getElementById('consent-open'),m=document.getElementById('consent-more');
   if(a)a.addEventListener('click',function(){set('granted');hide();loadGA();loadMap();});
-  if(d)d.addEventListener('click',function(){set('denied');hide();});
+  if(d)d.addEventListener('click',function(){var was=get()==='granted'||window.__gaLoaded;set('denied');hide();if(was){try{if(window.gtag)gtag('consent','update',{analytics_storage:'denied'});}catch(e){}window['ga-disable-'+GA]=true;var h=location.hostname.split('.');document.cookie.split(';').forEach(function(ck){var n=ck.split('=')[0].trim();if(/^_ga/.test(n)){for(var i=0;i<h.length;i++){var dm=h.slice(i).join('.');document.cookie=n+'=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;domain=.'+dm;document.cookie=n+'=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;domain='+dm;}document.cookie=n+'=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/';}});location.reload();}});
   if(o)o.addEventListener('click',function(e){e.preventDefault();show();});
   if(m)m.addEventListener('click',function(){var ds=document.querySelector('#datenschutz');if(ds)ds.open=true;});
 })();
@@ -465,9 +482,11 @@ ${t.ds.map((x) => `<div class="faq"><strong style="display:block">${esc(x.h)}</s
 </body>
 </html>
 `;
+  const bi = html.indexOf('<body');
+  html = html.slice(0, bi) + html.slice(bi).split(/(<script[\s\S]*?<\/script>)/).map((part) => part.startsWith('<script') ? part : part.replace(/St\. Moritz/g, 'St.&nbsp;Moritz')).join('');
   return html.replace(/<img class="img([^"]*)" src="\/img\/([a-z0-9-]+)\.jpg"([^>]*)>/g, (m, cls, name, rest) => {
     if (!fs.existsSync(path.join(OUT, 'img', `${name}-800.webp`)) || !fs.existsSync(path.join(OUT, 'img', `${name}-1600.webp`))) return m;
-    const sizes = cls.includes('hero-img') ? '(max-width:760px) 100vw, 560px' : /height:(200|220|260|300)px/.test(rest) ? '(max-width:760px) 100vw, 400px' : '(max-width:760px) 100vw, 1120px';
+    const sizes = cls.includes('hero-img') ? '(max-width:1000px) 100vw, 560px' : /height:(200|220|260|300)px/.test(rest) ? '(max-width:760px) 100vw, 400px' : '(max-width:760px) 100vw, 1120px';
     return `<picture><source type="image/webp" srcset="/img/${name}-800.webp 800w, /img/${name}-1600.webp 1600w" sizes="${sizes}">${m}</picture>`;
   });
 }
