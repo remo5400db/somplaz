@@ -76,6 +76,8 @@ html[data-season="summer"] [data-s="winter"],html[data-season="winter"] [data-s=
 .seg-lang .lang-on{background:#1b1f1e;color:#fff}
 .seasons{margin-right:8px}
 .sub-h{font-size:22px;margin:0 0 12px}
+.price-box{display:grid;grid-template-columns:minmax(0,0.8fr) minmax(0,1.2fr);gap:40px;align-items:center}.price-box .table{margin:0}
+@media (max-width:760px){.price-box{grid-template-columns:repeat(1,minmax(0,1fr));gap:20px}}
 details.faq-d{border:0;border-radius:0;padding:0;background:transparent;border-top:1px solid #e3e7e4}details.faq-d:first-child{border-top:0}details.faq-d>summary{padding:16px 0;font-size:16px}
 .proc{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;counter-reset:none}
 .proc-step{position:relative;background:#fff;border:1px solid #e3e7e4;border-radius:12px;padding:22px 20px}
@@ -321,20 +323,19 @@ ${t.arrBlocksS.map((b) => `<div class="card"><img class="img" src="/${b.img}" al
 <div class="eyebrow">${esc(t.navPrice)}</div>
 <h2 class="h2">${esc(t.priceTitle)}</h2>
 <p class="lead" style="margin:0">${esc(t.priceLead)}</p>
-<div class="grid2">
-<div class="card" style="background:#1e4d3f;color:#ffffff;border-color:#1e4d3f">
+<div class="card price-box" style="background:#1e4d3f;color:#ffffff;border-color:#1e4d3f;margin-top:40px">
+<div class="pb-head">
 <div style="font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;opacity:0.85">${esc(t.priceSeasonLabel)}</div>
-<div class="price" style="margin:6px 0 4px">${esc(t.priceAmount)}</div>
-<div style="margin-bottom:20px"></div>
+<div class="price" style="margin:6px 0 20px">${esc(t.priceAmount)}</div>
+<a class="btn" href="#buchung" style="background:#ffffff;color:#1e4d3f">${esc(t.heroCta)}</a>
+</div>
 <table class="table"><tbody>
 ${t.priceRows.map((r) => `<tr><td>${esc(r.n)}</td><td>${esc(r.v)}</td></tr>`).join('')}
 </tbody></table>
-<a class="btn" href="#buchung" style="background:#ffffff;color:#1e4d3f;margin-top:24px">${esc(t.heroCta)}</a>
 </div>
-<div>
-<div class="card"><h3>${esc(t.priceWeekH)}</h3><p style="margin:0 0 16px;font-size:16px">${esc(t.priceWeek)}</p><a class="link" href="#buchung">${esc(t.priceWeekCta)}</a></div>
-<div class="card" style="margin-top:20px"><h3>${esc(t.priceExtraH)}</h3><ul>${t.priceExtra.map((x) => `<li class="li" style="display:block;font-size:15px">${esc(x)}</li>`).join('')}</ul></div>
-</div>
+<div class="grid2" style="margin-top:20px;gap:20px">
+<div class="card"><h3>${esc(t.priceWeekH)}</h3><p style="margin:0;font-size:16px;color:#2f3634">${esc(t.priceWeek)}</p></div>
+<div class="card"><h3>${esc(t.priceExtraH)}</h3><p style="margin:0;font-size:16px;color:#2f3634">${esc(t.priceExtra[0])}</p></div>
 </div>
 </div>
 </section>

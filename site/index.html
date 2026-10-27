@@ -120,6 +120,8 @@ html[data-season="summer"] [data-s="winter"],html[data-season="winter"] [data-s=
 .seg-lang .lang-on{background:#1b1f1e;color:#fff}
 .seasons{margin-right:8px}
 .sub-h{font-size:22px;margin:0 0 12px}
+.price-box{display:grid;grid-template-columns:minmax(0,0.8fr) minmax(0,1.2fr);gap:40px;align-items:center}.price-box .table{margin:0}
+@media (max-width:760px){.price-box{grid-template-columns:repeat(1,minmax(0,1fr));gap:20px}}
 details.faq-d{border:0;border-radius:0;padding:0;background:transparent;border-top:1px solid #e3e7e4}details.faq-d:first-child{border-top:0}details.faq-d>summary{padding:16px 0;font-size:16px}
 .proc{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;counter-reset:none}
 .proc-step{position:relative;background:#fff;border:1px solid #e3e7e4;border-radius:12px;padding:22px 20px}
@@ -554,20 +556,19 @@ Engadin Airport Samedan für Privat- und Charterflüge: 12 Autominuten; Taxi und
 <div class="eyebrow">Preise</div>
 <h2 class="h2">Vermietung ab Herbst 2027</h2>
 <p class="lead" style="margin:0">Die Wintersaison 2026/27 ist reserviert. Preise und Konditionen für die Vermietung ab Herbst 2027 erhalten Interessenten auf der Warteliste zuerst.</p>
-<div class="grid2">
-<div class="card" style="background:#1e4d3f;color:#ffffff;border-color:#1e4d3f">
+<div class="card price-box" style="background:#1e4d3f;color:#ffffff;border-color:#1e4d3f;margin-top:40px">
+<div class="pb-head">
 <div style="font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;opacity:0.85">Preise</div>
-<div class="price" style="margin:6px 0 4px">Auf Anfrage</div>
-<div style="margin-bottom:20px"></div>
+<div class="price" style="margin:6px 0 20px">Auf Anfrage</div>
+<a class="btn" href="#buchung" style="background:#ffffff;color:#1e4d3f">Auf die Warteliste</a>
+</div>
 <table class="table"><tbody>
-<tr><td>Inbegriffen</td><td>Nebenkosten (Heizung, Strom, Wasser), WLAN, Tiefgaragenplatz, Bettwäsche und Handtücher, Endreinigung</td></tr><tr><td>Nicht inbegriffen</td><td>Kurtaxe (CHF 2.90 pro Person und Nacht, Kinder unter 12 Jahren frei)</td></tr><tr><td>Personen</td><td>max. 6</td></tr>
+<tr><td>Inbegriffen</td><td>Nebenkosten (Heizung, Strom, Wasser), WLAN, Tiefgaragenplatz, Bettwäsche und Handtücher, Endreinigung</td></tr><tr><td>Nicht inbegriffen</td><td>Kurtaxe der Gemeinde St. Moritz (CHF 2.90 pro Person und Nacht, Kinder unter 12 Jahren frei) – dafür erhalten Gäste die Gästekarte</td></tr>
 </tbody></table>
-<a class="btn" href="#buchung" style="background:#ffffff;color:#1e4d3f;margin-top:24px">Auf die Warteliste</a>
 </div>
-<div>
-<div class="card"><h3>Saison oder wochenweise?</h3><p style="margin:0 0 16px;font-size:16px">Ob wir ab Herbst 2027 saisonweise oder wochenweise vermieten, entscheiden wir vor der Vermarktung.</p><a class="link" href="#buchung">In die Warteliste eintragen</a></div>
-<div class="card" style="margin-top:20px"><h3>Weitere Hinweise</h3><ul><li class="li" style="display:block;font-size:15px">Kurtaxe: wird von der Gemeinde St. Moritz erhoben; Gäste erhalten dafür die Gästekarte</li><li class="li" style="display:block;font-size:15px">Reinigung und Wäsche während des Aufenthalts: Sache der Mieter (eigene Waschküche) – auf Wunsch vermitteln wir gerne eine Reinigungskraft</li></ul></div>
-</div>
+<div class="grid2" style="margin-top:20px;gap:20px">
+<div class="card"><h3>Saison oder wochenweise?</h3><p style="margin:0;font-size:16px;color:#2f3634">Ob wir ab Herbst 2027 saisonweise oder wochenweise vermieten, entscheiden wir vor der Vermarktung.</p></div>
+<div class="card"><h3>Reinigung und Wäsche</h3><p style="margin:0;font-size:16px;color:#2f3634">Während des Aufenthalts Sache der Mieter (eigene Waschküche) – auf Wunsch vermitteln wir gerne eine Reinigungskraft.</p></div>
 </div>
 </div>
 </section>
