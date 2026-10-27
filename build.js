@@ -386,7 +386,7 @@ ${t.bookSteps.map((s) => `<li class="proc-step"><div class="num">${esc(s.n)}</di
 <div style="margin-top:48px">
 <h3 style="font-size:22px;margin-bottom:16px">${esc(t.faqH)}</h3>
 <div class="card" style="padding:8px 28px">
-${t.faqs.map((q) => `<details class="faq-d"><summary><h4 style="font-size:16px;margin:0">${esc(q.q)}</h4></summary><div style="padding:0 0 16px;color:#2f3634">${esc(q.a)}</div></details>`).join('\n')}
+${t.faqs.map((q) => `<details class="faq-d"${q.s ? ` data-s="${q.s}"` : ''}><summary><h4 style="font-size:16px;margin:0">${esc(q.q)}</h4></summary><div style="padding:0 0 16px;color:#2f3634">${esc(q.a)}</div></details>`).join('\n')}
 </div>
 </div>
 </div>
