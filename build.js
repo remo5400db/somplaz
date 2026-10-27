@@ -377,10 +377,8 @@ ${t.bookSteps.map((s) => `<li class="proc-step"><div class="num">${esc(s.n)}</di
 </div>
 <div class="field"><label class="label" for="f-msg">${esc(t.fMsg)}</label><textarea class="input" id="f-msg" name="msg" rows="4"></textarea></div>
 <button class="btn" type="submit">${esc(t.fSend)}</button>
-<p id="form-hint" style="margin:12px 0 0;font-size:14px;color:#5a6361">${esc(t.formAfter)}</p>
+<p id="form-hint" style="margin:12px 0 0;font-size:14px;color:#5a6361" aria-live="polite"></p>
 </form>
-<a class="btn wa-btn" href="${waHref}" target="_blank" rel="noopener" style="text-align:center;margin-top:14px;background:#25D366;color:#0b2a16;display:flex;align-items:center;justify-content:center;gap:10px;box-sizing:border-box">${svgChat(20)} ${esc(t.waBtn)}</a>
-<p style="margin:16px 0 0;font-size:15px"><strong>${esc(t.formNote)}</strong> <a href="mailto:booking@chesa-somplaz.ch">booking@chesa-somplaz.ch</a><br><span style="color:#5a6361;font-size:14px">${esc(t.replyLangs)}</span></p>
 </div>
 </div>
 <div style="margin-top:48px">
@@ -409,7 +407,7 @@ ${t.ds.map((x) => `<div class="faq"><strong style="display:block">${esc(x.h)}</s
 
 <footer style="background:#1b1f1e;color:#c9d1cd;padding:40px 0;font-size:14px">
 <div class="wrap" style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap">
-<address style="font-style:normal"><strong style="color:#ffffff;font-size:16px">${esc(t.brand)}</strong><br>Via Somplaz 10 · 7500 St. Moritz · ${esc(t.footSwiss)}</address>
+<address style="font-style:normal"><strong style="color:#ffffff;font-size:16px">${esc(t.brand)}</strong><br>Via Somplaz 10 · 7500 St. Moritz · ${esc(t.footSwiss)}<br><a href="mailto:booking@chesa-somplaz.ch" style="color:#ffffff">booking@chesa-somplaz.ch</a></address>
 <div style="display:flex;gap:18px;flex-wrap:wrap"><a href="#impressum" style="color:#ffffff">${esc(t.impH)}</a><a href="#datenschutz" style="color:#ffffff">${esc(t.dsH)}</a><a href="#" id="consent-open" style="color:#ffffff">${esc(t.consentSettings)}</a><span>© 2026 Vanessa Fasciati</span></div>
 </div>
 </footer>
@@ -422,7 +420,6 @@ ${t.ds.map((x) => `<div class="faq"><strong style="display:block">${esc(x.h)}</s
   function scalePlans(){document.querySelectorAll('[data-plan]').forEach(function(w){var s=w.querySelector('.plan-scale');var k=Math.min(1,w.clientWidth/980);s.style.transform='scale('+k+')';s.style.height='900px';w.style.height=Math.round(900*k)+'px';w.style.overflowX=(w.clientWidth/980<0.72)?'auto':'hidden';});}
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&m){m.classList.remove('open');b.setAttribute('aria-expanded','false');}});
   document.addEventListener('click',function(e){if(m&&m.classList.contains('open')&&!m.contains(e.target)&&!b.contains(e.target)){m.classList.remove('open');b.setAttribute('aria-expanded','false');}});
-  var wa=document.querySelector('.wa-float'),bk=document.getElementById('buchung');if(wa&&bk&&'IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(x){wa.style.display=x.isIntersecting?'none':'flex';});},{threshold:0.05}).observe(bk);}
   function paintSeason(){var cur=document.documentElement.getAttribute('data-season')||'winter';document.querySelectorAll('[data-set-season]').forEach(function(x){var on=x.getAttribute('data-set-season')===cur;x.classList.toggle('lang-on',on);x.setAttribute('aria-pressed',on?'true':'false');});}
   document.querySelectorAll('[data-set-season]').forEach(function(x){x.addEventListener('click',function(){var v=x.getAttribute('data-set-season');document.documentElement.setAttribute('data-season',v);try{localStorage.setItem('cs-season',v);}catch(e){}paintSeason();scalePlans();if(m&&m.classList.contains('open')){m.classList.remove('open');b.setAttribute('aria-expanded','false');}});});
   paintSeason();
