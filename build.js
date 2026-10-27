@@ -229,6 +229,7 @@ ${t.facts.map((f) => `<li style="background:#f3f5f3;border-radius:999px;padding:
 <p style="margin:0 0 20px;font-size:16px;color:#2f3634">${esc(t.planP)}</p>
 <div class="plan-wrap" data-plan role="img" aria-label="${esc(t.planAria)}"><div class="plan-scale">${plan(lang)}</div></div>
 </div>
+<div class="sec-cta" style="margin-top:32px;display:flex;justify-content:center"><a class="btn" href="#buchung">${esc(t.heroCta)}</a></div>
 </div>
 </section>
 
@@ -251,6 +252,7 @@ ${t.facts.map((f) => `<li style="background:#f3f5f3;border-radius:999px;padding:
 <div class="card"><h3>${esc(t.locDriveH)}</h3><ul>${liKV(t.locDrive)}</ul>
 </div>
 </div>
+<div class="sec-cta" style="margin-top:32px;display:flex;justify-content:center"><a class="btn" href="#buchung">${esc(t.heroCta)}</a></div>
 </div>
 </section>
 
