@@ -81,6 +81,7 @@ html[data-season="summer"] [data-s="winter"],html[data-season="winter"] [data-s=
 .proc-step .num{margin-bottom:12px;width:36px}
 .fgrid>.grid2{display:grid !important;flex-direction:initial}
 .fgrid>.field{display:block !important}
+.form-card .input{height:48px}.form-card textarea.input{height:auto}
 .proc-step:not(:last-child)::after{content:"→";position:absolute;right:-14px;top:30px;color:#1e4d3f;font-weight:700;font-size:16px;background:#f2f4f2;border-radius:50%;width:12px;text-align:center}
 .form-card form .btn[type=submit]{min-width:280px}
 .form-card .wa-btn{display:inline-flex !important;width:auto !important;min-width:280px;padding-left:24px;padding-right:24px}
@@ -367,7 +368,7 @@ ${t.bookSteps.map((s) => `<li class="proc-step"><div class="num">${esc(s.n)}</di
 <div class="grid2 fgrid" style="margin-top:0;gap:0 24px">
 <div class="field"><label class="label" for="f-name">${esc(t.fName)} <span class="req">*</span></label><input class="input" id="f-name" name="name" type="text" required autocomplete="name"></div>
 <div class="field"><label class="label" for="f-mail">${esc(t.fMail)} <span class="req">*</span></label><input class="input" id="f-mail" name="mail" type="email" required autocomplete="email"></div>
-<div class="field"><div class="label">${esc(t.fPeriod)}</div><div class="grid2" style="margin-top:0;gap:16px"><div><label class="label" for="f-from" style="font-weight:500">${esc(t.fFrom)}</label><input class="input" id="f-from" name="from" type="date" min="2027-10-01"></div><div><label class="label" for="f-to" style="font-weight:500">${esc(t.fTo)}</label><input class="input" id="f-to" name="to" type="date" min="2027-10-01"></div></div></div>
+<div class="grid2" style="margin-top:0;gap:16px"><div class="field"><label class="label" for="f-from">${esc(t.fFrom)}</label><input class="input" id="f-from" name="from" type="date" min="2027-10-01"></div><div class="field"><label class="label" for="f-to">${esc(t.fTo)}</label><input class="input" id="f-to" name="to" type="date" min="2027-10-01"></div></div>
 <div class="grid2" style="margin-top:0;gap:16px">
 <div class="field"><label class="label" for="f-pers">${esc(t.fPers)}</label><input class="input" id="f-pers" name="pers" type="number" min="1" max="6" placeholder="1–6"></div>
 <div class="field"><label class="label" for="f-pet">${esc(t.fPet)}</label><select class="input" id="f-pet" name="pet"><option value="no">${esc(t.fNo)}</option><option value="yes">${esc(t.fYes)}</option></select></div>
