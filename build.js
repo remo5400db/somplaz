@@ -76,6 +76,16 @@ html[data-season="summer"] [data-s="winter"],html[data-season="winter"] [data-s=
 .seg-lang .lang-on{background:#1b1f1e;color:#fff}
 .seasons{margin-right:8px}
 .sub-h{font-size:22px;margin:0 0 12px}
+.proc{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;counter-reset:none}
+.proc-step{position:relative;background:#fff;border:1px solid #e3e7e4;border-radius:12px;padding:22px 20px}
+.proc-step .num{margin-bottom:12px;width:36px}
+.fgrid>.grid2{display:grid !important;flex-direction:initial}
+.fgrid>.field{display:block !important}
+.proc-step:not(:last-child)::after{content:"→";position:absolute;right:-14px;top:30px;color:#1e4d3f;font-weight:700;font-size:16px;background:#f2f4f2;border-radius:50%;width:12px;text-align:center}
+.form-card form .btn[type=submit]{min-width:280px}
+.form-card .wa-btn{display:inline-flex !important;width:auto !important;min-width:280px;padding-left:24px;padding-right:24px}
+@media (max-width:760px){.form-card form .btn[type=submit],.form-card .wa-btn{width:100% !important;min-width:0}}
+@media (max-width:760px){.proc{grid-template-columns:repeat(1,minmax(0,1fr));gap:12px}.proc-step:not(:last-child)::after{content:"↓";right:auto;left:50%;top:auto;bottom:-15px;transform:translateX(-50%)}}
 @media (max-width:760px){.hide-mobile{display:none !important}}
 details.inl{border:0;padding:0;background:transparent}details.inl>summary{padding:6px 0;font-size:15px;color:#1e4d3f;text-decoration:underline;text-underline-offset:3px}
 .school-top .img{height:220px !important}
@@ -341,18 +351,20 @@ ${t.priceRows.map((r) => `<tr><td>${esc(r.n)}</td><td>${esc(r.v)}</td></tr>`).jo
 <div class="eyebrow">${esc(t.navBook)}</div>
 <h2 class="h2">${esc(t.bookTitle)}</h2>
 <p class="lead" style="margin:0">${esc(t.bookLead)}</p>
-<div class="grid2" style="margin-top:28px">
-<div>
-<div class="card"><h3>${esc(t.bookHowH)}</h3>
-<p style="margin:0 0 14px;font-size:14px;color:#5a6361">${esc(t.bookHowNote)}</p>
-${t.bookSteps.map((s) => `<div class="step"><div class="num">${esc(s.n)}</div><div><strong>${esc(s.h)}</strong><div style="font-size:15px;color:#2f3634">${esc(s.p)}</div></div></div>`).join('')}
+<div style="margin-top:32px">
+<h3 class="sub-h" style="margin-bottom:4px">${esc(t.bookHowH)}</h3>
+<p style="margin:0 0 18px;font-size:15px;color:#5a6361">${esc(t.bookHowNote)}</p>
+<ol class="proc">
+${t.bookSteps.map((s) => `<li class="proc-step"><div class="num">${esc(s.n)}</div><strong>${esc(s.h)}</strong><div style="font-size:15px;color:#2f3634;margin-top:4px">${esc(s.p)}</div></li>`).join('')}
+</ol>
 </div>
-</div>
-<div class="card">
+<div style="margin-top:32px">
+<div class="card form-card">
 <h3>${esc(t.formH)}</h3>
 <p style="margin:0 0 20px;font-size:15px;color:#5a6361">${esc(t.formLead)}</p>
 <form id="enquiry" action="#" novalidate>
 <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
+<div class="grid2 fgrid" style="margin-top:0;gap:0 24px">
 <div class="field"><label class="label" for="f-name">${esc(t.fName)} <span class="req">*</span></label><input class="input" id="f-name" name="name" type="text" required autocomplete="name"></div>
 <div class="field"><label class="label" for="f-mail">${esc(t.fMail)} <span class="req">*</span></label><input class="input" id="f-mail" name="mail" type="email" required autocomplete="email"></div>
 <div class="field"><div class="label">${esc(t.fPeriod)}</div><div class="grid2" style="margin-top:0;gap:16px"><div><label class="label" for="f-from" style="font-weight:500">${esc(t.fFrom)}</label><input class="input" id="f-from" name="from" type="date" min="2027-10-01"></div><div><label class="label" for="f-to" style="font-weight:500">${esc(t.fTo)}</label><input class="input" id="f-to" name="to" type="date" min="2027-10-01"></div></div></div>
@@ -360,11 +372,12 @@ ${t.bookSteps.map((s) => `<div class="step"><div class="num">${esc(s.n)}</div><d
 <div class="field"><label class="label" for="f-pers">${esc(t.fPers)}</label><input class="input" id="f-pers" name="pers" type="number" min="1" max="6" placeholder="1–6"></div>
 <div class="field"><label class="label" for="f-pet">${esc(t.fPet)}</label><select class="input" id="f-pet" name="pet"><option value="no">${esc(t.fNo)}</option><option value="yes">${esc(t.fYes)}</option></select></div>
 </div>
+</div>
 <div class="field"><label class="label" for="f-msg">${esc(t.fMsg)}</label><textarea class="input" id="f-msg" name="msg" rows="4"></textarea></div>
-<button class="btn" type="submit" style="width:100%">${esc(t.fSend)}</button>
+<button class="btn" type="submit">${esc(t.fSend)}</button>
 <p id="form-hint" style="margin:12px 0 0;font-size:14px;color:#5a6361">${esc(t.formAfter)}</p>
 </form>
-<a class="btn" href="${waHref}" target="_blank" rel="noopener" style="width:100%;text-align:center;margin-top:14px;background:#25D366;color:#0b2a16;display:flex;align-items:center;justify-content:center;gap:10px;box-sizing:border-box">${svgChat(20)} ${esc(t.waBtn)}</a>
+<a class="btn wa-btn" href="${waHref}" target="_blank" rel="noopener" style="text-align:center;margin-top:14px;background:#25D366;color:#0b2a16;display:flex;align-items:center;justify-content:center;gap:10px;box-sizing:border-box">${svgChat(20)} ${esc(t.waBtn)}</a>
 <p style="margin:16px 0 0;font-size:15px"><strong>${esc(t.formNote)}</strong> <a href="mailto:booking@chesa-somplaz.ch">booking@chesa-somplaz.ch</a><br><span style="color:#5a6361;font-size:14px">${esc(t.replyLangs)}</span></p>
 </div>
 </div>
