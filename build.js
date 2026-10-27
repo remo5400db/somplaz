@@ -270,37 +270,6 @@ ${t.smCards.map((c) => `<div class="card"><img class="img" src="/${img(c.img)}" 
 <div class="grid2">
 ${t.smCardsS.map((c) => `<div class="card"><img class="img" src="/${c.img}" alt="${esc(c.alt)}" width="1400" height="900" loading="lazy" style="height:220px;border-radius:8px;margin-bottom:18px"><h3>${esc(c.h)}</h3><p style="margin:0;font-size:16px">${esc(c.p)}</p></div>`).join('\n')}
 </div>
-<div style="margin-top:40px">
-<h3 class="sub-h">${esc(t.toursH)}</h3>
-<p style="margin:0 0 20px;font-size:16px;color:#5a6361">${esc(t.toursLead)}</p>
-<div class="grid2" style="margin-top:0">
-${t.tours.map((x, i) => `<div class="card tour-${i}">${x.img ? `<img class="img" src="/${x.img}" alt="${esc(x.alt)}" width="1400" height="900" loading="lazy" style="height:220px;border-radius:8px;margin-bottom:18px">` : ''}<div class="tour-meta">${esc(x.m)}</div><h4 style="font-size:18px;margin:0 0 8px">${esc(x.h)}</h4><details class="inl"><summary>${esc(t.tourMore)}</summary><div style="padding:6px 0 4px"><p style="margin:0;font-size:16px">${esc(x.p)}</p>${ext(x.u, x.w)}</div></details></div>`).join('\n')}
-</div>
-</div>
-</div>
-<div class="card" data-s="winter" style="margin-top:32px" id="skischulen">
-<div class="school-top" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:28px;align-items:center;margin-bottom:20px">
-<img class="img" src="/img/skischule.jpg" alt="${esc(t.altKid)}" width="1920" height="1280" loading="lazy" style="height:260px;border-radius:8px;margin-bottom:18px">
-<div>
-<h3>${esc(t.schoolH)}</h3>
-<p style="margin:0;font-size:16px">${esc(t.schoolP)}</p>
-</div>
-</div>
-<details class="contacts"><summary>${esc(t.contactsH)}</summary><div style="padding:0 0 8px"><ul>
-${t.schools.map((s) => `<li class="tip"><strong>${esc(s.n)}</strong><br><span style="color:#2f3634">${esc(s.d)}</span><br><span style="font-size:15px">${esc(s.c)} · <a href="${esc(s.u)}" target="_blank" rel="noopener">${esc(s.w)}</a></span></li>`).join('\n')}
-</ul></div></details>
-</div>
-<div class="card" data-s="summer" style="margin-top:32px" id="sommerschulen">
-<div class="school-top" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:28px;align-items:center;margin-bottom:20px">
-<img class="img" src="/img/sommer-biketrail-corviglia.jpg" alt="${esc(t.smCardsS[1].alt)}" width="2400" height="1351" loading="lazy" style="height:260px;border-radius:8px;margin-bottom:18px;object-position:center 30%">
-<div>
-<h3>${esc(t.schoolHS)}</h3>
-<p style="margin:0;font-size:16px">${esc(t.schoolPS)}</p>
-</div>
-</div>
-<details class="contacts"><summary>${esc(t.contactsH)}</summary><div style="padding:0 0 8px"><ul>
-${t.schoolsS.map((s) => `<li class="tip"><strong>${esc(s.n)}</strong><br><span style="color:#2f3634">${esc(s.d)}</span><br><span style="font-size:15px">${esc(s.c)} · <a href="${esc(s.u)}" target="_blank" rel="noopener">${esc(s.w)}</a></span></li>`).join('\n')}
-</ul></div></details>
 </div>
 <div class="grid2">
 <div>
@@ -535,7 +504,6 @@ fs.writeFileSync(path.join(OUT, 'llms.txt'), `# Chesa Somplaz – Ferienwohnung 
 
 ## Sommer und Herbst
 - Wandern (580 km Wege), Biken (Flow-Trails Corviglia, Suvretta Loop 671, Bernina Express 673), Seen (Segeln/Surfen Silvaplana, Baden Lej da Staz), goldene Lärchen im Oktober.
-- Lieblingstouren: Piz Nair über den Suvrettapass; Lagh da Saoseo im Herbst; Bike Suvretta-Trail ins Val Bever; Bike Bernina-Downhill nach Poschiavo.
 - Events: Festival da Jazz, British Classic Car Meeting, Summer Country Polo (Juli), Engadin Festival (Juli–August), St. Moritz Gourmet Festival, Running Festival (August), Bernina Gran Turismo (September), The Alpine Rendezvous (Oktober).
 
 ## Seiten
