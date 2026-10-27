@@ -271,28 +271,11 @@ ${t.smCards.map((c) => `<div class="card"><img class="img" src="/${img(c.img)}" 
 ${t.smCardsS.map((c) => `<div class="card"><img class="img" src="/${c.img}" alt="${esc(c.alt)}" width="1400" height="900" loading="lazy" style="height:220px;border-radius:8px;margin-bottom:18px"><h3>${esc(c.h)}</h3><p style="margin:0;font-size:16px">${esc(c.p)}</p></div>`).join('\n')}
 </div>
 </div>
-<div class="grid2">
-<div>
+<div style="margin-top:40px">
 <h3 class="sub-h"><span data-s="winter">${esc(t.smEventsH)}</span><span data-s="summer">${esc(t.smEventsHS)}</span></h3>
 <div class="card">
-<div data-s="winter"><img class="img" src="/img/white-turf.jpg" alt="${esc(t.altTurf)}" width="2000" height="1333" loading="lazy" style="height:220px;border-radius:8px;margin-bottom:18px">
-<ul>${liKV(t.smEvents)}</ul></div>
+<div data-s="winter"><ul>${liKV(t.smEvents)}</ul></div>
 <div data-s="summer"><ul>${liKV(t.smEventsS)}</ul></div>
-</div>
-</div>
-<div>
-<h3 class="sub-h">${esc(t.smSecretH)}</h3>
-<div class="card">
-<div data-s="winter">${t.smSecrets.map((x) => `<div class="tip"><strong>${esc(x.n)}</strong> – ${esc(x.v)}${ext(x.u, x.w)}</div>`).join('\n')}</div>
-<div data-s="summer">${t.smSecretsS.map((x) => `<div class="tip"><strong>${esc(x.n)}</strong> – ${esc(x.v)}${ext(x.u, x.w)}</div>`).join('\n')}</div>
-<details style="margin-top:20px">
-<summary>${esc(t.smTipsH)}</summary>
-<div style="padding:0 0 20px">
-${t.smTips.map((x) => `<div class="tip"><strong>${esc(x.n)}</strong> – ${esc(x.v)}${ext(x.u, x.w)}</div>`).join('\n')}
-<p style="margin:14px 0 0;font-size:15px;color:#5a6361">${esc(t.smTipsNote)}</p>
-</div>
-</details>
-</div>
 </div>
 </div>
 <div class="grid2 pair" data-s="winter" style="gap:16px"><img class="img" src="/img/abendstimmung.jpg" alt="${esc(t.altAbend)}" width="1800" height="1013" loading="lazy" style="height:300px"><img class="img" src="/img/hero-silsersee.jpg" alt="${esc(t.altSils)}" width="1800" height="1013" loading="lazy" style="height:300px"></div>
