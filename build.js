@@ -196,7 +196,7 @@ ${navLinks.slice(0, 5).map(([h, n]) => `<a href="${h}">${esc(n)}</a>`).join('\n'
 <div class="hero-grid" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px;align-items:center">
 <div>
 <div style="margin-bottom:18px;display:flex;flex-wrap:wrap;gap:8px"><span class="badge"><span class="dot"></span>${esc(t.badgeAvail)}</span><span class="badge badge-green"><span class="dot dot-green"></span>${esc(t.badgeNext)}</span></div>
-<h1 class="hero-h" style="font-size:50px;margin-bottom:20px">${esc(t.heroTitle)}</h1>
+<h1 class="hero-h" style="font-size:40px;margin-bottom:20px">${esc(t.heroTitle)}</h1>
 <p class="lead" style="margin:0 0 24px">${esc(t.heroLead)}</p>
 <ul style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px">
 ${t.facts.map((f) => `<li style="background:#f3f5f3;border-radius:999px;padding:8px 16px;font-size:14px;font-weight:600">${esc(f)}</li>`).join('')}
