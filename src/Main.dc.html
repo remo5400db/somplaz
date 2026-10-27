@@ -324,14 +324,6 @@ details[open] summary::after{content:"–"}
 <p style="margin:0 0 16px;font-size:16px">{{t.priceWeek}}</p>
 <a class="link" href="#buchung">{{t.priceWeekCta}}</a>
 </div>
-<div class="card" style="margin-top:20px">
-<h3>{{t.priceExtraH}}</h3>
-<ul>
-<sc-for list="{{t.priceExtra}}" as="x" hint-placeholder-count="3">
-<li class="li" style="display:block;font-size:15px">{{x}}</li>
-</sc-for>
-</ul>
-</div>
 </div>
 </div>
 </div>
@@ -495,7 +487,7 @@ class Component extends DCLogic {
         aptBathH: 'Bad und Wäsche',
         aptBath: ['Bad mit Badewanne, Bidet und WC', 'Separate Dusche/WC', 'Waschmaschine und Tumbler im eigenen Waschraum neben der Wohnung'],
         aptGoodH: 'Gut zu wissen',
-        aptGood: ['Max. 6 Personen', 'Kinderbett auf Anfrage', 'Haustiere auf Anfrage willkommen', 'Nichtraucherwohnung (Rauchen auf dem Balkon erlaubt)', 'Check-in ab 16 Uhr, Check-out bis 10 Uhr'],
+        aptGood: ['Max. 6 Personen', 'Kinderbett auf Anfrage', 'Haustiere auf Anfrage willkommen', 'Nichtraucherwohnung (Rauchen auf dem Balkon erlaubt)', 'Check-in ab 16 Uhr, Check-out bis 10 Uhr', 'Reinigung und Wäsche während des Aufenthalts durch die Mieter – auf Wunsch vermitteln wir gerne eine Reinigungskraft'],
         aptEquipH: 'Ausstattung',
         aptEquip: ['Kostenloses WLAN', 'TV mit Apps (eigenes Streaming-Abo nutzbar)', 'Cheminée im Wohnraum', 'Küche mit Backofen, Geschirrspüler und Kaffeemaschine', 'Balkon (11 m²) zur Bergseite', 'Skiraum und Kellerabteil', 'Eigener Tiefgaragenplatz im Haus (auch für SUV geeignet)', 'Lift'],
         planH: 'Grundriss',
@@ -683,7 +675,7 @@ class Component extends DCLogic {
         aptBathH: 'Bathrooms and laundry',
         aptBath: ['Bathroom with bathtub, bidet and WC', 'Separate shower/WC', 'Washing machine and dryer in a private laundry room next to the apartment'],
         aptGoodH: 'Good to know',
-        aptGood: ['Max. 6 guests', 'Cot on request', 'Pets welcome on request', 'Non-smoking apartment (smoking permitted on the balcony)', 'Check-in from 4 pm, check-out by 10 am'],
+        aptGood: ['Max. 6 guests', 'Cot on request', 'Pets welcome on request', 'Non-smoking apartment (smoking permitted on the balcony)', 'Check-in from 4 pm, check-out by 10 am', 'Cleaning and laundry during the stay are up to the tenants – on request we are happy to arrange a cleaner'],
         aptEquipH: 'Amenities',
         aptEquip: ['Free Wi-Fi', 'TV with apps (use your own streaming subscription)', 'Fireplace in the living room', 'Kitchen with oven, dishwasher and coffee machine', 'Balcony (11 m²), mountain side', 'Ski room and cellar', 'Private underground parking space in the building (suitable for SUVs)', 'Lift'],
         planH: 'Floor plan',
@@ -871,7 +863,7 @@ class Component extends DCLogic {
         aptBathH: 'Bagni e lavanderia',
         aptBath: ['Bagno con vasca, bidet e WC', 'Doccia/WC separata', 'Lavatrice e asciugatrice nella lavanderia privata accanto all’appartamento'],
         aptGoodH: 'Buono a sapersi',
-        aptGood: ['Max. 6 persone', 'Lettino per bambini su richiesta', 'Animali domestici su richiesta', 'Appartamento non fumatori (fumare consentito sul balcone)', 'Check-in dalle 16, check-out entro le 10'],
+        aptGood: ['Max. 6 persone', 'Lettino per bambini su richiesta', 'Animali domestici su richiesta', 'Appartamento non fumatori (fumare consentito sul balcone)', 'Check-in dalle 16, check-out entro le 10', 'Pulizia e bucato durante il soggiorno a carico degli inquilini – su richiesta organizziamo volentieri una collaboratrice domestica'],
         aptEquipH: 'Dotazione',
         aptEquip: ['Wi-Fi gratuito', 'TV con app (utilizzabile il proprio abbonamento streaming)', 'Camino nel soggiorno', 'Cucina con forno, lavastoviglie e macchina del caffè', 'Balcone (11 m²) lato monte', 'Deposito sci e cantina', 'Posto auto privato nel garage dell’edificio (adatto anche a SUV)', 'Ascensore'],
         planH: 'Planimetria',

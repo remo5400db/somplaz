@@ -333,10 +333,7 @@ ${t.arrBlocksS.map((b) => `<div class="card"><img class="img" src="/${b.img}" al
 ${t.priceRows.map((r) => `<tr><td>${esc(r.n)}</td><td>${esc(r.v)}</td></tr>`).join('')}
 </tbody></table>
 </div>
-<div class="grid2" style="margin-top:20px;gap:20px">
-<div class="card"><h3>${esc(t.priceWeekH)}</h3><p style="margin:0;font-size:16px;color:#2f3634">${esc(t.priceWeek)}</p></div>
-<div class="card"><h3>${esc(t.priceExtraH)}</h3><p style="margin:0;font-size:16px;color:#2f3634">${esc(t.priceExtra[0])}</p></div>
-</div>
+<div class="card" style="margin-top:20px"><h3>${esc(t.priceWeekH)}</h3><p style="margin:0;font-size:16px;color:#2f3634">${esc(t.priceWeek)}</p></div>
 </div>
 </section>
 
